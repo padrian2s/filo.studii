@@ -1,0 +1,3990 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auguste Comte - Părintele Pozitivismului</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+            --accent: #c41e3a;
+            --accent-light: #e8344d;
+            --accent-dark: #9a1830;
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+            --border: #e5e5e5;
+            --gradient-1: linear-gradient(135deg, #c41e3a 0%, #9a1830 100%);
+            --gradient-2: linear-gradient(135deg, #c41e3a 0%, #e8344d 100%);
+            --gradient-3: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            --gradient-hero: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+            --reading-bg: #ffffff;
+            --reading-text: #1a1a1a;
+            --reading-muted: #666666;
+            --success: #2d8659;
+            --error: #c41e3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Material Icons sizing */
+        .material-icons, .material-icons-outlined, .material-icons-round {
+            vertical-align: middle;
+        }
+
+        .icon-lg {
+            font-size: 2.5rem;
+        }
+
+        .icon-xl {
+            font-size: 3.5rem;
+        }
+
+        /* Scrollbar - Subtle */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 0;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+        /* Navigation - Magazine Style */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 3rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.75rem 3rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-logo .material-icons {
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-links a .material-icons-outlined {
+            font-size: 1rem;
+            display: none;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--text);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .read-full-btn {
+            background: var(--text);
+            color: var(--primary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 0;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links .read-full-btn::after {
+            display: none;
+        }
+
+        .nav-links .read-full-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Hero Section - Magazine Editorial */
+        .hero {
+            min-height: 100vh;
+            background: var(--primary);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero::before {
+            display: none;
+        }
+
+        .particles {
+            display: none;
+        }
+
+        .particle {
+            display: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 8rem 2rem 6rem;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: transparent;
+            border: 1px solid var(--text);
+            border-radius: 0;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 400;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            color: var(--text);
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease 0.5s both;
+        }
+
+        .hero-quote {
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto 3rem;
+            padding: 0;
+            border-left: none;
+            background: transparent;
+            line-height: 1.9;
+            animation: fadeInUp 0.8s ease 0.7s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.9s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 0;
+            font-weight: 400;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .btn-primary {
+            background: var(--text);
+            color: var(--primary);
+            border: 1px solid var(--text);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text);
+            color: var(--primary);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 1px;
+            height: 60px;
+            background: var(--text-muted);
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: 'SCROLL';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(5px); }
+        }
+
+        @keyframes scrollDot {
+            0% { top: 8px; opacity: 1; }
+            100% { top: 32px; opacity: 0; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles - Magazine Editorial */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .section-subtitle {
+            font-family: 'Merriweather', serif;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Intro Section - Magazine Editorial */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .intro-image {
+            position: relative;
+            position: sticky;
+            top: 100px;
+        }
+
+        .intro-image-frame {
+            position: relative;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            border: none;
+        }
+
+        .intro-image-frame::before {
+            display: none;
+        }
+
+        .portrait-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--secondary);
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .portrait-placeholder::before {
+            display: none;
+        }
+
+        .portrait-icon {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .portrait-icon .material-icons {
+            font-size: 4rem;
+        }
+
+        .portrait-years {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .portrait-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.75rem;
+            font-family: 'Merriweather', serif;
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.9;
+        }
+
+        .intro-text p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            float: left;
+            line-height: 0.85;
+            padding-right: 1rem;
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Timeline - Three Stages */
+        .timeline-section {
+            background: var(--primary);
+            padding: 6rem 3rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+            border-radius: 0;
+            opacity: 1;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: calc(50% + 40px);
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: calc(50% + 40px);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            z-index: 10;
+        }
+
+        .timeline-item .timeline-dot {
+            background: var(--accent);
+            box-shadow: none;
+        }
+
+        .timeline-content {
+            background: var(--primary);
+            border-radius: 0;
+            padding: 0;
+            border: none;
+            max-width: 380px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-content:hover {
+            transform: none;
+            border-color: transparent;
+        }
+
+        .stage-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-content h3 .material-icons-outlined {
+            font-size: 1.3rem;
+            opacity: 0.5;
+        }
+
+        .timeline-content p {
+            font-family: 'Merriweather', serif;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .sub-stages {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .sub-stage {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .sub-stage .material-icons-outlined {
+            font-size: 1rem;
+            color: var(--accent);
+            opacity: 0.7;
+        }
+
+        /* Sciences Pyramid */
+        .sciences-section {
+            padding: 8rem 2rem;
+            background: var(--primary);
+        }
+
+        .pyramid-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pyramid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pyramid-level {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pyramid-level::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pyramid-level:hover {
+            transform: scale(1.05);
+        }
+
+        .pyramid-level:hover::before {
+            opacity: 0.1;
+        }
+
+        .pyramid-level:nth-child(1) {
+            width: 40%;
+            background: rgba(196, 30, 58, 0.9);
+        }
+        .pyramid-level:nth-child(2) {
+            width: 50%;
+            background: rgba(196, 30, 58, 0.75);
+        }
+        .pyramid-level:nth-child(3) {
+            width: 60%;
+            background: rgba(196, 30, 58, 0.6);
+        }
+        .pyramid-level:nth-child(4) {
+            width: 70%;
+            background: rgba(196, 30, 58, 0.45);
+        }
+        .pyramid-level:nth-child(5) {
+            width: 80%;
+            background: rgba(196, 30, 58, 0.3);
+        }
+        .pyramid-level:nth-child(6) {
+            width: 90%;
+            background: rgba(196, 30, 58, 0.2);
+        }
+
+        .pyramid-level .level-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-right: 1rem;
+        }
+
+        .pyramid-level .level-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pyramid-level .material-icons-outlined {
+            font-size: 1.4rem;
+        }
+
+        .pyramid-legend {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .pyramid-legend p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pyramid-legend p:last-child {
+            color: var(--accent);
+            margin-top: 1.5rem;
+        }
+
+        /* Positive Meaning */
+        .meaning-section {
+            padding: 8rem 2rem;
+            background: var(--secondary);
+        }
+
+        .meaning-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .meaning-card {
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meaning-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            opacity: 0.5;
+        }
+
+        .meaning-icon {
+            color: var(--accent);
+        }
+
+        .meaning-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(196, 30, 58, 0.3);
+            background: rgba(196, 30, 58, 0.05);
+        }
+
+        .meaning-card:hover::before {
+            opacity: 1;
+        }
+
+        .meaning-icon {
+            margin-bottom: 1rem;
+        }
+
+        .meaning-icon .material-icons-outlined {
+            font-size: 2.5rem;
+        }
+
+        .meaning-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .meaning-opposite {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .meaning-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Quote Section - Magazine Pull Quote */
+        .quote-section {
+            padding: 6rem 3rem;
+            background: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-section::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 20rem;
+            position: absolute;
+            top: -2rem;
+            left: 2rem;
+            color: var(--accent);
+            line-height: 1;
+            opacity: 0.1;
+        }
+
+        .quote-content {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .big-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .quote-author {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* Religion Section */
+        .religion-section {
+            padding: 6rem 3rem;
+            background: var(--primary);
+        }
+
+        .religion-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .religion-card {
+            background: var(--primary);
+            border-radius: 0;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .religion-card:hover {
+            border-color: var(--text);
+        }
+
+        .religion-card-icon {
+            margin-bottom: 1rem;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
+        .religion-card-icon .material-icons-outlined {
+            font-size: 2rem;
+        }
+
+        .religion-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .religion-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Critics Section */
+        .critics-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .critics-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .critic-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border-left: 2px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .critic-item:hover {
+            background: rgba(196, 30, 58, 0.03);
+            transform: translateX(5px);
+        }
+
+        .critic-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--accent);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .critic-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .critic-content h4 .material-icons-outlined {
+            font-size: 1.2rem;
+            color: var(--accent);
+            opacity: 0.7;
+        }
+
+        .critic-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Legacy Section */
+        .legacy-section {
+            padding: 8rem 2rem;
+            background: var(--secondary);
+        }
+
+        .legacy-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .legacy-card {
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legacy-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .legacy-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(196, 30, 58, 0.2);
+        }
+
+        .legacy-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .legacy-card-icon {
+            margin-bottom: 1.5rem;
+        }
+
+        .legacy-card-icon .material-icons-outlined {
+            font-size: 2rem;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
+        .legacy-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .legacy-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Brazil Badge */
+        .brazil-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(196, 30, 58, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+
+        .brazil-badge .material-icons-outlined {
+            font-size: 1.2rem;
+        }
+
+        /* Final Quote */
+        .final-section {
+            padding: 10rem 2rem;
+            background: var(--primary);
+            text-align: center;
+            position: relative;
+        }
+
+        .final-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(196, 30, 58, 0.05) 0%, transparent 50%);
+        }
+
+        .final-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .final-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        .final-author {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .final-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 3rem auto;
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+
+        .final-message {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ========================================
+           SIMULATORS SECTION
+           ======================================== */
+        .simulators-section {
+            background: linear-gradient(180deg, var(--primary) 0%, #0f0f1e 100%);
+            padding: 6rem 2rem;
+            max-width: 100%;
+        }
+
+        .simulators-section .section-header {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+
+        .simulator-card {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+        }
+
+        .simulator-card:hover {
+            border-color: rgba(196, 30, 58, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .simulator-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .simulator-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .simulator-icon .material-icons {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .simulator-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .simulator-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .sim-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sim-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .sim-btn.check-btn {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .sim-btn.check-btn:hover {
+            background: #256b4a;
+        }
+
+        /* Classify Game */
+        .classify-game {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .statements-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 16px;
+            min-height: 100px;
+        }
+
+        .statement {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 1rem 1.25rem;
+            background: rgba(0, 0, 0, 0.04);
+            border-radius: 12px;
+            font-size: 0.9rem;
+            cursor: grab;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            max-width: 100%;
+        }
+
+        .statement:hover {
+            background: rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .statement:active {
+            cursor: grabbing;
+        }
+
+        .statement.dragging {
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+
+        .statement .material-icons {
+            color: var(--accent);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        .drop-zones {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .drop-zone {
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 16px;
+            padding: 1rem;
+            min-height: 200px;
+            border: 1px dashed rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .drop-zone.drag-over {
+            background: rgba(196, 30, 58, 0.05);
+            border-style: solid;
+            border-color: var(--accent);
+        }
+
+        .zone-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-bottom: 0.75rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .zone-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .zone-content .statement {
+            font-size: 0.85rem;
+            padding: 0.75rem 1rem;
+        }
+
+        .zone-content .statement.correct {
+            border-color: var(--success);
+            background: rgba(45, 134, 89, 0.1);
+        }
+
+        .zone-content .statement.incorrect {
+            border-color: var(--error);
+            background: rgba(196, 30, 58, 0.1);
+        }
+
+        .game-feedback {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 12px;
+        }
+
+        .score-display {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .score-display .material-icons {
+            color: var(--accent);
+        }
+
+        /* Evolution Simulator */
+        .evolution-simulator {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .phenomenon-selector {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .phenomenon-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 50px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .phenomenon-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: white;
+        }
+
+        .phenomenon-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .evolution-stages {
+            display: flex;
+            align-items: stretch;
+            gap: 0.5rem;
+        }
+
+        .evo-stage {
+            flex: 1;
+            padding: 1.5rem;
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.03);
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .evo-stage { border-top: 2px solid var(--accent); }
+        .evo-stage.teologic { opacity: 0.7; }
+        .evo-stage.metafizic { opacity: 0.85; }
+        .evo-stage.pozitiv { opacity: 1; }
+
+        .evo-stage-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .evo-stage-header h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+        }
+
+        .evo-stage-content {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            min-height: 80px;
+        }
+
+        .evo-stage-era {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        .evo-arrow {
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+        }
+
+        .evolution-insight {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(196, 30, 58, 0.05);
+            border-radius: 12px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .evolution-insight .material-icons {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .evolution-insight p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Pyramid Builder */
+        .pyramid-builder {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sciences-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 16px;
+            justify-content: center;
+        }
+
+        .science-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: rgba(196, 30, 58, 0.15);
+            border: 1px solid rgba(196, 30, 58, 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: grab;
+            transition: all 0.3s ease;
+        }
+
+        .science-chip:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.2);
+        }
+
+        .science-chip.dragging {
+            opacity: 0.5;
+        }
+
+        .pyramid-slots {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pyramid-row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pyramid-slot {
+            min-width: 200px;
+            min-height: 50px;
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 0, 0, 0.08);
+            border: 2px dashed rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .pyramid-row:nth-child(1) .pyramid-slot { min-width: 200px; }
+        .pyramid-row:nth-child(2) .pyramid-slot { min-width: 240px; }
+        .pyramid-row:nth-child(3) .pyramid-slot { min-width: 280px; }
+        .pyramid-row:nth-child(4) .pyramid-slot { min-width: 320px; }
+        .pyramid-row:nth-child(5) .pyramid-slot { min-width: 360px; }
+        .pyramid-row:nth-child(6) .pyramid-slot { min-width: 400px; }
+
+        .pyramid-slot.drag-over {
+            border-style: solid;
+            border-color: var(--accent);
+            background: rgba(196, 30, 58, 0.1);
+        }
+
+        .pyramid-slot.filled {
+            border-style: solid;
+            border-color: rgba(196, 30, 58, 0.3);
+            background: rgba(196, 30, 58, 0.05);
+        }
+
+        .pyramid-slot.correct {
+            border-color: var(--success) !important;
+            background: rgba(45, 134, 89, 0.1) !important;
+        }
+
+        .pyramid-slot.incorrect {
+            border-color: var(--error) !important;
+            background: rgba(196, 30, 58, 0.1) !important;
+        }
+
+        .slot-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .pyramid-feedback {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .pyramid-result {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pyramid-result.success {
+            background: rgba(45, 134, 89, 0.1);
+            color: var(--success);
+        }
+
+        .pyramid-result.error {
+            background: rgba(196, 30, 58, 0.1);
+            color: var(--error);
+        }
+
+        /* Quiz */
+        .quiz-container {
+            position: relative;
+        }
+
+        .quiz-progress {
+            height: 4px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 2px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .quiz-progress-bar {
+            height: 100%;
+            background: var(--accent);
+            width: 20%;
+            transition: width 0.5s ease;
+        }
+
+        .quiz-counter {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-question {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-question h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover:not(.selected):not(.disabled) {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-option.selected.correct {
+            background: rgba(45, 134, 89, 0.15);
+            border-color: var(--success);
+        }
+
+        .quiz-option.selected.incorrect {
+            background: rgba(196, 30, 58, 0.15);
+            border-color: var(--error);
+        }
+
+        .quiz-option.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .quiz-option.show-correct {
+            border-color: var(--success);
+        }
+
+        .option-letter {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .quiz-explanation {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(196, 30, 58, 0.1);
+            border-radius: 12px;
+            border-left: 3px solid var(--accent);
+            display: none;
+        }
+
+        .quiz-explanation.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .quiz-results {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .results-icon .material-icons {
+            font-size: 4rem;
+            color: var(--accent);
+        }
+
+        .quiz-results h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 1rem 0;
+        }
+
+        .quiz-results p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .results-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--gradient-1);
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        /* Thought Experiment */
+        .thought-experiment {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .te-scenario {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .te-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .te-statement {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .te-analysis {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .te-analysis-item {
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .te-analysis-item.wrong {
+            background: rgba(196, 30, 58, 0.1);
+            border: 1px solid rgba(196, 30, 58, 0.3);
+        }
+
+        .te-analysis-item.correct {
+            background: rgba(45, 134, 89, 0.1);
+            border: 1px solid rgba(45, 134, 89, 0.3);
+        }
+
+        .te-analysis-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .te-analysis-item.wrong .te-analysis-header {
+            color: var(--error);
+        }
+
+        .te-analysis-item.correct .te-analysis-header {
+            color: var(--success);
+        }
+
+        .te-analysis-content {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .te-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .te-counter {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Real vs Chimeric */
+        .real-game {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .real-statement {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 16px;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .real-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .real-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .real-btn.real {
+            background: rgba(45, 134, 89, 0.15);
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .real-btn.chimeric {
+            background: rgba(196, 30, 58, 0.15);
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        .real-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .real-btn.real:hover {
+            background: rgba(45, 134, 89, 0.25);
+            box-shadow: 0 5px 20px rgba(45, 134, 89, 0.3);
+        }
+
+        .real-btn.chimeric:hover {
+            background: rgba(196, 30, 58, 0.25);
+            box-shadow: 0 5px 20px rgba(196, 30, 58, 0.3);
+        }
+
+        .real-feedback {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 12px;
+            max-width: 600px;
+            display: none;
+        }
+
+        .real-feedback.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .real-feedback.correct {
+            background: rgba(45, 134, 89, 0.1);
+            border: 1px solid rgba(45, 134, 89, 0.3);
+            color: var(--success);
+        }
+
+        .real-feedback.incorrect {
+            background: rgba(196, 30, 58, 0.1);
+            border: 1px solid rgba(196, 30, 58, 0.3);
+            color: var(--error);
+        }
+
+        .real-score {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .real-score .material-icons {
+            color: var(--accent);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive for simulators */
+        @media (max-width: 768px) {
+            .drop-zones {
+                grid-template-columns: 1fr;
+            }
+
+            .evolution-stages {
+                flex-direction: column;
+            }
+
+            .evo-arrow {
+                transform: rotate(90deg);
+                justify-content: center;
+                padding: 0.5rem 0;
+            }
+
+            .te-analysis {
+                grid-template-columns: 1fr;
+            }
+
+            .real-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .real-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .pyramid-slot {
+                min-width: 100% !important;
+            }
+        }
+
+        /* ========================================
+           FULL TEXT READING SECTION
+           ======================================== */
+        .reading-section {
+            background: var(--reading-bg);
+            color: var(--reading-text);
+            padding: 0;
+        }
+
+        .reading-header {
+            background: var(--primary);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .reading-header .section-title {
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .reading-container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+
+        .reading-progress {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--accent);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        .reading-content {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--reading-text);
+        }
+
+        .reading-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 4rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            position: relative;
+        }
+
+        .reading-content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .reading-content h2::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .reading-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 3rem 0 1.5rem;
+        }
+
+        .reading-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .reading-content p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            float: left;
+            line-height: 1;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .reading-content .epigraph {
+            font-style: italic;
+            text-align: center;
+            color: var(--reading-muted);
+            margin: 2rem 0 3rem;
+            padding: 1.5rem;
+            border-left: none;
+            background: rgba(196, 30, 58, 0.05);
+            border-radius: 10px;
+        }
+
+        .reading-content blockquote {
+            margin: 2.5rem 0;
+            padding: 2rem 2.5rem;
+            background: linear-gradient(135deg, rgba(61, 50, 41, 0.03), rgba(196, 30, 58, 0.05));
+            border-left: 4px solid var(--accent);
+            border-radius: 0 15px 15px 0;
+            font-style: italic;
+            color: var(--secondary);
+            position: relative;
+        }
+
+        .reading-content blockquote::before {
+            content: 'format_quote';
+            font-family: 'Material Icons';
+            font-style: normal;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2.5rem;
+            color: var(--accent);
+            opacity: 0.3;
+        }
+
+        .reading-content ul, .reading-content ol {
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+
+        .reading-content li {
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+        }
+
+        .reading-content ul li::marker {
+            color: var(--accent);
+        }
+
+        .reading-content ol li::marker {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .reading-content .highlight-box {
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.1), rgba(154, 24, 48, 0.1));
+            border: 1px solid rgba(196, 30, 58, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .reading-content .highlight-box h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .reading-content .stages-list {
+            background: rgba(61, 50, 41, 0.03);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .reading-content .stage-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(61, 50, 41, 0.1);
+        }
+
+        .reading-content .stage-item:last-child {
+            border-bottom: none;
+        }
+
+        .reading-content .stage-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            height: fit-content;
+        }
+
+        .reading-content .bibliography {
+            background: rgba(61, 50, 41, 0.05);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .reading-content .bibliography h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .reading-content .bibliography ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .reading-content .bibliography li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(61, 50, 41, 0.1);
+            font-size: 1rem;
+        }
+
+        .reading-content .bibliography li:last-child {
+            border-bottom: none;
+        }
+
+        .reading-content .section-divider {
+            text-align: center;
+            margin: 4rem 0;
+            color: var(--accent);
+            font-size: 1.5rem;
+            letter-spacing: 1rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: var(--text);
+            color: white;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+        }
+
+        /* Footer - Magazine Style */
+        footer {
+            background: var(--text);
+            padding: 4rem 3rem;
+            text-align: center;
+            border-top: none;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .meaning-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .legacy-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 60px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .meaning-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .religion-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .legacy-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .pyramid-level {
+                width: 95% !important;
+            }
+
+            .reading-content {
+                font-size: 1rem;
+            }
+
+            .reading-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .meaning-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <span class="material-icons">auto_stories</span>
+                Auguste Comte
+            </div>
+            <ul class="nav-links">
+                <li><a href="#intro"><span class="material-icons-outlined">person</span> Introducere</a></li>
+                <li><a href="#stages"><span class="material-icons-outlined">timeline</span> Cele 3 Stadii</a></li>
+                <li><a href="#sciences"><span class="material-icons-outlined">school</span> Științele</a></li>
+                <li><a href="#positive"><span class="material-icons-outlined">lightbulb</span> Pozitivismul</a></li>
+                <li><a href="#legacy"><span class="material-icons-outlined">history_edu</span> Moștenirea</a></li>
+                <li><a href="#simulators"><span class="material-icons-outlined">science</span> Simulatoare</a></li>
+                <li><a href="#full-text" class="read-full-btn"><span class="material-icons-outlined">menu_book</span> Citește Tot</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 1.5s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 4.5s;"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">1798 — 1857</div>
+            <h1><span>Auguste Comte</span></h1>
+            <p class="hero-subtitle">Părintele Sociologiei Moderne și Fondatorul Pozitivismului</p>
+            <blockquote class="hero-quote">
+                „Cunoaște pentru a prevedea, prevede pentru a acționa."
+            </blockquote>
+            <div class="hero-buttons">
+                <a href="#intro" class="btn btn-primary">
+                    <span class="material-icons">explore</span>
+                    Explorează
+                </a>
+                <a href="#full-text" class="btn btn-secondary">
+                    <span class="material-icons">menu_book</span>
+                    Citește Textul Complet
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section id="intro">
+        <div class="section-header fade-in">
+            <div class="section-number">01 / INTRODUCERE</div>
+            <h2 class="section-title">Cine a fost Auguste Comte?</h2>
+            <p class="section-subtitle">Un vizionar care a remodelat modul în care înțelegem cunoașterea, societatea și progresul uman.</p>
+        </div>
+
+        <div class="intro-grid fade-in">
+            <div class="intro-image">
+                <div class="intro-image-frame">
+                    <div class="portrait-placeholder">
+                        <div class="portrait-icon">
+                            <span class="material-icons">school</span>
+                        </div>
+                        <div class="portrait-years">1798 – 1857</div>
+                        <div class="portrait-name">Montpellier, Franța</div>
+                    </div>
+                </div>
+            </div>
+            <div class="intro-text">
+                <p>Auguste Comte a fost un filosof francez a cărui gândire a remodelat fundamental modul în care înțelegem cunoașterea, societatea și progresul uman. Deși numele său poate părea distant pentru mulți, ideile lui ne influențează viața de zi cu zi mai mult decât ne-am imagina.</p>
+                <p>De fiecare dată când un cercetător face un experiment, când un sociolog studiază comportamentul uman sau când cerem „dovezi" pentru o afirmație, aplicăm principii pe care Comte le-a sistematizat acum aproape două secole.</p>
+                <p>Născut într-o familie catolică și regalistă, Comte a crescut într-o Franță zbuciumată de Revoluție și războaie napoleoniene. Această perioadă de haos social l-a marcat profund și i-a alimentat dorința de a găsi o cale spre ordine și progres.</p>
+            </div>
+        </div>
+
+        <div class="stats-row fade-in">
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Volume ale Cursului de Filozofie Pozitivă</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1830</div>
+                <div class="stat-label">Anul publicării operei fundamentale</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Influența asupra gândirii moderne</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Stages -->
+    <section class="timeline-section" id="stages">
+        <div class="timeline-container">
+            <div class="section-header fade-in">
+                <div class="section-number">02 / LEGEA FUNDAMENTALĂ</div>
+                <h2 class="section-title">Cele Trei Stadii</h2>
+                <p class="section-subtitle">Piatra de temelie a filozofiei lui Comte — o lege pe care el o considera tot atât de universală ca legile lui Newton.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="stage-number">STADIUL I</div>
+                        <h3><span class="material-icons-outlined">temple_buddhist</span> Teologic</h3>
+                        <p>În această primă etapă, oamenii explică fenomenele prin intervenția unor agenți supranaturali. Când trăsnetul lovește, zeul tunetului este mânios.</p>
+                        <div class="sub-stages">
+                            <div class="sub-stage">
+                                <span class="material-icons-outlined">spa</span>
+                                <span>Fetișismul — obiectele au suflet</span>
+                            </div>
+                            <div class="sub-stage">
+                                <span class="material-icons-outlined">groups</span>
+                                <span>Politeismul — zei specializați</span>
+                            </div>
+                            <div class="sub-stage">
+                                <span class="material-icons-outlined">brightness_7</span>
+                                <span>Monoteismul — un singur Dumnezeu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="stage-number">STADIUL II</div>
+                        <h3><span class="material-icons-outlined">psychology</span> Metafizic</h3>
+                        <p>Faza de tranziție, o punte între teologie și știință. În loc de zei, invocăm „forțe", „esențe" sau „principii" abstracte.</p>
+                        <p style="margin-top: 1rem; font-style: italic; opacity: 0.8;">„Natura urăște vidul" — un exemplu clasic de gândire metafizică.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="stage-number">STADIUL III</div>
+                        <h3><span class="material-icons-outlined">science</span> Pozitiv</h3>
+                        <p>Maturitatea intelectuală. Mintea umană renunță la căutarea „cauzelor ultime" și se concentrează pe observarea fenomenelor și descoperirea legilor.</p>
+                        <p style="margin-top: 1rem; font-weight: 500; color: var(--accent);">Nu mai întrebăm „de ce?", ci „cum?" — aceasta este esența pozitivismului.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="quote-content fade-in">
+            <p class="big-quote">„În stadiul pozitiv, spiritul uman, recunoscând imposibilitatea de a obține noțiuni absolute, renunță să caute originea și destinația universului și să cunoască cauzele intime ale fenomenelor, pentru a se limita la descoperirea legilor lor efective."</p>
+            <p class="quote-author">— Auguste Comte, Cours de philosophie positive</p>
+        </div>
+    </section>
+
+    <!-- Sciences Pyramid -->
+    <section class="sciences-section" id="sciences">
+        <div class="pyramid-container">
+            <div class="section-header fade-in">
+                <div class="section-number">03 / CLASIFICAREA ȘTIINȚELOR</div>
+                <h2 class="section-title">Piramida Cunoașterii</h2>
+                <p class="section-subtitle">Științele se construiesc una pe cealaltă într-o ordine logică și istorică.</p>
+            </div>
+
+            <div class="pyramid fade-in">
+                <div class="pyramid-level">
+                    <span class="level-number">06</span>
+                    <span class="level-name"><span class="material-icons-outlined">groups</span> Sociologia</span>
+                </div>
+                <div class="pyramid-level">
+                    <span class="level-number">05</span>
+                    <span class="level-name"><span class="material-icons-outlined">biotech</span> Biologia</span>
+                </div>
+                <div class="pyramid-level">
+                    <span class="level-number">04</span>
+                    <span class="level-name"><span class="material-icons-outlined">science</span> Chimia</span>
+                </div>
+                <div class="pyramid-level">
+                    <span class="level-number">03</span>
+                    <span class="level-name"><span class="material-icons-outlined">bolt</span> Fizica</span>
+                </div>
+                <div class="pyramid-level">
+                    <span class="level-number">02</span>
+                    <span class="level-name"><span class="material-icons-outlined">star</span> Astronomia</span>
+                </div>
+                <div class="pyramid-level">
+                    <span class="level-number">01</span>
+                    <span class="level-name"><span class="material-icons-outlined">calculate</span> Matematica</span>
+                </div>
+            </div>
+
+            <div class="pyramid-legend fade-in">
+                <p>Fiecare știință se bazează pe precedentele și adaugă un nivel de complexitate. Nu putem face chimie fără fizică; nu putem studia viața fără chimie; nu putem analiza societatea fără a înțelege biologia organismelor care o compun.</p>
+                <p style="margin-top: 1.5rem; color: var(--accent);">Comte a inventat termenul „sociologie" — combinând latinescul <em>socius</em> (tovarăș) cu grecescul <em>logos</em> (studiu).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Positive Meaning -->
+    <section class="meaning-section" id="positive">
+        <div class="section-header fade-in">
+            <div class="section-number">04 / POZITIVISMUL</div>
+            <h2 class="section-title">Ce înseamnă „Pozitiv"?</h2>
+            <p class="section-subtitle">Nu optimist sau afirmativ — ci ceva concret, verificabil, în contrast cu speculațiile abstracte.</p>
+        </div>
+
+        <div class="meaning-grid fade-in">
+            <div class="meaning-card">
+                <div class="meaning-icon">
+                    <span class="material-icons-outlined">gps_fixed</span>
+                </div>
+                <h4>Real</h4>
+                <p class="meaning-opposite">opus chimericului</p>
+                <p>Studiem lucruri care există efectiv în lumea observabilă.</p>
+            </div>
+            <div class="meaning-card">
+                <div class="meaning-icon">
+                    <span class="material-icons-outlined">build</span>
+                </div>
+                <h4>Util</h4>
+                <p class="meaning-opposite">opus inutilului</p>
+                <p>Cunoașterea trebuie să servească îmbunătățirii vieții.</p>
+            </div>
+            <div class="meaning-card">
+                <div class="meaning-icon">
+                    <span class="material-icons-outlined">verified</span>
+                </div>
+                <h4>Cert</h4>
+                <p class="meaning-opposite">opus îndoielnicului</p>
+                <p>Căutăm certitudini demonstrabile prin observație.</p>
+            </div>
+            <div class="meaning-card">
+                <div class="meaning-icon">
+                    <span class="material-icons-outlined">straighten</span>
+                </div>
+                <h4>Precis</h4>
+                <p class="meaning-opposite">opus vagului</p>
+                <p>Formulăm legi exacte, cuantificabile și testabile.</p>
+            </div>
+            <div class="meaning-card">
+                <div class="meaning-icon">
+                    <span class="material-icons-outlined">architecture</span>
+                </div>
+                <h4>Constructiv</h4>
+                <p class="meaning-opposite">opus negativului</p>
+                <p>Nu distrugem, ci construim noi sinteze ale cunoașterii.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Religion of Humanity -->
+    <section class="religion-section">
+        <div class="section-header fade-in">
+            <div class="section-number">05 / PARADOXUL FINAL</div>
+            <h2 class="section-title">Religia Umanității</h2>
+            <p class="section-subtitle">Aspectul cel mai controversat și fascinant al operei lui Comte.</p>
+        </div>
+
+        <div class="religion-grid fade-in">
+            <div class="religion-card">
+                <div class="religion-card-icon">
+                    <span class="material-icons-outlined">calendar_month</span>
+                </div>
+                <h4>Calendar Pozitivist</h4>
+                <p>13 luni de 28 de zile, fiecare dedicată unui mare binefăcător al umanității — Moise, Aristotel, Dante, Shakespeare și alții.</p>
+            </div>
+            <div class="religion-card">
+                <div class="religion-card-icon">
+                    <span class="material-icons-outlined">church</span>
+                </div>
+                <h4>Ritualuri și Temple</h4>
+                <p>Similare celor catolice, dar centrate pe venerarea geniilor umane. Temple pozitiviste au existat în Franța, Brazilia și Anglia.</p>
+            </div>
+            <div class="religion-card">
+                <div class="religion-card-icon">
+                    <span class="material-icons-outlined">account_tree</span>
+                </div>
+                <h4>Ierarhie Sacerdotală</h4>
+                <p>„Preoți ai umanității" care să ghideze moral societatea, înlocuind clerul tradițional cu o elită intelectuală.</p>
+            </div>
+            <div class="religion-card">
+                <div class="religion-card-icon">
+                    <span class="material-icons-outlined">auto_awesome</span>
+                </div>
+                <h4>Sacramente Laice</h4>
+                <p>Pentru marile momente ale vieții — naștere, căsătorie, moarte — toate centrate pe datoria față de Umanitate.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;" class="fade-in">
+            <div class="brazil-badge">
+                <span class="material-icons-outlined">flag</span>
+                Deviza Braziliei „Ordem e Progresso" vine direct de la Comte
+            </div>
+        </div>
+    </section>
+
+    <!-- Critics -->
+    <section class="critics-section">
+        <div class="section-header fade-in">
+            <div class="section-number">06 / LIMITELE GÂNDIRII</div>
+            <h2 class="section-title">Critici și Limite</h2>
+            <p class="section-subtitle">Nicio filozofie nu este imună la critici, iar pozitivismul a primit-o din belșug.</p>
+        </div>
+
+        <div class="critics-list">
+            <div class="critic-item fade-in">
+                <div class="critic-number">1</div>
+                <div class="critic-content">
+                    <h4><span class="material-icons-outlined">compress</span> Reducționismul Excesiv</h4>
+                    <p>Comportamentul uman este încărcat de semnificație — nu putem înțelege de ce cineva plânge doar descriind mișcarea lacrimilor. Avem nevoie de interpretare, nu doar de explicație.</p>
+                </div>
+            </div>
+            <div class="critic-item fade-in">
+                <div class="critic-number">2</div>
+                <div class="critic-content">
+                    <h4><span class="material-icons-outlined">trending_up</span> Linearitatea Progresului</h4>
+                    <p>Istoria secolului XX — cu războaiele mondiale, totalitarismele, fundamentalismele — a arătat că „progresul" nu este nici liniar, nici ireversibil.</p>
+                </div>
+            </div>
+            <div class="critic-item fade-in">
+                <div class="critic-number">3</div>
+                <div class="critic-content">
+                    <h4><span class="material-icons-outlined">balance</span> Problema Valorilor</h4>
+                    <p>Pozitivismul descrie ce este, dar poate el să ne spună ce trebuie să fie? Există un „abis" logic între fapte și valori.</p>
+                </div>
+            </div>
+            <div class="critic-item fade-in">
+                <div class="critic-number">4</div>
+                <div class="critic-content">
+                    <h4><span class="material-icons-outlined">psychology_alt</span> Critica din Interior</h4>
+                    <p>Karl Popper a argumentat că falsificabilitatea, nu verificabilitatea, este criteriul demarcației științifice — o critică ce a rafinat pozitivismul.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legacy -->
+    <section class="legacy-section" id="legacy">
+        <div class="section-header fade-in">
+            <div class="section-number">07 / MOȘTENIREA</div>
+            <h2 class="section-title">Relevanța Contemporană</h2>
+            <p class="section-subtitle">Ideile lui Comte continuă să modeleze lumea în care trăim.</p>
+        </div>
+
+        <div class="legacy-cards">
+            <div class="legacy-card fade-in">
+                <div class="legacy-card-icon">
+                    <span class="material-icons-outlined">analytics</span>
+                </div>
+                <h4>În Științele Sociale</h4>
+                <p>Chiar dacă sociologii nu se mai numesc „pozitiviști", principiile rămân fundamentale: metode sistematice, căutarea regularităților, respingerea explicațiilor supranaturale.</p>
+            </div>
+            <div class="legacy-card fade-in">
+                <div class="legacy-card-icon">
+                    <span class="material-icons-outlined">biotech</span>
+                </div>
+                <h4>În Filozofia Științei</h4>
+                <p>Dezbaterea între pozitivism și anti-pozitivism rămâne centrală. Thomas Kuhn, Paul Feyerabend și alții au criticat în dialog cu tradiția pozitivistă.</p>
+            </div>
+            <div class="legacy-card fade-in">
+                <div class="legacy-card-icon">
+                    <span class="material-icons-outlined">computer</span>
+                </div>
+                <h4>În Cultura Tehnologică</h4>
+                <p>Credința contemporană în puterea științei și tehnologiei de a rezolva problemele umane. Când cerem „date" înainte de a decide — aplicăm principii pozitiviste.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Section -->
+    <section class="final-section">
+        <div class="final-content fade-in">
+            <p class="final-quote">„Viețile mari, fie ale indivizilor, fie ale popoarelor, sunt acelea în care sentimentele altruiste domină în mod constant și complet impulsurile egoiste."</p>
+            <p class="final-author">— Auguste Comte</p>
+            <div class="final-divider"></div>
+            <p class="final-message">
+                La aproape două secole de la publicarea Cursului de filozofie pozitivă, Auguste Comte rămâne o figură complexă și contradictorie — fondator al sociologiei și profet al unei „religii" ciudate, campion al rațiunii și creator al unui sistem cvasi-teologic propriu.
+                <br><br>
+                Tocmai aceste contradicții îl fac fascinant.
+            </p>
+            <a href="#full-text" class="btn btn-primary" style="margin-top: 2rem;">
+                <span class="material-icons">menu_book</span>
+                Citește Studiul Complet
+            </a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         INTERACTIVE SIMULATORS SECTION
+         ======================================== -->
+    <section class="simulators-section" id="simulators">
+        <div class="section-header fade-in">
+            <div class="section-number">08 / LABORATOR INTERACTIV</div>
+            <h2 class="section-title">Simulatoare & Experimente</h2>
+            <p class="section-subtitle">Explorează conceptele lui Comte prin simulări interactive</p>
+        </div>
+
+        <!-- Simulator 1: Classify the Thinking -->
+        <div class="simulator-card fade-in" id="sim-classify">
+            <div class="simulator-header">
+                <div class="simulator-icon">
+                    <span class="material-icons">psychology</span>
+                </div>
+                <div>
+                    <h3>Clasifică Gândirea</h3>
+                    <p>Trage fiecare afirmație în stadiul corespunzător</p>
+                </div>
+            </div>
+
+            <div class="classify-game">
+                <div class="statements-pool" id="statementsPool">
+                    <div class="statement" draggable="true" data-stage="teologic" data-id="1">
+                        <span class="material-icons">format_quote</span>
+                        „Zeul tunetului este mâniat de păcatele noastre."
+                    </div>
+                    <div class="statement" draggable="true" data-stage="pozitiv" data-id="2">
+                        <span class="material-icons">format_quote</span>
+                        „Descărcările electrice apar când diferența de potențial depășește 3MV/m."
+                    </div>
+                    <div class="statement" draggable="true" data-stage="metafizic" data-id="3">
+                        <span class="material-icons">format_quote</span>
+                        „Natura tinde spre echilibru și armonie universală."
+                    </div>
+                    <div class="statement" draggable="true" data-stage="teologic" data-id="4">
+                        <span class="material-icons">format_quote</span>
+                        „Spiritele strămoșilor veghează asupra recoltei."
+                    </div>
+                    <div class="statement" draggable="true" data-stage="metafizic" data-id="5">
+                        <span class="material-icons">format_quote</span>
+                        „Esența vieții constă în forța vitală invizibilă."
+                    </div>
+                    <div class="statement" draggable="true" data-stage="pozitiv" data-id="6">
+                        <span class="material-icons">format_quote</span>
+                        „Rata criminalității crește cu 2.3% pentru fiecare punct de șomaj."
+                    </div>
+                </div>
+
+                <div class="drop-zones">
+                    <div class="drop-zone teologic" data-stage="teologic">
+                        <div class="zone-header">
+                            <span class="material-icons">temple_buddhist</span>
+                            <span>Stadiul Teologic</span>
+                        </div>
+                        <div class="zone-content"></div>
+                    </div>
+                    <div class="drop-zone metafizic" data-stage="metafizic">
+                        <div class="zone-header">
+                            <span class="material-icons">psychology</span>
+                            <span>Stadiul Metafizic</span>
+                        </div>
+                        <div class="zone-content"></div>
+                    </div>
+                    <div class="drop-zone pozitiv" data-stage="pozitiv">
+                        <div class="zone-header">
+                            <span class="material-icons">science</span>
+                            <span>Stadiul Pozitiv</span>
+                        </div>
+                        <div class="zone-content"></div>
+                    </div>
+                </div>
+
+                <div class="game-feedback" id="classifyFeedback">
+                    <div class="score-display">
+                        <span class="material-icons">emoji_events</span>
+                        <span>Scor: <strong id="classifyScore">0</strong>/6</span>
+                    </div>
+                    <button class="sim-btn" onclick="resetClassifyGame()">
+                        <span class="material-icons">refresh</span>
+                        Resetează
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simulator 2: Evolution of Explanations -->
+        <div class="simulator-card fade-in" id="sim-evolution">
+            <div class="simulator-header">
+                <div class="simulator-icon">
+                    <span class="material-icons">auto_stories</span>
+                </div>
+                <div>
+                    <h3>Evoluția Explicațiilor</h3>
+                    <p>Alege un fenomen și vezi cum a fost explicat de-a lungul istoriei</p>
+                </div>
+            </div>
+
+            <div class="evolution-simulator">
+                <div class="phenomenon-selector">
+                    <button class="phenomenon-btn active" data-phenomenon="lightning">
+                        <span class="material-icons">bolt</span>
+                        Fulgerul
+                    </button>
+                    <button class="phenomenon-btn" data-phenomenon="disease">
+                        <span class="material-icons">coronavirus</span>
+                        Boala
+                    </button>
+                    <button class="phenomenon-btn" data-phenomenon="seasons">
+                        <span class="material-icons">ac_unit</span>
+                        Anotimpurile
+                    </button>
+                    <button class="phenomenon-btn" data-phenomenon="behavior">
+                        <span class="material-icons">groups</span>
+                        Comportamentul
+                    </button>
+                </div>
+
+                <div class="evolution-stages">
+                    <div class="evo-stage teologic">
+                        <div class="evo-stage-header">
+                            <span class="material-icons">temple_buddhist</span>
+                            <h4>Explicația Teologică</h4>
+                        </div>
+                        <div class="evo-stage-content" id="evoTeologic">
+                            <p>Zeus aruncă săgețile sale de foc din Olimp pentru a pedepsi muritorii sau pentru a-și arăta puterea divină.</p>
+                        </div>
+                        <div class="evo-stage-era">Antichitate</div>
+                    </div>
+
+                    <div class="evo-arrow">
+                        <span class="material-icons">arrow_forward</span>
+                    </div>
+
+                    <div class="evo-stage metafizic">
+                        <div class="evo-stage-header">
+                            <span class="material-icons">psychology</span>
+                            <h4>Explicația Metafizică</h4>
+                        </div>
+                        <div class="evo-stage-content" id="evoMetafizic">
+                            <p>„Fluidul electric" sau „forța electrică" din natură caută să se echilibreze, creând descărcări între cer și pământ.</p>
+                        </div>
+                        <div class="evo-stage-era">Sec. XVII-XVIII</div>
+                    </div>
+
+                    <div class="evo-arrow">
+                        <span class="material-icons">arrow_forward</span>
+                    </div>
+
+                    <div class="evo-stage pozitiv">
+                        <div class="evo-stage-header">
+                            <span class="material-icons">science</span>
+                            <h4>Explicația Pozitivă</h4>
+                        </div>
+                        <div class="evo-stage-content" id="evoPozitiv">
+                            <p>Diferența de potențial între nori și sol depășește rezistența dielectrică a aerului (~3MV/m), producând o descărcare de plasmă cu temperaturi de ~30.000K.</p>
+                        </div>
+                        <div class="evo-stage-era">Sec. XIX-prezent</div>
+                    </div>
+                </div>
+
+                <div class="evolution-insight">
+                    <span class="material-icons">lightbulb</span>
+                    <p id="evoInsight">Observă cum întrebarea trece de la „CINE a cauzat?" la „CE forță?" și în final la „CUM funcționează?"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simulator 3: Build the Pyramid -->
+        <div class="simulator-card fade-in" id="sim-pyramid">
+            <div class="simulator-header">
+                <div class="simulator-icon">
+                    <span class="material-icons">school</span>
+                </div>
+                <div>
+                    <h3>Construiește Piramida Științelor</h3>
+                    <p>Aranjează științele în ordinea corectă a complexității</p>
+                </div>
+            </div>
+
+            <div class="pyramid-builder">
+                <div class="sciences-pool" id="sciencesPool">
+                    <div class="science-chip" draggable="true" data-order="4" data-science="chimie">
+                        <span class="material-icons">science</span>
+                        Chimia
+                    </div>
+                    <div class="science-chip" draggable="true" data-order="6" data-science="sociologie">
+                        <span class="material-icons">groups</span>
+                        Sociologia
+                    </div>
+                    <div class="science-chip" draggable="true" data-order="2" data-science="astronomie">
+                        <span class="material-icons">star</span>
+                        Astronomia
+                    </div>
+                    <div class="science-chip" draggable="true" data-order="5" data-science="biologie">
+                        <span class="material-icons">biotech</span>
+                        Biologia
+                    </div>
+                    <div class="science-chip" draggable="true" data-order="1" data-science="matematica">
+                        <span class="material-icons">calculate</span>
+                        Matematica
+                    </div>
+                    <div class="science-chip" draggable="true" data-order="3" data-science="fizica">
+                        <span class="material-icons">bolt</span>
+                        Fizica
+                    </div>
+                </div>
+
+                <div class="pyramid-slots">
+                    <div class="pyramid-row">
+                        <div class="pyramid-slot" data-slot="6">
+                            <span class="slot-label">6. Cea mai complexă</span>
+                        </div>
+                    </div>
+                    <div class="pyramid-row">
+                        <div class="pyramid-slot" data-slot="5">
+                            <span class="slot-label">5.</span>
+                        </div>
+                    </div>
+                    <div class="pyramid-row">
+                        <div class="pyramid-slot" data-slot="4">
+                            <span class="slot-label">4.</span>
+                        </div>
+                    </div>
+                    <div class="pyramid-row">
+                        <div class="pyramid-slot" data-slot="3">
+                            <span class="slot-label">3.</span>
+                        </div>
+                    </div>
+                    <div class="pyramid-row">
+                        <div class="pyramid-slot" data-slot="2">
+                            <span class="slot-label">2.</span>
+                        </div>
+                    </div>
+                    <div class="pyramid-row">
+                        <div class="pyramid-slot" data-slot="1">
+                            <span class="slot-label">1. Fundamentul</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pyramid-feedback" id="pyramidFeedback">
+                    <button class="sim-btn check-btn" onclick="checkPyramid()">
+                        <span class="material-icons">check_circle</span>
+                        Verifică
+                    </button>
+                    <button class="sim-btn" onclick="resetPyramid()">
+                        <span class="material-icons">refresh</span>
+                        Resetează
+                    </button>
+                </div>
+
+                <div class="pyramid-result" id="pyramidResult"></div>
+            </div>
+        </div>
+
+        <!-- Simulator 4: Positivist Quiz -->
+        <div class="simulator-card fade-in" id="sim-quiz">
+            <div class="simulator-header">
+                <div class="simulator-icon">
+                    <span class="material-icons">quiz</span>
+                </div>
+                <div>
+                    <h3>Test: Ești Pozitivist?</h3>
+                    <p>Descoperă cât de bine înțelegi filozofia lui Comte</p>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quizProgressBar"></div>
+                </div>
+                <div class="quiz-counter">
+                    Întrebarea <span id="currentQuestion">1</span> din <span id="totalQuestions">5</span>
+                </div>
+
+                <div class="quiz-question" id="quizQuestion">
+                    <h4>Care este ordinea corectă a celor trei stadii ale lui Comte?</h4>
+                </div>
+
+                <div class="quiz-options" id="quizOptions">
+                    <button class="quiz-option" data-correct="false">
+                        <span class="option-letter">A</span>
+                        Metafizic → Teologic → Pozitiv
+                    </button>
+                    <button class="quiz-option" data-correct="true">
+                        <span class="option-letter">B</span>
+                        Teologic → Metafizic → Pozitiv
+                    </button>
+                    <button class="quiz-option" data-correct="false">
+                        <span class="option-letter">C</span>
+                        Pozitiv → Metafizic → Teologic
+                    </button>
+                    <button class="quiz-option" data-correct="false">
+                        <span class="option-letter">D</span>
+                        Teologic → Pozitiv → Metafizic
+                    </button>
+                </div>
+
+                <div class="quiz-explanation" id="quizExplanation"></div>
+
+                <div class="quiz-navigation">
+                    <button class="sim-btn" id="nextQuestionBtn" onclick="nextQuestion()" style="display: none;">
+                        <span class="material-icons">arrow_forward</span>
+                        Următoarea
+                    </button>
+                </div>
+
+                <div class="quiz-results" id="quizResults" style="display: none;">
+                    <div class="results-icon">
+                        <span class="material-icons" id="resultsIcon">emoji_events</span>
+                    </div>
+                    <h4 id="resultsTitle">Felicitări!</h4>
+                    <p id="resultsText">Ai răspuns corect la X din Y întrebări.</p>
+                    <div class="results-badge" id="resultsBadge">Pozitivist Începător</div>
+                    <button class="sim-btn" onclick="restartQuiz()">
+                        <span class="material-icons">replay</span>
+                        Încearcă din nou
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simulator 5: Thought Experiment -->
+        <div class="simulator-card fade-in" id="sim-thought">
+            <div class="simulator-header">
+                <div class="simulator-icon">
+                    <span class="material-icons">lightbulb</span>
+                </div>
+                <div>
+                    <h3>Experiment Mental: Cum ai Explica?</h3>
+                    <p>Gândește ca un pozitivist - transformă afirmații</p>
+                </div>
+            </div>
+
+            <div class="thought-experiment">
+                <div class="te-scenario">
+                    <div class="te-label">Afirmație de analizat:</div>
+                    <div class="te-statement" id="teStatement">
+                        „Plantele cresc spre lumină pentru că doresc să trăiască."
+                    </div>
+                </div>
+
+                <div class="te-analysis">
+                    <div class="te-analysis-item wrong">
+                        <div class="te-analysis-header">
+                            <span class="material-icons">close</span>
+                            <span>Ce e greșit (metafizic)?</span>
+                        </div>
+                        <div class="te-analysis-content" id="teWrong">
+                            Atribuie plantelor „dorință" și „scop" - concepte metafizice netestabile. Presupune o „forță vitală" sau „intenție" a naturii.
+                        </div>
+                    </div>
+
+                    <div class="te-analysis-item correct">
+                        <div class="te-analysis-header">
+                            <span class="material-icons">check</span>
+                            <span>Reformulare pozitivistă:</span>
+                        </div>
+                        <div class="te-analysis-content" id="teCorrect">
+                            „Celulele din partea umbrită a tulpinii acumulează auxină, hormon care stimulează elongarea celulară. Creșterea diferențială rezultată orientează planta spre sursa de lumină (fototropism)."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="te-controls">
+                    <button class="sim-btn" onclick="prevScenario()">
+                        <span class="material-icons">arrow_back</span>
+                        Anterior
+                    </button>
+                    <span class="te-counter">Scenariul <span id="scenarioNum">1</span>/4</span>
+                    <button class="sim-btn" onclick="nextScenario()">
+                        Următor
+                        <span class="material-icons">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simulator 6: Real vs Chimeric -->
+        <div class="simulator-card fade-in" id="sim-real">
+            <div class="simulator-header">
+                <div class="simulator-icon">
+                    <span class="material-icons">verified</span>
+                </div>
+                <div>
+                    <h3>Real sau Chimeric?</h3>
+                    <p>Identifică ce poate fi studiat pozitivist</p>
+                </div>
+            </div>
+
+            <div class="real-game">
+                <div class="real-statement" id="realStatement">
+                    „Inteligența poate fi măsurată prin teste standardizate."
+                </div>
+
+                <div class="real-buttons">
+                    <button class="real-btn real" onclick="answerReal(true)">
+                        <span class="material-icons">check_circle</span>
+                        Real / Pozitiv
+                    </button>
+                    <button class="real-btn chimeric" onclick="answerReal(false)">
+                        <span class="material-icons">cancel</span>
+                        Chimeric / Metafizic
+                    </button>
+                </div>
+
+                <div class="real-feedback" id="realFeedback"></div>
+
+                <div class="real-score">
+                    <span class="material-icons">stars</span>
+                    <span>Scor: <strong id="realScore">0</strong>/<span id="realTotal">0</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FULL TEXT READING SECTION
+         ======================================== -->
+    <section class="reading-section" id="full-text">
+        <div class="reading-header">
+            <div class="section-number">STUDIU COMPLET</div>
+            <h2 class="section-title">Auguste Comte și Nașterea Pozitivismului</h2>
+            <p class="section-subtitle" style="color: var(--text-muted);">Un studiu comprehensiv despre părintele sociologiei moderne</p>
+        </div>
+
+        <div class="reading-container">
+            <div class="reading-content">
+                <p class="epigraph">„Cunoaște pentru a prevedea, prevede pentru a acționa." — Auguste Comte</p>
+
+                <h2>I. Introducere: Cine a fost Auguste Comte?</h2>
+
+                <p>Auguste Comte (1798-1857) a fost un filosof francez a cărui gândire a remodelat fundamental modul în care înțelegem cunoașterea, societatea și progresul uman. Deși numele său poate părea distant pentru mulți, ideile lui ne influențează viața de zi cu zi mai mult decât ne-am imagina. De fiecare dată când un cercetător face un experiment, când un sociolog studiază comportamentul uman sau când cerem „dovezi" pentru o afirmație, aplicăm principii pe care Comte le-a sistematizat acum aproape două secole.</p>
+
+                <p>Născut în Montpellier, într-o familie catolică și regalistă, Comte a crescut într-o Franță zbuciumată de Revoluție și războaie napoleoniene. Această perioadă de haos social l-a marcat profund și i-a alimentat dorința de a găsi o cale spre ordinea și progresul social. A studiat la prestigioasa École Polytechnique din Paris, unde și-a dezvoltat pasiunea pentru matematică și științele exacte — o pasiune care va modela întreaga sa filozofie.</p>
+
+                <p>Imaginați-vă un tânăr strălucit, trăind într-o epocă în care vechile certitudini religioase se clătinau, iar noile descoperiri științifice promiteau răspunsuri definitive. Comte a încercat să construiască un pod între aceste două lumi: nu pentru a le reconcilia superficial, ci pentru a arăta că umanitatea evoluează natural de la una spre cealaltă.</p>
+
+                <h2>II. Contextul Istoric și Intelectual</h2>
+
+                <h3>Franța post-revoluționară</h3>
+
+                <p>Pentru a înțelege pe deplin gândirea lui Comte, trebuie să ne transportăm în Franța începutului de secol XIX. Revoluția Franceză din 1789 nu a schimbat doar regimul politic — a zguduit întreaga structură a societății europene. Monarhia, nobilimea, Biserica catolică — toate instituțiile care ofereau oamenilor un sens al ordinii și apartenenței fuseseră răsturnate sau profund discreditate.</p>
+
+                <p>Această „criză de sens" a generat o întrebare arzătoare: pe ce fundament putem reconstrui societatea? Unii priveau nostalgic spre trecut, dorind restaurarea vechii ordini. Alții visau la utopii revoluționare. Comte a propus o a treia cale: să folosim metoda științifică pentru a înțelege și organiza societatea în mod rațional.</p>
+
+                <h3>Influența lui Saint-Simon</h3>
+
+                <p>Între 1817 și 1824, Comte a lucrat ca secretar al lui Claude Henri de Saint-Simon, un gânditor vizionar care credea că industrializarea va transforma radical societatea. De la Saint-Simon, Comte a moștenit ideea că progresul social nu este întâmplător, ci urmează legi la fel de precise ca cele ale fizicii. Însă, spre deosebire de mentorul său, Comte a dezvoltat un sistem filozofic mult mai riguros și mai complet.</p>
+
+                <p>Despărțirea celor doi a fost duroasă, marcată de acuzații de plagiat din ambele părți. Dar tocmai acest conflict l-a forțat pe Comte să-și clarifice propriile idei și să le dezvolte independent, culminând cu lucrarea sa monumentală: <em>Cours de philosophie positive</em> (Curs de filozofie pozitivă), publicată între 1830 și 1842 în șase volume.</p>
+
+                <div class="section-divider">✦ ✦ ✦</div>
+
+                <h2>III. Legea Celor Trei Stadii</h2>
+
+                <p>Piatra de temelie a filozofiei lui Comte este <strong>Legea celor trei stadii</strong>, pe care el o considera tot atât de universală și inevitabilă ca legile lui Newton. Conform acestei legi, atât mintea umană individuală, cât și societatea în ansamblu, traversează în mod necesar trei faze distincte de dezvoltare:</p>
+
+                <h3>Stadiul Teologic (sau Fictiv)</h3>
+
+                <p>În această primă etapă, oamenii explică fenomenele naturale și sociale prin intervenția unor agenți supranaturali. Când trăsnetul lovește, zeul tunetului este mânios. Când o epidemie devastează un oraș, este pedeapsa divină pentru păcate. Acest stadiu se subdivide el însuși în trei sub-faze:</p>
+
+                <div class="stages-list">
+                    <div class="stage-item">
+                        <span class="stage-num">1</span>
+                        <div><strong>Fetișismul</strong> — obiectele din natură sunt însufleținite; o stâncă sau un copac poate avea suflet și voință proprie.</div>
+                    </div>
+                    <div class="stage-item">
+                        <span class="stage-num">2</span>
+                        <div><strong>Politeismul</strong> — forțele naturii sunt personificate în zei specializați (zeul mării, zeița agriculturii etc.).</div>
+                    </div>
+                    <div class="stage-item">
+                        <span class="stage-num">3</span>
+                        <div><strong>Monoteismul</strong> — un singur Dumnezeu atotputernic devine sursa ultimă a tuturor fenomenelor.</div>
+                    </div>
+                </div>
+
+                <p>Pentru Comte, acest stadiu nu este „greșit" în sens moral — este o etapă necesară în evoluția gândirii umane. La fel cum un copil trebuie să treacă prin anumite faze de dezvoltare, umanitatea trebuia să treacă prin gândirea teologică pentru a-și forma primele întrebări despre lume.</p>
+
+                <h3>Stadiul Metafizic (sau Abstract)</h3>
+
+                <p>Aceasta este faza de tranziție, o punte între teologie și știință. În loc să atribuie fenomenele unor zei personali, gândirea metafizică invocă „forțe", „esențe" sau „principii" abstracte. Când filozofii greci vorbeau despre „natura" care „urăște vidul" sau când filozofii medievali căutau „substanța" lucrurilor, operau în cadrul metafizic.</p>
+
+                <p>Comte vedea acest stadiu ca un progres necesar — zeii devin mai abstracți, mai puțin caprioși, mai aproape de regularitățile pe care le va descoperi știința. Dar în același timp, este un stadiu instabil, plin de dezbateri fără sfârșit despre concepte care nu pot fi testate empiric. Metafizica pune întrebări la care nu poate răspunde cu certitudine.</p>
+
+                <h3>Stadiul Pozitiv (sau Științific)</h3>
+
+                <p>Aici ajungem la maturitatea intelectuală. În stadiul pozitiv, mintea umană renunță la căutarea „cauzelor ultime" sau a „esențelor ascunse". În schimb, se concentrează pe observarea fenomenelor, descoperirea regularităților și formularea legilor care permit predicția.</p>
+
+                <blockquote>„În stadiul pozitiv, spiritul uman, recunoscând imposibilitatea de a obține noțiuni absolute, renunță să caute originea și destinația universului și să cunoască cauzele intime ale fenomenelor, pentru a se limita la descoperirea, prin raționament și observație combinate, a legilor lor efective."</blockquote>
+
+                <p>Nu ne mai întrebăm <em>de ce</em> cade un măr — întrebare care ar putea duce la răspunsuri teologice sau metafizice. Ne întrebăm <em>cum</em> cade și descoperim legile gravitației care ne permit să prezicem mișcarea oricărui obiect. Această abordare pragmatică — focusul pe „cum" în detrimentul lui „de ce" — este esența pozitivismului.</p>
+
+                <div class="section-divider">✦ ✦ ✦</div>
+
+                <h2>IV. Pozitivismul: Mai Mult Decât o Metodă</h2>
+
+                <h3>Ce înseamnă „pozitiv"?</h3>
+
+                <p>Termenul „pozitiv" la Comte nu are sensul din limbajul comun (optimist sau afirmativ). El derivă din latinescul <em>ponere</em> — „a pune", „a așeza". O cunoaștere pozitivă este una care „pune" ceva concret, verificabil, în contrast cu speculațiile abstracte. Comte identifică cinci sensuri complementare ale termenului:</p>
+
+                <ul>
+                    <li><strong>Real</strong> (opus chimericului) — studiem lucruri care există efectiv</li>
+                    <li><strong>Util</strong> (opus inutilului) — cunoașterea trebuie să servească îmbunătățirii vieții</li>
+                    <li><strong>Cert</strong> (opus îndoielnicului) — căutăm certitudini demonstrabile</li>
+                    <li><strong>Precis</strong> (opus vagului) — formulăm legi exacte, cuantificabile</li>
+                    <li><strong>Constructiv</strong> (opus negativului) — nu distrugem credințe vechi de dragul criticii, ci construim noi sinteze</li>
+                </ul>
+
+                <h3>Limitele cunoașterii pozitive</h3>
+
+                <p>Un aspect adesea neglijat al pozitivismului este modestia epistemologică pe care o implică. Comte nu pretinde că știința ne oferă Adevărul Absolut. Dimpotrivă, el recunoaște explicit că legile științifice sunt aproximări, că teoriile evoluează, că există limite ale cunoașterii umane.</p>
+
+                <p>Ce distinge pozitivismul de metafizică nu este certitudinea absolută, ci criteriul de verificare. O afirmație pozitivă poate fi testată, confirmată sau infirmată prin observație și experiment. O afirmație metafizică (de exemplu, „sufletul este nemuritor") nu poate fi supusă aceluiași test. Pentru Comte, aceasta nu înseamnă că afirmațiile metafizice sunt false — înseamnă că ele aparțin unui alt tip de discurs, care nu poate fundamenta știința.</p>
+
+                <div class="section-divider">✦ ✦ ✦</div>
+
+                <h2>V. Clasificarea Științelor: O Piramidă a Cunoașterii</h2>
+
+                <p>Una dintre contribuțiile cele mai durabile ale lui Comte este clasificarea ierarhică a științelor. El nu și-a propus doar să enumere științele existente, ci să arate cum ele se construiesc una pe cealaltă într-o ordine logică și istorică:</p>
+
+                <ol>
+                    <li><strong>Matematica</strong> — fundamentul tuturor științelor, limbajul universal al regularităților</li>
+                    <li><strong>Astronomia</strong> — prima știință despre fenomene concrete, studiază cele mai simple și mai îndepărtate obiecte</li>
+                    <li><strong>Fizica</strong> — studiază proprietățile generale ale materiei (masă, mișcare, căldură, lumină)</li>
+                    <li><strong>Chimia</strong> — studiază compoziția și transformările substanțelor</li>
+                    <li><strong>Biologia</strong> — studiază viața și organismele vii</li>
+                    <li><strong>Sociologia</strong> — coroana edificiului, studiază cea mai complexă realitate: societatea umană</li>
+                </ol>
+
+                <p>Observați logica: fiecare știință se bazează pe precedentele și adaugă un nivel de complexitate. Nu putem face chimie fără a înțelege fizica; nu putem studia viața fără a înțelege chimia; nu putem analiza societatea fără a înțelege biologia organismelor care o compun.</p>
+
+                <h3>Nașterea sociologiei</h3>
+
+                <p>Comte este considerat pe bună dreptate părintele sociologiei — el a inventat chiar termenul, combinând latinescul <em>socius</em> (tovarăș, societate) cu grecescul <em>logos</em> (studiu, știință). Dar contribuția sa merge dincolo de inventarea unui cuvânt.</p>
+
+                <p>Comte a argumentat că societatea poate și trebuie să fie studiată cu aceeași rigurozitate științifică ca fenomenele naturale. Acest lucru poate părea evident astăzi, dar în epoca sa era revoluționar. Mulți credeau că comportamentul uman este prea complex, prea influențat de liberul arbitru, pentru a fi supus legilor.</p>
+
+                <p>Sociologia lui Comte avea două ramuri principale: <strong>statica socială</strong> (studiul structurii societății la un moment dat — instituții, familie, proprietate) și <strong>dinamica socială</strong> (studiul evoluției societăților în timp — progresul istoric). Această distincție între structură și evoluție rămâne fundamentală în sociologie până în ziua de azi.</p>
+
+                <div class="section-divider">✦ ✦ ✦</div>
+
+                <h2>VI. Religia Umanității: Paradoxul Final</h2>
+
+                <p>Aici ajungem la aspectul cel mai controversat și fascinant al operei lui Comte. În a doua parte a vieții sale, mai ales după <em>Système de politique positive</em> (1851-1854), Comte a dezvoltat ceea ce el numea „Religia Umanității" — un sistem cvasi-religios care înlocuia divinitatea tradițională cu Umanitatea însăși.</p>
+
+                <h3>De ce o „religie" pozitivistă?</h3>
+
+                <p>La prima vedere, pare o contradicție: filozoful care a criticat teologia sfârșește prin a fonda o religie? Dar logica lui Comte era coerentă cu premisele sale. El credea că oamenii au nevoie nu doar de cunoaștere intelectuală, ci și de o structură emoțională și socială care să le dea sens vieții. Religiile tradiționale oferiseră această structură timp de milenii.</p>
+
+                <p>Problema era că, odată cu progresul către stadiul pozitiv, credințele teologice deveneau din ce în ce mai greu de susținut pentru mințile moderne. Cum să oferi oamenilor sens și comunitate fără a le cere să creadă în lucruri pe care rațiunea le pune sub semnul întrebării?</p>
+
+                <p>Soluția lui Comte: să divinizăm ceea ce știm că există — Umanitatea. Nu Umanitatea abstractă, ci suma tuturor generațiilor trecute, prezente și viitoare. Fiecare individ participă la această entitate colectivă care transcende existența sa limitată.</p>
+
+                <h3>Structura Religiei Umanității</h3>
+
+                <p>Comte a elaborat un sistem complet, cu:</p>
+
+                <ul>
+                    <li><strong>Calendar pozitivist</strong> — cu 13 luni de 28 de zile, fiecare dedicată unui mare binefăcător al umanității (Moise, Aristotel, Dante, Shakespeare etc.)</li>
+                    <li><strong>Ritualuri</strong> — similare celor catolice, dar centrate pe venerarea geniilor umane</li>
+                    <li><strong>Ierarhie sacerdotală</strong> — cu „preoți ai umanității" care să ghideze moral societatea</li>
+                    <li><strong>Sacramente</strong> — pentru marile momente ale vieții (naștere, căsătorie, moarte)</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4><span class="material-icons">flag</span> Știați că?</h4>
+                    <p>Această „religie" a avut adepți reali — temple pozitiviste au existat în Franța, Brazilia (unde deviza națională „Ordem e Progresso" vine direct de la Comte) și Anglia. Dar pentru majoritatea urmașilor intelectuali ai lui Comte, acest aspect al operei sale rămâne un curios capriciu al bătrâneții.</p>
+                </div>
+
+                <div class="section-divider">✦ ✦ ✦</div>
+
+                <h2>VII. Critici și Limite ale Pozitivismului</h2>
+
+                <p>Nicio filozofie nu este imună la critici, iar pozitivismul a primit-o din belșug. O analiză onestă trebuie să recunoască limitele gândirii lui Comte:</p>
+
+                <h3>Reducționismul excesiv</h3>
+
+                <p>Critici precum Wilhelm Dilthey au argumentat că științele umane (<em>Geisteswissenschaften</em>) sunt fundamental diferite de științele naturii. Comportamentul uman este încărcat de semnificație — nu putem înțelege de ce cineva plânge doar descriind mișcarea lacrimilor. Avem nevoie de interpretare, nu doar de explicație.</p>
+
+                <h3>Linearitatea progresului</h3>
+
+                <p>Legea celor trei stadii presupune o evoluție liniară și inevitabilă către stadiul pozitiv. Dar istoria secolului XX — cu războaiele mondiale, totalitarismele, fundamentalismele religioase — a arătat că „progresul" nu este nici liniar, nici ireversibil. Societățile pot regresa; gândirea metafizică sau teologică poate reveni în forme noi.</p>
+
+                <h3>Problema valorilor</h3>
+
+                <p>Pozitivismul descrie ce este, dar poate el să ne spună ce <em>trebuie să fie</em>? Există un „abis" logic între fapte și valori (celebra distincție a lui David Hume între „is" și „ought"). Știința poate constata că fumatul cauzează cancer, dar nu poate demonstra că sănătatea <em>trebuie</em> să fie o valoare prioritară.</p>
+
+                <h3>Pozitivismul logic: o critică din interior</h3>
+
+                <p>În secolul XX, filozofii Cercului de la Viena au dezvoltat „pozitivismul logic", o versiune mai riguroasă care a respins însă multe dintre elementele comtene. Karl Popper a mers și mai departe, argumentând că falsificabilitatea (nu verificabilitatea) este criteriul demarcației științifice. Paradoxal, critica lui Popper a consolidat unele intuiții pozitiviste, chiar dacă a respins altele.</p>
+
+                <div class="section-divider">✦ ✦ ✦</div>
+
+                <h2>VIII. Moștenirea și Relevanța Contemporană</h2>
+
+                <h3>În științele sociale</h3>
+
+                <p>Chiar dacă sociologii contemporani nu se mai numesc „pozitiviști", multe dintre principiile lui Comte rămân fundamentale: folosirea metodelor sistematice, căutarea regularităților, respingerea explicațiilor supranaturale. Émile Durkheim, considerat fondatorul sociologiei moderne, era profund influențat de Comte, chiar dacă îl critica pe unele puncte.</p>
+
+                <h3>În filozofia științei</h3>
+
+                <p>Dezbaterea între pozitivism și anti-pozitivism rămâne centrală în filozofia științei. Thomas Kuhn, Paul Feyerabend și alții au criticat imaginea cumulativă a progresului științific, dar au făcut-o în dialog cu tradiția pozitivistă. Chiar și critica pozitivismului este o formă de recunoaștere a importanței sale.</p>
+
+                <h3>În cultura tehnologică</h3>
+
+                <p>Poate că cea mai profundă moștenire a lui Comte este una pe care rar o recunoaștem explicit: credința contemporană în puterea științei și tehnologiei de a rezolva problemele umane. Când cerem „date" înainte de a lua o decizie, când respingem „superstiții", când credem că educația și cercetarea vor îmbunătăți inevitabil viața — aplicăm, conștient sau nu, principii pozitiviste.</p>
+
+                <p>Paradoxul este că această credință a devenit ea însăși o formă de „religie" — ce Comte ar fi putut numi o „metafizică a științismului". Criticii contemporani ai tehno-optimismului necritic (de exemplu, în dezbaterile despre inteligența artificială sau schimbările climatice) ne reamintesc că pozitivismul naiv poate fi la fel de periculos ca orice alt fundamentalism.</p>
+
+                <div class="section-divider">✦ ✦ ✦</div>
+
+                <h2>IX. Concluzie: Ce Putem Învața de la Comte?</h2>
+
+                <p>La aproape două secole de la publicarea Cursului de filozofie pozitivă, Auguste Comte rămâne o figură complexă și contradictorie. Fondator al sociologiei și profet al unei „religii" ciudate. Campion al rațiunii și autor al unor pagini dogmatice. Critic al teologiei și creator al unui sistem cvasi-teologic propriu.</p>
+
+                <p>Dar tocmai aceste contradicții îl fac fascinant. Comte a înțeles, poate mai bine decât mulți dintre succesorii săi, că ființele umane nu sunt doar mașini de procesare a informațiilor. Avem nevoie de sens, de comunitate, de ritualuri. Dacă știința nu le oferă, le vom căuta în altă parte.</p>
+
+                <p>Poate că cea mai importantă lecție a lui Comte este tocmai tensiunea pe care a încercat să o rezolve — tensiunea dintre rigoarea intelectuală și nevoile existențiale umane. Nu a reușit să o rezolve complet (cine ar putea?), dar a pus-o în lumină cu o claritate care rămâne relevantă.</p>
+
+                <p>În lumea contemporană, fragmentată între credințe religioase, entuziasmul științific și nihilismul postmodern, întrebările lui Comte persistă: Pe ce putem construi o cunoaștere sigură? Cum putem trăi împreună fără a ne distruge reciproc? Ce datorăm generațiilor trecute și viitoare?</p>
+
+                <p>Nu trebuie să fim pozitiviști pentru a recunoaște că aceste întrebări merită să fie puse — și repuse — în fiecare generație.</p>
+
+                <blockquote>„Viețile mari, fie ale indivizilor, fie ale popoarelor, sunt acelea în care sentimentele altruiste domină în mod constant și complet impulsurile egoiste." — Auguste Comte</blockquote>
+
+                <div class="section-divider">✦ ✦ ✦</div>
+
+                <div class="bibliography">
+                    <h4><span class="material-icons" style="font-size: 1.3rem; vertical-align: middle; margin-right: 0.5rem;">menu_book</span>Bibliografie Recomandată</h4>
+
+                    <p style="margin-top: 1rem; margin-bottom: 0.5rem; font-weight: 600;">Opere principale ale lui Auguste Comte:</p>
+                    <ul>
+                        <li><em>Cours de philosophie positive</em> (1830-1842)</li>
+                        <li><em>Discours sur l'esprit positif</em> (1844)</li>
+                        <li><em>Système de politique positive</em> (1851-1854)</li>
+                    </ul>
+
+                    <p style="margin-top: 1.5rem; margin-bottom: 0.5rem; font-weight: 600;">Studii secundare:</p>
+                    <ul>
+                        <li>Mary Pickering — <em>Auguste Comte: An Intellectual Biography</em> (3 volume, 1993-2009)</li>
+                        <li>Michel Bourdeau — <em>Les trois états: Science, théologie et métaphysique chez Auguste Comte</em> (2006)</li>
+                        <li>Angèle Kremer-Marietti — <em>Auguste Comte et la théorie sociale du positivisme</em> (1970)</li>
+                        <li>Raymond Aron — <em>Les étapes de la pensée sociologique</em> (1967)</li>
+                    </ul>
+                </div>
+
+                <p style="text-align: center; margin-top: 3rem; color: var(--reading-muted); font-style: italic;">
+                    Studiu realizat cu ajutorul Claude AI
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <span class="material-icons">arrow_upward</span>
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <p>Studiu comprehensiv despre Auguste Comte • Realizat cu <a href="#">Claude AI</a></p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+        const readingProgress = document.getElementById('readingProgress');
+
+        window.addEventListener('scroll', () => {
+            // Navbar
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Back to top button
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            // Reading progress
+            const fullTextSection = document.getElementById('full-text');
+            if (fullTextSection) {
+                const rect = fullTextSection.getBoundingClientRect();
+                const sectionTop = fullTextSection.offsetTop;
+                const sectionHeight = fullTextSection.offsetHeight;
+                const scrollInSection = window.scrollY - sectionTop;
+
+                if (scrollInSection > 0 && scrollInSection < sectionHeight) {
+                    const progress = (scrollInSection / sectionHeight) * 100;
+                    readingProgress.style.width = progress + '%';
+                } else if (scrollInSection >= sectionHeight) {
+                    readingProgress.style.width = '100%';
+                } else {
+                    readingProgress.style.width = '0%';
+                }
+            }
+        });
+
+        // Back to top click
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Fade in on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Pyramid hover effect
+        document.querySelectorAll('.pyramid-level').forEach(level => {
+            level.addEventListener('mouseenter', function() {
+                document.querySelectorAll('.pyramid-level').forEach(l => {
+                    if (l !== this) {
+                        l.style.opacity = '0.5';
+                    }
+                });
+            });
+            level.addEventListener('mouseleave', function() {
+                document.querySelectorAll('.pyramid-level').forEach(l => {
+                    l.style.opacity = '1';
+                });
+            });
+        });
+
+        // ========================================
+        // SIMULATORS JAVASCRIPT
+        // ========================================
+
+        // Classify Game - Drag and Drop
+        let classifyScore = 0;
+
+        function initClassifyGame() {
+            const statements = document.querySelectorAll('.statement');
+            const dropZones = document.querySelectorAll('.drop-zone');
+
+            statements.forEach(statement => {
+                statement.addEventListener('dragstart', handleDragStart);
+                statement.addEventListener('dragend', handleDragEnd);
+
+                // Touch support
+                statement.addEventListener('click', function() {
+                    handleStatementClick(this);
+                });
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('dragleave', handleDragLeave);
+                zone.addEventListener('drop', handleDrop);
+            });
+        }
+
+        let selectedStatement = null;
+
+        function handleStatementClick(statement) {
+            if (statement.parentElement.classList.contains('zone-content')) return;
+
+            if (selectedStatement) {
+                selectedStatement.style.outline = '';
+            }
+            selectedStatement = statement;
+            statement.style.outline = '2px solid var(--accent)';
+
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.onclick = function() {
+                    if (selectedStatement) {
+                        const zoneContent = this.querySelector('.zone-content');
+                        zoneContent.appendChild(selectedStatement);
+                        selectedStatement.style.outline = '';
+                        checkStatementPlacement(selectedStatement, this.dataset.stage);
+                        selectedStatement = null;
+                    }
+                };
+            });
+        }
+
+        function handleDragStart(e) {
+            e.target.classList.add('dragging');
+            e.dataTransfer.setData('text/plain', e.target.dataset.id);
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+
+            const id = e.dataTransfer.getData('text/plain');
+            const statement = document.querySelector(`.statement[data-id="${id}"]`);
+            const zoneContent = e.currentTarget.querySelector('.zone-content');
+            const zoneStage = e.currentTarget.dataset.stage;
+
+            zoneContent.appendChild(statement);
+            checkStatementPlacement(statement, zoneStage);
+        }
+
+        function checkStatementPlacement(statement, zoneStage) {
+            const correctStage = statement.dataset.stage;
+
+            if (correctStage === zoneStage) {
+                statement.classList.add('correct');
+                statement.classList.remove('incorrect');
+                classifyScore++;
+            } else {
+                statement.classList.add('incorrect');
+                statement.classList.remove('correct');
+            }
+
+            document.getElementById('classifyScore').textContent = classifyScore;
+        }
+
+        function resetClassifyGame() {
+            classifyScore = 0;
+            document.getElementById('classifyScore').textContent = '0';
+
+            const pool = document.getElementById('statementsPool');
+            document.querySelectorAll('.statement').forEach(statement => {
+                statement.classList.remove('correct', 'incorrect');
+                statement.style.outline = '';
+                pool.appendChild(statement);
+            });
+        }
+
+        // Evolution Simulator
+        const phenomenaData = {
+            lightning: {
+                teologic: 'Zeus aruncă săgețile sale de foc din Olimp pentru a pedepsi muritorii sau pentru a-și arăta puterea divină.',
+                metafizic: '„Fluidul electric" sau „forța electrică" din natură caută să se echilibreze, creând descărcări între cer și pământ.',
+                pozitiv: 'Diferența de potențial între nori și sol depășește rezistența dielectrică a aerului (~3MV/m), producând o descărcare de plasmă cu temperaturi de ~30.000K.',
+                insight: 'Observă cum întrebarea trece de la „CINE a cauzat?" la „CE forță?" și în final la „CUM funcționează?"'
+            },
+            disease: {
+                teologic: 'Zeii sunt mâniați pe oameni și îi pedepsesc cu boli. Demonii posedă corpul. Păcatele atrag suferința.',
+                metafizic: 'Dezechilibrul „umorilor" corpului (sânge, flegmă, bilă galbenă, bilă neagră) sau „miasma" din aer corupt cauzează boala.',
+                pozitiv: 'Microorganisme patogene (bacterii, viruși) infectează țesuturile, declanșând răspunsuri imune. Tratamentele vizează mecanisme moleculare specifice.',
+                insight: 'De la „pedeapsă divină" la „dezechilibru al esențelor" și la „mecanisme biologice verificabile".'
+            },
+            seasons: {
+                teologic: 'Persefona coboară în Infern 6 luni pe an, iar mama ei, Demeter, de tristețe, lasă pământul să îngheț.',
+                metafizic: 'Natura „dorește" să se regenereze ciclic. „Forța vitală" a pământului oscilează între activitate și repaus.',
+                pozitiv: 'Înclinația axei Pământului de 23.5° față de planul orbital variază unghiul razelor solare, modificând energia primită pe unitatea de suprafață.',
+                insight: 'De la „dorința zeilor" la „tendințele naturii" și la „geometria sistemului solar".'
+            },
+            behavior: {
+                teologic: 'Sufletul este influențat de zei sau demoni. Comportamentul bun vine de la Dumnezeu, cel rău de la Diavol.',
+                metafizic: '„Voința liberă" și „caracterul" inerent determină acțiunile. Oamenii au „esențe" morale diferite.',
+                pozitiv: 'Comportamentul rezultă din interacțiunea genelor, neurochimiei, experiențelor și contextului social. Este predictibil statistic la nivel de populație.',
+                insight: 'De la „influență supranaturală" la „esență morală" și la „factori măsurabili și corelații statistice".'
+            }
+        };
+
+        function initEvolutionSimulator() {
+            document.querySelectorAll('.phenomenon-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.phenomenon-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const phenomenon = this.dataset.phenomenon;
+                    const data = phenomenaData[phenomenon];
+
+                    document.getElementById('evoTeologic').innerHTML = `<p>${data.teologic}</p>`;
+                    document.getElementById('evoMetafizic').innerHTML = `<p>${data.metafizic}</p>`;
+                    document.getElementById('evoPozitiv').innerHTML = `<p>${data.pozitiv}</p>`;
+                    document.getElementById('evoInsight').textContent = data.insight;
+                });
+            });
+        }
+
+        // Pyramid Builder
+        function initPyramidBuilder() {
+            const chips = document.querySelectorAll('.science-chip');
+            const slots = document.querySelectorAll('.pyramid-slot');
+
+            chips.forEach(chip => {
+                chip.addEventListener('dragstart', function(e) {
+                    e.target.classList.add('dragging');
+                    e.dataTransfer.setData('text/plain', e.target.dataset.science);
+                });
+                chip.addEventListener('dragend', function(e) {
+                    e.target.classList.remove('dragging');
+                });
+            });
+
+            slots.forEach(slot => {
+                slot.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('drag-over');
+                });
+                slot.addEventListener('dragleave', function(e) {
+                    this.classList.remove('drag-over');
+                });
+                slot.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('drag-over');
+
+                    const science = e.dataTransfer.getData('text/plain');
+                    const chip = document.querySelector(`.science-chip[data-science="${science}"]`);
+
+                    // If slot already has a chip, move it back to pool
+                    const existingChip = this.querySelector('.science-chip');
+                    if (existingChip) {
+                        document.getElementById('sciencesPool').appendChild(existingChip);
+                    }
+
+                    this.appendChild(chip);
+                    this.classList.add('filled');
+
+                    // Hide the label
+                    const label = this.querySelector('.slot-label');
+                    if (label) label.style.display = 'none';
+                });
+            });
+        }
+
+        function checkPyramid() {
+            const slots = document.querySelectorAll('.pyramid-slot');
+            let correct = 0;
+            let total = 0;
+
+            slots.forEach(slot => {
+                const chip = slot.querySelector('.science-chip');
+                if (chip) {
+                    total++;
+                    const chipOrder = parseInt(chip.dataset.order);
+                    const slotOrder = parseInt(slot.dataset.slot);
+
+                    if (chipOrder === slotOrder) {
+                        slot.classList.add('correct');
+                        slot.classList.remove('incorrect');
+                        correct++;
+                    } else {
+                        slot.classList.add('incorrect');
+                        slot.classList.remove('correct');
+                    }
+                }
+            });
+
+            const result = document.getElementById('pyramidResult');
+            if (correct === 6) {
+                result.className = 'pyramid-result success';
+                result.innerHTML = '<span class="material-icons">emoji_events</span> Excelent! Ai aranjat corect toate științele în ordinea complexității crescânde!';
+            } else {
+                result.className = 'pyramid-result error';
+                result.innerHTML = `Ai ${correct} din 6 corecte. Matematica este baza (1), urmată de Astronomie (2), Fizică (3), Chimie (4), Biologie (5) și Sociologie (6) la vârf.`;
+            }
+        }
+
+        function resetPyramid() {
+            const pool = document.getElementById('sciencesPool');
+            document.querySelectorAll('.science-chip').forEach(chip => {
+                pool.appendChild(chip);
+            });
+            document.querySelectorAll('.pyramid-slot').forEach(slot => {
+                slot.classList.remove('filled', 'correct', 'incorrect');
+                const label = slot.querySelector('.slot-label');
+                if (label) label.style.display = '';
+            });
+            document.getElementById('pyramidResult').className = 'pyramid-result';
+            document.getElementById('pyramidResult').innerHTML = '';
+        }
+
+        // Quiz
+        const quizQuestions = [
+            {
+                question: 'Care este ordinea corectă a celor trei stadii ale lui Comte?',
+                options: [
+                    'Metafizic → Teologic → Pozitiv',
+                    'Teologic → Metafizic → Pozitiv',
+                    'Pozitiv → Metafizic → Teologic',
+                    'Teologic → Pozitiv → Metafizic'
+                ],
+                correct: 1,
+                explanation: 'Comte considera că mintea umană evoluează de la explicații supranaturale (teologic) la concepte abstracte (metafizic) și în final la observații verificabile (pozitiv).'
+            },
+            {
+                question: 'Ce știință se află la baza piramidei lui Comte?',
+                options: ['Fizica', 'Sociologia', 'Matematica', 'Biologia'],
+                correct: 2,
+                explanation: 'Matematica este fundamentul tuturor științelor în clasificarea lui Comte, fiind limba universală a regularităților.'
+            },
+            {
+                question: 'Ce termen a inventat Auguste Comte?',
+                options: ['Filosofie', 'Psihologie', 'Sociologie', 'Antropologie'],
+                correct: 2,
+                explanation: 'Comte a inventat termenul „sociologie" combinând latinescul socius (tovarăș) cu grecescul logos (studiu).'
+            },
+            {
+                question: 'În stadiul pozitiv, ce tip de întrebare pune știința?',
+                options: ['"Cine a cauzat?"', '"De ce?"', '"Ce esență are?"', '"Cum funcționează?"'],
+                correct: 3,
+                explanation: 'Pozitivismul se concentrează pe observarea fenomenelor și descoperirea legilor lor, întrebând „cum?" nu „de ce?" sau „cine?".'
+            },
+            {
+                question: 'Ce înseamnă „pozitiv" în filozofia lui Comte?',
+                options: ['Optimist și vesel', 'Verificabil și concret', 'Absolut și perfect', 'Simplu și clar'],
+                correct: 1,
+                explanation: 'Termenul vine din latinescul ponere (a pune) - cunoaștere care „pune" ceva concret, verificabil, în contrast cu speculațiile abstracte.'
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let quizScore = 0;
+        let answered = false;
+
+        function initQuiz() {
+            document.getElementById('totalQuestions').textContent = quizQuestions.length;
+            loadQuestion(0);
+
+            document.querySelectorAll('.quiz-option').forEach((option, index) => {
+                option.addEventListener('click', () => selectAnswer(index));
+            });
+        }
+
+        function loadQuestion(index) {
+            const q = quizQuestions[index];
+            document.getElementById('currentQuestion').textContent = index + 1;
+            document.getElementById('quizQuestion').innerHTML = `<h4>${q.question}</h4>`;
+            document.getElementById('quizProgressBar').style.width = `${((index + 1) / quizQuestions.length) * 100}%`;
+
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+
+            const letters = ['A', 'B', 'C', 'D'];
+            q.options.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option';
+                btn.innerHTML = `<span class="option-letter">${letters[i]}</span>${opt}`;
+                btn.addEventListener('click', () => selectAnswer(i));
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('quizExplanation').classList.remove('visible');
+            document.getElementById('nextQuestionBtn').style.display = 'none';
+            answered = false;
+        }
+
+        function selectAnswer(index) {
+            if (answered) return;
+            answered = true;
+
+            const q = quizQuestions[currentQuestionIndex];
+            const options = document.querySelectorAll('.quiz-option');
+
+            options.forEach((opt, i) => {
+                opt.classList.add('disabled');
+                if (i === q.correct) {
+                    opt.classList.add('show-correct');
+                }
+            });
+
+            if (index === q.correct) {
+                options[index].classList.add('selected', 'correct');
+                quizScore++;
+            } else {
+                options[index].classList.add('selected', 'incorrect');
+            }
+
+            const explanation = document.getElementById('quizExplanation');
+            explanation.innerHTML = q.explanation;
+            explanation.classList.add('visible');
+
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                document.getElementById('nextQuestionBtn').style.display = 'inline-flex';
+            } else {
+                setTimeout(showQuizResults, 1500);
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        function showQuizResults() {
+            document.querySelector('.quiz-progress').style.display = 'none';
+            document.querySelector('.quiz-counter').style.display = 'none';
+            document.getElementById('quizQuestion').style.display = 'none';
+            document.getElementById('quizOptions').style.display = 'none';
+            document.getElementById('quizExplanation').style.display = 'none';
+            document.querySelector('.quiz-navigation').style.display = 'none';
+
+            const results = document.getElementById('quizResults');
+            results.style.display = 'block';
+
+            document.getElementById('resultsText').textContent = `Ai răspuns corect la ${quizScore} din ${quizQuestions.length} întrebări.`;
+
+            const badge = document.getElementById('resultsBadge');
+            const icon = document.getElementById('resultsIcon');
+
+            if (quizScore === 5) {
+                badge.textContent = 'Pozitivist Expert';
+                icon.textContent = 'emoji_events';
+            } else if (quizScore >= 3) {
+                badge.textContent = 'Pozitivist Avansat';
+                icon.textContent = 'workspace_premium';
+            } else {
+                badge.textContent = 'Pozitivist Începător';
+                icon.textContent = 'school';
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            quizScore = 0;
+            answered = false;
+
+            document.querySelector('.quiz-progress').style.display = '';
+            document.querySelector('.quiz-counter').style.display = '';
+            document.getElementById('quizQuestion').style.display = '';
+            document.getElementById('quizOptions').style.display = '';
+            document.querySelector('.quiz-navigation').style.display = '';
+            document.getElementById('quizResults').style.display = 'none';
+
+            loadQuestion(0);
+        }
+
+        // Thought Experiment
+        const scenarios = [
+            {
+                statement: '„Plantele cresc spre lumină pentru că doresc să trăiască."',
+                wrong: 'Atribuie plantelor „dorință" și „scop" - concepte metafizice netestabile. Presupune o „forță vitală" sau „intenție" a naturii.',
+                correct: '„Celulele din partea umbrită a tulpinii acumulează auxină, hormon care stimulează elongarea celulară. Creșterea diferențială rezultată orientează planta spre sursa de lumină (fototropism)."'
+            },
+            {
+                statement: '„Oamenii sunt violenți pentru că au suflete păcătoase."',
+                wrong: 'Invocă „sufletul" - concept metafizic nedefinibil și netestabil. Folosește judecăți morale („păcătos") ca explicații cauzale.',
+                correct: '„Comportamentul agresiv corelează cu factori precum nivelul testosteronului, structura amigdalei, expunerea la violență în copilărie și contexte de competiție pentru resurse limitate."'
+            },
+            {
+                statement: '„Corpurile cerești se mișcă pentru că asta e natura lor perfectă."',
+                wrong: 'Apelează la „natura perfectă" - concept aristotelian metafizic. Postulează că obiectele au „tendințe" inerente inexplicabile.',
+                correct: '„Corpurile cerești urmează traiectorii determinate de interacțiunea gravitațională, descrise matematic de legile lui Kepler și ecuațiile lui Newton/Einstein."'
+            },
+            {
+                statement: '„Economia se prăbușește pentru că oamenii sunt lacomi din fire."',
+                wrong: 'Explică prin „natura umană" - concept vag și esențialist. „Lăcomia" ca esență morală nu poate fi măsurată sau testată.',
+                correct: '„Crizele economice rezultă din interacțiuni sistemice: politici monetare, cicluri de credit, asimetrii informaționale și comportamente de turmă măsurabile prin indicatori specifici."'
+            }
+        ];
+
+        let currentScenario = 0;
+
+        function loadScenario(index) {
+            const s = scenarios[index];
+            document.getElementById('teStatement').textContent = s.statement;
+            document.getElementById('teWrong').textContent = s.wrong;
+            document.getElementById('teCorrect').textContent = s.correct;
+            document.getElementById('scenarioNum').textContent = index + 1;
+        }
+
+        function nextScenario() {
+            currentScenario = (currentScenario + 1) % scenarios.length;
+            loadScenario(currentScenario);
+        }
+
+        function prevScenario() {
+            currentScenario = (currentScenario - 1 + scenarios.length) % scenarios.length;
+            loadScenario(currentScenario);
+        }
+
+        // Real vs Chimeric Game
+        const realStatements = [
+            { text: '„Inteligența poate fi măsurată prin teste standardizate."', isReal: true, explanation: 'Testele de IQ măsoară performanța la sarcini cognitive specifice cu rezultate replicabile și predictive.' },
+            { text: '„Sufletul părăsește corpul la moarte."', isReal: false, explanation: 'Conceptul de „suflet" ca entitate separată nu poate fi observat, măsurat sau testat empiric.' },
+            { text: '„Criminalitatea este mai frecventă în zone cu densitate mare."', isReal: true, explanation: 'Există corelații statistice verificabile între densitatea populației și ratele criminalității.' },
+            { text: '„Unii oameni au karma rea din vieți anterioare."', isReal: false, explanation: '„Karma" și „viețile anterioare" sunt concepte metafizice care nu pot fi verificate empiric.' },
+            { text: '„Vaccinurile reduc incidența bolilor infecțioase."', isReal: true, explanation: 'Eficacitatea vaccinurilor este demonstrată prin studii clinice și date epidemiologice.' },
+            { text: '„Universul are un scop final spre care evoluează."', isReal: false, explanation: '„Scopul" universului este o afirmație teleologică metafizică, nu una testabilă științific.' },
+            { text: '„Temperatura medie globală crește."', isReal: true, explanation: 'Măsurătorile termometrice din ultimele decenii arată o tendință clară de încălzire.' },
+            { text: '„Există o forță vitală care animă toate ființele vii."', isReal: false, explanation: '„Forța vitală" (vitalismul) a fost abandonat - procesele vieții sunt explicabile prin chimie și fizică.' }
+        ];
+
+        let realCurrentIndex = 0;
+        let realScore = 0;
+        let realTotal = 0;
+
+        function loadRealStatement() {
+            document.getElementById('realStatement').textContent = realStatements[realCurrentIndex].text;
+            document.getElementById('realFeedback').classList.remove('visible', 'correct', 'incorrect');
+        }
+
+        function answerReal(userSaysReal) {
+            const current = realStatements[realCurrentIndex];
+            const feedback = document.getElementById('realFeedback');
+
+            realTotal++;
+            document.getElementById('realTotal').textContent = realTotal;
+
+            if (userSaysReal === current.isReal) {
+                realScore++;
+                feedback.className = 'real-feedback visible correct';
+                feedback.innerHTML = `<strong>Corect!</strong> ${current.explanation}`;
+            } else {
+                feedback.className = 'real-feedback visible incorrect';
+                feedback.innerHTML = `<strong>Incorect.</strong> ${current.explanation}`;
+            }
+
+            document.getElementById('realScore').textContent = realScore;
+
+            // Move to next after delay
+            setTimeout(() => {
+                realCurrentIndex = (realCurrentIndex + 1) % realStatements.length;
+                loadRealStatement();
+            }, 3000);
+        }
+
+        // Initialize all simulators
+        document.addEventListener('DOMContentLoaded', function() {
+            initClassifyGame();
+            initEvolutionSimulator();
+            initPyramidBuilder();
+            initQuiz();
+            loadScenario(0);
+            loadRealStatement();
+        });
+    </script>
+</body>
+</html>

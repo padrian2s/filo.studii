@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dumas și George Sand - Titanii Romantismului Francez</title>
+
+    <!-- Fonturi -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Fundal */
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+
+            /* Text */
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+
+            /* Accent - Roșu cardinal pentru pasiune și romantism */
+            --accent: #c41e3a;
+
+            /* Utilitare */
+            --border: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            background: var(--primary);
+        }
+
+        /* Navigație */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 3rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 6rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero .category {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .hero .meta {
+            margin-top: 3rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        article section {
+            margin-bottom: 4rem;
+        }
+
+        /* Intro cu Drop Cap */
+        .intro .lead {
+            font-size: 1.15rem;
+            line-height: 2;
+        }
+
+        .intro .lead::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            color: var(--accent);
+        }
+
+        /* Subtitluri */
+        .section-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text);
+            margin: 2rem 0 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        /* Pull Quote */
+        .pull-quote {
+            padding: 5rem 2rem;
+            background: var(--secondary);
+            text-align: center;
+            margin: 5rem -2rem;
+            position: relative;
+        }
+
+        .pull-quote::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent);
+            opacity: 0.08;
+            line-height: 1;
+        }
+
+        .pull-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            max-width: 650px;
+            margin: 0 auto 1.5rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .pull-quote cite {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-style: normal;
+        }
+
+        /* Inline Quote */
+        blockquote:not(.pull-quote blockquote) {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--secondary);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 3px solid var(--accent);
+        }
+
+        .highlight-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Două Coloane */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .column {
+            padding: 2rem;
+            background: var(--secondary);
+        }
+
+        .column h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .column p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-year {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: var(--primary);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0;
+        }
+
+        footer .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 4rem;
+            }
+
+            main {
+                padding: 4rem 1.5rem;
+            }
+
+            .pull-quote {
+                margin: 3rem -1.5rem;
+                padding: 3rem 1.5rem;
+            }
+
+            .pull-quote blockquote {
+                font-size: 1.3rem;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .intro .lead::first-letter {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Studii Literare</a>
+        <ul>
+            <li><a href="#introducere">Introducere</a></li>
+            <li><a href="#context">Context</a></li>
+            <li><a href="#prietenie">Prietenia</a></li>
+            <li><a href="#opere">Opere</a></li>
+            <li><a href="#mostenire">Moștenire</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <span class="category">Literatură Franceză · Secolul XIX</span>
+        <h1>Dumas <span>&</span> George Sand</h1>
+        <p class="subtitle">Doi titani ai romantismului francez, uniți de prietenie, pasiune și credința că literatura poate schimba lumea</p>
+        <p class="meta">Un studiu comparativ · 4500 cuvinte · 18 minute</p>
+    </header>
+
+    <main>
+        <article>
+            <section class="intro" id="introducere">
+                <p class="lead">Paris, 1831. Într-un salon plin de fum de trabuc și idei revoluționare, doi tineri scriitori își strâng mâinile pentru prima dată. El — un mulat înalt, exuberant, cu râsul contagios și poftă de viață. Ea — o femeie mică, cu ochi mari și negri, îmbrăcată scandalos în haine bărbătești, fumând țigări și vorbind despre libertate cu o intensitate care îi făcea pe bărbați să se simtă nesiguri. Alexandre Dumas și Aurore Dupin — pe care lumea o va cunoaște ca George Sand — nu știau încă că vor deveni doi dintre cei mai influenți scriitori ai secolului lor. Dar ceva i-a atras unul către celălalt în acea seară: o recunoaștere instinctivă a spiritelor înrudite, a celor care refuză să se încadreze în tipare.</p>
+
+                <p>Astăzi, când spunem „Dumas", ne gândim la muschetari și la Contele de Monte-Cristo. Când spunem „George Sand", ne gândim la romanul feminist și la iubirile celebre cu Chopin și Musset. Dar această imagine simplificată ratează esențialul: ambii au fost revoluționari literari și sociali, scriitori prolifici care au folosit pana ca armă împotriva nedreptății, și — poate cel mai important — prieteni devotați timp de patru decenii.</p>
+            </section>
+
+            <section id="context">
+                <div class="section-header">
+                    <span class="section-number">01 / Contextul Istoric</span>
+                    <h2>Franța în flăcări: epoca romantismului</h2>
+                </div>
+
+                <p>Pentru a înțelege pe Dumas și Sand, trebuie să înțelegem lumea în care au trăit. Franța primei jumătăți a secolului XIX era un vulcan. Revoluția din 1789 deschisese cutia Pandorei: ideile de libertate, egalitate și fraternitate nu mai puteau fi închise înapoi. Napoleon căzuse, dar ambiția de a schimba lumea rămăsese. Între 1830 și 1848, Parisul a cunoscut două revoluții și nenumărate răscoale.</p>
+
+                <p>În acest climat electric s-a născut romantismul — nu doar o mișcare literară, ci o revoltă existențială. Romanticii respingeau raționalismul rece al Iluminismului și regulile rigide ale clasicismului. Ei celebrau pasiunea, natura, individualismul și — crucial pentru înțelegerea lui Dumas și Sand — dreptatea socială.</p>
+
+                <div class="highlight-box">
+                    <h4>Ce însemna să fii romantic în 1830?</h4>
+                    <p>Nu doar să scrii poezii sentimentale. Însemna să crezi că literatura poate schimba societatea. Că scriitorul este un profet, nu un entertainer. Că pasiunea este mai adevărată decât rațiunea. Și că regulile — fie ele literare sau sociale — există pentru a fi sfidate.</p>
+                </div>
+
+                <p>Hugo scria „Hernani" și provoca bătăi în teatre. Balzac construia universul „Comediei umane". Lamartine făcea politică și poezie în același timp. Iar în mijlocul acestui furnicar de genii, Dumas și Sand își croiau propriile drumuri, diferite dar paralele.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Omul nu este nici bun nici rău la naștere. Societatea și circumstanțele îl fac ceea ce devine."</blockquote>
+                <cite>— Alexandre Dumas</cite>
+            </aside>
+
+            <section>
+                <div class="section-header">
+                    <span class="section-number">02 / Originile</span>
+                    <h2>Două copilării, două răni</h2>
+                </div>
+
+                <div class="two-columns">
+                    <div class="column">
+                        <h4>Alexandre Dumas (1802-1870)</h4>
+                        <p>Născut în Villers-Cotterêts, fiul generalului Thomas-Alexandre Dumas — el însuși fiul unui marchiz francez și al unei sclave din Santo Domingo. Tatăl său, unul dintre cei mai bravi generali ai Revoluției, a murit când Alexandre avea doar 4 ani, lăsând familia în sărăcie.</p>
+                        <p>Copilul mulat a crescut cu stigmatul rasei într-o Franță care nu știa ce să facă cu el: prea nobil pentru a fi disprețuit, prea „colorat" pentru a fi acceptat complet. Această rană — de a nu aparține nicăieri — l-a hrănit toată viața.</p>
+                    </div>
+                    <div class="column">
+                        <h4>George Sand (1804-1876)</h4>
+                        <p>Aurore Dupin s-a născut în Paris, dar a crescut la Nohant, în Berry. Tatăl ei, un ofițer napoleonian, a murit când ea avea 4 ani (aceeași vârstă la care Dumas și-a pierdut tatăl). A rămas între o mamă modestă și o bunică aristocratică care se detestau.</p>
+                        <p>Educată ca un băiat de bunica ei, îmbrăcată în haine bărbătești de copil, Aurore a învățat devreme că genul este o construcție socială — și că regulile sunt făcute de cei puternici pentru a-i controla pe cei slabi.</p>
+                    </div>
+                </div>
+
+                <p>Ambii au cunoscut sărăcia, ambii au pierdut un tată-erou în copilărie, ambii s-au simțit „diferiți" — el din cauza rasei, ea din cauza genului. Aceste răni paralele explică poate de ce s-au recunoscut imediat ca suflete înrudite când s-au întâlnit în 1831.</p>
+            </section>
+
+            <section id="prietenie">
+                <div class="section-header">
+                    <span class="section-number">03 / Prietenia</span>
+                    <h2>O alianță de patru decenii</h2>
+                </div>
+
+                <p>Prietenia dintre Dumas și Sand a fost una dintre cele mai durabile din istoria literaturii franceze. Nu a existat între ei pasiune romantică — deși amândoi erau cunoscuți pentru viețile lor amoroase tumultuoase. Ceea ce i-a unit a fost ceva mai rar și poate mai prețios: un respect mutual profund și o înțelegere instinctivă.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">1831</span>
+                        <p><strong>Prima întâlnire.</strong> Sand tocmai publicase primul roman sub pseudonim. Dumas era deja celebru după succesul piesei „Henri III și curtea sa". S-au întâlnit într-un salon literar și au simțit imediat o conexiune.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">1833</span>
+                        <p><strong>Confidențe și consilii.</strong> Sand îi scrie lui Dumas despre relația ei cu Musset. El o sfătuiește, o consolează, fără să judece. „Ești una dintre puținele persoane care mă înțeleg", îi scrie ea.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">1848</span>
+                        <p><strong>Revoluția.</strong> Ambii susțin Revoluția din februarie. Sand scrie manifeste pentru guvernul provizoriu. Dumas își pune faimă în slujba cauzei. Pentru scurt timp, visează la o Franță nouă.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">1851</span>
+                        <p><strong>Exilul și loialitatea.</strong> După lovitura de stat a lui Napoleon III, ambii sunt în dificultate. Dumas pleacă în exil voluntar. Sand intervine pe lângă autorități pentru prieteni persecutați. Își scriu constant.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">1870</span>
+                        <p><strong>Sfârșitul.</strong> Dumas moare în decembrie, la fiul său. Sand, devastată, scrie: „Am pierdut un frate." Va supraviețui doar șase ani, murind în 1876.</p>
+                    </div>
+                </div>
+
+                <p>Corespondența lor — sute de scrisori — dezvăluie o prietenie bazată pe onestitate brutală și sprijin necondiționat. Se criticau reciproc opera când era necesar. Se apărau public unul pe celălalt în fața atacurilor. Și nu au făcut niciodată compromisuri în ceea ce privește valorile comune: libertatea artistică, dreptatea socială, și dreptul de a trăi autentic.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Există o singură fericire în viață: să iubești și să fii iubit."</blockquote>
+                <cite>— George Sand</cite>
+            </aside>
+
+            <section id="opere">
+                <div class="section-header">
+                    <span class="section-number">04 / Operele</span>
+                    <h2>Două universuri literare</h2>
+                </div>
+
+                <h3>Dumas: Meșterul aventurii</h3>
+
+                <p>Alexandre Dumas a scris peste 250 de volume — romane, piese de teatru, memorii, cărți de călătorie. A avut o „fabrică literară" cu colaboratori, cea mai faimoasă fiind parteneriatul cu Auguste Maquet, care i-a furnizat schițe pentru multe romane istorice. Dar geniul era al lui Dumas: transformarea unor schițe în narațiuni captivante, crearea unor personaje memorabile, și acel ritm irezistibil care face ca „Cei trei muschetari" să rămână o lectură devoratoare aproape două secole mai târziu.</p>
+
+                <blockquote>
+                    „Unul pentru toți și toți pentru unul!" — nu este doar un slogan de aventură. Este o filozofie a solidarității, a prieteniei ca cea mai înaltă valoare, a loialității până la sacrificiu. Într-o epocă a individualismului rampant, Dumas propunea o etică a comunității.
+                </blockquote>
+
+                <p>„Contele de Monte-Cristo" (1844) rămâne poate cel mai complex roman al său — o meditație asupra răzbunării, iertării și limitelor dreptății personale. Edmond Dantès, transformat în Contele de Monte-Cristo, devine un instrument al răzbunării divine — dar Dumas sugerează subtil că răzbunarea îl distruge pe răzbunător la fel de mult ca pe victime.</p>
+
+                <h3>Sand: Profetul pasiunii și dreptății</h3>
+
+                <p>George Sand a scris peste 70 de romane, 50 de volume de corespondență și nenumărate articole. Dar numerele nu spun nimic despre impactul ei revoluționar. Sand a fost prima femeie care a trăit din scris în Franța. Prima care a cerut (și obținut) divorțul. Prima care a purtat public haine bărbătești și și-a asumat libertatea sexuală. Prima care a folosit romanul ca instrument de critică socială feministă.</p>
+
+                <p>Romanele ei timpurii — „Indiana" (1832), „Valentine" (1832), „Lélia" (1833) — au șocat Franța. Protagonistele erau femei care refuzau să accepte căsnicii nefericite, care cereau dreptul la pasiune și împlinire, care puneau sub semnul întrebării toate convențiile sociale.</p>
+
+                <blockquote>
+                    În „Indiana", eroina declară: „Nu am de ce să rămân cu un bărbat care mă face nefericită. Nu am semnat un contract de sclavie." În 1832, aceste cuvinte erau dinamită.
+                </blockquote>
+
+                <p>Mai târziu, Sand s-a întors către romanul rustic — „La Mare aux Diables" (1846), „François le Champi" (1848) — portretizând cu căldură viața țăranilor din Berry. Dar și aici mesajul era subversiv: țăranii erau prezentați ca oameni demni, cu bogăție interioară, nu ca pitoresc sau comic relief pentru cititorii burghezi.</p>
+
+                <div class="highlight-box">
+                    <h4>Comparație: Cele două lumi</h4>
+                    <p><strong>Dumas</strong> scria pentru mase — serialele lui în ziare erau devoratate de toată Franța. Stilul lui era accesibil, plin de acțiune, optimist. Eroii lui triumfau prin curaj și loialitate.</p>
+                    <p><strong>Sand</strong> scria pentru schimbare — romanele ei provocau dezbateri, scandalizau, forțau cititorii să-și pună întrebări despre propria viață. Eroinele ei nu triumfau întotdeauna, dar rămâneau demne în înfrângere.</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <span class="section-number">05 / Scandalurile</span>
+                    <h2>Viețile neconvenționale</h2>
+                </div>
+
+                <p>Ambii au fost ținte constante ale presei scandalistice și ale criticilor moraliste. Și ambii au refuzat să se conformeze.</p>
+
+                <h3>Dumas și femeile</h3>
+
+                <p>Dumas a avut nenumărate aventuri, câțiva copii nelegitimi (pe care i-a recunoscut și sprijinit), și o relație complicată cu fiul său, Alexandre Dumas-fiul, care va deveni și el un mare dramaturg („Dama cu camelii"). Cheltuia bani cu aceeași generozitate cu care îi câștiga, trăind permanent la limita falimentului în ciuda veniturilor uriașe.</p>
+
+                <p>Dar cel mai mult l-au atacat criticii pentru rasă. „Negrul" era porecla lui în presa ostilă. A răspuns cu mândrie: „Tatăl meu era un mulat, bunicul meu era negru, străbunicul meu era o maimuță. Vedeți, domnule, familia mea începe unde se termină a dumneavoastră."</p>
+
+                <h3>Sand și bărbații</h3>
+
+                <p>Relațiile lui George Sand cu Alfred de Musset și Frédéric Chopin au alimentat bârfele Parisului decenii întregi. Dar Sand nu era doar o colecționară de amanți celebri — era un partener intelectual și emoțional exigent, care cerea bărbaților să o trateze ca pe un egal. Când relațiile nu mai funcționau, pleca. Acest lucru — dreptul unei femei de a pune capăt unei relații — era scandalos în sine.</p>
+
+                <p>A purtat haine bărbătești nu din capriciu, ci din necesitate practică (erau mai comode și îi permiteau să meargă singură prin Paris fără a fi hărțuită) și din convingere simbolică. „Hainele mele sunt o declarație", spunea. „Spun lumii că refuz să fiu redusă la ce se așteptă de la o femeie."</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Toată fericirea omenească depinde de două lucruri: de a găsi ocupația potrivită și de a găsi oamenii potriviți."</blockquote>
+                <cite>— Alexandre Dumas</cite>
+            </aside>
+
+            <section>
+                <div class="section-header">
+                    <span class="section-number">06 / Politica</span>
+                    <h2>Revoluționari cu pana</h2>
+                </div>
+
+                <p>Atât Dumas cât și Sand au fost angajați politic toată viața. Dar în moduri diferite.</p>
+
+                <p>Dumas a fost un republican moderat, susținător al lui Louis-Philippe și apoi critic al lui Napoleon III. A scris articole politice, a susținut cauza unificării italiene (era prieten cu Garibaldi), și a folosit romanele istorice pentru a promova valori republicane — onoarea, curajul, loialitatea față de ideale mai înalte decât monarhii corupți.</p>
+
+                <p>Sand a fost mai radicală. A susținut revoluția din 1848 cu tot sufletul, scriind manifeste pentru guvernul provizoriu și cerând drepturi pentru femei și muncitori. Dezamăgirea care a urmat eșecului revoluției a marcat-o profund. „Am crezut că lumea se poate schimba peste noapte", a scris. „Am învățat că schimbarea vine lent, prin educație și exemplu."</p>
+
+                <p>În ultimii ani, Sand s-a dedicat educației rurale și sprijinirii artiștilor tineri, în timp ce Dumas continua să scrie și să călătorească, neobosit până la sfârșit.</p>
+            </section>
+
+            <section id="mostenire">
+                <div class="section-header">
+                    <span class="section-number">07 / Moștenirea</span>
+                    <h2>De ce contează azi</h2>
+                </div>
+
+                <p>Alexandre Dumas și George Sand au fost mult mai mult decât doi scriitori prolifici. Au fost pionieri ai literaturii populare de calitate, demonstrând că o carte poate fi și captivantă, și profundă. Au fost activiști sociali, folosind faima pentru a promova cauze în care credeau. Și au fost modele de autenticitate, trăindu-și viețile conform propriilor valori într-o epocă de conformism sufocant.</p>
+
+                <h3>Ce ne învață Dumas</h3>
+
+                <p>Că povestea bine spusă este cea mai puternică armă. Că prietenia și loialitatea sunt valori eterne. Că adversitățile — fie ele rasism, sărăcie sau eșecuri — pot fi transformate în combustibil pentru creație. Și că viața trebuie trăită cu pasiune, generozitate și un râs sănătos.</p>
+
+                <h3>Ce ne învață Sand</h3>
+
+                <p>Că identitatea este o alegere, nu o predestinare. Că femeile — și toți oamenii marginalizați — au dreptul la voce, pasiune și autodeterminare. Că literatura poate fi și artă, și activism. Și că autenticitatea are un preț, dar merită plătit.</p>
+
+                <div class="highlight-box">
+                    <h4>Cei doi azi</h4>
+                    <p>Dacă ar trăi în secolul XXI, Dumas ar scrie probabil scenarii pentru seriale streaming — epice, captivante, pline de personaje memorabile. Sand ar fi pe rețelele sociale, ar avea un podcast despre feminism, și ar fi atacată constant de troli pe care i-ar ignora cu eleganță.</p>
+                    <p>Ar fi în continuare prieteni. Și ne-ar aminti, prin exemplul lor, că o viață trăită autentic și creativ este cea mai bună răzbunare împotriva mediocrității.</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <span class="section-number">08 / Citate Esențiale</span>
+                    <h2>În propriile lor cuvinte</h2>
+                </div>
+
+                <h3>Alexandre Dumas</h3>
+
+                <blockquote>
+                    „Viața este un somn, iar dragostea este un vis; și ai trăit, dacă ai iubit."
+                </blockquote>
+
+                <blockquote>
+                    „Nu-i nimic mai puțin sigur ca neputința; nu-i nimic mai schimbător ca norocul."
+                </blockquote>
+
+                <blockquote>
+                    „Diferența dintre geniu și prostie este că geniul are limite."
+                </blockquote>
+
+                <h3>George Sand</h3>
+
+                <blockquote>
+                    „Există doar o singură fericire în viață — să iubești și să fii iubit."
+                </blockquote>
+
+                <blockquote>
+                    „Simplitatea este forța sufletelor sigure pe ele."
+                </blockquote>
+
+                <blockquote>
+                    „Nu trebuie să ne facem prea multe reproșuri pentru greșelile pe care le-am făcut: pedeapsa vine destul de repede."
+                </blockquote>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <span class="section-number">09 / Epilog</span>
+                    <h2>O prietenie pentru veșnicie</h2>
+                </div>
+
+                <p>În decembrie 1870, Alexandre Dumas a murit în casa fiului său, la Puys, lângă Dieppe. George Sand, aflată la Nohant, a primit vestea cu durere. I-a scris fiului: „Tatăl tău a fost unul dintre cei mai buni oameni pe care i-am cunoscut. Lumea literară și eu am pierdut un frate."</p>
+
+                <p>Sand a supraviețuit doar șase ani. A murit în iunie 1876, la Nohant, înconjurată de familie. Victor Hugo, prietenul lor comun, a scris: „Plâng o moartă și salut o nemuritoare."</p>
+
+                <p>Astăzi, Dumas este îngropat în Pantheon, alături de Hugo și Zola. Sand încă așteaptă acest omagiu, deși campaniile pentru transferarea rămășițelor ei nu încetează. Dar dincolo de onoruri postume, amândoi trăiesc în cărțile care continuă să fie citite, traduse, adaptate, iubite.</p>
+
+                <p>D'Artagnan încă luptă alături de prietenii săi. Indiana încă își cere libertatea. Contele de Monte-Cristo încă meditează asupra răzbunării. Și undeva, într-un salon imaginar al eternității, Dumas și Sand încă povestesc, râd, și refuză să se conformeze.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p class="footer-title">Studii Literare</p>
+        <p>Un studiu despre Alexandre Dumas și George Sand · Romantismul francez</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitagora - Filozoful Numerelor și al Armoniei</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+            --accent: #8b4513;
+            --border: #e5e5e5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 7rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2.5rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Studii Filozofice</a>
+        <a href="index.html">Acasă</a>
+    </nav>
+
+    <header class="hero">
+        <span class="category">Filozofie Presocratică / Matematică</span>
+        <h1>Pitagora</h1>
+        <p class="subtitle">Omul care a descoperit că universul vorbește limba matematicii</p>
+        <span class="years">c. 570 — 495 î.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Mai Mult Decât o Teoremă</h2>
+
+                <p class="lead">Toată lumea cunoaște teorema lui Pitagora — pătratul ipotenuzei este egal cu suma pătratelor catetelor. Dar câți știu că Pitagora a fondat o comunitate mistică unde matematica era religie, iar numerele erau cheia secretă a universului?</p>
+
+                <p>Pitagora e una dintre cele mai enigmatice figuri ale antichității. Nu a lăsat scrieri. Discipolii săi păstrau învățăturile în secret. Ceea ce știm vine din surse târzii, amestecate cu legendă. Și totuși, influența lui e imensă: a pus bazele matematicii ca disciplină riguroasă, a introdus ideea că realitatea poate fi înțeleasă prin numere, a inspirat Platon și, prin el, întreaga tradiție occidentală.</p>
+
+                <p>Pitagora a fost primul care s-a numit „filozof" — nu „înțelept" (sophos), ci „iubitor de înțelepciune" (philosophos). Înțelepciunea deplină, spunea el, aparține doar zeilor. Noi, muritorii, putem doar să o iubim și să o căutăm.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>De la Samos la Crotona</h2>
+
+                <p>Pitagora s-a născut pe insula Samos, în jurul anului 570 î.Hr. Legenda spune că a călătorit extensiv în tinerețe: Egipt, unde ar fi studiat cu preoții timp de 22 de ani; Babilon, unde ar fi învățat astronomia și matematica chaldeilor; poate chiar India.</p>
+
+                <p>În jurul vârstei de 40 de ani, a fugit de tirania lui Policrate din Samos și s-a stabilit în Crotona, o colonie greacă din sudul Italiei. Aici a fondat celebra sa comunitate — o combinație de școală filozofică, ordin religios și asociație politică.</p>
+
+                <h3>Comunitatea Pitagoreică</h3>
+
+                <p>Comunitatea avea reguli stricte:</p>
+                <ul>
+                    <li>Probațiune de 5 ani în tăcere pentru novici</li>
+                    <li>Proprietate comună — „prietenii au totul în comun"</li>
+                    <li>Interdicții alimentare: fără carne, fără fasole (!), fără pește</li>
+                    <li>Puritate rituală și exerciții de memorie</li>
+                    <li>Secret absolut — învățăturile nu puteau fi divulgate</li>
+                </ul>
+
+                <p>Pitagora era venerat ca o figură aproape divină. Se spunea că avea o coapsă de aur, că putea fi în două locuri în același timp, că vorbea cu animalele. Când vorbea cu comunitatea, o făcea din spatele unei perdele — elevii nu-i vedeau chipul.</p>
+
+                <p>Comunitatea a avut și rol politic — pitagoreicii au condus mai multe cetăți din Magna Graecia. Dar asta le-a adus și dușmani. În jurul anului 509 î.Hr., o revoltă populară a dus la distrugerea comunităților pitagoreice. Pitagora ar fi murit în aceste persecuții sau puțin înainte.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Toate lucrurile sunt numere."</blockquote>
+                <cite>— Pitagora (conform tradiției)</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Doctrina Numerelor</span>
+                <h2>Universul ca Armonie Matematică</h2>
+
+                <h3>Totul e Număr</h3>
+
+                <p>Intuiția fundamentală: realitatea, în esența ei, e matematică. Numerele nu sunt doar instrumente de numărare — sunt structura intimă a cosmosului. A înțelege lumea înseamnă a descoperi relațiile numerice care o guvernează.</p>
+
+                <p>Cum a ajuns Pitagora la această idee? Legenda spune: trecând pe lângă o fierărie, a observat că ciocanele produc sunete armonioase. Investigând, a descoperit că raporturile greutăților ciocanelor corespundeau intervalelor muzicale: 1:2 pentru octavă, 2:3 pentru cvintă, 3:4 pentru cvartă.</p>
+
+                <p>Revelația: frumusețea muzicii e, în realitate, matematică! Armonia nu e subiectivă — e obiectivă, bazată pe proporții numerice precise.</p>
+
+                <div class="concept-box">
+                    <h4>Armonia Sferelor</h4>
+                    <p>Pitagoreicii credeau că planetele, mișcându-se, produc sunete — o „muzică a sferelor" pe care noi nu o auzim pentru că suntem obișnuiți cu ea din naștere. Universul e o simfonie cosmică, orchestrată de numere.</p>
+                </div>
+
+                <h3>Tetraktys — Numărul Sacru</h3>
+
+                <p>Pitagoreicii venerau tetraktys-ul — aranjamentul primelor patru numere (1+2+3+4=10) într-un triunghi:</p>
+
+                <blockquote class="inline">
+                    „Pe cel care ne-a transmis tetraktys-ul,<br>
+                    izvorul rădăcinilor naturii eterne!"
+                </blockquote>
+
+                <p>Primele patru numere conțin toate intervalele muzicale fundamentale și suma lor, 10, era considerat numărul perfect, baza sistemului zecimal.</p>
+
+                <h3>Numerele au Calități</h3>
+
+                <p>Pentru pitagoreici, numerele nu erau cantități abstracte, ci aveau „personalități":</p>
+                <ul>
+                    <li><strong>1 (Monas)</strong> — unitatea, sursa tuturor numerelor, nici par nici impar</li>
+                    <li><strong>2</strong> — dualitatea, principiul feminin, diviziune</li>
+                    <li><strong>3</strong> — primul număr „complet" (început, mijloc, sfârșit)</li>
+                    <li><strong>4</strong> — dreptatea, soliditatea (4 puncte = tetraedru)</li>
+                    <li><strong>5</strong> — nunta (2+3), viața</li>
+                    <li><strong>10</strong> — perfecțiunea, universul</li>
+                </ul>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Metempsihoza</span>
+                <h2>Sufletul Nemuritor</h2>
+
+                <p>Pitagora credea în transmigrația sufletelor (metempsihoza): sufletul e nemuritor și, după moarte, trece în alte corpuri — umane sau animale — în funcție de viața trăită.</p>
+
+                <p>O legendă spune că Pitagora, văzând un câine bătut, a strigat: „Oprește-te! În lătratul lui am recunoscut sufletul unui prieten!" Își amintea, se spune, încarnările anterioare.</p>
+
+                <p>De aici și vegetarianismul: dacă sufletul poate locui în orice corp, a mânca animale e potențial canibalism spiritual.</p>
+
+                <h3>Scopul Filozofiei</h3>
+
+                <p>Filozofia, pentru Pitagora, nu era exercițiu intelectual — era cale de purificare a sufletului. Prin studiul matematicii și muzicii, sufletul se eliberează de atașamentele corporale și se pregătește pentru o existență superioară. Matematica e ascensiune spirituală.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Nu e liber cel care nu poate porunci asupra lui însuși."</blockquote>
+                <cite>— Pitagora (conform tradiției)</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">05 / Contribuții Matematice</span>
+                <h2>Fundațiile Geometriei</h2>
+
+                <h3>Teorema lui Pitagora</h3>
+
+                <p>Relația era cunoscută babilonienilor cu un mileniu înainte, dar pitagoreicii au fost probabil primii care au demonstrat-o riguros. Demonstrația geometrică — nu doar verificarea empirică — e contribuția lor.</p>
+
+                <h3>Criza Iraționalului</h3>
+
+                <p>Pitagoreicii credeau că totul poate fi exprimat prin rapoarte de numere întregi (numere „raționale"). Dar unul dintre ei — legendele spun Hippasus — a descoperit că diagonala unui pătrat cu latura 1 nu poate fi exprimată astfel. √2 e „irațional".</p>
+
+                <p>Aceasta a fost o criză filozofică profundă. Dacă nu totul e număr (în sensul de raport între întregi), doctrina centrală era amenințată. Legenda spune că Hippasus a fost înecat pentru că a divulgat această descoperire. Probabil e exagerare, dar reflectă șocul pe care l-a produs.</p>
+
+                <h3>Alte Contribuții</h3>
+                <ul>
+                    <li>Clasificarea numerelor în pare/impare, prime/compuse</li>
+                    <li>Numerele perfecte (egale cu suma divizorilor: 6 = 1+2+3)</li>
+                    <li>Numerele figurate (triunghiulare, pătrate, etc.)</li>
+                    <li>Baze ale teoriei proporțiilor</li>
+                </ul>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Reguli de Viață</span>
+                <h2>Akousmata — Preceptele Pitagoreice</h2>
+
+                <p>Pitagoreicii aveau un set de reguli (akousmata) care păreau adesea bizare. Câteva exemple:</p>
+
+                <ul>
+                    <li>„Nu mânca fasole" — interpretări: simbolism al morții, produceau flatulență (impuritate), sau fasolea semăna cu un embrion</li>
+                    <li>„Nu călca peste bară" — să nu depășești limita, măsura</li>
+                    <li>„Nu-ți privi chipul în oglindă la lumina lămpii" — evită vanitatea</li>
+                    <li>„Când te ridici din pat, strânge așternuturile" — nu lăsa urma corpului</li>
+                    <li>„Stinge lampa înainte de a adormi" — purificare</li>
+                </ul>
+
+                <p>Multe din aceste reguli aveau probabil semnificații simbolice pierdute. Altele erau practici de disciplină și atenție constantă — un fel de mindfulness antic.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Moștenirea</span>
+                <h2>De la Crotona la Galilei</h2>
+
+                <h3>Platon</h3>
+                <p>Platon a fost profund influențat de pitagorism. Teoria Formelor are rezonanțe pitagoreice — Formele sunt ca numerele, structurile inteligibile ale realității. În Timaios, Demiurgul creează lumea după modele geometrice.</p>
+
+                <h3>Știința Modernă</h3>
+                <p>„Cartea naturii e scrisă în limbajul matematicii" — Galilei exprimă intuiția pitagoreică. Fizica modernă e, într-un sens, triumful programului pitagoreic: de la Newton la Einstein la mecanica cuantică, realitatea se dovedește a fi descrisă de ecuații matematice.</p>
+
+                <h3>Muzica</h3>
+                <p>Teoria muzicală occidentală are rădăcini pitagoreice. Intervalele, acordurile, temperamentele — toate se bazează pe proporții numerice descoperite (sau redescoperite) de pitagoreici.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Aplicații Practice</span>
+                <h2>Pitagora pentru Viața de Azi</h2>
+
+                <h3>Caută Structura</h3>
+                <p>În spatele haosului aparent, există adesea pattern-uri. În finanțe, în biologie, în comportament uman — numerele și proporțiile dezvăluie ordine ascunse.</p>
+
+                <h3>Cultivă Disciplina</h3>
+                <p>Pitagoreicii trăiau după reguli stricte. Poate că nu avem nevoie de toate, dar rutine și practici zilnice — un „akousmata" personal — pot structura viața și cultivă atenția.</p>
+
+                <h3>Matematica ca Meditație</h3>
+                <p>Rezolvarea problemelor matematice cere concentrare, abstractizare de la concret, contemplare a structurilor pure. E o formă de meditație accesibilă și practică.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Pitagoreic</h4>
+                    <p>Alege un fenomen din viața ta — ciclul de somn, cheltuielile, stările emoționale. Notează-l numeric timp de o săptămână. Caută pattern-uri. Ce proporții apar? Ce ritmuri? Numerele ascund ordine în haosul aparent?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Concluzie</span>
+                <h2>Filozoful-Șaman</h2>
+
+                <p>Pitagora e o figură liminală — între magie și știință, între religie și filozofie, între Orient și Occident. A combinat rigoarea demonstrației matematice cu mistica numerelor, disciplina ascetică cu speculația cosmică.</p>
+
+                <p>Poate că această combinație ni se pare ciudată azi. Dar poate că tocmai separarea lor e problema. Pitagora ne amintește că știința a început ca căutare a sacrului, că matematica poate fi drum spiritual, că universul — dacă știm să ascultăm — cântă.</p>
+
+                <p>„Totul e număr" — o afirmație care, în fizica teoretică de azi, pare mai aproape de adevăr decât oricând.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>Studii Filozofice — Un proiect dedicat gândirii care contează</p>
+    </footer>
+</body>
+</html>

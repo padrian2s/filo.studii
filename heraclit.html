@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heraclit - Filozoful Focului și al Schimbării</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+            --accent: #c41e3a;
+            --border: #e5e5e5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            background: var(--primary);
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 3rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+        nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero .category {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        .hero .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+        .hero .years {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-top: 3rem;
+        }
+        main {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        section { margin-bottom: 5rem; }
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            float: left;
+            line-height: 0.85;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            color: var(--accent);
+        }
+        .pull-quote {
+            padding: 4rem 2rem;
+            background: var(--secondary);
+            text-align: center;
+            margin: 4rem -2rem;
+            position: relative;
+        }
+        .pull-quote::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            color: var(--accent);
+            opacity: 0.1;
+        }
+        .pull-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .pull-quote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-style: normal;
+            color: var(--text-muted);
+        }
+        blockquote.inline {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        .concept-box {
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+        .concept-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer {
+            background: var(--text);
+            color: var(--primary);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .hero { padding: 4rem 1.5rem; }
+            .hero h1 { font-size: 2.5rem; }
+            main { padding: 4rem 1.5rem; }
+            .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; }
+            .lead::first-letter { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Studii Filozofice</a>
+        <a href="index.html">Acasă</a>
+    </nav>
+
+    <header class="hero">
+        <span class="category">Filozofie Presocratică / Dialectică</span>
+        <h1>Heraclit</h1>
+        <p class="subtitle">Filozoful Obscur care a văzut în foc secretul universului</p>
+        <span class="years">c. 535 — 475 î.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Cel Care Plângea</h2>
+
+                <p class="lead">Nu poți păși de două ori în același râu. Apa care ți-a atins piciorul a curs deja spre mare. Râul de acum nu e râul de adineauri. Ba mai mult — nici tu nu ești același. Celulele tale s-au schimbat, gândurile tale au curs. Tot ce pare stabil e iluzie. Singura constantă e schimbarea însăși.</p>
+
+                <p>Aceasta e lecția lui Heraclit, filozoful din Efes pe care antichitatea l-a numit „Obscurul" pentru stilul său enigmatic și „Cel care plânge" pentru pesimismul său față de prostia umană. Un aristocrat care a renunțat la putere pentru a medita în singurătate. Un vizionar care a văzut în foc simbolul perfect al realității.</p>
+
+                <p>Astăzi, când totul se mișcă mai repede ca niciodată — joburi, relații, tehnologii, identități — Heraclit pare mai actual ca oricând. Ne învață să navigăm schimbarea în loc să ne agățăm de stabilități iluzorii.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>Efesul și Lumea Ionică</h2>
+
+                <p>Heraclit s-a născut în jurul anului 535 î.Hr. în Efes, unul dintre cele mai importante orașe grecești de pe coasta Asiei Mici (actuala Turcie). Era o zonă de încrucișare culturală — influențe grecești, persane, egiptene — și un loc de efervescență intelectuală.</p>
+
+                <p>Familia sa era aristocratică, descendentă din fondatorii cetății. Avea dreptul ereditar să fie „rege" (basileus) — o funcție mai mult ceremonială în acea epocă. A renunțat la ea în favoarea fratelui său. Politica nu îl interesa; îl interesa adevărul.</p>
+
+                <h3>Filozoful Solitar</h3>
+
+                <p>Spre deosebire de alți filozofi care predau și aveau discipoli, Heraclit a rămas un singuratic. Legendele spun că își petrecea timpul în munți, hrănindu-se cu ierburi, disprețuind mulțimea. „Efesienii merită să fie spânzurați toți câți sunt în vârstă, iar cetatea lăsată copiilor", ar fi spus el când concetățenii l-au exilat pe prietenul său Hermodor pentru că era „prea bun".</p>
+
+                <p>A scris o singură carte — „Despre natură" — pe care a depus-o în templul Artemidei din Efes. Din ea au supraviețuit doar aproximativ 130 de fragmente, citate de autori ulteriori. Sunt aforisme dense, poetice, deliberat ambigue — precum oracolele de la Delphi.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Nu poți păși de două ori în același râu, căci alte ape curg mereu spre tine."</blockquote>
+                <cite>— Heraclit, Fragment 12</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Concepte Cheie</span>
+                <h2>Filozofia Fluxului</h2>
+
+                <h3>Panta Rhei — Totul Curge</h3>
+
+                <p>Ideea centrală: realitatea e în continuă mișcare. Nimic nu stă pe loc. Aparentele forme stabile — munți, case, corpuri — sunt de fapt procese lente. Muntele se erodează, casa se degradează, corpul îmbătrânește. Stabilitatea e iluzie; procesul e realitate.</p>
+
+                <p>Aceasta era o poziție radicală. Parmenide, contemporanul său, susținea exact opusul: schimbarea e iluzie, doar Ființa una și neschimbătoare e reală. Heraclit și Parmenide reprezintă cele două opțiuni fundamentale ale metafizicii occidentale.</p>
+
+                <div class="concept-box">
+                    <h4>Fluxul în viața de zi cu zi</h4>
+                    <p>Privește o fotografie de acum 10 ani. Ești „aceeași" persoană? Da și nu. Continuitate există, dar și schimbare radicală. Relațiile tale, convingerile tale, corpul tău — toate au curs. Heraclit ne invită să acceptăm acest flux în loc să ne cramponăm de o identitate fixă.</p>
+                </div>
+
+                <h3>Focul Primordial</h3>
+
+                <p>Dacă totul se schimbă, ce e substanța de bază a realității? Pentru Heraclit: focul. Nu un foc literal, ci focul ca simbol al transformării perpetue. Focul consumă combustibilul și produce căldură și lumină — e substanță în continuă auto-transformare.</p>
+
+                <blockquote class="inline">„Acest cosmos, același pentru toți, nu l-a făcut niciunul dintre zei sau oameni, ci a fost întotdeauna și este și va fi: foc veșnic viu, aprinzându-se după măsură și stingându-se după măsură."</blockquote>
+
+                <p>Universul e un foc care pulsează etern — expansiune și contracție, naștere și moarte, într-un ritm cosmic.</p>
+
+                <h3>Logos — Rațiunea Cosmică</h3>
+
+                <p>În spatele haosului aparent al schimbării există o ordine: Logos. Cuvântul grec înseamnă „rațiune", „cuvânt", „proporție", „lege". Pentru Heraclit, Logos e principiul rațional care guvernează toate transformările.</p>
+
+                <p>Focul nu arde haotic — se aprinde și se stinge „după măsură". Anotimpurile se succed regulat. Ziua și noaptea alternează. În spatele fluxului e o lege. Iar omul înțelept e cel care descoperă această lege și trăiește în acord cu ea.</p>
+
+                <h3>Unitatea Contrariilor</h3>
+
+                <p>Una dintre cele mai profunde intuiții heraclitiene: opusurile nu sunt separate, ci interdependente. Sunt fețele aceleiași realități.</p>
+
+                <ul>
+                    <li>„Drumul în sus și drumul în jos sunt unul și același" — depinde de unde privești</li>
+                    <li>„Boala face plăcută sănătatea, foamea face plăcută sațietatea" — apreciem un lucru prin contrastul cu opusul său</li>
+                    <li>„Moartea pământului e nașterea apei; moartea apei e nașterea aerului" — distrugerea unuia e crearea altuia</li>
+                </ul>
+
+                <div class="concept-box">
+                    <h4>Gândire dialectică</h4>
+                    <p>Această viziune va influența profund filozofia: de la Platon (dialectica) la Hegel (teză-antiteză-sinteză) la Marx (contradicțiile istoriei). Heraclit e părintele gândirii care vede în conflict nu disfuncție, ci motor al realității.</p>
+                </div>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Conflictul e tatăl tuturor lucrurilor, regele tuturor."</blockquote>
+                <cite>— Heraclit, Fragment 53</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">04 / Fragmentele</span>
+                <h2>Perle din Obscuritate</h2>
+
+                <blockquote class="inline">„Caracterul e destinul omului."</blockquote>
+                <p>Una dintre cele mai citate fraze. Nu zeii externi ne determină soarta, ci natura noastră interioară. Suntem făurarii propriului destin prin felul în care suntem.</p>
+
+                <blockquote class="inline">„Cei treji au o lume comună; cei adormiți se întorc fiecare în lumea lui proprie."</blockquote>
+                <p>A fi „treaz" înseamnă a vedea Logos-ul comun, realitatea obiectivă. „Adormiții" trăiesc în iluzia opiniilor lor particulare, fără contact cu adevărul.</p>
+
+                <blockquote class="inline">„Ochii și urechile sunt martori răi pentru oameni dacă au suflete barbare."</blockquote>
+                <p>Simțurile nu înșeală — dar mintea needucată interpretează greșit ce primește. Problema nu e în date, ci în procesare.</p>
+
+                <blockquote class="inline">„Natura iubește să se ascundă."</blockquote>
+                <p>Adevărul nu e la suprafață. Trebuie căutat, dezgropat, descifrat. Aparențele mint; esența se ascunde.</p>
+
+                <blockquote class="inline">„Măgarii ar prefera paiele în loc de aur."</blockquote>
+                <p>Valorile depind de natura celui care evaluează. Ce e prețios pentru unul e gunoi pentru altul. Dar există o ierarhie obiectivă — aurul e aur, chiar dacă măgarul nu-l recunoaște.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Critici și Limite</span>
+                <h2>Umbrele Focului</h2>
+
+                <h3>Obscuritatea Deliberată</h3>
+                <p>Chiar din antichitate, Heraclit era criticat pentru stilul intenționat enigmatic. Socrate ar fi spus: „Ce am înțeles e excelent; ce n-am înțeles presupun că e la fel — dar ar fi nevoie de un scufundător din Delos să ajungă la fund."</p>
+
+                <h3>Relativism?</h3>
+                <p>Dacă totul curge, există adevăruri stabile? Dacă opusurile sunt unul, mai există bine și rău distinct? Critica lui Platon: Heraclit duce la relativism și la imposibilitatea cunoașterii.</p>
+
+                <h3>Aroganță și Misantropie</h3>
+                <p>Disprețul lui Heraclit pentru „mulțime" e evident în fragmente. Îi numește pe oameni „adormiți", „ignoranți", compară valorile lor cu cele ale animalelor. Chiar și alți filozofi nu scapă: Homer „merită biciuit". E o atitudine elitistă care poate respinge.</p>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Moștenirea</span>
+                <h2>Flacăra Care Nu Se Stinge</h2>
+
+                <h3>Stoicismul</h3>
+                <p>Stoicii au preluat conceptul de Logos ca rațiune divină care ordonează universul. „Focul artistic" stoic care modelează lumea vine direct de la Heraclit.</p>
+
+                <h3>Hegel și Dialectica</h3>
+                <p>Hegel l-a considerat pe Heraclit precursorul său: „Nu există propoziție a lui Heraclit pe care să n-o fi preluat în Logica mea." Ideea că realitatea progresează prin contradicție și sinteză e heraclitiană.</p>
+
+                <h3>Nietzsche</h3>
+                <p>Nietzsche venera pe Heraclit. Viziunea unui univers în flux, fără scop transcendent, susținut de conflict și transformare, anticipează „voința de putere" și „întoarcerea eternă".</p>
+
+                <h3>Fizica Modernă</h3>
+                <p>Termodinamica, teoria câmpurilor, mecanica cuantică — toate descriu o realitate în care materia e energie în transformare. „Totul curge" pare mai aproape de fizică decât de filozofia tradițională a substanțelor stabile.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Aplicații Practice</span>
+                <h2>Heraclit pentru Viața de Azi</h2>
+
+                <h3>Acceptă Schimbarea</h3>
+                <p>În loc să te cramponezi de ce a fost, recunoaște că schimbarea e inevitabilă. Relația aceea, jobul acela, versiunea aceea a ta — au trecut. Râul curge. Poți înota cu el sau te poți epuiza luptând împotrivă.</p>
+
+                <h3>Caută Unitatea în Conflict</h3>
+                <p>Când întâlnești opoziție — în relații, la muncă, în tine însuți — întreabă-te: ce îmi arată acest conflict? Poate opusul meu conține un adevăr pe care îl ignor. Poate tensiunea e productivă, nu doar distructivă.</p>
+
+                <h3>Trezește-te</h3>
+                <p>Câtă din viața ta e trăită pe „pilot automat"? Heraclit ne cheamă să fim treji — atenți la realitate, nu pierduți în visele noastre particulare. Meditația, mindfulness-ul modern, sunt practici heraclitiene.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Heraclitian</h4>
+                    <p>Timp de o zi, observă schimbarea în tot ce vezi. Lumina care se mișcă. Oamenii care trec. Gândurile care apar și dispar. Stările care se succed. Încearcă să vezi fluxul în loc de lucruri fixe. Cum se schimbă percepția ta?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Concluzie</span>
+                <h2>Focul Care Luminează</h2>
+
+                <p>Heraclit ne lasă cu un paradox frumos: singura constantă e schimbarea, dar în miezul schimbării e o ordine — Logos. Universul nu e nici haos, nici ordine rigidă, ci dans al contrariilor, ritm al focului care se aprinde și se stinge „după măsură".</p>
+
+                <p>Pentru omul modern, bombardat de schimbări accelerate, mesajul lui Heraclit e dublu: acceptă fluxul (nu te crampona de ce nu poate dura), dar caută legea (în spatele haosului aparent e un sens de descoperit).</p>
+
+                <p>„Nu poți păși de două ori în același râu" — dar poți învăța să înoți. Ba mai mult, poți deveni râul.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>Studii Filozofice — Un proiect dedicat gândirii care contează</p>
+    </footer>
+</body>
+</html>

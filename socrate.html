@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socrate - Filozoful Care Nu A Scris Nimic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+            --accent: #8b4513;
+            --border: #e5e5e5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            background: var(--primary);
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 3rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+        nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero .category {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        .hero .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+        .hero .years {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-top: 3rem;
+        }
+        main {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        section { margin-bottom: 5rem; }
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            float: left;
+            line-height: 0.85;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            color: var(--accent);
+        }
+        .pull-quote {
+            padding: 4rem 2rem;
+            background: var(--secondary);
+            text-align: center;
+            margin: 4rem -2rem;
+            position: relative;
+        }
+        .pull-quote::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            color: var(--accent);
+            opacity: 0.1;
+        }
+        .pull-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .pull-quote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-style: normal;
+            color: var(--text-muted);
+        }
+        blockquote.inline {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        .concept-box {
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+        .concept-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer {
+            background: var(--text);
+            color: var(--primary);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .hero { padding: 4rem 1.5rem; }
+            .hero h1 { font-size: 2.5rem; }
+            main { padding: 4rem 1.5rem; }
+            .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; }
+            .lead::first-letter { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Studii Filozofice</a>
+        <a href="index.html">Acasă</a>
+    </nav>
+
+    <header class="hero">
+        <span class="category">Filozofie Antică / Fondator</span>
+        <h1>Socrate</h1>
+        <p class="subtitle">Filozoful care nu a scris nimic, dar a schimbat totul</p>
+        <span class="years">c. 470 — 399 î.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Tăunul Atenei</h2>
+
+                <p class="lead">Imaginați-vă un bătrân ciudat care vă oprește pe stradă și vă întreabă: „Ce este dreptatea?" Răspundeți. El pune altă întrebare. Răspundeți din nou. După o oră de conversație, realizați că nu știați niciodată ce este dreptatea — și nici el nu vă spune. V-a lăsat doar cu întrebări. Acesta era Socrate.</p>
+
+                <p>Nu a scris nicio carte. Nu a fondat nicio școală în sens fizic. Nu a lăsat niciun sistem filosofic. Și totuși, istoria filozofiei occidentale se împarte în „înainte de Socrate" și „după Socrate". Cum a reușit un om care nu a scris nimic să schimbe pentru totdeauna modul în care gândim?</p>
+
+                <p>Răspunsul: prin forța întrebărilor. Socrate a descoperit că întrebările bune sunt mai valoroase decât răspunsurile rapide. Că adevărata înțelepciune începe cu recunoașterea propriei ignoranțe. Că o viață neexaminată nu merită trăită.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>Atena Secolului de Aur</h2>
+
+                <p>Socrate s-a născut în Atena în jurul anului 470 î.Hr., în plin „Secol de Aur" — epoca lui Pericle, a Partenonului, a tragediilor lui Sofocle și Euripide. Era o democrație efervescentă unde cetățenii dezbăteau în agora, unde ideile circulau liber, unde retorica era o artă supremă.</p>
+
+                <p>Tatăl său, Sofroniscos, era sculptor; mama sa, Fenareta, moașă. Socrate însuși a practicat sculptura în tinerețe și a luptat ca hoplit în trei bătălii ale Atenei — Potideea, Delium și Amfipolis — unde și-a câștigat reputația de soldat curajos și rezistent.</p>
+
+                <p>Dar vocația lui adevărată era alta. La un moment dat — poate după ce prietenul său Chairefon a întrebat Oracolul de la Delphi cine e cel mai înțelept om, iar răspunsul a fost „Socrate" — și-a dedicat viața filozofiei. Cum putea el, care nu știa nimic, să fie cel mai înțelept?</p>
+
+                <h3>Metoda: Ironia Socratică</h3>
+
+                <p>Socrate a înțeles astfel: era cel mai înțelept pentru că știa că nu știe. Ceilalți credeau că știu, dar nu știau că nu știu. El cel puțin era conștient de propria ignoranță.</p>
+
+                <p>Și-a petrecut restul vieții demonstrând acest lucru — oprind politicieni, poeți, meșteșugari, generali, întrebându-i despre lucrurile pe care pretindeau că le cunosc. Prin întrebări succesive, arăta că definițiile lor erau contradictorii, incomplete, confuze. Nu pentru a-i umili, ci pentru a-i trezi.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Știu că nu știu nimic."</blockquote>
+                <cite>— Socrate (conform lui Platon)</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Concepte Cheie</span>
+                <h2>Filozofia ca Mod de Viață</h2>
+
+                <h3>Maieutica — Arta Moșitului Ideilor</h3>
+
+                <p>Socrate spunea că mama lui era moașă de copii, iar el era moaș de idei. Nu-ți „dă" adevărul — te ajută să-l naști singur. Prin întrebări, scoate la lumină ce știai deja fără să știi că știi.</p>
+
+                <p>Gândiți-vă la un moment din viața voastră când cineva v-a pus o întrebare care v-a forțat să gândiți cu adevărat. Poate v-a întrebat: „De ce faci asta, de fapt?" și brusc v-ați dat seama că nu aveați un răspuns bun. Acela e un moment maieutic.</p>
+
+                <div class="concept-box">
+                    <h4>Metoda Socratică în Practică</h4>
+                    <p>1. Interlocutorul propune o definiție („Curajul este să nu fugi din luptă")<br>
+                    2. Socrate găsește un contraexemplu („Dar dacă retragerea e strategică?")<br>
+                    3. Definiția e revizuită<br>
+                    4. Procesul se repetă până când definiția rezistă sau interlocutorul recunoaște că nu știe</p>
+                </div>
+
+                <h3>Daimonion — Vocea Interioară</h3>
+
+                <p>Socrate vorbea despre un „daimonion" — o voce divină interioară care îl avertiza când era pe cale să facă ceva greșit. Nu-i spunea ce să facă, doar ce să nu facă. Era un fel de conștiință morală, dar cu o dimensiune religioasă.</p>
+
+                <p>În termeni moderni, am putea spune că Socrate asculta de intuiția sa morală profundă, nu de convențiile sociale sau de argumentele sofisticate.</p>
+
+                <h3>Virtutea ca Cunoaștere</h3>
+
+                <p>Pentru Socrate, nimeni nu face răul în mod conștient. Dacă cineva acționează imoral, e pentru că nu înțelege cu adevărat ce e binele. Cunoașterea autentică a binelui duce automat la acțiunea bună.</p>
+
+                <p>Pare naiv? Poate. Dar Socrate ar răspunde: dacă ai înțelege cu adevărat, în adâncul ființei tale, că minciuna te distruge — nu doar intelectual, ci existențial — ai mai minți? Problema e că „știm" superficial, nu profund.</p>
+
+                <h3>Cunoaște-te pe Tine Însuți</h3>
+
+                <p>Această maximă de la Delphi a devenit motto-ul socratic. Înainte de a pretinde că știi ceva despre lume, trebuie să te cunoști pe tine. Care sunt prejudecățile tale? Limitele tale? De ce crezi ce crezi?</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„O viață neexaminată nu merită trăită."</blockquote>
+                <cite>— Socrate, în Apologia lui Platon</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">04 / Procesul și Moartea</span>
+                <h2>Cucuta</h2>
+
+                <p>În 399 î.Hr., la 70 de ani, Socrate a fost pus sub acuzare de trei cetățeni atenieni. Capetele de acuzare: nu recunoaște zeii cetății, introduce divinități noi, și corupe tineretul.</p>
+
+                <p>Acuzațiile erau vagi și probabil motivate politic. Atena tocmai ieșise dintr-o perioadă turbulentă — Războiul Peloponesiac pierdut, tirania celor Treizeci. Unii dintre asociații lui Socrate, precum Critias și Alcibiade, fuseseră figuri controversate. Socrate era un țap ispășitor convenabil.</p>
+
+                <p>Procesul s-a desfășurat în fața a 501 jurați. Socrate s-a apărat singur, nu prin a se scuza, ci prin a-și reafirma misiunea. Apologia lui Platon — reconstrucția acestui discurs — e unul dintre cele mai puternice texte din istoria filozofiei.</p>
+
+                <blockquote class="inline">„Atenienii, vă respect și vă iubesc, dar voi asculta mai degrabă de zeu decât de voi, și cât voi avea suflare și putere, nu voi înceta să filozofez."</blockquote>
+
+                <p>A fost găsit vinovat cu o majoritate mică. Când i s-a cerut să propună o pedeapsă alternativă (obiceiul era ca acuzatul să propună), Socrate a sugerat ironic să fie hrănit pe viață în Pritaneu, ca un erou olimpic. Jurații, ofensați, l-au condamnat la moarte.</p>
+
+                <h3>Ultima Lună</h3>
+
+                <p>A petrecut 30 de zile în închisoare, așteptând întoarcerea unei corăbii sacre de la Delos (execuțiile erau interzise în această perioadă). Prietenii i-au oferit să-l ajute să evadeze. A refuzat. Ar fi fost să-și trădeze principiile — să încalce legile cetății căreia îi datorase totul.</p>
+
+                <p>În ultima zi, înconjurat de prieteni, a băut cucuta cu seninătate. Ultimele cuvinte, conform lui Platon: „Criton, îi datorăm un cocoș lui Asclepios. Aveți grijă să plătiți datoria." Asclepios era zeul vindecării. Moartea, pentru Socrate, era vindecarea de viață?</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Citate Memorabile</span>
+                <h2>Cuvintele Care Au Rămas</h2>
+
+                <blockquote class="inline">„Există un singur bine: cunoașterea; și un singur rău: ignoranța."</blockquote>
+                <p>Pentru Socrate, toate virtuțile se reduc la cunoaștere. Curajul e cunoașterea a ceea ce trebuie temut. Dreptatea e cunoașterea a ceea ce se cuvine fiecăruia. Ignoranța e rădăcina tuturor relelor.</p>
+
+                <blockquote class="inline">„Fii așa cum vrei să pari."</blockquote>
+                <p>Într-o lume a aparențelor și a retoricii sofistice, Socrate predica autenticitatea. Nu te preface virtuos — devino virtuos. Caracterul tău real va ieși la iveală oricum.</p>
+
+                <blockquote class="inline">„Cel mai bogat e cel care se mulțumește cu cel mai puțin."</blockquote>
+                <p>Socrate trăia în sărăcie voluntară. Umbla desculț, purta aceeași mantie iarna și vara. Nu pentru că disprețuia bunurile, ci pentru că nu voia să fie sclavul lor.</p>
+
+                <blockquote class="inline">„Nu pot învăța pe nimeni nimic. Pot doar să-i fac să gândească."</blockquote>
+                <p>Esența metodei socratice. Adevărata educație nu e transfer de informații, ci activarea gândirii proprii.</p>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Critici și Limite</span>
+                <h2>Umbrele Tăunului</h2>
+
+                <h3>Nu Oferă Răspunsuri</h3>
+                <p>Dialogurile socratice se termină adesea în aporii — impasuri. Socrate demolează definiții, dar rareori oferă alternative. Critici au spus că e mai ușor să critici decât să construiești.</p>
+
+                <h3>Intelectualism Moral</h3>
+                <p>Ideea că „nimeni nu face răul în mod conștient" pare să ignore slăbiciunea voinței. Știm că fumatul e rău și totuși fumăm. Aristotel va corecta această viziune, vorbind despre akrasia — acțiunea contra propriei judecăți.</p>
+
+                <h3>Elitism?</h3>
+                <p>Metoda socratică cere timp, educație, disponibilitate pentru dialog. Nu toți au aceste luxuri. Socrate vorbea în principal cu elita ateniană. Ce relevanță avea filozofia lui pentru sclavi sau femei?</p>
+
+                <h3>Problema Surselor</h3>
+                <p>Nu avem scrierile lui Socrate — doar relatări de la Platon, Xenofon și alții. Cât din „Socrate" e Socrate real și cât e creația lui Platon? Nu vom ști niciodată.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Moștenirea</span>
+                <h2>Părintele Filozofiei Occidentale</h2>
+
+                <p>Din Socrate au ieșit toate marile școli filozofice antice:</p>
+
+                <ul>
+                    <li><strong>Platon</strong> — elevul direct, care a dezvoltat teoria Ideilor</li>
+                    <li><strong>Aristotel</strong> — elevul lui Platon, care a sistematizat aproape toate domeniile cunoașterii</li>
+                    <li><strong>Stoicii</strong> — prin Antisthene, au preluat ideea virtuții ca scop suprem</li>
+                    <li><strong>Cinicii</strong> — prin Antisthene și Diogene, au radicalizat simplitatea socratică</li>
+                    <li><strong>Scepticii</strong> — au preluat dubiul metodic și recunoașterea ignoranței</li>
+                </ul>
+
+                <p>În modernitate, metoda socratică a influențat:</p>
+                <ul>
+                    <li>Învățământul juridic (metoda cazurilor)</li>
+                    <li>Psihoterapia (întrebări care provoacă insight)</li>
+                    <li>Coaching-ul și facilitarea</li>
+                    <li>Gândirea critică în educație</li>
+                </ul>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Aplicații Practice</span>
+                <h2>Socrate pentru Secolul XXI</h2>
+
+                <h3>Întreabă „De Ce?" de Cinci Ori</h3>
+                <p>Tehnica japoneză „5 Why" din managementul calității e în esență socratică. Când întâlnești o problemă, întreabă de ce de cinci ori succesiv. Ajungi la rădăcina reală, nu la simptome.</p>
+
+                <h3>Înainte de a Avea Dreptate, Fii Curios</h3>
+                <p>În dezbateri, în loc să-ți aperi poziția, încearcă să înțelegi cu adevărat poziția celuilalt. Pune întrebări autentice. Poate descoperi că nici tu nu știi ce crezi că știi.</p>
+
+                <h3>Examinează-ți Convingerile</h3>
+                <p>Alege o convingere pe care o ai — despre politică, despre relații, despre succes. Întreabă-te: De ce cred asta? Pe ce dovezi se bazează? Ce ar trebui să fie adevărat pentru ca opusul să fie corect?</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Socratic</h4>
+                    <p>Alege o valoare pe care o consideri importantă — „libertatea", „succesul", „iubirea". Încearcă să o definești în 2-3 propoziții. Apoi găsește contraexemple. Revizuiește definiția. Repetă. Dacă după 15 minute ai o definiție solidă, felicitări — ai făcut mai mult decât personajele din dialogurile platonice.</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Concluzie</span>
+                <h2>Martir al Gândirii</h2>
+
+                <p>Socrate a murit pentru dreptul de a pune întrebări. A refuzat să-și trădeze vocația chiar cu prețul vieții. În acest sens, moartea lui e la fel de importantă ca viața lui — demonstrează că ideile merită sacrifice.</p>
+
+                <p>Ce ne lasă Socrate? Nu un sistem, ci o practică. Nu răspunsuri, ci întrebări. Nu certitudini, ci metoda de a le testa. În fiecare conversație în care ascultăm cu adevărat, în fiecare moment în care ne îndoim de propriile noastre certitudini, Socrate trăiește.</p>
+
+                <p>Și poate asta e tot ce a vrut: să ne trezească. Să fim tăuni pentru noi înșine, înainte ca alții să ne adoarmă.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>Studii Filozofice — Un proiect dedicat gândirii care contează</p>
+    </footer>
+</body>
+</html>

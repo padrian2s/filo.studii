@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Søren Kierkegaard - Părintele Existențialismului</title>
+
+    <!-- Fonturi -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Fundal */
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+
+            /* Text */
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+
+            /* Accent - Albastru închis pentru tonul existențialist */
+            --accent: #1a4f6e;
+
+            /* Utilitare */
+            --border: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            background: var(--primary);
+        }
+
+        /* Navigație */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 3rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero .category {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        .hero .years {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-top: 3rem;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        article section {
+            margin-bottom: 6rem;
+        }
+
+        /* Section Numbers */
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        /* Drop Cap */
+        .lead::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            float: left;
+            line-height: 0.85;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            color: var(--accent);
+        }
+
+        .lead {
+            font-size: 1.15rem;
+            line-height: 1.9;
+        }
+
+        /* Pull Quote */
+        .pull-quote {
+            padding: 4rem 2rem;
+            background: var(--secondary);
+            text-align: center;
+            margin: 4rem -2rem;
+            position: relative;
+        }
+
+        .pull-quote::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            color: var(--accent);
+            opacity: 0.1;
+            line-height: 1;
+        }
+
+        .pull-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .pull-quote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-style: normal;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        /* Inline Quote */
+        blockquote.inline {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* Strong & Em */
+        strong {
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        /* Concept Box */
+        .concept-box {
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            background: var(--primary);
+        }
+
+        .concept-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .concept-box p {
+            margin-bottom: 0;
+        }
+
+        /* List */
+        ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: var(--primary);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        footer .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            nav .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            main {
+                padding: 4rem 1.5rem;
+            }
+
+            .pull-quote {
+                margin: 3rem -1.5rem;
+                padding: 3rem 1.5rem;
+            }
+
+            .pull-quote blockquote {
+                font-size: 1.2rem;
+            }
+
+            .lead::first-letter {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Studii Filozofice</a>
+        <div class="nav-links">
+            <a href="#">Acasă</a>
+            <a href="#">Filozofi</a>
+            <a href="#">Curente</a>
+            <a href="#">Despre</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <span class="category">Existențialism / Filozofie Modernă</span>
+        <h1>Søren Kierkegaard</h1>
+        <p class="subtitle">Părintele existențialismului și filozoful care ne-a învățat că a exista înseamnă a alege</p>
+        <span class="years">1813 — 1855</span>
+    </header>
+
+    <main>
+        <article>
+            <!-- INTRODUCERE -->
+            <section class="intro">
+                <div class="section-header">
+                    <span class="section-number">01 / Introducere</span>
+                    <h2>Filozoful Neliniștii</h2>
+                </div>
+
+                <p class="lead">Într-o lume în care suntem bombardați zilnic cu mii de opțiuni — ce să mâncăm, ce să urmărim, cine să fim pe rețelele sociale — anxietatea alegerii a devenit epidemică. Cu aproape două secole înainte de era digitală, un danez ciudat și solitar a diagnosticat deja această boală a spiritului modern. Numele lui: Søren Kierkegaard.</p>
+
+                <p>Kierkegaard nu a fost un filozof de sistem, din aceia care construiesc catedrale conceptuale impunătoare. A fost, mai degrabă, un explorator al sufletului uman, un psiholog avant la lettre care a înțeles că marile întrebări ale vieții nu se rezolvă cu formule abstracte, ci se trăiesc în carne și oase.</p>
+
+                <p>De ce ar citi cineva din 2024 pe Kierkegaard? Pentru că el a scris despre lucrurile care ne țin treji noaptea: despre frica de a lua decizii greșite, despre dorința de autenticitate într-o lume care ne vrea conformiști, despre absurditatea de a căuta sens într-un univers care nu ne oferă garanții. Kierkegaard nu oferă soluții confortabile. Oferă ceva mai prețios: onestitate radicală față de condiția umană.</p>
+            </section>
+
+            <!-- CONTEXT ISTORIC -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">02 / Contextul Istoric</span>
+                    <h2>Copenhaga, Secolul al XIX-lea</h2>
+                </div>
+
+                <p>Søren Aabye Kierkegaard s-a născut pe 5 mai 1813 în Copenhaga, într-o familie marcată de o religiozitate sumbră. Tatăl său, Michael Pedersen Kierkegaard, era un negustor îmbogățit care trăia sub povara unei vinovății religioase obsesive — convins că Dumnezeu i-a blestemat familia pentru un păcat din tinerețe. Cinci din cei șapte copii ai familiei au murit înainte să împlinească 34 de ani, ceea ce părea să-i confirme temerile.</p>
+
+                <p>Această atmosferă de melancolie și obsesie religioasă l-a marcat profund pe tânărul Søren. El a crescut într-o casă în care moartea și vinovăția erau prezențe constante, dar și într-una în care conversațiile intelectuale erau norma. Tatăl său, deși fără educație formală, avea o minte ascuțită și l-a învățat pe Søren să gândească dialectic.</p>
+
+                <p>Danemarca acelei epoci era un loc mic dar vibrant intelectual. Influența lui Hegel — filozoful german care credea că realitatea poate fi cuprinsă într-un sistem logic grandios — domina gândirea academică europeană. Kierkegaard a studiat teologia la Universitatea din Copenhaga și a obținut doctoratul în 1841 cu o teză despre ironia lui Socrate. Dar cariera sa a luat o turnură neașteptată.</p>
+
+                <h3>Ruptura de Regine</h3>
+
+                <p>În 1840, Kierkegaard s-a logodit cu Regine Olsen, o tânără de bună familie de care era profund îndrăgostit. Un an mai târziu, într-un gest care avea să-l bântuie toată viața, a rupt logodna. Motivele rămân misterioase — poate melancolia moștenită de la tată, poate convingerea că era „prea complicat" pentru căsnicie, poate dorința de a se dedica exclusiv scrisului.</p>
+
+                <p>Această renunțare la iubire a devenit combustibilul creației sale. În următorii 14 ani, până la moartea sa prematură la 42 de ani, Kierkegaard a scris cu o intensitate aproape maniacală — producând unele dintre cele mai originale texte filozofice din istoria gândirii occidentale.</p>
+            </section>
+
+            <!-- PULL QUOTE -->
+            <aside class="pull-quote">
+                <blockquote>„Viața poate fi înțeleasă doar privind înapoi, dar trebuie trăită mergând înainte."</blockquote>
+                <cite>— Søren Kierkegaard, Jurnale</cite>
+            </aside>
+
+            <!-- CONCEPTE CHEIE -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">03 / Conceptele Cheie</span>
+                    <h2>Ideile Care Au Schimbat Filozofia</h2>
+                </div>
+
+                <h3>Existența precede esența</h3>
+
+                <p>Înainte de Kierkegaard, filozofii tindeau să vorbească despre „om" în abstract — ca și cum ar fi existat o esență universală a umanității, un tipar pe care toți îl urmăm. Kierkegaard a răsturnat această perspectivă: nu există un „om în general", există doar indivizi concreți, tu și eu, fiecare cu istoria și alegerile sale unice.</p>
+
+                <p>Imaginați-vă diferența astfel: filozofia tradițională era ca o fabrică de mobilă care produce mii de scaune identice după același model. Kierkegaard spune: fiecare scaun se sculptează pe sine, și nu există model prestabilit. Tu nu „descoperi" cine ești — tu te <em>creezi</em> prin alegerile tale.</p>
+
+                <div class="concept-box">
+                    <h4>Concept cheie</h4>
+                    <p><strong>Subiectivitatea adevărului:</strong> Pentru Kierkegaard, adevărul important nu este cel obiectiv, verificabil științific, ci cel care te transformă. Un adevăr care nu schimbă modul în care trăiești nu este, pentru tine, un adevăr real.</p>
+                </div>
+
+                <h3>Anxietatea (Angoasa)</h3>
+
+                <p>În 1844, Kierkegaard publică „Conceptul de anxietate" — o lucrare revoluționară care anticipează cu un secol psihanaliza. Anxietatea, spune el, nu este o boală de vindecat, ci o condiție fundamentală a existenței umane.</p>
+
+                <p>De ce suntem anxioși? Pentru că suntem liberi. Un animal nu simte anxietate existențială — instinctele îi dictează ce să facă. Dar omul stă în fața posibilităților infinite și trebuie să aleagă. Anxietatea este „amețeala libertății", senzația pe care o ai când privești în abisul propriilor tale posibilități.</p>
+
+                <p>Gândiți-vă la momentul dinaintea unei decizii mari: să accepți sau nu acel job, să te muți sau nu în alt oraș, să spui sau nu ce simți cu adevărat. Acea senzație de gol în stomac, acel fior — asta e anxietatea kierkegaardiană. Nu e un semn că ceva e în neregulă cu tine. E semnul că ești viu și liber.</p>
+
+                <h3>Cele Trei Stadii ale Existenței</h3>
+
+                <p>Kierkegaard descrie trei moduri fundamentale de a fi în lume, trei „stadii pe drumul vieții":</p>
+
+                <p><strong>Stadiul Estetic:</strong> Omul estetic trăiește pentru plăcere și senzație. Fuge de plictiseală, caută mereu noul, evită angajamentul. E Don Juan sau turistul perpetuu al vieții. Problema? Plăcerile se tocesc, noutatea devine rutină, și la capăt rămâne doar un vid imens. Recunoașteți acest stadiu în cultura actuală a „FOMO" (fear of missing out) și a scrollului infinit?</p>
+
+                <p><strong>Stadiul Etic:</strong> Omul etic a ales să se angajeze. Acceptă responsabilități, respectă reguli, își construiește o viață structurată. E soțul fidel, cetățeanul responsabil, profesionistul dedicat. E un progres față de haosul estetic, dar Kierkegaard vede și aici o limită: poți respecta toate regulile și totuși să simți că ceva esențial îți lipsește.</p>
+
+                <p><strong>Stadiul Religios:</strong> Dincolo de etică există un salt — saltul credinței. Nu mai e vorba de reguli generale, ci de relația ta personală, unică, cu Absolutul. Kierkegaard folosește figura lui Avraam, care e gata să-și sacrifice fiul pentru că Dumnezeu i-a cerut-o — un act care din punct de vedere etic e monstruos, dar care pentru Kierkegaard reprezintă credința autentică.</p>
+
+                <div class="concept-box">
+                    <h4>Important</h4>
+                    <p>Aceste stadii nu sunt trepte pe care le urci și nu te mai întorci. Poți oscila între ele toată viața. Iar trecerea de la unul la altul nu se face prin argumente logice, ci printr-un <strong>salt</strong> — o decizie care nu poate fi pe deplin justificată rațional.</p>
+                </div>
+
+                <h3>Saltul Credinței</h3>
+
+                <p>Aici ajungem la ideea pentru care Kierkegaard e cel mai cunoscut. Credința, spune el, nu e o concluzie la capătul unui argument. Nu ajungi să crezi în Dumnezeu pentru că ți s-a demonstrat logic existența lui. Credința e un salt peste prăpastia dintre ce poți dovedi și ce alegi să crezi.</p>
+
+                <p>Imaginați-vă că stați pe marginea unei stânci. Rațiunea vă poate duce până la margine, vă poate arăta ce e dincolo. Dar să sari — asta e decizia voastră, și nicio rațiune din lume nu poate sări în locul vostru. Așa e și credința pentru Kierkegaard: un angajament personal care depășește dovezile.</p>
+
+                <p>Acest concept a influențat nu doar teologia, ci și filozofia existențialistă laică. Sartre va prelua ideea că ne creăm prin alegeri ce nu pot fi pe deplin justificate. Camus va vorbi despre absurd și despre alegerea de a continua în ciuda lipsei de sens garantat.</p>
+            </section>
+
+            <!-- PULL QUOTE -->
+            <aside class="pull-quote">
+                <blockquote>„Anxietatea este amețeala libertății."</blockquote>
+                <cite>— Søren Kierkegaard, Conceptul de anxietate</cite>
+            </aside>
+
+            <!-- SISTEMUL FILOZOFIC -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">04 / Sistemul Filozofic</span>
+                    <h2>Anti-Sistemul ca Sistem</h2>
+                </div>
+
+                <p>Ironia e că Kierkegaard a refuzat să construiască un „sistem" filozofic — tocmai asta era critica lui la adresa lui Hegel. Hegel pretindea că a cuprins toată realitatea într-un sistem logic. Kierkegaard răspundea: „Un sistem logic e posibil; un sistem al existenței e imposibil."</p>
+
+                <p>De ce? Pentru că existența e în desfășurare. Tu nu poți privi viața ta de sus, ca un observator neutru, pentru că ești în mijlocul ei, luptându-te, alegând, suferind. A pretinde că ai un „sistem al existenței" e ca și cum ai pretinde că ai terminat de trăit înainte să mori.</p>
+
+                <p>Totuși, ideile lui Kierkegaard se leagă între ele într-o rețea coerentă:</p>
+
+                <ul>
+                    <li><strong>Individul</strong> e punctul de plecare — nu societatea, nu umanitatea abstractă</li>
+                    <li><strong>Libertatea</strong> definește individul — suntem condamnați să alegem</li>
+                    <li><strong>Anxietatea</strong> e prețul libertății — și semnul că o exercităm</li>
+                    <li><strong>Stadiile existenței</strong> sunt moduri de a răspunde libertății și anxietății</li>
+                    <li><strong>Saltul</strong> e mecanismul trecerii — nu poți argumenta drumul spre autenticitate</li>
+                    <li><strong>Credința</strong> sau angajamentul autentic e țelul — a te angaja în ciuda incertitudinii</li>
+                </ul>
+
+                <h3>Metoda: Comunicarea Indirectă</h3>
+
+                <p>Kierkegaard a scris multe din cărțile sale sub pseudonime — Johannes de Silentio, Constantin Constantius, Victor Eremita și alții. Nu era doar un capriciu. Fiecare pseudonim reprezenta o perspectivă diferită, un „experiment de gândire" trăit.</p>
+
+                <p>De ce această comunicare indirectă? Pentru că Kierkegaard credea că adevărurile existențiale nu pot fi predate ca matematica. Nu-ți pot spune cum să trăiești — trebuie să descoperi singur. Tot ce pot face e să-ți ofer oglinzi în care să te vezi, perspective care să te provoace.</p>
+            </section>
+
+            <!-- CITATE -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">05 / Citate Memorabile</span>
+                    <h2>Cuvintele Care Au Rămas</h2>
+                </div>
+
+                <blockquote class="inline">
+                    „Cea mai comună formă de disperare este să nu fii cine ești."
+                </blockquote>
+
+                <p>Acest citat din „Boala de moarte" lovește în inima problemei moderne a autenticității. Disperarea, pentru Kierkegaard, nu e neapărat tristețe — poate fi și acea senzație subtilă că trăiești viața altcuiva, că porți o mască atât de bine lipită încât ai uitat că e mască.</p>
+
+                <blockquote class="inline">
+                    „Oamenii cer libertatea cuvântului ca o compensație pentru libertatea gândirii, pe care o folosesc rar."
+                </blockquote>
+
+                <p>O observație acută despre superficialitatea discursului public — la fel de relevantă în era Twitter/X ca în Copenhaga anilor 1840. Kierkegaard ar fi probabil îngrozit de cantitatea de cuvinte și sărăcia de gândire din mediul online actual.</p>
+
+                <blockquote class="inline">
+                    „A îndrăzni înseamnă a-ți pierde echilibrul pentru o clipă. A nu îndrăzni înseamnă a te pierde pe tine însuți."
+                </blockquote>
+
+                <p>Această frază surprinde esența filozofiei sale: riscul e inevitabil. Poți risca să sari și poate să cazi. Sau poți evita orice risc și să te trezești la sfârșitul vieții că nu ai trăit deloc.</p>
+
+                <blockquote class="inline">
+                    „Ce-mi folosește să descopăr un așa-numit adevăr obiectiv [...] dacă nu are o semnificație mai profundă pentru mine și pentru viața mea?"
+                </blockquote>
+
+                <p>Aici se vede clar „subiectivitatea adevărului". Kierkegaard nu neagă adevărul științific, dar spune că pentru existența umană contează altceva: adevărul care te transformă, care îți dă un sens pentru care merită să trăiești și să mori.</p>
+            </section>
+
+            <!-- PULL QUOTE -->
+            <aside class="pull-quote">
+                <blockquote>„Cea mai comună formă de disperare este să nu fii cine ești."</blockquote>
+                <cite>— Søren Kierkegaard, Boala de moarte</cite>
+            </aside>
+
+            <!-- CRITICI -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">06 / Critici și Controverse</span>
+                    <h2>Umbrele Gânditorului</h2>
+                </div>
+
+                <p>Kierkegaard nu e un gânditor fără cusur, iar criticile la adresa sa sunt serioase.</p>
+
+                <h3>Iracionalismul</h3>
+
+                <p>Critica cea mai frecventă: promovând „saltul credinței", Kierkegaard deschide ușa iracionalismului. Dacă angajamentele ultime nu pot fi justificate rațional, cum distingem credința autentică de fanatism? Cum știm că „saltul" nostru ne duce spre adevăr și nu spre iluzie?</p>
+
+                <p>Kierkegaard ar răspunde probabil că tocmai în asta constă riscul existenței — nu avem garanții. Dar criticii au dreptate să semnaleze pericolul: istoria e plină de oameni care au făcut „salturi" spre credințe distructive.</p>
+
+                <h3>Individualismul Excesiv</h3>
+
+                <p>Kierkegaard vorbește aproape exclusiv despre individ în fața lui Dumnezeu sau a propriei sale existențe. Dar unde e comunitatea? Unde e responsabilitatea socială? Există aspecte ale vieții umane — dreptatea socială, politica, solidaritatea — pe care filozofia lui le ignoră aproape complet.</p>
+
+                <p>Marxiștii l-au criticat că oferă o consolare individualistă în loc de o soluție la problemele sociale. E mai ușor să-ți faci pace interioară decât să schimbi lumea, iar Kierkegaard pare să aleagă prima variantă.</p>
+
+                <h3>Misoginia</h3>
+
+                <p>Deși o iubea pe Regine, scrierile lui Kierkegaard despre femei sunt adesea problematice. Ele apar ca ființe mai degrabă estetice decât etice sau religioase — mai apropiate de natură, mai puțin capabile de reflexia profundă. Sunt prejudecățile epocii sale, dar nu putem ignora acest punct orb.</p>
+
+                <h3>Obscuritatea Stilistică</h3>
+
+                <p>Pseudonimele, ironia stratificată, structurile labirintice — Kierkegaard poate fi frustrant de greu de citit. Criticii l-au acuzat că obscuritatea nu e întotdeauna profunzime, ci uneori doar obscuritate. Unele pasaje par deliberat opace, iar „comunicarea indirectă" poate deveni o scuză pentru lipsa de claritate.</p>
+            </section>
+
+            <!-- MOȘTENIREA -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">07 / Moștenirea</span>
+                    <h2>Ecouri în Gândirea Modernă</h2>
+                </div>
+
+                <p>Kierkegaard a murit în 1855, aproape necunoscut în afara Danemarcei. Renașterea sa a venit în secolul XX, când a fost „descoperit" de existențialiștii germani și francezi.</p>
+
+                <h3>Existențialismul</h3>
+
+                <p><strong>Martin Heidegger</strong> a preluat ideea de anxietate ca dispoziție fundamentală și conceptul de autenticitate. „Ființa și timp" (1927) e de neînchipuit fără Kierkegaard.</p>
+
+                <p><strong>Jean-Paul Sartre</strong> a secularizat ideile lui Kierkegaard. Pentru Sartre, nu Dumnezeu, ci Neantul stă în fața omului. Dar structura e aceeași: suntem condamnați să fim liberi, anxietatea e prețul libertății, ne creăm prin alegeri.</p>
+
+                <p><strong>Albert Camus</strong> a luat tema absurdului — discrepanța dintre dorința noastră de sens și tăcerea universului — și a făcut-o centrală. „Mitul lui Sisif" e un răspuns la problemele ridicate de Kierkegaard.</p>
+
+                <h3>Psihologia și Psihoterapia</h3>
+
+                <p>Rollo May, unul dintre fondatorii psihologiei existențialiste americane, l-a considerat pe Kierkegaard precursorul psihologiei moderne a anxietății. Ideea că anxietatea nu e doar o patologie, ci o condiție normală a existenței libere, a revoluționat psihoterapia.</p>
+
+                <p>Irvin Yalom, terapeutul existențialist, folosește explicit concepte kierkegaardiene în practica sa: anxietatea morții, lipsa de sens, izolarea, libertatea ca sursă de suferință și de posibilă vindecare.</p>
+
+                <h3>Teologia</h3>
+
+                <p>Karl Barth și teologia dialectică a secolului XX au preluat critica lui Kierkegaard la adresa creștinismului „de stat" — ideea că religia autentică e incompatibilă cu confortul burghez. Paul Tillich a dezvoltat ideea credinței ca „preocupare ultimă" pornind de la Kierkegaard.</p>
+            </section>
+
+            <!-- APLICAȚII PRACTICE -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">08 / Aplicații Practice</span>
+                    <h2>Kierkegaard pentru Viața de Azi</h2>
+                </div>
+
+                <p>Cum ne pot ajuta ideile unui danez din secolul XIX să navigăm viața în 2024?</p>
+
+                <h3>Împotriva Paraliziei Decizionale</h3>
+
+                <p>Trăim în era opțiunilor infinite. Aplicații de dating cu mii de profiluri, sute de seriale pe streaming, zeci de cariere posibile. Paradoxul: cu cât avem mai multe opțiuni, cu atât ne e mai greu să alegem.</p>
+
+                <p>Kierkegaard ne amintește: anxietatea deciziei e normală. Nu aștepta certitudinea perfectă — nu va veni niciodată. La un moment dat, trebuie să sari. Alegerea imperfectă făcută cu angajament e mai bună decât perfecțiunea așteptată la infinit.</p>
+
+                <h3>Autenticitate vs. Performance</h3>
+
+                <p>Rețelele sociale ne încurajează să performăm versiuni idealizate ale noastre. Kierkegaard ar recunoaște imediat „stadiul estetic" în cultura influencerilor — goana după validare externă, suprafețe lustruite fără profunzime.</p>
+
+                <p>Întrebarea lui rămâne actuală: Cine ești când nimeni nu se uită? Ce ai face dacă nu ar exista like-uri?</p>
+
+                <h3>Sens în Absența Certitudinilor</h3>
+
+                <p>Multe persoane au pierdut credința tradițională, dar n-au găsit ce să pună în loc. Kierkegaard oferă un model: poți trăi angajat, cu sens, chiar dacă nu ai certitudini metafizice. Saltul credinței nu trebuie să fie spre Dumnezeul creștin — poate fi spre orice angajament care te transcende: o cauză, o relație, o vocație.</p>
+
+                <p>Esențial e angajamentul autentic, nu conținutul specific al credinței.</p>
+
+                <h3>Anxietatea ca Busolă</h3>
+
+                <p>În loc să fugim de anxietate (prin distragere, substanțe, amorțire), putem învăța să o ascultăm. Kierkegaard ne spune că anxietatea semnalează libertatea și posibilitatea. Dacă ceva te face anxios, poate fi exact lucrul spre care trebuie să mergi.</p>
+
+                <p>Frica de eșec într-o relație poate fi semnul că relația asta contează. Anxietatea legată de un proiect creativ poate indica că e important pentru tine. Anxietatea e adesea busola care arată spre ce contează.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Kierkegaardian</h4>
+                    <p>Identifică o decizie pe care o amâni. Întreabă-te: Aștept mai multe informații, sau aștept să dispară anxietatea? Dacă e a doua variantă, amintește-ți că anxietatea nu va dispărea. Ea dispare doar după salt, nu înainte.</p>
+                </div>
+            </section>
+
+            <!-- CONCLUZIE -->
+            <section>
+                <div class="section-header">
+                    <span class="section-number">09 / Concluzie</span>
+                    <h2>Cavalerul Credinței</h2>
+                </div>
+
+                <p>Kierkegaard a murit tânăr, epuizat de propriile sale bătălii interioare și de o controversă publică cu presa vremii. A fost înmormântat în cimitirul Assistens din Copenhaga, unde mormântul său modest primește și azi vizitatori din toată lumea.</p>
+
+                <p>Ce rămâne din el? Nu un sistem pe care să-l înveți, ci o provocare pe care să o trăiești. Kierkegaard ne invită să renunțăm la confortul iluziilor, la siguranța falsă a conformismului, la amânarea infinită a angajamentului.</p>
+
+                <p>Ne invită să sărim.</p>
+
+                <p>Nu pentru că știm unde vom ateriza, ci pentru că alternativa — o viață de spectator al propriei existențe — nu e cu adevărat viață.</p>
+
+                <p>În „Teamă și cutremur", Kierkegaard descrie figura „cavalerului credinței" — omul care a făcut saltul și care trăiește cu angajament deplin, deși știe că nu are garanții. Din exterior, cavalerul credinței arată ca oricine altcineva — merge la piață, își plimbă câinele, discută despre vreme. Dar în interior, el trăiește fiecare clipă cu o intensitate pe care ceilalți n-o bănuiesc.</p>
+
+                <p>Poate că asta ne oferă Kierkegaard în cele din urmă: nu un set de răspunsuri, ci curajul de a trăi întrebările până la capăt.</p>
+            </section>
+
+        </article>
+    </main>
+
+    <footer>
+        <p class="footer-title">Studii Filozofice</p>
+        <p>Un proiect dedicat gândirii care contează</p>
+    </footer>
+</body>
+</html>

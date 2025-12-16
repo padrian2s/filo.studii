@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustave Flaubert — Arhitectul Frazei Perfecte</title>
+
+    <!-- Fonturi -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Fundal */
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+
+            /* Text */
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+
+            /* Accent - Albastru închis pentru ton academic */
+            --accent: #1a4f6e;
+
+            /* Utilitare */
+            --border: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            background: var(--primary);
+        }
+
+        /* Navigație */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 3rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero .category {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            font-style: italic;
+            max-width: 600px;
+        }
+
+        .hero .years {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-top: 3rem;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        article {
+            padding: 6rem 0;
+        }
+
+        /* Secțiuni */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 2rem;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Drop Cap */
+        .lead {
+            font-size: 1.15rem;
+        }
+
+        .lead::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 1rem;
+            padding-top: 0.1rem;
+            color: var(--accent);
+        }
+
+        /* Pull Quote */
+        .pull-quote {
+            padding: 5rem 2rem;
+            background: var(--secondary);
+            text-align: center;
+            margin: 5rem -2rem;
+            position: relative;
+        }
+
+        .pull-quote::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 15rem;
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            color: var(--accent);
+            opacity: 0.08;
+            line-height: 1;
+        }
+
+        .pull-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            font-weight: 400;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .pull-quote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+        }
+
+        /* Inline Quotes */
+        blockquote:not(.pull-quote blockquote) {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* Strong și Emphasis */
+        strong {
+            font-weight: 400;
+            color: var(--accent);
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        /* Liste */
+        ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Separator */
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 4rem 0;
+        }
+
+        /* Concept Cards */
+        .concept-card {
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin: 2rem 0;
+            background: var(--primary);
+        }
+
+        .concept-card h4 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+
+        .concept-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Quote Cards */
+        .quote-card {
+            background: var(--secondary);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 3px solid var(--accent);
+        }
+
+        .quote-card .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .quote-card .quote-explanation {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: var(--primary);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer .footer-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        footer .footer-author {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.6;
+        }
+
+        footer .footer-nav {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer .footer-nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer .footer-nav a:hover {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            nav .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            main {
+                padding: 0 1.5rem;
+            }
+
+            .pull-quote {
+                margin: 3rem -1.5rem;
+                padding: 3rem 1.5rem;
+            }
+
+            .pull-quote blockquote {
+                font-size: 1.3rem;
+            }
+
+            .pull-quote::before {
+                font-size: 8rem;
+                left: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .lead::first-letter {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Filo</a>
+        <div class="nav-links">
+            <a href="#introducere">Introducere</a>
+            <a href="#context">Context</a>
+            <a href="#concepte">Concepte</a>
+            <a href="#citate">Citate</a>
+            <a href="#mostenire">Moștenire</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <span class="category">Studiu Literar</span>
+        <h1>Gustave Flaubert</h1>
+        <p class="subtitle">Arhitectul Frazei Perfecte</p>
+        <span class="years">1821 — 1880</span>
+    </header>
+
+    <main>
+        <article>
+            <!-- Introducere -->
+            <section id="introducere">
+                <span class="section-number">01 / Introducere</span>
+                <h2>De ce contează Flaubert în 2024?</h2>
+
+                <p class="lead">Într-o lume a tweet-urilor de 280 de caractere și a conținutului „snackable", Gustave Flaubert ar părea un dinozaur. Un om care petrecea săptămâni întregi căutând un singur cuvânt. Care rescria aceeași pagină de zeci de ori. Care credea că o virgulă pusă greșit este o tragedie.</p>
+
+                <p>Și totuși, tocmai de aceea Flaubert contează mai mult ca niciodată.</p>
+
+                <p>Trăim în era abundenței verbale și a sărăciei de sens. Suntem înconjurați de cuvinte — în reclame, pe ecrane, în notificări — dar rareori ne oprim să le cântărim. Flaubert ne învață ceva radical: că fiecare cuvânt are greutate, că forma și conținutul sunt inseparabile, că adevărul nu poate fi exprimat decât prin precizie.</p>
+
+                <p>Dacă te-ai întrebat vreodată de ce unele texte te ating în adâncul sufletului iar altele alunecă pe lângă tine ca apa pe sticlă, răspunsul se află în lecțiile lui Flaubert.</p>
+            </section>
+
+            <hr>
+
+            <!-- Context Istoric -->
+            <section id="context">
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>Franța Secolului al XIX-lea</h2>
+
+                <h3>Epoca Contrastelor</h3>
+
+                <p>Gustave Flaubert s-a născut în 1821 la Rouen, într-o Franță aflată în permanentă convulsie politică. În primii 30 de ani din viața lui, țara a trecut prin restaurația monarhiei, revoluția din 1830, Monarhia din Iulie, revoluția din 1848 și în final dictatura lui Napoleon al III-lea.</p>
+
+                <p>Această instabilitate a lăsat urme adânci. Flaubert a dezvoltat o neîncredere viscerală în politică, în ideologii, în orice formă de certitudine colectivă. Pentru el, singura formă de onestitate era arta — și chiar și aceasta trebuia purificată de orice urmă de vanitate sau moralism.</p>
+
+                <h3>Familia și Formarea</h3>
+
+                <p>Tatăl său era chirurg-șef la spitalul din Rouen. Gustave a crescut literalmente în umbra morții — apartamentul familiei dădea spre sala de disecție. Această proximitate a corpurilor bolnave și moarte i-a oferit o privire clinică asupra condiției umane, lipsită de sentimentalism.</p>
+
+                <p>Nu e întâmplător că Flaubert scrie despre adulter, despre eșec, despre mediocritate cu aceeași detașare cu care un chirurg examinează un organ bolnav. El nu judecă — observă.</p>
+
+                <h3>Cercul Literar</h3>
+
+                <p>Prietenia cu scriitorul Louis Bouilhet a fost fundamentală. Cei doi își citeau reciproc manuscrisele, criticându-se cu o severitate aproape sadică. Bouilhet era singurul căruia Flaubert îi arăta primele versiuni ale textelor — și singurul a cărui părere conta.</p>
+
+                <p>Cu ceilalți scriitori ai vremii, relațiile erau mai complicate. Îl admira pe Victor Hugo, dar îl considera excesiv. Îl respecta pe Balzac pentru amploare, dar îi reproșa lipsa de stil. Cu George Sand a avut o corespondență celebră — două viziuni opuse asupra literaturii care se ciocneau cu eleganță.</p>
+            </section>
+
+            <!-- Pull Quote -->
+            <aside class="pull-quote">
+                <blockquote>„Printre toate expresiile posibile, există una singură care e justă, un singur verb, un singur adjectiv. Trebuie să le căutăm până le găsim și să nu ne mulțumim niciodată cu aproximări."</blockquote>
+                <cite>— Gustave Flaubert, Corespondență</cite>
+            </aside>
+
+            <!-- Concepte Cheie -->
+            <section id="concepte">
+                <span class="section-number">03 / Concepte Cheie</span>
+                <h2>Ideile Care i-au Ghidat Viața</h2>
+
+                <div class="concept-card">
+                    <h4>1. „Le Mot Juste" — Cuvântul Exact</h4>
+                    <p>Conceptul central al esteticii flaubertiene. Nu există sinonime perfecte. Fiecare cuvânt are o nuanță unică, o muzicalitate proprie, o greutate specifică. Sarcina scriitorului este să găsească <em>singurul</em> cuvânt care exprimă perfect ideea.</p>
+                    <p><strong>Exemplu din viața reală:</strong> Gândește-te la diferența dintre „a iubi" și „a adora". Între „trist" și „melancolie". Între „a merge" și „a pași". Flaubert susținea că aceste diferențe nu sunt cosmetice — ele schimbă realitatea pe care o descriu.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>2. Impersonalitatea Autorului</h4>
+                    <p>Flaubert credea că scriitorul trebuie să fie invizibil în operă, „ca Dumnezeu în univers — prezent pretutindeni și vizibil nicăieri". Asta înseamnă: fără comentarii morale, fără ghidarea cititorului spre o concluzie, fără „mesaje".</p>
+                    <p><strong>De ce contează azi:</strong> Într-o epocă în care toată lumea își exprimă opiniile constant, ideea de a crea ceva fără a-ți impune prezența este revoluționară. Flaubert ne învață că adevărata artă înseamnă să dispari în spatele operei tale.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>3. Stilul ca Viziune</h4>
+                    <p>Pentru Flaubert, stilul nu era „îmbrăcămintea" ideilor — era însăși substanța lor. Modul în care spui ceva <em>este</em> ceea ce spui. Un gând exprimat stângaci nu este același gând exprimat perfect.</p>
+                    <p><strong>Analogie:</strong> E ca diferența dintre o melodie cântată de un amator și aceeași melodie interpretată de un maestru. Notele sunt aceleași — dar experiența este complet diferită.</p>
+                </div>
+
+                <div class="concept-card">
+                    <h4>4. Realismul Obiectiv</h4>
+                    <p>Flaubert este considerat părintele realismului literar modern, deși el însuși detesta eticheta. Pentru el, a fi „realist" însemna să descrii lumea cu o precizie aproape științifică, fără idealizare și fără demonizare.</p>
+                    <p>Personajele lui Flaubert nu sunt eroi și nici monștri. Sunt oameni obișnuiți, cu visele lor meschine, cu compromisurile lor, cu autoamăgirile lor — exact ca noi.</p>
+                </div>
+
+                <h3>Sistemul Literar</h3>
+
+                <p>Viziunea lui Flaubert poate fi înțeleasă ca o piramidă:</p>
+
+                <p><strong>La bază: Adevărul</strong> — Orice operă trebuie să pornească de la observația atentă a realității. Nu de la idei preconcepute, nu de la mesaje pe care vrei să le transmiți, ci de la viață așa cum este ea.</p>
+
+                <p><strong>La mijloc: Forma</strong> — Adevărul trebuie exprimat prin formă perfectă. Fiecare cuvânt, fiecare virgulă, fiecare ritm al frazei trebuie să servească adevărul pe care îl exprimă.</p>
+
+                <p><strong>În vârf: Frumusețea</strong> — Când adevărul și forma perfectă se întâlnesc, rezultatul este frumusețea — nu o frumusețe decorativă, ci una esențială, care te face să simți că ai înțeles ceva despre existență.</p>
+            </section>
+
+            <!-- Pull Quote -->
+            <aside class="pull-quote">
+                <blockquote>„Emma Bovary sunt eu."</blockquote>
+                <cite>— Gustave Flaubert</cite>
+            </aside>
+
+            <!-- Citate Memorabile -->
+            <section id="citate">
+                <span class="section-number">04 / Citate Memorabile</span>
+                <h2>Cuvintele Care au Rămas</h2>
+
+                <div class="quote-card">
+                    <p class="quote-text">„Talentul este o lungă răbdare."</p>
+                    <p class="quote-explanation">Aceasta ar trebui să fie mantra oricărui creator. Flaubert demitizează geniul romantic — nu există „inspirație divină", există doar muncă neîntreruptă.</p>
+                </div>
+
+                <div class="quote-card">
+                    <p class="quote-text">„Proza trebuie să se țină dreaptă de la un capăt la altul, ca un zid, și ornamentele trebuie să fie și ele în mortar."</p>
+                    <p class="quote-explanation">Stilul nu e decorațiune adăugată după — e parte integrantă a construcției.</p>
+                </div>
+
+                <div class="quote-card">
+                    <p class="quote-text">„Ura de burghezie este începutul virtuții."</p>
+                    <p class="quote-explanation">Flaubert dispețuia mediocritatea spirituală, gândirea conformistă, siguranța de sine a celor care nu se întreabă niciodată nimic.</p>
+                </div>
+
+                <div class="quote-card">
+                    <p class="quote-text">„Să fii stupid, egoist și să ai o sănătate bună — iată cele trei condiții pentru a fi fericit. Dar dacă îți lipsește prima, totul e pierdut."</p>
+                    <p class="quote-explanation">Ironia amară a unui om care știa că inteligența și sensibilitatea sunt în egală măsură dar și blestem.</p>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- Critici și Controverse -->
+            <section>
+                <span class="section-number">05 / Critici și Controverse</span>
+                <h2>Procesul pentru Madame Bovary</h2>
+
+                <p>În 1857, Flaubert a fost judecat pentru „ultraj adus moralei publice și religioase". <em>Madame Bovary</em>, povestea unei femei care își înșală soțul și se sinucide, era considerată scandaloasă.</p>
+
+                <p>Flaubert a fost achitat, dar procesul a ridicat întrebări fundamentale: Are arta datoria de a fi morală? Poate literatura să descrie viciul fără să-l condamne explicit?</p>
+
+                <p>Flaubert a argumentat că tocmai descrierea lucidă, fără comentariu moralizator, este cea mai puternică condamnare. Emma Bovary nu este glorificată — destinul ei tragic vorbește de la sine.</p>
+
+                <h3>Alte Critici</h3>
+
+                <p>Unii contemporani l-au acuzat că petrece prea mult timp pe formă și prea puțin pe fond. Că obsesia pentru „le mot juste" duce la o proză prea lucrată, lipsită de spontaneitate. Flaubert răspundea că spontaneitatea în artă este o iluzie — sau mai rău, o scuză pentru lene.</p>
+
+                <p>Din stânga, a fost criticat pentru că nu a fost suficient de angajat social. Din dreapta, pentru că a descris societatea burgheză în culori atât de neflatante. El refuza ambele tabere: „Nu-mi place nici poporul, nici regii. Îmi displac deopotrivă prostia celor de jos și a celor de sus."</p>
+            </section>
+
+            <!-- Pull Quote -->
+            <aside class="pull-quote">
+                <blockquote>„Cu cât o idee este mai frumoasă, cu atât fraza care o exprimă sună mai bine. Fiți siguri de asta."</blockquote>
+                <cite>— Gustave Flaubert</cite>
+            </aside>
+
+            <!-- Moștenirea -->
+            <section id="mostenire">
+                <span class="section-number">06 / Moștenire</span>
+                <h2>Influența asupra Literaturii Moderne</h2>
+
+                <p>Fără Flaubert nu ar exista Proust, Joyce, Kafka sau Virginia Woolf. Tehnicile lui — stilul indirect liber, impersonalitatea narativă, atenția obsesivă la detaliu — au devenit fundamentele literaturii secolului XX.</p>
+
+                <h3>Influența asupra lui Proust</h3>
+                <p>Marcel Proust l-a venerat pe Flaubert. În celebrul său eseu, Proust analiza cum Flaubert folosește timpurile verbale și conjuncțiile pentru a crea efecte pe care nimeni nu le mai obținuse înainte.</p>
+
+                <h3>Minimalismul American</h3>
+                <p>Scriitori ca Hemingway și Raymond Carver au preluat de la Flaubert ideea că mai puțin înseamnă mai mult. Că ceea ce nu spui poate fi la fel de important ca ceea ce spui.</p>
+
+                <h3>Literatura Contemporană</h3>
+                <p>Orice scriitor care încearcă să fie precis, care refuză clișeul, care tratează limba ca pe un instrument de precizie, este moștenitorul lui Flaubert.</p>
+            </section>
+
+            <hr>
+
+            <!-- Aplicații Practice -->
+            <section>
+                <span class="section-number">07 / Aplicații Practice</span>
+                <h2>Ce Putem Învăța Azi</h2>
+
+                <h3>În Scriere</h3>
+                <p><strong>Elimină prisosul.</strong> Flaubert citea cu voce tare fiecare frază pentru a testa dacă „sună" bine. Încearcă și tu. Dacă te împiedici, fraza e prea lungă sau are un ritm greșit.</p>
+                <p><strong>Caută cuvântul exact.</strong> Nu te mulțumi cu primul sinonim care îți vine în minte. Există o diferență între „frumos" și „încântător", între „a spune" și „a mărturisi".</p>
+                <p><strong>Rescrie.</strong> Apoi rescrie din nou. Flaubert rescria de 10-15 ori. Noi putem rescrie măcar de 2-3 ori.</p>
+
+                <h3>În Comunicare</h3>
+                <p><strong>Claritatea este respect.</strong> Un email precis, fără cuvinte inutile, respectă timpul destinatarului. Flaubert ar fi detestat jargonul corporatist.</p>
+                <p><strong>Evită pasivul și eufemismele.</strong> Spune ce vrei să spui, direct.</p>
+
+                <h3>În Gândire</h3>
+                <p><strong>Suspendă judecata.</strong> Flaubert își observa personajele fără să le condamne. Încearcă și tu: înainte de a judeca pe cineva, încearcă să înțelegi de ce face ceea ce face.</p>
+                <p><strong>Îndoiește-te de propriile tale convingeri.</strong> Flaubert a scris <em>Dicționarul ideilor primite</em> — o satiră a clișeelor pe care le repetăm fără să gândim. Cât de multe dintre opiniile tale sunt cu adevărat ale tale?</p>
+
+                <h3>În Era Digitală</h3>
+                <p><strong>Rezistă la superficialitate.</strong> Într-o lume care ne împinge spre consumul rapid și exprimarea instantanee, Flaubert ne amintește că lucrurile care contează cer timp și efort.</p>
+                <p><strong>Calitatea peste cantitate.</strong> Mai bine un text bun pe săptămână decât zece texte mediocre pe zi.</p>
+            </section>
+
+            <hr>
+
+            <!-- Concluzie -->
+            <section>
+                <span class="section-number">08 / În Loc de Concluzie</span>
+                <h2>Flaubert și Bovarismul</h2>
+
+                <p>Emma Bovary își dorește o viață pe care a citit-o în romane. Își imaginează că adulterul va fi romantic, că dragostea va fi pasiune continuă, că viața poate fi ca în ficțiune. Această incapacitate de a accepta realitatea — și de a găsi frumusețe în ea — o distruge.</p>
+
+                <p>Flaubert a inventat astfel un concept care ne definește: <strong>bovarismul</strong> — tendința de a ne vedea altfel decât suntem, de a confunda ficțiunea cu realitatea, de a fi permanent dezamăgiți de viață pentru că nu seamănă cu imaginile din capul nostru.</p>
+
+                <p>În 2024, bovarismul e epidemic. Ne comparăm viețile cu cele de pe Instagram. Ne imaginăm că alții au relații perfecte, cariere de vis, experiențe extraordinare. Suntem, toți, mici Emme Bovary.</p>
+
+                <p>Paradoxal, leacul vine tot de la Flaubert: atenția reală la lumea reală. Să privești un copac, un chip, un moment banal — și să-l descrii atât de precis încât să-i descoperi frumusețea ascunsă.</p>
+
+                <p>Aceasta e lecția finală: realitatea, privită cu suficientă atenție, este mai interesantă decât orice fantezie.</p>
+            </section>
+
+        </article>
+    </main>
+
+    <footer>
+        <p class="footer-quote">„Totul trebuie învățat, de la a vorbi până la a muri."</p>
+        <p class="footer-author">— Gustave Flaubert</p>
+        <nav class="footer-nav">
+            <a href="#">Despre</a>
+            <a href="#">Alte Studii</a>
+            <a href="#">Contact</a>
+        </nav>
+    </footer>
+</body>
+</html>

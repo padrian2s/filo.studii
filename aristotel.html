@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aristotel - Filozoful Care A Organizat Totul</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+            --accent: #2d5a27;
+            --border: #e5e5e5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            background: var(--primary);
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 3rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+        nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero .category {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        .hero .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+        .hero .years {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-top: 3rem;
+        }
+        main {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        section { margin-bottom: 5rem; }
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            float: left;
+            line-height: 0.85;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            color: var(--accent);
+        }
+        .pull-quote {
+            padding: 4rem 2rem;
+            background: var(--secondary);
+            text-align: center;
+            margin: 4rem -2rem;
+            position: relative;
+        }
+        .pull-quote::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            color: var(--accent);
+            opacity: 0.1;
+        }
+        .pull-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .pull-quote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-style: normal;
+            color: var(--text-muted);
+        }
+        blockquote.inline {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        .concept-box {
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+        .concept-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer {
+            background: var(--text);
+            color: var(--primary);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .hero { padding: 4rem 1.5rem; }
+            .hero h1 { font-size: 2.5rem; }
+            main { padding: 4rem 1.5rem; }
+            .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; }
+            .lead::first-letter { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Studii Filozofice</a>
+        <a href="index.html">Acasă</a>
+    </nav>
+
+    <header class="hero">
+        <span class="category">Filozofie Antică / Sistematizator</span>
+        <h1>Aristotel</h1>
+        <p class="subtitle">Omul care a organizat cunoașterea umană și a pus bazele științei</p>
+        <span class="years">384 — 322 î.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Filozoful Lumii Concrete</h2>
+
+                <p class="lead">Dacă Platon privea în sus, spre lumea Ideilor perfecte, Aristotel privea în jur, spre lumea concretă, vie, în continuă mișcare. Pentru el, adevărul nu e ascuns într-un cer al abstracțiunilor, ci e aici, în fiecare lucru pe care îl atingem, în fiecare ființă pe care o observăm. Trebuie doar să știm să privim.</p>
+
+                <p>Aristotel a fost primul enciclopedist al umanității. A scris despre logică, fizică, metafizică, etică, politică, retorică, poetică, biologie, psihologie. A creat discipline care nu existau. A pus întrebările care au ghidat știința timp de două milenii.</p>
+
+                <p>Când Dante îl numește „maestrul celor ce știu", nu exagerează. Timp de aproape 2000 de ani, „filozofia" însemna în mare parte „ce a spus Aristotel".</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>De la Stagira la Alexandru cel Mare</h2>
+
+                <p>Aristotel s-a născut în 384 î.Hr. la Stagira, o mică cetate din nordul Greciei. Tatăl său, Nicomah, era medicul regelui Macedoniei — de aici, probabil, interesul lui Aristotel pentru biologie și observația empirică.</p>
+
+                <p>La 17 ani a venit la Atena și a intrat în Academia lui Platon, unde a rămas 20 de ani — până la moartea maestrului. Relația cu Platon a fost complexă: admirație și respect, dar și dezacorduri profunde. Aristotel va spune celebru: „Îmi este drag Platon, dar mai dragă îmi e adevărul."</p>
+
+                <h3>Tutorele unui Cuceritor</h3>
+
+                <p>În 343 î.Hr., regele Filip al II-lea al Macedoniei l-a invitat pe Aristotel să-l educe pe fiul său de 13 ani. Acel copil era Alexandru, viitorul Alexandru cel Mare. Timp de trei ani, Aristotel i-a fost tutore. Ce l-a învățat? Nu știm exact, dar Alexandru a dus cu sine în campanii copii ale lui Homer și a răspândit cultura greacă până în India.</p>
+
+                <h3>Liceul</h3>
+
+                <p>În 335 î.Hr., Aristotel s-a întors la Atena și a fondat propria școală: Liceul. Predarea se făcea adesea plimbându-se pe aleile grădinii — de aici numele „peripatetici" (de la peripatein = a se plimba). Aici a scris și predat timp de 12 ani cele mai importante lucrări ale sale.</p>
+
+                <p>Când Alexandru a murit în 323 î.Hr., sentimentul anti-macedonean a explodat în Atena. Aristotel, asociat cu curtea macedoneană, a fost acuzat de impietate. „Nu vreau ca atenienii să păcătuiască de două ori împotriva filozofiei", a spus el (referindu-se la Socrate) și a fugit la Chalcis, unde a murit un an mai târziu.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Toți oamenii, prin natura lor, doresc să cunoască."</blockquote>
+                <cite>— Aristotel, Metafizica</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Concepte Cheie</span>
+                <h2>Sistemul Aristotelic</h2>
+
+                <h3>Cele Patru Cauze</h3>
+
+                <p>Pentru a înțelege cu adevărat ceva, trebuie să cunoști patru „cauze" ale lui:</p>
+
+                <ul>
+                    <li><strong>Cauza materială</strong> — din ce e făcut? (statuia e din bronz)</li>
+                    <li><strong>Cauza formală</strong> — ce formă/structură are? (are forma unui om)</li>
+                    <li><strong>Cauza eficientă</strong> — cine/ce l-a produs? (sculptorul)</li>
+                    <li><strong>Cauza finală</strong> — pentru ce scop există? (pentru a onora un erou)</li>
+                </ul>
+
+                <p>Ultima cauză — cea finală sau „teleologică" — e esențială pentru Aristotel. Totul în natură are un scop, o țintă spre care tinde. Ghinda tinde să devină stejar. Copilul tinde să devină adult. Omul tinde spre... ce?</p>
+
+                <div class="concept-box">
+                    <h4>Teleologia în viața de zi cu zi</h4>
+                    <p>Când întrebați „De ce faci asta?", cereți cauza finală. Când întrebați „Cum funcționează?", cereți cauza eficientă și formală. Aristotel ne învață că ambele întrebări sunt legitime și necesare pentru o înțelegere completă.</p>
+                </div>
+
+                <h3>Potență și Act</h3>
+
+                <p>Una dintre cele mai subtile distincții aristotelice. Un lucru poate fi în două moduri: în potență (poate deveni ceva) sau în act (e efectiv acel ceva). Marmura e în potență o statuie. Când sculptorul termină, statuia e în act.</p>
+
+                <p>Această distincție rezolvă un paradox vechi: cum e posibilă schimbarea? Parmenide spusese: schimbarea e imposibilă, pentru că ceva nu poate veni din nimic. Aristotel răspunde: nu vine din nimic, vine din potență. Ghinda nu devine stejar din nimic — era deja stejar în potență.</p>
+
+                <h3>Substanță și Accidente</h3>
+
+                <p>Substanța e ceea ce face un lucru să fie ceea ce e — esența lui. Accidentele sunt proprietățile care pot varia fără ca lucrul să înceteze să existe. Socrate e om (substanță) și e chelios (accident). Dacă ar avea păr, ar fi tot Socrate.</p>
+
+                <h3>Silogismul</h3>
+
+                <p>Aristotel a inventat logica formală. Silogismul e forma de bază a raționamentului valid:</p>
+                <ul>
+                    <li>Toți oamenii sunt muritori (premisă majoră)</li>
+                    <li>Socrate e om (premisă minoră)</li>
+                    <li>Deci Socrate e muritor (concluzie)</li>
+                </ul>
+                <p>Aceasta a fost fundamentul logicii timp de peste 2000 de ani, până la logica modernă a lui Frege și Russell.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Suntem ceea ce facem în mod repetat. Excelența, așadar, nu e un act, ci un obicei."</blockquote>
+                <cite>— Aristotel, Etica Nicomahică</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">04 / Etica</span>
+                <h2>Cum Să Trăiești Bine</h2>
+
+                <h3>Eudaimonia — Fericirea ca Înflorire</h3>
+
+                <p>Ce vrea fiecare om? Fericirea — eudaimonia. Dar ce e fericirea? Nu plăcerea (hedonism), nu bogăția, nu chiar virtutea în sine. Fericirea e „activitatea sufletului conform virtuții" — e să trăiești bine, să-ți realizezi potențialul uman.</p>
+
+                <p>Gândiți-vă la un cuțit. Un cuțit bun e cel care taie bine — își îndeplinește funcția. Care e funcția omului? Ce poate face doar omul? Să gândească rațional. Deci un om „bun" e cel care gândește și acționează rațional. Aceasta e virtutea umană.</p>
+
+                <h3>Doctrina Mediei</h3>
+
+                <p>Virtutea e o „medie" între două extreme. Curajul e media între lașitate și nesăbuință. Generozitatea e media între zgârcenie și risipă. Modestia e media între timiditate și nerușinare.</p>
+
+                <div class="concept-box">
+                    <h4>Găsirea mediei</h4>
+                    <p>Media nu e matematică — nu e același punct pentru toți. Un soldat experimentat și un novice nu au aceeași „medie" a curajului. Media e relativă la persoană și situație. Tocmai de aceea virtutea cere înțelepciune practică (phronesis).</p>
+                </div>
+
+                <h3>Phronesis — Înțelepciunea Practică</h3>
+
+                <p>Nu poți deveni virtuos citind cărți despre virtute. Trebuie să practici, să îți formezi obiceiuri bune, să înveți din experiență. Phronesis e capacitatea de a judeca corect în situații concrete — ce e de făcut aici și acum.</p>
+
+                <p>E diferită de înțelepciunea teoretică (sophia). Sophia contemplă adevărurile eterne. Phronesis navighează lumea schimbătoare a acțiunii umane.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Politica</span>
+                <h2>Omul ca Animal Politic</h2>
+
+                <blockquote class="inline">„Omul este prin natură un animal politic."</blockquote>
+
+                <p>Pentru Aristotel, omul nu e un individ izolat care alege să intre în societate. Suntem social prin natura noastră — ca albinele sau furnicile, doar că mai complex. Cine trăiește în afara cetății e „ori fiară, ori zeu".</p>
+
+                <p>Aristotel a studiat constituțiile a 158 de cetăți grecești (doar cea a Atenei a supraviețuit). Din această cercetare empirică a extras o tipologie a regimurilor:</p>
+
+                <ul>
+                    <li><strong>Monarhie</strong> (conducerea unuia pentru binele comun) / <strong>Tiranie</strong> (pentru binele propriu)</li>
+                    <li><strong>Aristocrație</strong> (conducerea celor puțini virtuoși) / <strong>Oligarhie</strong> (conducerea celor puțini bogați)</li>
+                    <li><strong>Politeia</strong> (conducerea majorității moderate) / <strong>Democrație</strong> (conducerea majorității sărace)</li>
+                </ul>
+
+                <p>Regimul ideal? Nu există unul universal. Depinde de contextul istoric, de caracterul populației. Dar, în general, Aristotel preferă regimurile mixte și moderate — o combinație de elemente oligarhice și democratice care evită extremele.</p>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Citate Memorabile</span>
+                <h2>Cuvinte pentru Veșnicie</h2>
+
+                <blockquote class="inline">„Îmi este drag Platon, dar mai dragă îmi e adevărul."</blockquote>
+                <p>Loialitatea față de idei și adevăr e mai importantă decât loialitatea față de persoane, chiar și decât cei mai respectați mentori.</p>
+
+                <blockquote class="inline">„O rândunică nu face primăvară."</blockquote>
+                <p>O singură zi bună nu te face fericit. Eudaimonia e o activitate constantă, de-a lungul unei vieți întregi. Nu poți judeca o viață până nu s-a încheiat.</p>
+
+                <blockquote class="inline">„Educația e cea mai bună proviziune pentru bătrânețe."</blockquote>
+                <p>Ce strângi în tinerețe vei culege la bătrânețe. Iar cunoașterea e un bun care nu se pierde.</p>
+
+                <blockquote class="inline">„Natura nu face nimic în zadar."</blockquote>
+                <p>Principiul teleologic fundamental. Orice există, există pentru un scop. Misiunea științei e să descopere aceste scopuri.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Critici și Limite</span>
+                <h2>Umbrele Stagirianului</h2>
+
+                <h3>Teleologia Excesivă</h3>
+                <p>Știința modernă a abandonat cauzele finale în explicarea naturii. Nu întrebăm „pentru ce" cade piatra, ci „cum" cade (legile gravitației). Fizica nu are nevoie de scopuri — doar de regularități.</p>
+
+                <h3>Justificarea Sclaviei</h3>
+                <p>Aristotel credea că unii oameni sunt „sclavi prin natură" — lipsiți de capacitate deliberativă și destinați să fie conduși. E una dintre cele mai problematice poziții ale sale, folosită timp de secole pentru a justifica nedreptăți.</p>
+
+                <h3>Statutul Femeilor</h3>
+                <p>Femeile sunt pentru Aristotel „bărbați incompleti", inferioare în raționalitate. În politică, le revine sfera domestică, nu cea publică.</p>
+
+                <h3>Erori Științifice</h3>
+                <p>Multe din ideile sale științifice erau greșite: Pământul în centrul universului, obiectele grele cad mai repede, creierul e un organ de răcire a sângelui. A fost nevoie de Galilei și Newton pentru a le corecta.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Moștenirea</span>
+                <h2>Două Milenii de Influență</h2>
+
+                <h3>Evul Mediu</h3>
+                <p>Redescoperit prin traduceri arabe (Averroes, Avicenna), Aristotel a devenit „Filozoful" prin excelență în Europa medievală. Toma d'Aquino l-a sintetizat cu teologia creștină — aristotelismul tomist e încă doctrina oficială a Bisericii Catolice.</p>
+
+                <h3>Renașterea și Revoluția Științifică</h3>
+                <p>Galilei și-a început cariera atacând fizica aristotelică. Newton a înlocuit cosmologia geocentrică. Dar metoda empirică — observație, clasificare, căutarea regularităților — rămâne aristotelică în spirit.</p>
+
+                <h3>Filozofia Contemporană</h3>
+                <p>Etica virtuților a cunoscut o renaștere în secolul XX (Alasdair MacIntyre, Martha Nussbaum). Comunitarienii politici (Michael Sandel) se inspiră din critica aristotelică a individualismului.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Aristotel pentru Viața de Azi</h2>
+
+                <h3>Formează Obiceiuri</h3>
+                <p>Nu încerca să devii virtuos „dintr-o dată". Alege un mic obicei bun și repetă-l zilnic până devine a doua natură. Caracterul se construiește treptat.</p>
+
+                <h3>Caută Echilibrul</h3>
+                <p>În orice domeniu — muncă, relații, sănătate — extremele sunt periculoase. Caută media potrivită pentru tine, în contextul tău specific.</p>
+
+                <h3>Întreabă „Pentru Ce?"</h3>
+                <p>Când faci ceva, întreabă-te care e scopul final. Adesea ne pierdem în mijloace uitând scopurile. Banii sunt pentru... ce? Cariera e pentru... ce? Urmărește lanțul cauzal până la ceea ce contează cu adevărat.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Aristotelic</h4>
+                    <p>Identifică o virtute pe care vrei să o dezvolți (răbdarea, curajul, generozitatea). Definește extremele (prea mult / prea puțin). Găsește trei acțiuni concrete, mici, pe care le poți face săptămâna aceasta pentru a practica media. Repetă timp de 30 de zile.</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Maestrul Celor Ce Știu</h2>
+
+                <p>Aristotel ne învață că filozofia nu e evadare din lume, ci angajare cu lumea. Adevărul e aici, în lucrurile pe care le vedem și le atingem, în comunitățile în care trăim, în acțiunile pe care le facem zilnic.</p>
+
+                <p>Ne învață că excelența e un obicei, nu un accident. Că fericirea se construiește, nu se găsește. Că omul e prin natură social și că virtutea personală e inseparabilă de virtutea civică.</p>
+
+                <p>Poate că unele din teoriile lui au fost depășite. Dar întrebările pe care le-a pus — Ce e o viață bună? Cum devin virtuos? Care e cel mai bun regim politic? — rămân întrebările noastre. Și metoda lui — observație, analiză, clasificare, căutarea mediei — rămâne un ghid de încredere într-o lume a extremelor.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>Studii Filozofice — Un proiect dedicat gândirii care contează</p>
+    </footer>
+</body>
+</html>

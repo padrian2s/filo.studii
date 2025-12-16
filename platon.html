@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platon - Arhitectul Lumii Ideilor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+            --accent: #1a4f6e;
+            --border: #e5e5e5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            background: var(--primary);
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 3rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+        nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero .category {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        .hero .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+        .hero .years {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-top: 3rem;
+        }
+        main {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        section { margin-bottom: 5rem; }
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            float: left;
+            line-height: 0.85;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            color: var(--accent);
+        }
+        .pull-quote {
+            padding: 4rem 2rem;
+            background: var(--secondary);
+            text-align: center;
+            margin: 4rem -2rem;
+            position: relative;
+        }
+        .pull-quote::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            color: var(--accent);
+            opacity: 0.1;
+        }
+        .pull-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .pull-quote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-style: normal;
+            color: var(--text-muted);
+        }
+        blockquote.inline {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        .concept-box {
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+        .concept-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer {
+            background: var(--text);
+            color: var(--primary);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .hero { padding: 4rem 1.5rem; }
+            .hero h1 { font-size: 2.5rem; }
+            main { padding: 4rem 1.5rem; }
+            .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; }
+            .lead::first-letter { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Studii Filozofice</a>
+        <a href="index.html">Acasă</a>
+    </nav>
+
+    <header class="hero">
+        <span class="category">Filozofie Antică / Idealism</span>
+        <h1>Platon</h1>
+        <p class="subtitle">Arhitectul lumii invizibile care stă în spatele tuturor lucrurilor vizibile</p>
+        <span class="years">c. 428 — 348 î.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Filozoful Care A Văzut Dincolo</h2>
+
+                <p class="lead">Priviți un triunghi desenat pe hârtie. Liniile sunt imperfecte, colțurile nu sunt exact ascuțite, unghiurile nu sunt precis de 180 de grade. Și totuși, știți că e un triunghi. Cum? Pentru că mintea voastră „vede" triunghiul perfect — cel ideal — de care acest desen e doar o copie palidă. Aceasta e intuiția centrală a lui Platon.</p>
+
+                <p>Platon credea că realitatea pe care o vedem cu ochii — scaunele, copacii, oamenii — e doar umbra unei realități mai profunde: lumea Ideilor sau Formelor. Există Frumusețea în sine, Dreptatea în sine, Binele în sine — perfecte, eterne, neschimbătoare. Tot ce vedem aici sunt copii imperfecte.</p>
+
+                <p>Sună ciudat? Poate. Dar înainte de a respinge ideea, întrebați-vă: de unde știți că ceva e „drept" sau „frumos"? Comparați cu ce standard? De unde vine acel standard dacă nu l-ați văzut niciodată cu ochii?</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>Din Aristocrație în Filozofie</h2>
+
+                <p>Aristocles — căci acesta era numele său de naștere, „Platon" fiind o poreclă care însemna „cel cu umeri largi" — s-a născut în una dintre cele mai nobile familii ateniene în jurul anului 428 î.Hr. Rudele sale includeau legislatori și politicieni influenți.</p>
+
+                <p>Destinul lui părea trasat: o carieră politică strălucitoare. Dar în 399 î.Hr. s-a întâmplat ceva care i-a schimbat viața: Atena l-a condamnat la moarte pe Socrate, mentorul său. Platon avea aproximativ 28 de ani.</p>
+
+                <p>Moartea lui Socrate l-a deziluzionat profund de politica ateniană. Democrația care îl ucisese pe cel mai drept om era bolnavă. Dar ce alternativă exista? Această întrebare va sta la baza operei sale politice.</p>
+
+                <h3>Călătoriile</h3>
+
+                <p>După moartea lui Socrate, Platon a călătorit. Egipt, Cyrene, Italia de Sud — unde a întâlnit pitagoreicii, care l-au influențat profund cu viziunea lor matematică asupra universului. A vizitat Siracuza de trei ori, încercând să-l transforme pe tiranul Dionisie într-un „rege-filozof". A eșuat de fiecare dată, la un moment dat fiind chiar vândut ca sclav.</p>
+
+                <h3>Academia</h3>
+
+                <p>În jurul anului 387 î.Hr., Platon a fondat Academia — prima universitate din istoria occidentală. A funcționat timp de 900 de ani, până în 529 d.Hr., când împăratul Iustinian a închis-o. Aici a predat Platon, aici a studiat Aristotel, aici s-a născut filozofia sistematică.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Filosofia începe cu mirarea."</blockquote>
+                <cite>— Platon, Theaitetos</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Concepte Cheie</span>
+                <h2>Arhitectura Lumii Platonice</h2>
+
+                <h3>Teoria Ideilor (Formelor)</h3>
+
+                <p>Nucleul filozofiei platonice: există două niveluri ale realității. Lumea sensibilă — ceea ce vedem, auzim, atingem — e în continuă schimbare, imperfectă, efemeră. Deasupra ei există lumea inteligibilă — Ideile sau Formele — perfecte, eterne, accesibile doar minții.</p>
+
+                <p>Un cal individual se naște, îmbătrânește, moare. Dar „Calul în sine" — esența calității de cal — nu se schimbă niciodată. Toți caii participă la această Idee, sunt copii ale ei.</p>
+
+                <div class="concept-box">
+                    <h4>Analogie modernă</h4>
+                    <p>Gândiți-vă la software și hardware. Programul (codul) e abstract, perfect în logica lui. Execuția pe un computer fizic e întotdeauna imperfectă — încetinită de hardware, afectată de erori. Codul e ca Ideea; execuția e ca lucrul sensibil.</p>
+                </div>
+
+                <h3>Alegoria Peșterii</h3>
+
+                <p>Cel mai celebru pasaj din Platon. Imaginați-vă prizonieri înlănțuiți într-o peșteră din copilărie, cu fața la perete. În spatele lor arde un foc, iar între foc și ei trec oameni purtând obiecte. Prizonierii văd doar umbrele de pe perete și cred că aceasta e realitatea.</p>
+
+                <p>Dacă unul ar fi eliberat și forțat să se întoarcă spre foc, l-ar durea ochii. Dacă ar fi scos afară, la lumina soarelui, ar fi orbit. Dar treptat, s-ar obișnui și ar vedea realitatea adevărată — și ar înțelege că umbrele erau doar umbre.</p>
+
+                <p>Dar dacă s-ar întoarce în peșteră să-i elibereze pe ceilalți? Nu l-ar crede. Ba chiar, dacă ar insista, l-ar ucide.</p>
+
+                <p>Aceasta e condiția filozofului în societate: vede adevărul, dar lumea preferă umbrele.</p>
+
+                <h3>Tripartiția Sufletului</h3>
+
+                <p>Platon împarte sufletul uman în trei părți:</p>
+                <ul>
+                    <li><strong>Rațiunea</strong> (logistikon) — partea care gândește, calculează, caută adevărul. Virtutea ei: înțelepciunea.</li>
+                    <li><strong>Spiritul</strong> (thymoeides) — partea care simte mândrie, rușine, indignare. Virtutea ei: curajul.</li>
+                    <li><strong>Apetitul</strong> (epithymetikon) — dorințele corporale: foame, sete, dorință sexuală. Virtutea ei: cumpătarea.</li>
+                </ul>
+
+                <p>Dreptatea în suflet: când rațiunea conduce, spiritul o sprijină, iar apetitul se supune. E ca o trăsură: rațiunea e vizitiul, spiritul e calul nobil, apetitul e calul indisciplinat.</p>
+
+                <h3>Statul Ideal</h3>
+
+                <p>În „Republica", Platon construiește un stat paralel cu sufletul:</p>
+                <ul>
+                    <li><strong>Filozofii-regi</strong> — corespund rațiunii, conduc prin înțelepciune</li>
+                    <li><strong>Gardienii</strong> — corespund spiritului, apără statul cu curaj</li>
+                    <li><strong>Producătorii</strong> — corespund apetitului, asigură nevoile materiale</li>
+                </ul>
+
+                <p>Dreptatea în stat: fiecare clasă își face treaba și nu se amestecă în treburile celorlalte.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Până când filozofii nu vor fi regi, sau regii nu vor filozofa cu adevărat, nu va fi odihnă pentru cetăți."</blockquote>
+                <cite>— Platon, Republica</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">04 / Dialogurile</span>
+                <h2>Opera ca Dramă a Ideilor</h2>
+
+                <p>Platon a scris exclusiv dialoguri — conversații dramatice în care personaje reale dezbat probleme filozofice. Socrate e de obicei personajul principal. Această formă nu e întâmplătoare: filozofia e căutare vie, nu doctrină moartă.</p>
+
+                <h3>Dialoguri Timpurii (Socratice)</h3>
+                <p>Apologia, Criton, Euthyphro, Laches — focalizate pe întrebări etice, terminate adesea fără răspuns definitiv. Reflectă probabil gândirea lui Socrate cel real.</p>
+
+                <h3>Dialoguri de Maturitate</h3>
+                <p>Republica, Phaidon, Symposion, Phaidros — aici se dezvoltă teoria Ideilor, politica, psihologia. Socrate devine mai degrabă purtător de cuvânt al lui Platon.</p>
+
+                <h3>Dialoguri Târzii</h3>
+                <p>Parmenides, Sofistul, Timaios, Legile — mai tehnice, mai critice față de propriile teorii anterioare. Platon își revizuiește ideile.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Citate Memorabile</span>
+                <h2>Ecouri din Academie</h2>
+
+                <blockquote class="inline">„Măsura tuturor lucrurilor e omul" — nu! Măsura e Dumnezeul.</blockquote>
+                <p>Platon contra lui Protagoras. Relativismul („fiecare are adevărul lui") e periculos. Există standarde obiective — Ideile — care transcend opiniile individuale.</p>
+
+                <blockquote class="inline">„Corpul e mormântul sufletului."</blockquote>
+                <p>Sufletul e prins în corp ca într-o închisoare. Filozofia e „exercițiu pentru moarte" — învățăm să ne eliberăm de corporal pentru a contempla Ideile.</p>
+
+                <blockquote class="inline">„Educația nu constă în a pune vederea în ochi, ci în a întoarce ochiul în direcția corectă."</blockquote>
+                <p>Nu „umplem" elevul cu informații, ci îi orientăm atenția spre ce merită văzut. Educația e conversiune a privirii.</p>
+
+                <blockquote class="inline">„Cei care spun povești conduc lumea."</blockquote>
+                <p>De aceea Platon voia să controleze arta în statul ideal. Poeții și artiștii modelează sufletele — e o putere prea mare pentru a fi lăsată la voia întâmplării.</p>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Critici</span>
+                <h2>Umbrele Lumii Ideilor</h2>
+
+                <h3>Critica lui Aristotel</h3>
+                <p>Aristotel, propriul elev, a respins teoria Ideilor. Unde sunt aceste Idei? Cum „participă" lucrurile la ele? Ideile explică lucrurile sau doar dublează problema? Aristotel va muta esența înapoi în lucrurile concrete.</p>
+
+                <h3>Utopie Totalitară?</h3>
+                <p>„Republica" a fost criticată ca blueprint pentru totalitarism: censura artei, reproducerea controlată, abolirea familiei pentru gardieni. Karl Popper, în „Societatea deschisă și dușmanii ei", l-a acuzat pe Platon că e părintele ideologic al totalitarismelor secolului XX.</p>
+
+                <h3>Disprețul pentru Corp</h3>
+                <p>Dualismul platonist — suflet bun, corp rău — a avut consecințe problematice în creștinism și dincolo: ascetism extrem, disprețul pentru plăcere, culpabilizarea sexualității.</p>
+
+                <h3>Elitism Epistemic</h3>
+                <p>Doar filozofii văd adevărul; restul trăiesc în umbre. Această viziune poate justifica dominația unei elite „iluminate" asupra majorității „ignorante".</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Moștenirea</span>
+                <h2>Umbra Lungă a Academiei</h2>
+
+                <p>Whitehead spunea că toată filozofia occidentală e „o serie de note de subsol la Platon". Exagerare, dar nu complet falsă.</p>
+
+                <h3>Neoplatonismul</h3>
+                <p>Plotin (sec. III d.Hr.) a dezvoltat platonismul într-un sistem mistic. Unul, Intelectul, Sufletul — o ierarhie a realității care a influențat profund creștinismul, islamul și iudaismul.</p>
+
+                <h3>Creștinismul</h3>
+                <p>Augustin a sintetizat Platon cu Biblia. Ideile devin gânduri în mintea lui Dumnezeu. Lumea aceasta e vale a plângerii; patria adevărată e cerească.</p>
+
+                <h3>Renașterea</h3>
+                <p>Academia Florentină a lui Marsilio Ficino a redescoperit Platon. Platonismul a inspirat arta, literatura și știința renascentistă.</p>
+
+                <h3>Modernitatea</h3>
+                <p>Idealiștii germani (Hegel), filozofia matematicii (Frege, Gödel cred în obiecte matematice abstracte), fenomenologia — toate au rădăcini platonice.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Aplicații Practice</span>
+                <h2>Platon pentru Viața de Azi</h2>
+
+                <h3>Caută Standardul</h3>
+                <p>Când evaluezi ceva — o decizie, o relație, un produs — întreabă-te: care e idealul? Cu ce compar? A avea un standard clar clarifică judecata.</p>
+
+                <h3>Depășește Aparențele</h3>
+                <p>În era fake news și manipulării vizuale, alegoria peșterii e mai actuală ca niciodată. Ce „umbre" iei drept realitate? Ce surse îți formează imaginea despre lume?</p>
+
+                <h3>Echilibrează Sufletul</h3>
+                <p>Tripartiția platonică e un model util: rațiunea îți ghidează viața? Spiritul (mândria, valorile) e în serviciul rațiunii? Apetitele sunt controlate sau te controlează?</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Platonic</h4>
+                    <p>Gândiți-vă la o decizie recentă. Ce parte a „sufletului" a condus? Rațiunea („e logic să...")? Spiritul („e chestiune de principiu")? Apetitul („vreau, punct")? Cum ar fi arătat decizia dacă ar fi condus altă parte?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Concluzie</span>
+                <h2>Lumina Din Afara Peșterii</h2>
+
+                <p>Platon ne invită la o aventură: să ieșim din peșteră, să suportăm durerea luminii, să vedem realitatea așa cum e — nu cum pare. E o invitație exigentă. Mulți preferă umbrele confortabile.</p>
+
+                <p>Dar odată ce ai văzut soarele, poți să te mai întorci la umbre ca și cum ar fi reale? Platon spune că nu. Filozofia e drum fără întoarcere.</p>
+
+                <p>Poate că teoria Ideilor e greșită în detalii. Dar intuiția de bază — că există standarde care transcend opiniile noastre, că adevărul nu e doar ce ni se pare, că mintea poate accesa realități invizibile ochiului — această intuiție rămâne vie și necesară.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>Studii Filozofice — Un proiect dedicat gândirii care contează</p>
+    </footer>
+</body>
+</html>

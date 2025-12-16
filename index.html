@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filo — Studii Filozofice și Literare</title>
+
+    <!-- Fonturi -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+            --accent: #c41e3a;
+            --border: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            background: var(--primary);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12vw, 10rem);
+            font-weight: 400;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .hero .tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero .description {
+            font-family: 'Merriweather', serif;
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            max-width: 500px;
+            font-style: italic;
+            padding: 0 1rem;
+        }
+
+        .hero .scroll-hint {
+            margin-top: 3rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero .scroll-hint::after {
+            content: '↓';
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(6px); }
+            60% { transform: translateY(3px); }
+        }
+
+        /* Guidance Section */
+        .guidance {
+            background: var(--secondary);
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .guidance-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .guidance-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .guidance-header .label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .guidance-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+
+        .guidance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .guidance-item {
+            text-align: center;
+            padding: 1.5rem 1rem;
+        }
+
+        .guidance-item .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            opacity: 0.3;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .guidance-item h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .guidance-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .guidance-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .guidance-note p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Studies Section */
+        .studies {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+        }
+
+        .studies-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .studies-header .label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .studies-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .studies-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Study Card - Mobile First */
+        .study-card {
+            border: 1px solid var(--border);
+            padding: 2rem 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.3s ease;
+            position: relative;
+            background: var(--primary);
+            border-left: 3px solid transparent;
+            /* Better touch target */
+            min-height: 44px;
+            -webkit-tap-highlight-color: rgba(196, 30, 58, 0.1);
+        }
+
+        .study-card:hover,
+        .study-card:active {
+            border-left-color: var(--accent);
+            background: var(--secondary);
+        }
+
+        .study-card .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .study-card .category {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: rgba(196, 30, 58, 0.08);
+            padding: 0.4rem 0.8rem;
+            border-radius: 2px;
+        }
+
+        .study-card .years {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+        }
+
+        .study-card .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+            line-height: 1.25;
+        }
+
+        .study-card .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .study-card .tagline {
+            font-family: 'Merriweather', serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--text-muted);
+            line-height: 1.7;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .study-card .read-more {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 0;
+            /* Better touch target */
+        }
+
+        .study-card .read-more::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .study-card:hover .read-more::after,
+        .study-card:active .read-more::after {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: var(--primary);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        footer .footer-tagline {
+            font-family: 'Merriweather', serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            opacity: 0.6;
+            max-width: 350px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        footer .footer-copy {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            opacity: 0.4;
+            margin-top: 2.5rem;
+        }
+
+        /* ============================================
+           TABLET (min-width: 600px)
+           ============================================ */
+        @media (min-width: 600px) {
+            .studies {
+                padding: 5rem 2rem;
+            }
+
+            .studies-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .study-card {
+                padding: 2.5rem;
+            }
+
+            .study-card .title {
+                font-size: 1.8rem;
+            }
+
+            .guidance-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* ============================================
+           DESKTOP (min-width: 900px)
+           ============================================ */
+        @media (min-width: 900px) {
+            .hero {
+                min-height: 60vh;
+            }
+
+            .studies {
+                padding: 6rem 2rem;
+            }
+
+            .studies-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .study-card {
+                padding: 3rem;
+                border-left: 1px solid var(--border);
+            }
+
+            .study-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -1px;
+                width: 3px;
+                height: 0;
+                background: var(--accent);
+                transition: height 0.4s ease;
+            }
+
+            .study-card:hover::before {
+                height: 100%;
+            }
+
+            .study-card:hover {
+                transform: translateY(-4px);
+                border-left-color: var(--border);
+            }
+
+            .study-card .title {
+                font-size: 2rem;
+            }
+
+            .study-card .tagline {
+                font-size: 1.05rem;
+            }
+
+            .guidance {
+                padding: 5rem 2rem;
+            }
+
+            .guidance-grid {
+                gap: 3rem;
+            }
+
+            .guidance-item {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* ============================================
+           MOBILE SMALL (max-width: 400px)
+           ============================================ */
+        @media (max-width: 400px) {
+            .hero {
+                padding: 4rem 1.25rem;
+                min-height: 60vh;
+            }
+
+            .hero .description {
+                font-size: 1rem;
+            }
+
+            .guidance {
+                padding: 3rem 1.25rem;
+            }
+
+            .guidance-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .guidance-item {
+                padding: 1.5rem 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .guidance-item:last-child {
+                border-bottom: none;
+            }
+
+            .studies {
+                padding: 3rem 1.25rem;
+            }
+
+            .study-card {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .study-card .title {
+                font-size: 1.4rem;
+            }
+
+            .study-card .tagline {
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* Touch-friendly active states */
+        @media (hover: none) {
+            .study-card:active {
+                background: var(--secondary);
+                border-left-color: var(--accent);
+            }
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1 class="logo">Filo</h1>
+        <p class="tagline">Studii Filozofice și Literare</p>
+        <p class="description">Gânditori care au schimbat lumea, explicați pe înțelesul tuturor.</p>
+        <div class="scroll-hint">Explorează</div>
+    </header>
+
+    <!-- Guidance Section -->
+    <section class="guidance">
+        <div class="guidance-inner">
+            <header class="guidance-header">
+                <span class="label">Cum funcționează</span>
+                <h2>Filozofie fără jargon</h2>
+            </header>
+
+            <div class="guidance-grid">
+                <div class="guidance-item">
+                    <div class="number">01</div>
+                    <h3>Alege un gânditor</h3>
+                    <p>Fiecare studiu prezintă un filozof sau scriitor major, cu viața, ideile și contextul istoric.</p>
+                </div>
+
+                <div class="guidance-item">
+                    <div class="number">02</div>
+                    <h3>Citește în ritmul tău</h3>
+                    <p>Studiile sunt structurate în secțiuni clare. Poți citi integral sau sări direct la ce te interesează.</p>
+                </div>
+
+                <div class="guidance-item">
+                    <div class="number">03</div>
+                    <h3>Aplică în viață</h3>
+                    <p>Fiecare studiu include aplicații practice — cum te ajută aceste idei în viața de zi cu zi.</p>
+                </div>
+            </div>
+
+            <div class="guidance-note">
+                <p>Nu ai nevoie de cunoștințe anterioare. Scriem pentru cititori curioși, nu pentru specialiști.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studies -->
+    <main class="studies">
+        <header class="studies-header">
+            <span class="label">Colecția</span>
+            <h2>Studii Disponibile</h2>
+        </header>
+
+        <div class="studies-grid">
+
+            <!-- Kierkegaard -->
+            <a href="kierkegaard.html" class="study-card">
+                <div class="card-top">
+                    <span class="category">Existențialism</span>
+                    <span class="years">1813 — 1855</span>
+                </div>
+                <h3 class="title">Søren Kierkegaard</h3>
+                <p class="subtitle">Părintele Existențialismului</p>
+                <p class="tagline">Într-o lume care te vrea conform, el a ales angoasa libertății. Primul filozof care a îndrăznit să întrebe: cine ești tu, nu ce ar trebui să fii?</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Flaubert -->
+            <a href="flaubert.html" class="study-card">
+                <div class="card-top">
+                    <span class="category">Literatură</span>
+                    <span class="years">1821 — 1880</span>
+                </div>
+                <h3 class="title">Gustave Flaubert</h3>
+                <p class="subtitle">Arhitectul Frazei Perfecte</p>
+                <p class="tagline">A petrecut săptămâni căutând un singur cuvânt. A rescris aceeași pagină de zeci de ori. Într-o epocă a superficialității, el ne învață că perfecțiunea cere sacrificiu.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Auguste Comte -->
+            <a href="auguste_comte.html" class="study-card">
+                <div class="card-top">
+                    <span class="category">Pozitivism</span>
+                    <span class="years">1798 — 1857</span>
+                </div>
+                <h3 class="title">Auguste Comte</h3>
+                <p class="subtitle">Părintele Pozitivismului</p>
+                <p class="tagline">A visat să transforme societatea într-o știință exactă. A creat o religie fără Dumnezeu. Nebun sau vizionar? Ideile lui ne guvernează și azi, fără să știm.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Dumas și Sand -->
+            <a href="dumas-sand-studiu.html" class="study-card">
+                <div class="card-top">
+                    <span class="category">Romantism</span>
+                    <span class="years">Secolul XIX</span>
+                </div>
+                <h3 class="title">Dumas și George Sand</h3>
+                <p class="subtitle">Titanii Romantismului Francez</p>
+                <p class="tagline">El scria aventuri care au cucerit lumea. Ea a sfidat o epocă întreagă purtând pantaloni și fumând trabucuri. Doi rebeli care au reinventat ce înseamnă să fii scriitor.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Pitagora -->
+            <a href="pitagora.html" class="study-card">
+                <div class="card-top">
+                    <span class="category">Presocratici</span>
+                    <span class="years">c. 570 — 495 î.Hr.</span>
+                </div>
+                <h3 class="title">Pitagora</h3>
+                <p class="subtitle">Filozoful Numerelor și al Armoniei</p>
+                <p class="tagline">Toată lumea știe teorema, dar puțini știu că a fondat un cult mistic unde matematica era religie, iar numerele erau cheia secretă a universului.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Heraclit -->
+            <a href="heraclit.html" class="study-card">
+                <div class="card-top">
+                    <span class="category">Presocratici</span>
+                    <span class="years">c. 535 — 475 î.Hr.</span>
+                </div>
+                <h3 class="title">Heraclit</h3>
+                <p class="subtitle">Filozoful Obscur</p>
+                <p class="tagline">„Nu te poți scălda de două ori în același râu." Într-o lume care căuta stabilitatea, el a văzut că totul curge, totul se transformă, totul arde.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Parmenide -->
+            <a href="parmenide.html" class="study-card">
+                <div class="card-top">
+                    <span class="category">Presocratici</span>
+                    <span class="years">c. 515 — 450 î.Hr.</span>
+                </div>
+                <h3 class="title">Parmenide</h3>
+                <p class="subtitle">Filozoful Ființei Neschimbătoare</p>
+                <p class="tagline">Opusul lui Heraclit. A demonstrat că schimbarea e imposibilă, că mișcarea e iluzie. Sună nebunesc? Nimeni nu l-a putut contrazice logic.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Socrate -->
+            <a href="socrate.html" class="study-card">
+                <div class="card-top">
+                    <span class="category">Filozofie Antică</span>
+                    <span class="years">c. 470 — 399 î.Hr.</span>
+                </div>
+                <h3 class="title">Socrate</h3>
+                <p class="subtitle">Filozoful Care Nu A Scris Nimic</p>
+                <p class="tagline">Nu a scris nicio linie, dar dialogurile lui au format toată filozofia occidentală. A fost condamnat la moarte pentru că punea prea multe întrebări.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Platon -->
+            <a href="platon.html" class="study-card">
+                <div class="card-top">
+                    <span class="category">Idealism</span>
+                    <span class="years">c. 428 — 348 î.Hr.</span>
+                </div>
+                <h3 class="title">Platon</h3>
+                <p class="subtitle">Arhitectul Lumii Ideilor</p>
+                <p class="tagline">A întemeiat Academia, primul „universitate" din lume. Credea că realitatea pe care o vedem e doar umbra unei lumi perfecte, invizibile.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Aristotel -->
+            <a href="aristotel.html" class="study-card">
+                <div class="card-top">
+                    <span class="category">Sistematizator</span>
+                    <span class="years">384 — 322 î.Hr.</span>
+                </div>
+                <h3 class="title">Aristotel</h3>
+                <p class="subtitle">Filozoful Care A Organizat Totul</p>
+                <p class="tagline">Tutorele lui Alexandru cel Mare. A scris despre tot — de la poezie la politică, de la etică la biologie. A organizat cunoașterea așa cum o știm.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-logo">Filo</p>
+        <p class="footer-tagline">Filozofia nu e despre răspunsuri. E despre întrebările care merită puse.</p>
+        <p class="footer-copy">MMXXIV</p>
+    </footer>
+
+</body>
+</html>
