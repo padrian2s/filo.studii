@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G.W.F. Hegel - Filozoful Absolutului</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #483d8b; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+    <header class="hero">
+        <span class="category">Idealism German / Dialectică</span>
+        <h1>G.W.F. Hegel</h1>
+        <p class="subtitle">Filozoful care a văzut istoria ca desfășurare a Spiritului Absolut și a inventat dialectica</p>
+        <span class="years">1770 — 1831</span>
+    </header>
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Realul e Rațional</h2>
+                <p class="lead">„Tot ce e rațional e real; tot ce e real e rațional." Această formulă enigmatică a lui Hegel exprimă convingerea că realitatea are o logică internă. Istoria nu e haos, ci desfășurarea necesară a Spiritului.</p>
+                <p>Georg Wilhelm Friedrich Hegel e poate cel mai influent și cel mai dificil filozof modern. Sistemul său monumental cuprinde logica, natura, istoria, dreptul, arta, religia, filozofia însăși.</p>
+            </section>
+            <aside class="pull-quote">
+                <blockquote>„Bufnița Minervei își ia zborul doar la căderea serii."</blockquote>
+                <cite>— G.W.F. Hegel</cite>
+            </aside>
+            <section>
+                <span class="section-number">02 / Dialectica</span>
+                <h2>Teză — Antiteză — Sinteză</h2>
+                <div class="concept-box">
+                    <h4>Structura Dialectică</h4>
+                    <p><strong>Teză:</strong> O poziție inițială.<br><br>
+                    <strong>Antiteză:</strong> Negarea tezei.<br><br>
+                    <strong>Sinteză (Aufhebung):</strong> Depășirea contradicției într-o unitate mai înaltă care păstrează adevărul ambelor.</p>
+                </div>
+                <blockquote class="inline">„Contradicția e rădăcina oricărei mișcări și vitalități."</blockquote>
+            </section>
+            <section>
+                <span class="section-number">03 / Filosofia Istoriei</span>
+                <h2>Vicleniile Rațiunii</h2>
+                <p>Istoria nu e accident — e desfășurarea necesară a Spiritului. „Indivizii istorici" urmăresc scopuri personale dar realizează scopuri mai înalte ale Spiritului. „Ideea plătește tributul existenței din pasiunile indivizilor."</p>
+            </section>
+            <section>
+                <span class="section-number">04 / Concluzie</span>
+                <h2>Sistemul Viu</h2>
+                <p>Hegel e greu — poate cel mai greu filozof. Dar ceva rămâne: intuiția că realitatea e proces, că contradicția e productivă, că istoria are sens.</p>
+            </section>
+        </article>
+    </main>
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

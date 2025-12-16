@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epicur - Filozoful Plăcerii Raționale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #2d5a27; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 7rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2.5rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Filozofie Elenistică / Hedonism</span>
+        <h1>Epicur</h1>
+        <p class="subtitle">Filozoful care a înțeles că fericirea stă în plăcerile simple, nu în excese</p>
+        <span class="years">341 — 270 î.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Hedonistul Înțeles Greșit</h2>
+
+                <p class="lead">Când auzim „epicurian", ne gândim la cineva care se tăvălește în plăceri — vinuri scumpe, mâncăruri rafinate, luxuri fără număr. Ironia istoriei: Epicur cel real trăia cu pâine și apă, spunea că o bucată de brânză e „un banchet", și propovăduia că fericirea vine din absența dorințelor, nu din satisfacerea lor.</p>
+
+                <p>Epicur a fondat o filozofie a plăcerii — dar o plăcere înțeleasă radical diferit de cum o înțelegem noi. Pentru el, plăcerea supremă e absența durerii, liniștea sufletului (ataraxia), și bucuria companiei prietenilor. Tot ce depășește aceste nevoi simple adaugă mai multă suferință decât plăcere.</p>
+
+                <p>Într-o lume obsedată de „mai mult" — mai mulți bani, mai multe experiențe, mai multe like-uri — mesajul lui Epicur e subversiv: ai deja tot ce-ți trebuie pentru a fi fericit. Trebuie doar să înveți să vezi asta.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>Grădina din Atena</h2>
+
+                <p>Epicur s-a născut pe insula Samos în 341 î.Hr., fiul unor coloniști atenieni. A studiat filozofia de tânăr, fiind influențat de atomismul lui Democrit. După peregrinări prin mai multe cetăți, s-a stabilit la Atena în 306 î.Hr., unde a cumpărat o grădină care a devenit sediul școlii sale.</p>
+
+                <p>„Grădina" (Kepos) era mai mult decât o școală — era o comunitate de viață. Spre deosebire de Academia lui Platon sau Liceul lui Aristotel, Grădina admitea și femei, și sclavi — lucru scandalos pentru vremea aceea. Era o comunitate de prieteni care trăiau filozofia, nu doar o discutau.</p>
+
+                <p>Epicur a suferit toată viața de o boală dureroasă (probabil litiază renală). Și-a petrecut ultimii ani în dureri cronice — ceea ce face filozofia sa a plăcerii cu atât mai remarcabilă. În ultima zi de viață, se spune că s-a scufundat într-o baie caldă, a cerut vin, și a scris prietenilor despre „ziua fericită" pe care o trăia.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Nu avem nevoie de atât de mult pentru a trăi fericiți, ci de atât de puțin."</blockquote>
+                <cite>— Epicur</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Fizica: Atomii și Vidul</span>
+                <h2>Un Univers Fără Zei Care Se Amestecă</h2>
+
+                <p>Epicur a preluat de la Democrit teoria atomilor: totul e compus din particule indivizibile (atomi) care se mișcă în vid. Sufletul însuși e material — atomi subtili care se risipesc la moarte.</p>
+
+                <h3>Clinamen — Abaterea Atomilor</h3>
+                <p>Epicur a adăugat o inovație crucială: atomii nu cad doar în linie dreaptă, ci fac mici „abateri" spontane (clinamen). Această mică libertate la nivel atomic fundamentează libertatea voinței la nivel uman. Nu suntem mașini deterministe — există loc pentru alegere.</p>
+
+                <h3>Zeii Indiferenți</h3>
+                <p>Epicur nu era ateu — credea în zei. Dar zeii lui trăiesc în spații între lumi (intermondia), perfect fericiți, nepreocupați de oameni. Nu ne răsplătesc, nu ne pedepsesc, nu ne ascultă rugăciunile. Frica de zei e, deci, irațională.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Etica: Plăcerea ca Scop</span>
+                <h2>Tetrapharmakos — Leacul Cvadruplu</h2>
+
+                <p>Epicurismul poate fi rezumat în patru propoziții — „leacul cvadruplu" (tetrapharmakos) care vindecă sufletul de anxietate:</p>
+
+                <div class="concept-box">
+                    <h4>Cele Patru Remedii</h4>
+                    <p>1. <strong>Zeii nu sunt de temut</strong> — nu se amestecă în viețile noastre<br>
+                    2. <strong>Moartea nu e de temut</strong> — când ea e, noi nu mai suntem<br>
+                    3. <strong>Binele e ușor de dobândit</strong> — plăcerile esențiale sunt simple<br>
+                    4. <strong>Răul e ușor de suportat</strong> — durerea intensă e scurtă; cea lungă e suportabilă</p>
+                </div>
+
+                <h3>Clasificarea Dorințelor</h3>
+
+                <p>Epicur împarte dorințele în trei categorii:</p>
+                <ul>
+                    <li><strong>Naturale și necesare</strong> — hrană, apă, adăpost, prietenie. Ușor de satisfăcut.</li>
+                    <li><strong>Naturale dar nenecesare</strong> — mâncăruri rafinate, confort. Plăcute dar nu esențiale.</li>
+                    <li><strong>Nenaturale și nenecesare</strong> — faimă, bogăție, putere. Surse de nefericire.</li>
+                </ul>
+
+                <p>Secretul fericirii: concentrează-te pe prima categorie, bucură-te ocazional de a doua, evită a treia.</p>
+
+                <h3>Ataraxia — Liniștea Sufletului</h3>
+
+                <p>Scopul suprem nu e plăcerea intensă, ci absența tulburării (ataraxia) și absența durerii (aponia). Un pahar de apă când ți-e sete e plăcere pură. A doua sticlă de vin nu adaugă plăcere — adaugă mahmureală.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Moartea nu e nimic pentru noi; căci ce s-a descompus e lipsit de simțire, iar ce e lipsit de simțire nu e nimic pentru noi."</blockquote>
+                <cite>— Epicur, Scrisoare către Menoikeus</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">05 / Argumentul Morții</span>
+                <h2>De Ce Nu Trebuie Să Ne Temem</h2>
+
+                <p>Argumentul lui Epicur despre moarte e de o eleganță remarcabilă:</p>
+
+                <blockquote class="inline">„Moartea nu e nimic pentru noi. Căci tot binele și răul stau în simțire, iar moartea e privare de simțire... Atâta timp cât existăm, moartea nu e prezentă; iar când moartea e prezentă, noi nu mai existăm."</blockquote>
+
+                <p>Nu vom „experimenta" niciodată moartea. Vom experimenta durere, boală, agonie — dar nu moartea însăși. În momentul morții, nu mai e nimeni care să sufere.</p>
+
+                <p>Gândește-te la timpul de dinainte de nașterea ta. Te-a „deranjat"? Nu. Eternitatea de după moarte e la fel de indiferentă ca eternitatea de dinainte de naștere.</p>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Prietenia</span>
+                <h2>Cel Mai Mare Bine</h2>
+
+                <blockquote class="inline">„Dintre toate lucrurile pe care înțelepciunea le oferă pentru fericirea vieții întregi, de departe cel mai mare e câștigarea prieteniei."</blockquote>
+
+                <p>Pentru Epicur, prietenia e mai importantă decât orice. Bogăția, faima, plăcerile senzuale — toate pălesc în fața bucuriei de a sta cu prietenii, de a conversa, de a împărți o masă simplă.</p>
+
+                <p>Dar prietenia nu e instrumentală — nu avem prieteni pentru beneficii. Prietenia e valoroasă în sine, una dintre puținele plăceri „naturale și necesare".</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Citate Memorabile</span>
+                <h2>Maxime Principale</h2>
+
+                <blockquote class="inline">„Cel care nu e mulțumit cu puțin nu va fi mulțumit cu nimic."</blockquote>
+                <p>Problema nu e că avem prea puțin, ci că dorim prea mult.</p>
+
+                <blockquote class="inline">„Nu-ți strica ce ai dorind ce nu ai."</blockquote>
+                <p>Anxietatea pentru ce ne lipsește ne otrăvește bucuria pentru ce avem.</p>
+
+                <blockquote class="inline">„E prostie să ceri zeilor ce poți să-ți procuri singur."</blockquote>
+                <p>Fericirea e în puterea ta, nu depinde de providență.</p>
+
+                <blockquote class="inline">„O brânză și o pâine, când le am, pot rivaliza în fericire cu Zeus."</blockquote>
+                <p>Simplitatea e abundență.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Critici</span>
+                <h2>Umbrele Grădinii</h2>
+
+                <h3>Egoism?</h3>
+                <p>Epicurismul a fost acuzat de egoism — retragerea din viața publică, concentrarea pe plăcerea personală. Stoicii, în particular, îl criticau pentru că nu promova angajamentul civic.</p>
+
+                <h3>Pasivitate</h3>
+                <p>„Trăiește ascuns" (lathe biosas) era maxima epicureică. Dar putem trăi ascunși într-o lume cu nedreptăți? Nu cere asta indiferență față de alții?</p>
+
+                <h3>Materialismul</h3>
+                <p>Creștinismul a condamnat epicurismul pentru negarea sufletului nemuritor și a providenței divine. „Epicurian" a devenit o insultă în Evul Mediu.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Epicur pentru Secolul XXI</h2>
+
+                <h3>Auditul Dorințelor</h3>
+                <p>Fă o listă cu ce-ți dorești. Clasifică: natural și necesar? Natural dar nenecesar? Nenatural? Concentrează-te pe prima categorie. Restul sunt opționale sau chiar dăunătoare.</p>
+
+                <h3>Plăcerile Simple</h3>
+                <p>O cafea dimineața, o plimbare, o conversație cu un prieten — acestea sunt plăcerile „naturale". Învață să le savurezi în loc să alergi după cele artificiale.</p>
+
+                <h3>Meditația Morții</h3>
+                <p>Nu morbid, ci eliberator. Amintește-ți că vei muri. Ce contează atunci? Faimă? Bani? Sau momentele autentice de conexiune și prezență?</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Epicureic</h4>
+                    <p>Timp de o săptămână, notează fiecare plăcere pe care o experimentezi. La sfârșit, analizează: care au venit din lucruri simple (hrană, odihnă, companie) și care din lucruri „luxoase"? Care au durat mai mult? Care n-au avut efecte secundare negative?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Filozoful Grădinii</h2>
+
+                <p>Epicur ne oferă un antidot la anxietatea modernă: nu ai nevoie de mai mult. Ai nevoie să apreciezi ce ai. Nu trebuie să te temi de moarte. Nu trebuie să te temi de zei. Fericirea e aici, în lucrurile simple, în prietenia autentică, în absența dorințelor nebuneștI.</p>
+
+                <p>Într-o cultură a consumului infinit, mesajul lui Epicur e revoluționar: suficiența e abundență, simplitatea e lux, liniștea e cel mai mare bine.</p>
+
+                <p>„Nu avem nevoie de atât de mult pentru a trăi fericiți, ci de atât de puțin." Poate că asta e tot ce trebuie să înțelegem.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

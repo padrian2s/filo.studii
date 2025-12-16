@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anselm de Canterbury - Părintele Scolasticii</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #8b4513; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Scolastică Timpurie / Teologie</span>
+        <h1>Anselm de Canterbury</h1>
+        <p class="subtitle">Creatorul celui mai elegant și controversat argument pentru existența lui Dumnezeu</p>
+        <span class="years">1033 — 1109</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Gândirea Care Caută</h2>
+
+                <p class="lead">Poți demonstra existența lui Dumnezeu doar prin gândire, fără să apelezi la experiență? Anselm de Canterbury credea că da — și a formulat un argument atât de ingenios încât filozofii încă dezbat despre el după aproape un mileniu. Se numește „argumentul ontologic".</p>
+
+                <p>Anselm e considerat „părintele scolasticii" — mișcarea intelectuală medievală care a încercat să armonizeze credința cu rațiunea. Motto-ul său: „fides quaerens intellectum" — credința care caută înțelegerea. Nu crezi orb; crezi și apoi încerci să înțelegi ce crezi.</p>
+
+                <p>Pentru noi, Anselm e fascinant indiferent dacă acceptăm sau nu argumentul său. El demonstrează puterea gândirii pure — și limitele ei. Și ridică întrebarea: ce putem cunoaște doar prin rațiune?</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Din Aosta la Canterbury</h2>
+
+                <p>Anselm s-a născut în Aosta, în nordul Italiei, într-o familie nobilă. Relația cu tatăl a fost dificilă; mama, pe care o iubea, a murit când era tânăr. La 23 de ani a plecat de acasă, ajungând după trei ani la mănăstirea Bec din Normandia, atras de faima lui Lanfranc, priorul de acolo.</p>
+
+                <p>A intrat în ordinul benedictin, a devenit prior, apoi abate. A scris cele mai importante lucrări în această perioadă de liniște monastică: Monologion, Proslogion, De veritate.</p>
+
+                <h3>Arhiepiscop Involuntar</h3>
+
+                <p>În 1093, în ciuda protestelor sale, a fost numit arhiepiscop de Canterbury — cea mai înaltă funcție ecleziastică din Anglia. A intrat în conflict cu regii William al II-lea și Henric I pe tema investiturii (cine numește episcopii?). A fost exilat de două ori. A murit în funcție în 1109.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Cred pentru a înțelege."</blockquote>
+                <cite>— Anselm, Proslogion</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Argumentul Ontologic</span>
+                <h2>Demonstrația din Proslogion</h2>
+
+                <p>În Proslogion, Anselm caută „un singur argument" care să demonstreze existența și atributele lui Dumnezeu. Îl găsește pornind de la definiția lui Dumnezeu:</p>
+
+                <div class="concept-box">
+                    <h4>Argumentul</h4>
+                    <p><strong>Premisa 1:</strong> Dumnezeu e „ceva mai mare decât care nimic nu poate fi gândit" (aliquid quo nihil maius cogitari possit).<br><br>
+                    <strong>Premisa 2:</strong> Chiar și „nebunul" (ateul) înțelege ce înseamnă această definiție — o are în minte.<br><br>
+                    <strong>Premisa 3:</strong> Dar e mai mare să exiști în realitate decât doar în minte.<br><br>
+                    <strong>Concluzia:</strong> Dacă „ceva mai mare decât care nimic nu poate fi gândit" ar exista doar în minte, atunci am putea gândi ceva și mai mare — același lucru, dar existând și în realitate. Contradicție! Deci Dumnezeu există necesar în realitate.</p>
+                </div>
+
+                <h3>Gaunilo și Insula Perfectă</h3>
+
+                <p>Călugărul Gaunilo a obiectat imediat: cu același argument putem „demonstra" existența unei insule perfecte. Dar insule perfecte nu există doar pentru că le gândim.</p>
+
+                <p>Anselm a răspuns: argumentul funcționează doar pentru „ceva mai mare decât care nimic nu poate fi gândit" — nu pentru orice „cea mai mare X". Insula perfectă e încă un lucru contingent; Dumnezeu e unic prin natura sa.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Istoria Argumentului</span>
+                <h2>Aproape Un Mileniu de Dezbatere</h2>
+
+                <p>Argumentul ontologic a generat o literatură imensă:</p>
+
+                <ul>
+                    <li><strong>Toma d'Aquino</strong> l-a respins: nu putem ști ce e în esența lui Dumnezeu, deci nu putem demonstra existența din definiție</li>
+                    <li><strong>Descartes</strong> l-a reformulat: existența e o perfecțiune; Dumnezeu perfect trebuie să aibă toate perfecțiunile; deci există</li>
+                    <li><strong>Kant</strong> l-a atacat decisiv: „existența nu e un predicat" — a spune că ceva există nu adaugă nimic la concept</li>
+                    <li><strong>Gödel</strong> în secolul XX a dat o versiune formal-logică a argumentului, folosind logica modală</li>
+                </ul>
+
+                <p>Dezbaterea continuă. Argumentul e probabil invalid — dar nimeni nu e complet sigur unde e eroarea.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Alte Contribuții</span>
+                <h2>Dincolo de Argument</h2>
+
+                <h3>Cur Deus Homo</h3>
+                <p>„De ce s-a făcut Dumnezeu om?" — tratatul care a formulat teoria „satisfacției" privind ispășirea. Păcatul e o ofensă infinită adusă lui Dumnezeu; doar o satisfacție infinită poate compensa; doar Dumnezeu-om poate oferi această satisfacție. E teoria standard a răscumpărării în teologia occidentală.</p>
+
+                <h3>De Veritate</h3>
+                <p>Adevărul e „rectitudinea perceptibilă doar de minte". Toate lucrurile au un adevăr propriu — își împlinesc corect funcția pentru care au fost create. Adevărul nu e doar în propoziții, ci în realitatea însăși.</p>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Citate</span>
+                <h2>Vocea Arhiepiscopului</h2>
+
+                <blockquote class="inline">„Nu caut să înțeleg ca să cred, ci cred ca să înțeleg."</blockquote>
+                <p>Prioritatea credinței — dar nu ca opusul rațiunii, ci ca punct de plecare al ei.</p>
+
+                <blockquote class="inline">„Căci nici nu caut să înțeleg ca să cred, ci cred ca să înțeleg. Căci cred și aceasta: că dacă nu voi crede, nu voi înțelege."</blockquote>
+                <p>Versiunea extinsă a celebrului motto.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Aplicații Practice</span>
+                <h2>Anselm pentru Viața de Azi</h2>
+
+                <h3>Definiția Contează</h3>
+                <p>Anselm arată că definiția unui concept are implicații. Înainte de a argumenta despre ceva, definește clar ce înțelegi prin acel ceva.</p>
+
+                <h3>Credința și Înțelegerea</h3>
+                <p>Poți crede ceva și apoi să încerci să înțelegi de ce e adevărat. Angajamentul nu exclude reflecția — o face posibilă.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Anselmian</h4>
+                    <p>Alege un concept abstract (dreptate, frumusețe, iubire). Încearcă să-l definești cât mai riguros. Ce implică definiția ta? Ce excludi? Ce urmează logic din ea?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Concluzie</span>
+                <h2>Credința Care Gândește</h2>
+
+                <p>Anselm ne lasă un paradox: un argument care pare simultan genial și greșit. De aproape un mileniu, filozofii încearcă să spună exact unde e eroarea — și nu reușesc pe deplin.</p>
+
+                <p>Dar poate că valoarea argumentului nu stă în validitatea lui, ci în provocarea pe care o ridică: ce putem cunoaște prin gândire pură? Care sunt limitele rațiunii? Și ce rol joacă angajamentul în cunoaștere?</p>
+
+                <p>„Cred pentru a înțelege" — indiferent dacă împărtășim credința lui Anselm, putem recunoaște că înțelegerea profundă cere un fel de angajament. Nu poți înțelege ceea ce refuzi să iei în serios.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

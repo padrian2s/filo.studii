@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johann Wolfgang von Goethe - Geniul Universal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #556b2f; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+    <header class="hero">
+        <span class="category">Literatură / Filozofie Naturală</span>
+        <h1>Johann Wolfgang von Goethe</h1>
+        <p class="subtitle">Poetul-filozof care a creat Faust și a căutat unitatea dintre artă, știință și viață</p>
+        <span class="years">1749 — 1832</span>
+    </header>
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Olimpianul din Weimar</h2>
+                <p class="lead">Goethe a fost numit „ultimul om universal" — poet, dramaturg, romancier, om de știință, ministru, director de teatru. A dominat cultura germană timp de o jumătate de secol și a influențat toată Europa. Faust a devenit simbolul aspirației umane nelimitate.</p>
+                <p>Nu e filozof în sens academic, dar influența lui filozofică e imensă. A inspirat romantismul german, idealismul, filozofia vieții. Schopenhauer, Nietzsche, Steiner, Jung — toți îi sunt datori.</p>
+            </section>
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>De la Werther la Weimar</h2>
+                <p>S-a născut la Frankfurt, într-o familie burgheză înstărită. Suferințele tânărului Werther (1774) l-a făcut celebru peste noapte — și a provocat un val de sinucideri prin imitație. În 1775, ducele Carl August l-a invitat la Weimar, unde a rămas toată viața.</p>
+                <p>A fost ministru, a condus minele, teatrul, a făcut cercetări în botanică, anatomie, optică. Călătoria în Italia (1786-88) l-a transformat. A lucrat la Faust 60 de ani.</p>
+            </section>
+            <aside class="pull-quote">
+                <blockquote>„Tot ce e teoretic rămâne gri; verde e doar arborele de aur al vieții."</blockquote>
+                <cite>— J.W. von Goethe, Faust</cite>
+            </aside>
+            <section>
+                <span class="section-number">03 / Faust</span>
+                <h2>Drama Umanității</h2>
+                <div class="concept-box">
+                    <h4>Pactul</h4>
+                    <p>Faust, savant nemulțumit de limitele cunoașterii, face un pact cu Mefistofel: „Dacă vreodată voi spune clipei: Oprește-te! Ești atât de frumoasă! — atunci poți să mă înlănțui."<br><br>
+                    E pariul că nimic nu-l poate satisface definitiv — că aspirația umană e infinită.</p>
+                </div>
+                <p>Faust traversează iubirea (Margareta), politica, arta clasică (Helena), până la viziunea finală: câștigarea de pământ din mare pentru o comunitate liberă. „Doar cel ce-și cucerește zilnic libertatea și viața merită să le aibă."</p>
+            </section>
+            <section>
+                <span class="section-number">04 / Filozofia Naturii</span>
+                <h2>Știința Calitativă</h2>
+                <p>Goethe a dezvoltat o „morfologie" — studiul formelor vii. Contra lui Newton, a propus o teorie a culorilor bazată pe polaritate (lumină/întuneric). A căutat „planta primordială" (Urpflanze) — tipul din care derivă toate plantele.</p>
+                <blockquote class="inline">„Natura nu are miez și coajă; ea e totul deodată."</blockquote>
+                <p>Știința lui Goethe e calitativă, intuitivă, holistică — opusă analizei mecaniciste. A influențat pe Steiner, fenomenologia, ecologia profundă.</p>
+            </section>
+            <section>
+                <span class="section-number">05 / Înțelepciunea</span>
+                <h2>Bildung și Entsagung</h2>
+                <ul>
+                    <li><strong>Bildung:</strong> Formarea de sine, dezvoltarea armonioasă a personalității — idealul educativ german</li>
+                    <li><strong>Entsagung:</strong> Renunțarea — acceptarea limitelor, concentrarea pe ce poți face</li>
+                    <li><strong>Activitatea:</strong> „La început a fost Fapta" — contra contemplației sterile</li>
+                </ul>
+                <div class="concept-box">
+                    <h4>Exercițiu Goethean</h4>
+                    <p>Observă o plantă sau un fenomen natural fără să-l analizezi imediat. Lasă-l să „vorbească". Ce îți comunică forma, culoarea, mișcarea? Goethe numea aceasta „contemplație activă" (anschauende Urteilskraft).</p>
+                </div>
+            </section>
+            <section>
+                <span class="section-number">06 / Concluzie</span>
+                <h2>Mai Multă Lumină</h2>
+                <p>Ultimele cuvinte atribuite lui Goethe: „Mehr Licht!" — „Mai multă lumină!" Poate literal (fereastra), poate simbolic (cunoaștere). Oricum, e emblematic pentru un om care a căutat toată viața să vadă, să înțeleagă, să creeze.</p>
+                <p>Goethe nu oferă un sistem — oferă un model de viață: curiozitate universală, disciplină creativă, acceptarea paradoxurilor, bucuria de a fi viu. „Cel mai frumos destin e să povestești și să asculți povestiri despre oameni."</p>
+            </section>
+        </article>
+    </main>
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

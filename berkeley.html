@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George Berkeley - Episcopul Idealist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #5b8c5a; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Empirism / Idealism</span>
+        <h1>George Berkeley</h1>
+        <p class="subtitle">Filozoful care a negat existența materiei și a afirmat că a fi înseamnă a fi perceput</p>
+        <span class="years">1685 — 1753</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Lumea ca Percepție</h2>
+
+                <p class="lead">„Esse est percipi" — „A fi înseamnă a fi perceput." George Berkeley a avansat una dintre cele mai șocante teze din istoria filozofiei: materia nu există. Tot ce există sunt minți și ideile din minți. Ceea ce numim „lumea materială" nu e decât un sistem de percepții.</p>
+
+                <p>Pare absurd. Dar Berkeley nu era nebun — era episcop anglican și un gânditor riguros. Teza sa imaterialistă e de fapt consecința logică a empirismului lui Locke, dus până la capăt. Dacă tot ce cunoaștem sunt ideile noastre, de ce să postulăm o materie pe care nu o percepem niciodată direct?</p>
+
+                <p>Pentru noi, Berkeley e important ca exercițiu de gândire radicală. Ne arată că presupozițiile noastre cele mai „evidente" pot fi chestionate — și că argumentele care par absurde pot fi surprinzător de greu de combătut.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Filozoful Practic</h2>
+
+                <p>George Berkeley s-a născut în Irlanda, lângă Kilkenny. A studiat la Trinity College Dublin, unde a devenit fellow la doar 22 de ani. În acești ani timpurii a scris operele filozofice majore: Eseu pentru o nouă teorie a vederii (1709), Tratat asupra principiilor cunoașterii umane (1710), Trei dialoguri între Hylas și Philonous (1713).</p>
+
+                <p>La Londra a frecventat cercurile intelectuale — l-a cunoscut pe Swift, pe Addison, pe Steele. A călătorit în Italia ca tutor. A visat să fondeze un colegiu în Bermuda pentru convertirea coloniștilor și nativilor americani.</p>
+
+                <h3>Visul American</h3>
+
+                <p>În 1728, Berkeley a plecat spre America cu fonduri promise de Parlament. A așteptat trei ani în Rhode Island, dar banii n-au venit niciodată. A donat terenurile și biblioteca colegiului Yale (fondat recent). S-a întors în Irlanda.</p>
+
+                <p>În 1734 a fost numit episcop de Cloyne, funcție pe care a deținut-o până aproape de moarte. S-a dedicat binelui comunității, promovând apa de gudron ca remediu universal. A murit în 1753, la Oxford.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„A fi înseamnă a fi perceput."</blockquote>
+                <cite>— George Berkeley</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Imaterialismul</span>
+                <h2>Materia Nu Există</h2>
+
+                <p>Berkeley atacă noțiunea de „substanță materială" — ideea că există ceva dincolo de percepțiile noastre care le cauzează. Argumentul e surprinzător de simplu:</p>
+
+                <div class="concept-box">
+                    <h4>Argumentul Central</h4>
+                    <p><strong>Premisa 1:</strong> Tot ce percepem direct sunt idei (senzații) — culori, sunete, mirosuri, forme.<br><br>
+                    <strong>Premisa 2:</strong> Ideile pot exista doar în minți — o culoare nepercepută de nimeni e o contradicție.<br><br>
+                    <strong>Premisa 3:</strong> „Materia" ar fi ceva ne-mental care cauzează ideile — dar cum poate ceva ne-mental produce ceva mental?<br><br>
+                    <strong>Concluzia:</strong> Noțiunea de „materie" e inutilă și incoerentă. Tot ce există sunt minți și ideile lor.</p>
+                </div>
+
+                <h3>Contra Abstracțiilor</h3>
+
+                <p>Berkeley atacă și ideile abstracte (un mare obiectiv polemic). Nu putem avea ideea de „triunghi în general" — orice triunghi pe care ni-l imaginăm e specific: echilateral, isoscel etc. Ideile generale sunt doar idei particulare folosite ca semne.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Calități Primare și Secundare</span>
+                <h2>Contra lui Locke</h2>
+
+                <p>Locke distingea calitățile primare (extensiune, formă — în obiect) de cele secundare (culoare, sunet — în noi). Berkeley arată că distincția nu ține:</p>
+
+                <ul>
+                    <li>Extensiunea și forma nu pot fi percepute fără culoare</li>
+                    <li>Mărimea depinde de perspectivă (un turn pare mic de departe)</li>
+                    <li>Toate calitățile sunt la fel de relative la percepător</li>
+                </ul>
+
+                <p>Dacă calitățile secundare există doar în minte, și cele primare există doar în minte. Nu rămâne nimic pentru „materia" independentă.</p>
+
+                <blockquote class="inline">„Extensiunea, forma și mișcarea sunt doar idei existente în minte... Deci e imposibil ca vreuna din ele să existe într-un subiect negânditor."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Obiecțiile și Răspunsurile</span>
+                <h2>Ce Se Întâmplă Când Nu Privesc?</h2>
+
+                <p>Cea mai evidentă obiecție: „Dacă ies din cameră, masa dispare?" Berkeley răspunde: nu, pentru că Dumnezeu o percepe mereu.</p>
+
+                <div class="concept-box">
+                    <h4>Rolul lui Dumnezeu</h4>
+                    <p>Ideile noastre despre „lumea externă" nu sunt arbitrare — sunt coerente, ordonate, independente de voința noastră. Cine le produce? Nu noi. O altă minte le produce și le „transmite" minților noastre: mintea infinită a lui Dumnezeu.<br><br>
+                    Dumnezeu percepe totul mereu. Aceasta explică de ce lumea persistă când nu ne uităm.</p>
+                </div>
+
+                <h3>Alte Obiecții</h3>
+
+                <p><strong>„Dar simțurile ne arată că materia există!"</strong><br>
+                Nu — simțurile ne dau doar idei. Materia e o presupunere adăugată, nu ceva perceput.</p>
+
+                <p><strong>„Știința are nevoie de materie!"</strong><br>
+                Nu — știința descrie regularități în percepții. „Legile naturii" sunt regularitățile în felul cum Dumnezeu produce ideile.</p>
+
+                <p><strong>„E absurd!"</strong><br>
+                Samuel Johnson a „refutat" pe Berkeley lovindu-se de o piatră: „Iată cum îl combat!" Dar Berkeley n-a negat că experimentăm pietre — a negat că pietrele sunt altceva decât experiențe.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Nu neg existența niciunui lucru pe care îl putem percepe prin simț sau reflecție. Nu mă îndoiesc cât de puțin că lucrurile pe care le văd există cu adevărat."</blockquote>
+                <cite>— George Berkeley, Trei dialoguri</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Teoria Vederii</span>
+                <h2>Cum Vedem Distanța</h2>
+
+                <p>În Eseu pentru o nouă teorie a vederii, Berkeley analizează cum percepem distanța și mărimea. Concluzia: nu vedem direct distanța — o inferăm din indici:</p>
+
+                <ul>
+                    <li>Confuzia imaginii (lucrurile depărtate sunt mai neclare)</li>
+                    <li>Efortul de focalizare</li>
+                    <li>Convergența ochilor</li>
+                    <li>Experiența trecută (asociem anumite senzații vizuale cu anumite senzații tactile)</li>
+                </ul>
+
+                <p>Văzul și atingerea ne dau idei complet diferite. Nu există „extensiune" comună — există extensiunea vizuală și extensiunea tactilă, asociate prin experiență.</p>
+
+                <p>Această analiză a influențat psihologia percepției și rămâne în mare parte validă.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Implicații Teologice</span>
+                <h2>Filozofia în Slujba Credinței</h2>
+
+                <p>Berkeley vedea imaterialismul ca apologetică — o apărare a credinței contra materialismului și ateismului:</p>
+
+                <ul>
+                    <li><strong>Contra ateilor:</strong> Dacă materia nu există, materialismul ateu e fals. Dumnezeu devine necesar pentru a explica ordinea percepțiilor</li>
+                    <li><strong>Contra deismului:</strong> Dumnezeu nu e un ceasornicar retras — e activ în fiecare percepție, sustine lumea în fiecare clipă</li>
+                    <li><strong>Contra scepticismului:</strong> Nu mai e nevoie să ne întrebăm dacă ideile corespund „realității" — ideile sunt realitatea</li>
+                </ul>
+
+                <blockquote class="inline">„Nu există substanță corporală sau materială — îndrăznesc să spun acest lucru... Dacă există vreo întrebuințare reală pentru filozofie în religie, aceasta va fi preferată."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Moștenirea</span>
+                <h2>Influența și Posteritatea</h2>
+
+                <h3>În Filozofie</h3>
+                <p>Hume a preluat critica abstracțiilor și analiza percepției. Kant l-a considerat pe Berkeley un idealist „dogmatic" pe care trebuia să îl depășească. Mach și pozitiviștii au văzut în Berkeley un precursor al analizei senzațiilor.</p>
+
+                <h3>În Știință</h3>
+                <p>Teoria vederii a influențat psihologia percepției. Critica spațiului și timpului absolute a anticipat relativitatea. „Berkeley" este unitatea de măsură pentru puterea de calcul grafic în informatică.</p>
+
+                <h3>În Practică</h3>
+                <p>Orașul Berkeley din California îi poartă numele — fondat pe terenuri donate în spiritul visului său american.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Berkeley pentru Viața de Azi</h2>
+
+                <h3>Chestionează Presupozițiile</h3>
+                <p>Ceea ce pare „de la sine înțeles" poate fi o presupunere nefondată. Berkeley ne învață să întrebăm: chiar avem dovezi pentru această credință, sau doar o presupunem?</p>
+
+                <h3>Experiența e Primară</h3>
+                <p>Tot ce cunoaștem, cunoaștem prin experiență. Teoriile sunt utile, dar nu confunda harta cu teritoriul.</p>
+
+                <h3>Mintea Contează</h3>
+                <p>Într-o cultură materialistă, Berkeley ne amintește că mintea și conștiința nu sunt epifenomene — sunt fundamentale.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Berkeleyan</h4>
+                    <p>Privește un obiect — o cană, un pom. Încearcă să distingi între percepția directă (culorile, formele pe care le experimentezi) și presupunerea adăugată (că există ceva „dincolo" de percepție). Poți justifica această presupunere fără să presupui deja ce vrei să demonstrezi?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Lumea în Minte</h2>
+
+                <p>Berkeley rămâne un paradox: un episcop care a negat materia, un empirist care a ajuns la idealism, un vizionar care a visat America dar a trăit în Irlanda. Filozofia lui pare absurdă — și totuși e aproape imposibil de refutat definitiv.</p>
+
+                <p>Poate că lecția lui Berkeley nu e să acceptăm imaterialismul, ci să recunoaștem cât de puțin înțelegem relația dintre minte și lume. Suntem încă departe de a răspunde la întrebarea: cum poate o minte să cunoască ceva în afara ei?</p>
+
+                <p>„A fi înseamnă a fi perceput" — poate e exagerat. Dar „a fi pentru noi înseamnă a fi perceput" — aceasta e greu de contestat. Lumea pe care o cunoaștem e lumea pe care o experimentăm.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

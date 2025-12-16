@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>René Descartes - Părintele Filozofiei Moderne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #1e3a5f; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Raționalism / Modernitate</span>
+        <h1>René Descartes</h1>
+        <p class="subtitle">Filozoful care a îndoit de tot pentru a găsi certitudinea absolută</p>
+        <span class="years">1596 — 1650</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Începutul Lumii Noi</h2>
+
+                <p class="lead">„Cogito, ergo sum" — „Gândesc, deci exist." Aceste trei cuvinte au schimbat istoria filozofiei. René Descartes a căutat o certitudine pe care nimeni și nimic nu o poate clătina. A găsit-o în actul însuși al gândirii.</p>
+
+                <p>Descartes este considerat părintele filozofiei moderne. A pus sub semnul întrebării toate cunoștințele moștenite și a încercat să reconstruiască edificiul științei pe fundamente noi, clare și distincte. A separat mintea de corp, rațiunea de simțuri, certitudinea de probabilitate.</p>
+
+                <p>Pentru noi, Descartes reprezintă modelul gânditorului care refuză să accepte nimic de-a gata. Într-o lume plină de informații nesigure, metoda sa de îndoială sistematică rămâne un instrument valoros.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Soldatul-Filozof</h2>
+
+                <p>René Descartes s-a născut la La Haye en Touraine (azi Descartes), Franța. Mama a murit la scurt timp după naștere; a fost crescut de bunica maternă. A studiat la colegiul iezuit La Flèche, unde a primit o educație clasică solidă, dar a rămas nemulțumit de incertitudinea cunoștințelor.</p>
+
+                <p>După studii de drept, s-a înrolat în diverse armate europene — nu pentru a lupta, ci pentru a vedea lumea. În noaptea de 10 noiembrie 1619, în Germania, a avut trei vise care i-au revelat „o știință admirabilă" — misiunea de a reforma cunoașterea.</p>
+
+                <h3>Retragerea în Olanda</h3>
+
+                <p>Din 1628, s-a stabilit în Olanda, unde a trăit retras timp de 20 de ani. Aici a scris operele majore: Discurs asupra metodei, Meditații metafizice, Principiile filozofiei. A întreținut o vastă corespondență cu savanții europeni.</p>
+
+                <p>În 1649, regina Cristina a Suediei l-a invitat la Stockholm. Obligat să predea filozofie la ora 5 dimineața în iarna suedeză, Descartes a contractat pneumonie și a murit în februarie 1650.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Gândesc, deci exist."</blockquote>
+                <cite>— René Descartes, Discurs asupra metodei</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Îndoiala Metodică</span>
+                <h2>A Îndoi de Tot</h2>
+
+                <p>Descartes a decis să respingă ca fals tot ce poate fi îndoit, pentru a vedea dacă rămâne ceva absolut cert. Această „îndoială metodică" nu e scepticism — e un instrument pentru a găsi certitudinea.</p>
+
+                <div class="concept-box">
+                    <h4>Nivelurile Îndoielii</h4>
+                    <p><strong>1. Simțurile înșală:</strong> Uneori vedem lucruri care nu există (iluzii optice, vise).<br><br>
+                    <strong>2. Poate totul e vis:</strong> Cum știu că nu visez chiar acum?<br><br>
+                    <strong>3. Geniul malign:</strong> Poate există o ființă atotputernică și rea care mă înșală în tot ce cred — chiar și în matematică.<br><br>
+                    <strong>Rezultat:</strong> Sub această îndoială radicală, nimic nu pare sigur.</p>
+                </div>
+
+                <h3>Cogito, Ergo Sum</h3>
+
+                <p>Dar chiar în momentul maxim al îndoielii, Descartes descoperă certitudinea: „Mă îndoiesc, deci gândesc. Gândesc, deci exist." Chiar dacă un demon m-ar înșela în tot, nu mă poate înșela că exist — pentru că trebuie să exist pentru a fi înșelat.</p>
+
+                <p>Cogito-ul e primul adevăr cert, temelia pe care se poate construi restul cunoașterii.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Ideile Claire și Distincte</span>
+                <h2>Criteriul Adevărului</h2>
+
+                <p>Din cogito, Descartes extrage un criteriu general: tot ce percep clar și distinct e adevărat. O idee e „clară" când e prezentă și manifestă în minte; e „distinctă" când e separată de alte idei, fără confuzie.</p>
+
+                <h3>Tipuri de Idei</h3>
+
+                <ul>
+                    <li><strong>Înnăscute:</strong> Le avem de la naștere — ideea de Dumnezeu, de infinit, axiomele logice</li>
+                    <li><strong>Adventive:</strong> Vin din experiența externă — ideea de soare, de căldură</li>
+                    <li><strong>Fictive:</strong> Le construim noi — idei de sirene, hipogrifri</li>
+                </ul>
+
+                <p>Ideile înnăscute sunt cele mai sigure — nu depind de simțuri care pot înșela. Matematica e modelul cunoașterii certe pentru că lucrează cu astfel de idei.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Demonstrația Existenței lui Dumnezeu</span>
+                <h2>Garantul Adevărului</h2>
+
+                <p>Pentru a ieși din solipsism (doar eu exist sigur), Descartes trebuie să demonstreze existența lui Dumnezeu — garantul că ideile clare și distincte corespund realității.</p>
+
+                <div class="concept-box">
+                    <h4>Argumentele</h4>
+                    <p><strong>1. Argumentul cauzal:</strong> Am ideea de infinit și perfecțiune. Eu sunt finit și imperfect. Cauza trebuie să aibă cel puțin atâta realitate cât efectul. Deci trebuie să existe o ființă infinită și perfectă care mi-a dat această idee.<br><br>
+                    <strong>2. Argumentul ontologic:</strong> Existența aparține esenței lui Dumnezeu, la fel cum trei unghiuri aparțin esenței triunghiului. A gândi un Dumnezeu care nu există e contradictoriu.</p>
+                </div>
+
+                <p>Un Dumnezeu perfect nu poate fi înșelător. Deci ideile clare și distincte sunt garantate de veridicitatea divină. Cercul e închis — dar criticii vor acuza un „cerc cartezian".</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Este prudent să nu te încrezi niciodată pe deplin în cei care te-au înșelat măcar o dată."</blockquote>
+                <cite>— René Descartes</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Dualismul Minte-Corp</span>
+                <h2>Două Substanțe</h2>
+
+                <p>Descartes distinge radical două tipuri de substanță:</p>
+
+                <ul>
+                    <li><strong>Res cogitans</strong> (substanța gânditoare): mintea, sufletul — neextinsă în spațiu, indivizibilă</li>
+                    <li><strong>Res extensa</strong> (substanța întinsă): materia, corpul — extinsă în spațiu, divizibilă</li>
+                </ul>
+
+                <p>Mintea și corpul sunt complet diferite ca natură. Corpul e o mașină — funcționează mecanic, prin legi fizice. Mintea e liberă, gânditoare, imaterială.</p>
+
+                <h3>Problema Interacțiunii</h3>
+
+                <p>Dar cum interacționează două substanțe atât de diferite? Cum poate un gând (imaterial) să miște un braț (material)? Descartes sugerează că interacțiunea are loc în glanda pineală, dar explicația e slabă. Această problemă va obseda filozofia modernă.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Metoda</span>
+                <h2>Cele Patru Reguli</h2>
+
+                <p>În Discurs asupra metodei, Descartes formulează regulile gândirii corecte:</p>
+
+                <div class="concept-box">
+                    <h4>Regulile Metodei</h4>
+                    <p><strong>1. Evidența:</strong> Nu accepta niciodată ca adevărat ceva ce nu cunoști în mod evident — evită precipitarea și prejudecățile.<br><br>
+                    <strong>2. Analiza:</strong> Împarte fiecare dificultate în părți cât mai mici, pentru a le rezolva mai ușor.<br><br>
+                    <strong>3. Sinteza:</strong> Conduce gândurile în ordine, de la cele mai simple la cele mai complexe.<br><br>
+                    <strong>4. Enumerarea:</strong> Fă enumerări complete și revizuiri generale pentru a fi sigur că nu omiți nimic.</p>
+                </div>
+
+                <p>Această metodă matematică aplicată gândirii a influențat profund dezvoltarea științei moderne.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Moștenirea</span>
+                <h2>Părintele Modernității</h2>
+
+                <h3>În Filozofie</h3>
+                <p>Descartes a inaugurat „filosofia subiectului" — întrebarea centrală devine „ce pot cunoaște eu?" Toată filozofia modernă — de la Spinoza și Leibniz până la Kant și fenomenologie — răspunde în diferite feluri la problemele carteziene.</p>
+
+                <h3>În Știință</h3>
+                <p>Geometria analitică (sistemul de coordonate carteziene) unifică algebra cu geometria. Fizica sa mecanicistă, deși eronată în detalii, a contribuit la viziunea științifică modernă a naturii ca mecanism.</p>
+
+                <h3>Probleme Moștenite</h3>
+                <p>Dualismul minte-corp rămâne o problemă deschisă. Cum e posibilă conștiința într-un univers fizic? Suntem mașini gânditoare sau spirite întrupate?</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Descartes pentru Viața de Azi</h2>
+
+                <h3>Îndoiala Sănătoasă</h3>
+                <p>Când primești o informație, întreabă-te: de unde vine? Pe ce se bazează? Poate fi falsă? Îndoiala metodică e antidotul contra dezinformării.</p>
+
+                <h3>Claritatea Gândirii</h3>
+                <p>Când ai de rezolvat o problemă, descompune-o în părți. Procedează de la simplu la complex. Nu sări peste pași.</p>
+
+                <h3>Fundamentele</h3>
+                <p>Identifică ce știi cu adevărat, nu ce presupui. Construiește pe certitudini, nu pe opinii.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Cartezian</h4>
+                    <p>Alege o credință importantă pentru tine. Aplică îndoiala metodică: de ce crezi acest lucru? Pe ce dovezi te bazezi? Poți îndoi aceste dovezi? Ce rămâne sigur după ce ai îndoit tot ce poți îndoi?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Curajul de a Gândi</h2>
+
+                <p>Descartes a avut curajul să pună totul sub semnul întrebării — tradiția, autoritatea, simțurile, chiar realitatea însăși. A găsit în gândire singura certitudine absolută și a încercat să reconstruiască lumea de acolo.</p>
+
+                <p>Proiectul său are limite — dualismul creează mai multe probleme decât rezolvă, iar cercul argumentativ pentru Dumnezeu nu e convingător. Dar metoda rămâne valoroasă: nu accepta nimic fără examinare, procedează cu ordine, construiește pe fundamente solide.</p>
+
+                <p>Într-o lume în care suntem bombardați cu informații și opinii, lecția carteziană e mai actuală ca oricând: oprește-te, îndoiește-te, gândește.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

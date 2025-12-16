@@ -511,6 +511,114 @@
                 transition: none !important;
             }
         }
+
+        /* ============================================
+           FILTER & SORT CONTROLS
+           ============================================ */
+        .studies-controls {
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            padding: 0 1rem;
+        }
+
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .control-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn, .sort-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--border);
+            background: var(--primary);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 2px;
+        }
+
+        .filter-btn:hover, .sort-btn:hover {
+            border-color: var(--text-muted);
+            color: var(--text);
+        }
+
+        .filter-btn.active, .sort-btn.active {
+            background: var(--text);
+            color: var(--primary);
+            border-color: var(--text);
+        }
+
+        .sort-btn .arrow {
+            margin-left: 0.3rem;
+            font-size: 0.6rem;
+        }
+
+        /* Results count */
+        .results-count {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        /* Card hidden state */
+        .study-card.hidden {
+            display: none;
+        }
+
+        /* No results message */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .controls-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .control-group {
+                width: 100%;
+            }
+
+            .control-buttons {
+                justify-content: flex-start;
+            }
+
+            .filter-btn, .sort-btn {
+                flex: 0 0 auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -564,10 +672,46 @@
             <h2>Studii Disponibile</h2>
         </header>
 
-        <div class="studies-grid">
+        <!-- Filter & Sort Controls -->
+        <div class="studies-controls">
+            <div class="controls-row">
+                <!-- Filter by Category -->
+                <div class="control-group">
+                    <label>Specialitate</label>
+                    <div class="control-buttons">
+                        <button class="filter-btn active" data-filter="all">Toate</button>
+                        <button class="filter-btn" data-filter="presocratici">Presocratici</button>
+                        <button class="filter-btn" data-filter="filozofie-antica">Antici</button>
+                        <button class="filter-btn" data-filter="stoicism">Stoicism</button>
+                        <button class="filter-btn" data-filter="medieval">Medievali</button>
+                        <button class="filter-btn" data-filter="rationalism">Raționalism</button>
+                        <button class="filter-btn" data-filter="empirism">Empirism</button>
+                        <button class="filter-btn" data-filter="iluminism">Iluminism</button>
+                        <button class="filter-btn" data-filter="idealism-german">Idealism German</button>
+                        <button class="filter-btn" data-filter="literatura">Literatură</button>
+                        <button class="filter-btn" data-filter="modern">Sec. XIX</button>
+                    </div>
+                </div>
+
+                <!-- Sort Options -->
+                <div class="control-group">
+                    <label>Ordonare</label>
+                    <div class="control-buttons">
+                        <button class="sort-btn active" data-sort="cronologic" data-direction="asc">Cronologic <span class="arrow">↑</span></button>
+                        <button class="sort-btn" data-sort="cronologic-desc" data-direction="desc">Cronologic <span class="arrow">↓</span></button>
+                        <button class="sort-btn" data-sort="interes">Recomandate</button>
+                        <button class="sort-btn" data-sort="alfabetic">A — Z</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-count"><span id="visible-count">39</span> studii</div>
+
+        <div class="studies-grid" id="studies-grid">
 
             <!-- Kierkegaard -->
-            <a href="kierkegaard.html" class="study-card">
+            <a href="kierkegaard.html" class="study-card" data-year="1813" data-category="modern" data-interest="8" data-name="Kierkegaard">
                 <div class="card-top">
                     <span class="category">Existențialism</span>
                     <span class="years">1813 — 1855</span>
@@ -579,7 +723,7 @@
             </a>
 
             <!-- Flaubert -->
-            <a href="flaubert.html" class="study-card">
+            <a href="flaubert.html" class="study-card" data-year="1821" data-category="literatura" data-interest="7" data-name="Flaubert">
                 <div class="card-top">
                     <span class="category">Literatură</span>
                     <span class="years">1821 — 1880</span>
@@ -591,7 +735,7 @@
             </a>
 
             <!-- Auguste Comte -->
-            <a href="auguste_comte.html" class="study-card">
+            <a href="auguste_comte.html" class="study-card" data-year="1798" data-category="modern" data-interest="6" data-name="Comte">
                 <div class="card-top">
                     <span class="category">Pozitivism</span>
                     <span class="years">1798 — 1857</span>
@@ -603,7 +747,7 @@
             </a>
 
             <!-- Dumas și Sand -->
-            <a href="dumas-sand-studiu.html" class="study-card">
+            <a href="dumas-sand-studiu.html" class="study-card" data-year="1802" data-category="literatura" data-interest="7" data-name="Dumas">
                 <div class="card-top">
                     <span class="category">Romantism</span>
                     <span class="years">Secolul XIX</span>
@@ -615,7 +759,7 @@
             </a>
 
             <!-- Pitagora -->
-            <a href="pitagora.html" class="study-card">
+            <a href="pitagora.html" class="study-card" data-year="-570" data-category="presocratici" data-interest="9" data-name="Pitagora">
                 <div class="card-top">
                     <span class="category">Presocratici</span>
                     <span class="years">c. 570 — 495 î.Hr.</span>
@@ -627,7 +771,7 @@
             </a>
 
             <!-- Heraclit -->
-            <a href="heraclit.html" class="study-card">
+            <a href="heraclit.html" class="study-card" data-year="-535" data-category="presocratici" data-interest="8" data-name="Heraclit">
                 <div class="card-top">
                     <span class="category">Presocratici</span>
                     <span class="years">c. 535 — 475 î.Hr.</span>
@@ -639,7 +783,7 @@
             </a>
 
             <!-- Parmenide -->
-            <a href="parmenide.html" class="study-card">
+            <a href="parmenide.html" class="study-card" data-year="-515" data-category="presocratici" data-interest="7" data-name="Parmenide">
                 <div class="card-top">
                     <span class="category">Presocratici</span>
                     <span class="years">c. 515 — 450 î.Hr.</span>
@@ -651,7 +795,7 @@
             </a>
 
             <!-- Socrate -->
-            <a href="socrate.html" class="study-card">
+            <a href="socrate.html" class="study-card" data-year="-470" data-category="filozofie-antica" data-interest="10" data-name="Socrate">
                 <div class="card-top">
                     <span class="category">Filozofie Antică</span>
                     <span class="years">c. 470 — 399 î.Hr.</span>
@@ -663,7 +807,7 @@
             </a>
 
             <!-- Platon -->
-            <a href="platon.html" class="study-card">
+            <a href="platon.html" class="study-card" data-year="-428" data-category="filozofie-antica" data-interest="10" data-name="Platon">
                 <div class="card-top">
                     <span class="category">Idealism</span>
                     <span class="years">c. 428 — 348 î.Hr.</span>
@@ -675,7 +819,7 @@
             </a>
 
             <!-- Aristotel -->
-            <a href="aristotel.html" class="study-card">
+            <a href="aristotel.html" class="study-card" data-year="-384" data-category="filozofie-antica" data-interest="10" data-name="Aristotel">
                 <div class="card-top">
                     <span class="category">Sistematizator</span>
                     <span class="years">384 — 322 î.Hr.</span>
@@ -683,6 +827,354 @@
                 <h3 class="title">Aristotel</h3>
                 <p class="subtitle">Filozoful Care A Organizat Totul</p>
                 <p class="tagline">Tutorele lui Alexandru cel Mare. A scris despre tot — de la poezie la politică, de la etică la biologie. A organizat cunoașterea așa cum o știm.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Diogene -->
+            <a href="diogene.html" class="study-card" data-year="-412" data-category="filozofie-antica" data-interest="9" data-name="Diogene">
+                <div class="card-top">
+                    <span class="category">Cinism</span>
+                    <span class="years">c. 412 — 323 î.Hr.</span>
+                </div>
+                <h3 class="title">Diogene din Sinope</h3>
+                <p class="subtitle">Filozoful din Butoi</p>
+                <p class="tagline">Trăia într-un butoi și sfida întreaga civilizație. Când Alexandru cel Mare i-a oferit orice dorință, a cerut doar să se dea din soare.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Epicur -->
+            <a href="epicur.html" class="study-card" data-year="-341" data-category="filozofie-antica" data-interest="8" data-name="Epicur">
+                <div class="card-top">
+                    <span class="category">Hedonism</span>
+                    <span class="years">341 — 270 î.Hr.</span>
+                </div>
+                <h3 class="title">Epicur</h3>
+                <p class="subtitle">Filozoful Plăcerilor Simple</p>
+                <p class="tagline">Nu excesul, ci simplitatea. A înțeles că fericirea stă în prietenie, în contemplare și în absența fricii — nu în acumulare și lux.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Cicero -->
+            <a href="cicero.html" class="study-card" data-year="-106" data-category="filozofie-antica" data-interest="7" data-name="Cicero">
+                <div class="card-top">
+                    <span class="category">Filozofie Romană</span>
+                    <span class="years">106 — 43 î.Hr.</span>
+                </div>
+                <h3 class="title">Cicero</h3>
+                <p class="subtitle">Oratorul Republicii</p>
+                <p class="tagline">Cel mai mare orator al Romei. A salvat Republica prin cuvinte și a murit pentru ea. Filozofia greacă a ajuns la noi prin penița lui.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Seneca -->
+            <a href="seneca.html" class="study-card" data-year="-4" data-category="stoicism" data-interest="9" data-name="Seneca">
+                <div class="card-top">
+                    <span class="category">Stoicism</span>
+                    <span class="years">c. 4 î.Hr. — 65 d.Hr.</span>
+                </div>
+                <h3 class="title">Seneca</h3>
+                <p class="subtitle">Filozoful Contradicțiilor</p>
+                <p class="tagline">Cel mai bogat om al Romei predica detașarea de avere. A trăit în contradicție, dar a murit cu demnitatea unui adevărat stoic.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Epictet -->
+            <a href="epictet.html" class="study-card" data-year="50" data-category="stoicism" data-interest="9" data-name="Epictet">
+                <div class="card-top">
+                    <span class="category">Stoicism</span>
+                    <span class="years">c. 50 — 135 d.Hr.</span>
+                </div>
+                <h3 class="title">Epictet</h3>
+                <p class="subtitle">Sclavul Liber</p>
+                <p class="tagline">Născut sclav, a descoperit că libertatea adevărată e interioară. Nu poți controla ce ți se întâmplă, dar poți controla cum reacționezi.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Marc Aureliu -->
+            <a href="marc-aureliu.html" class="study-card" data-year="121" data-category="stoicism" data-interest="10" data-name="Marc Aureliu">
+                <div class="card-top">
+                    <span class="category">Stoicism</span>
+                    <span class="years">121 — 180 d.Hr.</span>
+                </div>
+                <h3 class="title">Marc Aureliu</h3>
+                <p class="subtitle">Împăratul Filozof</p>
+                <p class="tagline">Cel mai puternic om din lume și-a scris meditațiile în cortul de război. Jurnalul său intim a devenit unul din cele mai citite texte din istorie.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Augustin -->
+            <a href="augustin.html" class="study-card" data-year="354" data-category="medieval" data-interest="9" data-name="Augustin">
+                <div class="card-top">
+                    <span class="category">Patristica</span>
+                    <span class="years">354 — 430 d.Hr.</span>
+                </div>
+                <h3 class="title">Sfântul Augustin</h3>
+                <p class="subtitle">Păcătosul Convertit</p>
+                <p class="tagline">De la o tinerețe de excese la cel mai influent teolog al creștinismului. Confesiunile sale rămân cea mai sinceră autobiografie din istorie.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Anselm -->
+            <a href="anselm.html" class="study-card" data-year="1033" data-category="medieval" data-interest="7" data-name="Anselm">
+                <div class="card-top">
+                    <span class="category">Scolastică</span>
+                    <span class="years">1033 — 1109</span>
+                </div>
+                <h3 class="title">Anselm de Canterbury</h3>
+                <p class="subtitle">Părintele Argumentului Ontologic</p>
+                <p class="tagline">A creat cel mai elegant și controversat argument pentru existența lui Dumnezeu — un argument care încă provoacă filozofii după 900 de ani.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Abelard -->
+            <a href="abelard.html" class="study-card" data-year="1079" data-category="medieval" data-interest="8" data-name="Abelard">
+                <div class="card-top">
+                    <span class="category">Scolastică</span>
+                    <span class="years">1079 — 1142</span>
+                </div>
+                <h3 class="title">Petru Abelard</h3>
+                <p class="subtitle">Geniul Rebel</p>
+                <p class="tagline">Cel mai strălucit logician al Evului Mediu și protagonistul celei mai tragice povești de dragoste. Héloïse și Abelard — iubirea care a scandalizat o epocă.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Toma de Aquino -->
+            <a href="toma-aquino.html" class="study-card" data-year="1225" data-category="medieval" data-interest="9" data-name="Toma de Aquino">
+                <div class="card-top">
+                    <span class="category">Scolastică</span>
+                    <span class="years">1225 — 1274</span>
+                </div>
+                <h3 class="title">Toma de Aquino</h3>
+                <p class="subtitle">Doctorul Angelic</p>
+                <p class="tagline">A reconciliat credința cu rațiunea și Aristotel cu Hristos. Summa Theologica rămâne monumentul suprem al gândirii medievale.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Ockham -->
+            <a href="ockham.html" class="study-card" data-year="1287" data-category="medieval" data-interest="7" data-name="Ockham">
+                <div class="card-top">
+                    <span class="category">Nominalism</span>
+                    <span class="years">c. 1287 — 1347</span>
+                </div>
+                <h3 class="title">William de Ockham</h3>
+                <p class="subtitle">Briciul lui Ockham</p>
+                <p class="tagline">„Nu multiplica entitățile fără necesitate." Principiul lui simplu a tăiat speculațiile inutile și a pregătit terenul pentru știința modernă.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Machiavelli -->
+            <a href="machiavelli.html" class="study-card" data-year="1469" data-category="iluminism" data-interest="9" data-name="Machiavelli">
+                <div class="card-top">
+                    <span class="category">Realism Politic</span>
+                    <span class="years">1469 — 1527</span>
+                </div>
+                <h3 class="title">Niccolò Machiavelli</h3>
+                <p class="subtitle">Consilierul Prinților</p>
+                <p class="tagline">A separat politica de morală și a dezvăluit logica crudă a puterii. Principele rămâne cel mai șocant manual de conducere din toate timpurile.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Bacon -->
+            <a href="bacon.html" class="study-card" data-year="1561" data-category="empirism" data-interest="7" data-name="Bacon">
+                <div class="card-top">
+                    <span class="category">Empirism</span>
+                    <span class="years">1561 — 1626</span>
+                </div>
+                <h3 class="title">Francis Bacon</h3>
+                <p class="subtitle">Părintele Metodei Științifice</p>
+                <p class="tagline">„Știința e putere." A proiectat metoda empirică și a visat o utopie condusă de savanți. Profetul revoluției științifice.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Hobbes -->
+            <a href="hobbes.html" class="study-card" data-year="1588" data-category="empirism" data-interest="8" data-name="Hobbes">
+                <div class="card-top">
+                    <span class="category">Contractualism</span>
+                    <span class="years">1588 — 1679</span>
+                </div>
+                <h3 class="title">Thomas Hobbes</h3>
+                <p class="subtitle">Filozoful Leviatanului</p>
+                <p class="tagline">Viața naturală e „solitară, săracă, murdară, brutală și scurtă." A justificat statul absolut ca singura salvare de la haos.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Descartes -->
+            <a href="descartes.html" class="study-card" data-year="1596" data-category="rationalism" data-interest="10" data-name="Descartes">
+                <div class="card-top">
+                    <span class="category">Raționalism</span>
+                    <span class="years">1596 — 1650</span>
+                </div>
+                <h3 class="title">René Descartes</h3>
+                <p class="subtitle">Părintele Filozofiei Moderne</p>
+                <p class="tagline">„Gândesc, deci exist." A îndoit de absolut tot pentru a găsi o singură certitudine. De aici a reconstruit întreaga filozofie.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Pascal -->
+            <a href="pascal.html" class="study-card" data-year="1623" data-category="rationalism" data-interest="8" data-name="Pascal">
+                <div class="card-top">
+                    <span class="category">Apologetică</span>
+                    <span class="years">1623 — 1662</span>
+                </div>
+                <h3 class="title">Blaise Pascal</h3>
+                <p class="subtitle">Geniul care a Pariat pe Dumnezeu</p>
+                <p class="tagline">A inventat calculatorul și teoria probabilităților. Apoi a abandonat matematica pentru a explora infinitul neliniștitor al condiției umane.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Spinoza -->
+            <a href="spinoza.html" class="study-card" data-year="1632" data-category="rationalism" data-interest="9" data-name="Spinoza">
+                <div class="card-top">
+                    <span class="category">Raționalism</span>
+                    <span class="years">1632 — 1677</span>
+                </div>
+                <h3 class="title">Baruch Spinoza</h3>
+                <p class="subtitle">Filozoful Excomunicat</p>
+                <p class="tagline">A identificat Dumnezeu cu Natura și a fost exclus din comunitatea evreiască. Etica sa geometrică rămâne una din cele mai radicale viziuni filozofice.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Locke -->
+            <a href="locke.html" class="study-card" data-year="1632" data-category="empirism" data-interest="9" data-name="Locke">
+                <div class="card-top">
+                    <span class="category">Empirism</span>
+                    <span class="years">1632 — 1704</span>
+                </div>
+                <h3 class="title">John Locke</h3>
+                <p class="subtitle">Părintele Liberalismului</p>
+                <p class="tagline">Mintea e o tablă goală la naștere. Guvernul există pentru a proteja drepturile naturale. Ideile lui au inspirat revoluțiile americană și franceză.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Leibniz -->
+            <a href="leibniz.html" class="study-card" data-year="1646" data-category="rationalism" data-interest="8" data-name="Leibniz">
+                <div class="card-top">
+                    <span class="category">Raționalism</span>
+                    <span class="years">1646 — 1716</span>
+                </div>
+                <h3 class="title">Gottfried Leibniz</h3>
+                <p class="subtitle">Ultimul Geniu Universal</p>
+                <p class="tagline">A inventat calculul, a conceput monadele și a afirmat că trăim în cea mai bună lume posibilă. Voltaire l-a ridiculizat, dar avea dreptate?</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Berkeley -->
+            <a href="berkeley.html" class="study-card" data-year="1685" data-category="empirism" data-interest="7" data-name="Berkeley">
+                <div class="card-top">
+                    <span class="category">Empirism</span>
+                    <span class="years">1685 — 1753</span>
+                </div>
+                <h3 class="title">George Berkeley</h3>
+                <p class="subtitle">Negătorul Materiei</p>
+                <p class="tagline">A fi înseamnă a fi perceput. A negat existența materiei cu argumente surprinzător de solide. Realitatea e doar în minte?</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Montesquieu -->
+            <a href="montesquieu.html" class="study-card" data-year="1689" data-category="iluminism" data-interest="8" data-name="Montesquieu">
+                <div class="card-top">
+                    <span class="category">Iluminism</span>
+                    <span class="years">1689 — 1755</span>
+                </div>
+                <h3 class="title">Montesquieu</h3>
+                <p class="subtitle">Arhitectul Separării Puterilor</p>
+                <p class="tagline">A conceput separarea puterilor în stat — ideea care stă la baza tuturor democrațiilor moderne. Fără el, Constituția SUA ar fi arătat altfel.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Voltaire -->
+            <a href="voltaire.html" class="study-card" data-year="1694" data-category="iluminism" data-interest="9" data-name="Voltaire">
+                <div class="card-top">
+                    <span class="category">Iluminism</span>
+                    <span class="years">1694 — 1778</span>
+                </div>
+                <h3 class="title">Voltaire</h3>
+                <p class="subtitle">Spiritul Ascuțit al Iluminismului</p>
+                <p class="tagline">Cel mai temut polemist al secolului. A luptat pentru toleranță cu arma ironiei. „Écrasez l'infâme!" — Zdrobiți infamia!</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Hume -->
+            <a href="hume.html" class="study-card" data-year="1711" data-category="empirism" data-interest="9" data-name="Hume">
+                <div class="card-top">
+                    <span class="category">Empirism</span>
+                    <span class="years">1711 — 1776</span>
+                </div>
+                <h3 class="title">David Hume</h3>
+                <p class="subtitle">Scepticul Genial</p>
+                <p class="tagline">A distrus cauzalitatea, a redus rațiunea la „sclava pasiunilor" și l-a trezit pe Kant din somnul dogmatic. Cel mai periculos filozof?</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Rousseau -->
+            <a href="rousseau.html" class="study-card" data-year="1712" data-category="iluminism" data-interest="9" data-name="Rousseau">
+                <div class="card-top">
+                    <span class="category">Iluminism</span>
+                    <span class="years">1712 — 1778</span>
+                </div>
+                <h3 class="title">Jean-Jacques Rousseau</h3>
+                <p class="subtitle">Profetul Naturii</p>
+                <p class="tagline">„Omul se naște liber, dar pretutindeni e în lanțuri." A proclamat bunătatea naturală a omului și a inspirat Revoluția Franceză.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Kant -->
+            <a href="kant.html" class="study-card" data-year="1724" data-category="idealism-german" data-interest="10" data-name="Kant">
+                <div class="card-top">
+                    <span class="category">Idealism German</span>
+                    <span class="years">1724 — 1804</span>
+                </div>
+                <h3 class="title">Immanuel Kant</h3>
+                <p class="subtitle">Revoluționarul din Königsberg</p>
+                <p class="tagline">Nu a ieșit niciodată din orașul natal, dar a revoluționat toată filozofia. A reconciliat raționalismul cu empirismul și a fundamentat morala pe rațiune pură.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Goethe -->
+            <a href="goethe.html" class="study-card" data-year="1749" data-category="literatura" data-interest="9" data-name="Goethe">
+                <div class="card-top">
+                    <span class="category">Literatură</span>
+                    <span class="years">1749 — 1832</span>
+                </div>
+                <h3 class="title">Johann Wolfgang von Goethe</h3>
+                <p class="subtitle">Poetul-Filozof</p>
+                <p class="tagline">A creat Faust, cea mai profundă meditație asupra condiției umane. Poet, dramaturg, om de știință — ultimul om al Renașterii.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Hegel -->
+            <a href="hegel.html" class="study-card" data-year="1770" data-category="idealism-german" data-interest="9" data-name="Hegel">
+                <div class="card-top">
+                    <span class="category">Idealism German</span>
+                    <span class="years">1770 — 1831</span>
+                </div>
+                <h3 class="title">Georg Wilhelm Friedrich Hegel</h3>
+                <p class="subtitle">Filozoful Spiritului Absolut</p>
+                <p class="tagline">A văzut istoria ca desfășurare dialectică a Spiritului. Teză, antiteză, sinteză — formula care a schimbat modul în care înțelegem lumea.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Schopenhauer -->
+            <a href="schopenhauer.html" class="study-card" data-year="1788" data-category="idealism-german" data-interest="8" data-name="Schopenhauer">
+                <div class="card-top">
+                    <span class="category">Pesimism</span>
+                    <span class="years">1788 — 1860</span>
+                </div>
+                <h3 class="title">Arthur Schopenhauer</h3>
+                <p class="subtitle">Filozoful Pesimist</p>
+                <p class="tagline">A văzut în voința oarbă sursa întregii suferințe. Singura evadare? Arta și compasiunea. Cel mai onest dintre filozofi.</p>
+                <span class="read-more">Citește studiul</span>
+            </a>
+
+            <!-- Marx -->
+            <a href="marx.html" class="study-card" data-year="1818" data-category="modern" data-interest="10" data-name="Marx">
+                <div class="card-top">
+                    <span class="category">Materialism</span>
+                    <span class="years">1818 — 1883</span>
+                </div>
+                <h3 class="title">Karl Marx</h3>
+                <p class="subtitle">Filozoful Revoluției</p>
+                <p class="tagline">„Filozofii au interpretat lumea; important e să o schimbăm." Ideile lui au inspirat revoluții și au modelat secolul XX.</p>
                 <span class="read-more">Citește studiul</span>
             </a>
 
@@ -695,6 +1187,89 @@
         <p class="footer-tagline">Filozofia nu e despre răspunsuri. E despre întrebările care merită puse.</p>
         <p class="footer-copy">MMXXIV</p>
     </footer>
+
+    <script>
+    (function() {
+        const grid = document.getElementById('studies-grid');
+        const cards = Array.from(grid.querySelectorAll('.study-card'));
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const sortBtns = document.querySelectorAll('.sort-btn');
+        const countEl = document.getElementById('visible-count');
+
+        let currentFilter = 'all';
+        let currentSort = 'cronologic';
+        let sortDirection = 'asc';
+
+        // Filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                applyFilterAndSort();
+            });
+        });
+
+        // Sort functionality
+        sortBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sortBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentSort = btn.dataset.sort;
+                sortDirection = btn.dataset.direction || 'asc';
+                applyFilterAndSort();
+            });
+        });
+
+        function applyFilterAndSort() {
+            // Filter
+            let visibleCards = cards.filter(card => {
+                if (currentFilter === 'all') return true;
+                return card.dataset.category === currentFilter;
+            });
+
+            // Hide all, then show filtered
+            cards.forEach(card => card.classList.add('hidden'));
+            visibleCards.forEach(card => card.classList.remove('hidden'));
+
+            // Sort visible cards
+            visibleCards.sort((a, b) => {
+                switch(currentSort) {
+                    case 'cronologic':
+                        return parseInt(a.dataset.year) - parseInt(b.dataset.year);
+                    case 'cronologic-desc':
+                        return parseInt(b.dataset.year) - parseInt(a.dataset.year);
+                    case 'interes':
+                        return parseInt(b.dataset.interest) - parseInt(a.dataset.interest);
+                    case 'alfabetic':
+                        return a.dataset.name.localeCompare(b.dataset.name, 'ro');
+                    default:
+                        return 0;
+                }
+            });
+
+            // Reorder in DOM
+            visibleCards.forEach(card => grid.appendChild(card));
+
+            // Update count
+            countEl.textContent = visibleCards.length;
+
+            // Show "no results" if needed
+            const existingNoResults = grid.querySelector('.no-results');
+            if (existingNoResults) existingNoResults.remove();
+
+            if (visibleCards.length === 0) {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.textContent = 'Niciun studiu găsit pentru această categorie.';
+                grid.appendChild(noResults);
+            }
+        }
+
+        // Initial sort
+        applyFilterAndSort();
+    })();
+    </script>
 
 </body>
 </html>

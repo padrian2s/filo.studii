@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean-Jacques Rousseau - Filozoful Naturii și Libertății</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #228b22; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Iluminism / Romantism</span>
+        <h1>Jean-Jacques Rousseau</h1>
+        <p class="subtitle">Filozoful care a proclamat bunătatea naturală a omului și a inspirat revoluții</p>
+        <span class="years">1712 — 1778</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Omul se Naște Liber</h2>
+
+                <p class="lead">„Omul se naște liber, și pretutindeni e în lanțuri." Această frază de deschidere a Contractului social a devenit strigătul de luptă al revoluțiilor. Jean-Jacques Rousseau a răsturnat presupozițiile epocii sale: civilizația nu ne face mai buni, ci ne corupează.</p>
+
+                <p>Rousseau e un paradox ambulant. A scris despre educație dar și-a abandonat toți cei cinci copii. A celebrat natura dar a trăit în saloanele Parisului. A propovăduit sinceritatea dar era plin de resentimente și paranoia. Și totuși, ideile sale au schimbat lumea.</p>
+
+                <p>Pentru noi, Rousseau e relevant prin întrebările pe care le pune: suntem cu adevărat liberi în societate? Progresul ne face fericiți? Cât din personalitatea noastră e autentică și cât e mască socială?</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Vagabondul de Geniu</h2>
+
+                <p>Rousseau s-a născut la Geneva. Mama a murit la naștere — o vină pe care o va purta toată viața. Tatăl, ceasornicar, l-a crescut cu lectură haotică: romane sentimentale, Plutarh, Biblie. La 16 ani a fugit de acasă.</p>
+
+                <p>A vagabondat prin Savoia și Franța. A fost servitor, secretar, muzician, copist. A avut o relație lungă cu Madame de Warens („Maman"), protectoarea sa. La Paris a intrat în cercurile enciclopediștilor — Diderot, d'Alembert.</p>
+
+                <h3>Iluminarea de pe drumul Vincennes</h3>
+
+                <p>În 1749, pe drumul spre Vincennes (să-l viziteze pe Diderot, întemițat), Rousseau a citit anunțul Academiei din Dijon: „Progresul științelor și artelor a contribuit la coruperea sau la purificarea moravurilor?" A avut o revelație: „Civilizația ne corupte!" Acest moment a dat direcția întregii sale opere.</p>
+
+                <p>A câștigat premiul cu Discursul asupra științelor și artelor (1750). Au urmat capodoperele: Discursul asupra inegalității, Contractul social, Emile. Acuzat de impietate pentru Emile, a fugit din Franța. A trăit instabil, paranoid, certându-se cu toți foștii prieteni. A murit în 1778, la câteva săptămâni după Voltaire — rivalul său de o viață.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Omul se naște liber, și pretutindeni e în lanțuri."</blockquote>
+                <cite>— Jean-Jacques Rousseau, Contractul social</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Starea Naturală</span>
+                <h2>Bunul Sălbatic</h2>
+
+                <p>În Discursul asupra originii și fundamentelor inegalității dintre oameni (1755), Rousseau reconstruiește ipotetic starea naturală a omului:</p>
+
+                <div class="concept-box">
+                    <h4>Omul Natural</h4>
+                    <p><strong>Trăsături:</strong> Singuratic, autosuficient, fără limbaj, fără rațiune dezvoltată, fără moralitate (dar și fără viciu).<br><br>
+                    <strong>Sentimente naturale:</strong> Amorul de sine (iubirea sănătoasă de sine) și mila (compasiunea naturală pentru suferința altora).<br><br>
+                    <strong>Diferență de Hobbes:</strong> Omul natural nu e lup pentru om — nu are nici motive, nici capacitatea de a face rău sistematic.</p>
+                </div>
+
+                <h3>Cum Am Căzut</h3>
+
+                <p>Nenorocirea a început când cineva a îngrădit un teren și a spus: „Asta e al meu." Proprietatea a creat inegalitate, inegalitatea a creat conflict, conflictul a creat statul — care a legalizat dominația bogaților asupra săracilor.</p>
+
+                <blockquote class="inline">„Primul care, după ce a împrejmuit un teren, s-a încumetat să spună «Asta e al meu» și a găsit oameni destul de naivi să-l creadă, a fost adevăratul fondator al societății civile."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Critica Civilizației</span>
+                <h2>Progresul ca Decădere</h2>
+
+                <p>Contra iluminiștilor care celebrau progresul, Rousseau vede în civilizație o degradare:</p>
+
+                <ul>
+                    <li><strong>Științele și artele:</strong> Nu ne fac mai buni — ne fac mai vicleni, mai ipocriți, mai dependenți</li>
+                    <li><strong>Luxul:</strong> Corupe moravurile, creează nevoi false, adâncește inegalitatea</li>
+                    <li><strong>Societatea:</strong> Ne forțează să purtăm măști, să trăim pentru opinia altora</li>
+                    <li><strong>Comparația cu alții:</strong> „Amorul propriu" (vanitatea) înlocuiește „amorul de sine" sănătos</li>
+                </ul>
+
+                <p>Nu e vorba de a ne întoarce în păduri (o caricatură pe care Rousseau o respinge). E vorba de a înțelege ce am pierdut și ce ar trebui să recuperăm — autenticitatea, comunitatea, libertatea.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Contractul Social</span>
+                <h2>Voința Generală</h2>
+
+                <p>Dacă societatea ne corupte, cum putem trăi împreună fără a ne pierde libertatea? Contractul social (1762) propune răspunsul:</p>
+
+                <div class="concept-box">
+                    <h4>Problema și Soluția</h4>
+                    <p><strong>Problema:</strong> „A găsi o formă de asociere care să apere și să protejeze cu toată forța comună persoana și bunurile fiecărui asociat și prin care fiecare, unindu-se cu toți, să nu asculte totuși decât de sine însuși și să rămână la fel de liber ca înainte."<br><br>
+                    <strong>Soluția:</strong> Fiecare se dăruiește complet comunității. În schimb, primește înapoi libertatea civilă și egalitatea în fața legii — mai sigure decât libertatea naturală.</p>
+                </div>
+
+                <h3>Voința Generală</h3>
+
+                <p>Voința generală nu e suma vointelor particulare (ce vrea fiecare pentru sine), ci ceea ce vrea fiecare pentru binele comun. Legile legitime exprimă voința generală. Cetățeanul care se supune legii se supune de fapt sieși.</p>
+
+                <p>E o idee puternică dar periculoasă: cine decide ce e voința generală? Rousseau spune că ea nu poate greși — dar poate fi manipulată sau revendicată de tirani.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Totul e bun când iese din mâinile Creatorului; totul degenerează în mâinile omului."</blockquote>
+                <cite>— Jean-Jacques Rousseau, Emile</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Educația</span>
+                <h2>Emile sau Despre Educație</h2>
+
+                <p>Emile (1762) e un tratat de educație sub formă de roman. Rousseau descrie cum ar trebui crescut un copil pentru a-și păstra bunătatea naturală:</p>
+
+                <ul>
+                    <li><strong>Educație negativă:</strong> Nu îngrămădi cunoștințe — ferește copilul de influențe corupătoare</li>
+                    <li><strong>Învățare prin experiență:</strong> Nu cărți și lecții — contact direct cu natura și realitatea</li>
+                    <li><strong>Respectarea etapelor:</strong> Fiecare vârstă are nevoile ei — nu forța dezvoltarea</li>
+                    <li><strong>Formarea caracterului:</strong> Mai importante sunt virtuțile decât informațiile</li>
+                </ul>
+
+                <h3>Religia Naturală</h3>
+
+                <p>În „Profesiuna de credință a vicarului savoyard" (parte din Emile), Rousseau propune o religie a inimii: Dumnezeu se simte, nu se demonstrează. Conștiința e ghidul moral. Dogmele și ritualurile sunt secundare.</p>
+
+                <p>Această secțiune a provocat condamnarea cărții — prea liberă pentru catolici, prea religioasă pentru atei.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Confesiunile</span>
+                <h2>Autobiografia Sinceră</h2>
+
+                <p>Confesiunile (publicate postum) sunt primul mare exercițiu de sinceritate autobiografică. Rousseau promite să se arate „în întreaga adevărul naturii mele":</p>
+
+                <blockquote class="inline">„Întreprind ceva care n-a avut niciodată exemplu și a cărui execuție nu va avea imitator. Vreau să arăt semenilor mei un om în întreaga adevărul naturii sale; iar acest om voi fi eu."</blockquote>
+
+                <p>Mărturisește furtul unui panglici, abandonarea copiilor, fantezii sexuale, slăbiciuni. Dar în spatele sincerității stă o justificare: „Cu toate defectele mele, sunt mai bun decât ceilalți oameni, care se prefac."</p>
+
+                <p>A inventat genul autobiografiei moderne și a influențat romantismul prin accentul pe sentimente, natură, subiectivitate.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Moștenirea</span>
+                <h2>Revoluții și Romantism</h2>
+
+                <h3>Revoluția Franceză</h3>
+                <p>Robespierre îl venera pe Rousseau. „Voința generală", „suveranitatea poporului", „contractul social" au devenit sloganuri revoluționare. Dar și Teroarea și-a găsit justificare în ideea de „libertate forțată".</p>
+
+                <h3>Romantismul</h3>
+                <p>Celebrarea naturii, sentimentului, autenticității — toate sunt rousseauiste. Goethe, Byron, romanticii germani și englezi îl recunosc ca precursor.</p>
+
+                <h3>Pedagogia</h3>
+                <p>Pestalozzi, Montessori, Dewey — toată pedagogia modernă centrată pe copil derivă din Emile.</p>
+
+                <h3>Critici</h3>
+                <p>Burke l-a acuzat de utopism periculos. Istoricii văd în voința generală o rădăcină a totalitarismului. Feministele critică sexismul din Emile (femeia educată să slujească bărbatul).</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Rousseau pentru Viața de Azi</h2>
+
+                <h3>Chestionează „Progresul"</h3>
+                <p>Nu tot ce e nou e mai bun. Întreabă-te: ce am pierdut pe drum? Ce nevoi sunt autentice și care sunt fabricate?</p>
+
+                <h3>Caută Autenticitatea</h3>
+                <p>Cât din comportamentul tău e pentru „a impresiona"? Poți fi mai aproape de ceea ce ești cu adevărat?</p>
+
+                <h3>Respectă Natura</h3>
+                <p>Atât natura exterioară (mediul), cât și natura interioară (instinctele, sentimentele). Nu totul se rezolvă prin rațiune și tehnologie.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Rousseauist</h4>
+                    <p>Petrece o zi fără social media, știri, competiție. Observă ce sentimente apar. Cât de mult din viața ta cotidiană e determinată de comparația cu alții? Ce ai face dacă nimeni n-ar vedea?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Nostalgia și Speranța</h2>
+
+                <p>Rousseau e filozoful nostalgiei — dar și al speranței. Ne arată ce am pierdut: libertatea naturală, autenticitatea, comunitatea. Ne arată și cum am putea recupera ceva: prin educație dreaptă, instituții legitime, sinceritate cu noi înșine.</p>
+
+                <p>Contradicțiile lui sunt și contradicțiile noastre. Vrem autenticitate și succes social. Celebrăm natura și trăim în orașe. Denunțăm rețelele sociale și le folosim zilnic.</p>
+
+                <p>„Omul se naște liber" — poate nu e un fapt, ci un ideal. Lanțurile sunt reale — dar conștiința lor e primul pas spre eliberare.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

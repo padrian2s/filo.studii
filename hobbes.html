@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Hobbes - Filozoful Leviatanului</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #2f4f4f; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Contractualism / Materialism</span>
+        <h1>Thomas Hobbes</h1>
+        <p class="subtitle">Filozoful care a văzut viața naturală ca „solitară, săracă, murdară, brutală și scurtă" și a justificat statul absolut</p>
+        <span class="years">1588 — 1679</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Leviatanul</h2>
+
+                <p class="lead">„Viața omului e solitară, săracă, murdară, brutală și scurtă." Această descriere a stării naturale — lumea fără stat — e poate cea mai pesimistă imagine a condiției umane din istoria filozofiei. Thomas Hobbes credea că doar un suveran absolut ne poate salva de noi înșine.</p>
+
+                <p>Hobbes a scris Leviatan în timpul Războiului Civil Englez (1642-51), când a văzut cum societatea se poate prăbuși în violență. A concluzionat că alternativa la autoritate e haos — și că pacea merită sacrificiul libertății.</p>
+
+                <p>Pentru noi, Hobbes e relevant prin întrebarea pe care o pune: de ce ar trebui să ne supunem statului? Răspunsul lui — pentru că alternativa e mai rea — rămâne una dintre justificările fundamentale ale autorității politice.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Supraviețuitorul</h2>
+
+                <p>Hobbes s-a născut prematur la Westport, Anglia, când mama a auzit vestea Armadei Spaniole: „Frica și eu suntem gemeni", spunea el. A trăit 91 de ani — o longevitate remarcabilă pentru epocă.</p>
+
+                <p>A studiat la Oxford, apoi a fost tutore în familia Cavendish — aristocrați bogați care i-au permis să călătorească și să scrie. În Europa l-a întâlnit pe Galilei și a fost impresionat de metoda geometrică.</p>
+
+                <h3>Exilul Parizian</h3>
+
+                <p>În 1640, când Parlamentul a început să conteste puterea regală, Hobbes — care susținea monarhia — a fugit la Paris. A rămas 11 ani, a fost tutorele viitorului rege Carol al II-lea și a scris Leviatan (publicat 1651).</p>
+
+                <p>Ironic, Leviatan a iritat și pe regaliști (pentru că legitima suveranitatea prin contract, nu drept divin) și pe parlamentari (pentru absolutism). Hobbes s-a întors în Anglia și s-a supus lui Cromwell — ceea ce propria teorie justifica.</p>
+
+                <p>După Restaurație (1660), Carol al II-lea l-a protejat, dar Hobbes a fost suspect de ateism și i s-a interzis să mai publice pe teme politice. A continuat să scrie matematică și să traducă Homer.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Viața omului e solitară, săracă, murdară, brutală și scurtă."</blockquote>
+                <cite>— Thomas Hobbes, Leviatan</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Materialismul</span>
+                <h2>Totul e Materie în Mișcare</h2>
+
+                <p>Hobbes e un materialist radical: tot ce există e materie în mișcare. Nu există suflet imaterial, nu există Dumnezeu incorporal (Hobbes spune că „Dumnezeu" e doar un nume pentru cauza necunoscută a lucrurilor).</p>
+
+                <div class="concept-box">
+                    <h4>Mecanicismul Hobbesean</h4>
+                    <p><strong>Senzația:</strong> Mișcarea externă lovește organele de simț, produce mișcare în nervi și creier — aceasta e senzația.<br><br>
+                    <strong>Imaginația:</strong> Mișcarea reziduală în creier după ce stimulul a încetat.<br><br>
+                    <strong>Gândirea:</strong> „Calcul" — adunare și scădere de idei. „Rațiunea nu e decât calculare."<br><br>
+                    <strong>Pasiunile:</strong> Mișcări interne spre (dorință) sau dinspre (aversiune) obiecte.</p>
+                </div>
+
+                <p>Acest mecanism se aplică și politicii: statul e o „mașină" — un „om artificial" construit pentru a proteja oamenii naturali.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Starea Naturală</span>
+                <h2>Războiul Tuturor Contra Tuturor</h2>
+
+                <p>Hobbes imaginează viața fără stat — „starea naturală". Nu e neapărat istorică, ci o experiență mentală: ce s-ar întâmpla dacă nu ar exista autoritate?</p>
+
+                <ul>
+                    <li><strong>Egalitate naturală:</strong> Toți suntem aproximativ egali — chiar și cel mai slab poate ucide pe cel mai puternic (în somn, prin vicleșug)</li>
+                    <li><strong>Resursele sunt limitate:</strong> Dorim aceleași lucruri; competiția e inevitabilă</li>
+                    <li><strong>Neîncrederea:</strong> Fără garanții, e rațional să ataci primul — anticipând atacul altuia</li>
+                    <li><strong>Gloria:</strong> Vrem să fim respectați; jignirile duc la violență</li>
+                </ul>
+
+                <p>Rezultatul: „bellum omnium contra omnes" — războiul tuturor contra tuturor. Nu neapărat violență permanentă, dar amenințarea constantă a violenței.</p>
+
+                <blockquote class="inline">„În această condiție nu există loc pentru industrie... nu există societate; și, ceea ce e cel mai rău, există frică continuă și pericol de moarte violentă."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Contractul Social</span>
+                <h2>Ieșirea din Haos</h2>
+
+                <p>Cum scăpăm de starea naturală? Prin contract: fiecare renunță la dreptul natural de a face orice (inclusiv de a ucide) în favoarea unui suveran care va menține pacea.</p>
+
+                <div class="concept-box">
+                    <h4>Logica Contractului</h4>
+                    <p><strong>Legile naturale:</strong> Rațiunea dictează „să cauți pacea" și „să renunți la dreptul tău când și alții renunță la al lor".<br><br>
+                    <strong>Problema:</strong> Fără o putere care să impună contractele, ele sunt doar vorbe. „Pactele fără sabie sunt doar vorbe."<br><br>
+                    <strong>Soluția:</strong> Toți transferă puterea lor unui suveran (persoană sau adunare) care va avea forța să impună pacea.</p>
+                </div>
+
+                <h3>Suveranitatea Absolută</h3>
+
+                <p>Suveranul nu e parte a contractului — e creat de el. Nu poate încălca contractul, pentru că nu l-a semnat. Puterea lui trebuie să fie absolută, pentru că orice limitare ar duce la conflict despre cine decide — și am reveni la starea naturală.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Pactele fără sabie sunt doar vorbe."</blockquote>
+                <cite>— Thomas Hobbes</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Leviatanul</span>
+                <h2>Statul ca Om Artificial</h2>
+
+                <p>Titlul e din Cartea lui Iov: Leviatanul e un monstru marin pe care numai Dumnezeu îl poate învinge. Hobbes îl folosește ca metaforă pentru stat — puterea colosală care ține în frâu haosul.</p>
+
+                <ul>
+                    <li><strong>Sufletul:</strong> Suveranitatea</li>
+                    <li><strong>Articulațiile:</strong> Magistrații și funcționarii</li>
+                    <li><strong>Nervii:</strong> Recompensele și pedepsele</li>
+                    <li><strong>Forța:</strong> Bogăția cetățenilor</li>
+                    <li><strong>Memoria:</strong> Consilierii</li>
+                    <li><strong>Rațiunea:</strong> Legile</li>
+                </ul>
+
+                <p>Celebra frontispiciu a primei ediții arată un gigant făcut din trupurile cetățenilor, ținând sabia și cârja — puterea temporală și spirituală unite.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Religia și Statul</span>
+                <h2>O Singură Autoritate</h2>
+
+                <p>Hobbes vede în conflictul dintre puterea civilă și cea religioasă sursa războaielor civile. Soluția: suveranul decide și în materie religioasă.</p>
+
+                <ul>
+                    <li>Suveranul interpretează Scriptura</li>
+                    <li>Suveranul decide ce e ortodoxie și ce e erezie</li>
+                    <li>Conștiința privată nu poate justifica nesupunerea publică</li>
+                </ul>
+
+                <p>Aceasta nu e neapărat ateism — Hobbes spune că crede în Dumnezeu. Dar subordonează religia politicii pentru a evita războiul religios.</p>
+
+                <blockquote class="inline">„Auctoritas, non veritas, facit legem." — „Autoritatea, nu adevărul, face legea."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Moștenirea</span>
+                <h2>Fundamentul Filosofiei Politice Moderne</h2>
+
+                <h3>Contractualismul</h3>
+                <p>Locke, Rousseau, Kant — toți gândesc statul ca rezultat al unui contract. Diferă despre condiții, dar structura vine de la Hobbes.</p>
+
+                <h3>Realismul Politic</h3>
+                <p>Ideea că politica se bazează pe putere și interes, nu pe moralitate, influențează Machiavelli înapoi și Schmitt, Morgenthau înainte.</p>
+
+                <h3>Pozitivismul Juridic</h3>
+                <p>Legea e ceea ce suveranul poruncește — nu derivă din drept natural sau moralitate. Austin, Kelsen dezvoltă această linie.</p>
+
+                <h3>Critici</h3>
+                <p>Liberalii obiectează că Hobbes sacrifică prea mult libertatea pentru securitate. Aristotelicienii că neglijează natura socială a omului. Teologii că subordonează religia statului.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Hobbes pentru Viața de Azi</h2>
+
+                <h3>Recunoaște Necesitatea Ordinii</h3>
+                <p>Înainte de a critica autoritatea, întreabă-te: ce s-ar întâmpla fără ea? Haosul e posibil și catastrofal.</p>
+
+                <h3>Nu Idealiza Starea Naturală</h3>
+                <p>Nici „bunul sălbatic" rousseauist, nici libertatea totală nu sunt realiste. Suntem capabili de violență și egoism.</p>
+
+                <h3>Legitimitatea Cere Protecție</h3>
+                <p>Dacă statul nu mai poate proteja, obligația de supunere încetează. Aceasta e limita absolutismului hobbesean.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Hobbesean</h4>
+                    <p>Gândește-te la o situație în care autoritatea (stat, poliție, reguli) a lipsit temporar. Cum s-au comportat oamenii? S-a confirmat sau infirmat pesimismul hobbesean?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Monstrul Necesar</h2>
+
+                <p>Hobbes nu e un tiran care iubește puterea — e un om speriat care caută securitate. A văzut războiul civil, a văzut cum societatea se poate dezintegra. A concluzionat că orice ordine e mai bună decât dezordinea.</p>
+
+                <p>E o filozofie sumbră dar nu lipsită de adevăr. Statul, oricât de imperfect, ne protejează de alternative mai rele. Leviatanul e un monstru — dar un monstru care ne permite să trăim.</p>
+
+                <p>Întrebarea pe care Hobbes o lasă deschisă: cât de multă libertate putem sacrifica pentru securitate înainte ca securitatea să devină ea însăși o formă de tiranie? Aceasta rămâne dilema fundamentală a politicii.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

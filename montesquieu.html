@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montesquieu - Arhitectul Separării Puterilor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #8b4513; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Iluminism / Drept</span>
+        <h1>Montesquieu</h1>
+        <p class="subtitle">Filozoful care a conceput separarea puterilor și a pus bazele științei politice moderne</p>
+        <span class="years">1689 — 1755</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Puterea Trebuie Limitată</h2>
+
+                <p class="lead">„Pentru ca nimeni să nu poată abuza de putere, trebuie ca, prin dispunerea lucrurilor, puterea să oprească puterea." Această idee simplă — separarea puterilor în legislativă, executivă și judecătorească — a devenit fundamentul constituționalismului modern.</p>
+
+                <p>Charles-Louis de Secondat, baron de Montesquieu, a fost un aristocrat iluminist care a transformat studiul politicii din speculație morală în știință empirică. A călătorit, a observat, a comparat — și a descoperit că legile nu sunt arbitrare, ci reflectă condiții geografice, climatice, sociale.</p>
+
+                <p>Pentru noi, Montesquieu e relevant prin teoria controlului puterii. Într-o lume cu tentații autoritare, ideea că nicio instituție nu trebuie să concentreze toată puterea rămâne vitală.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Aristocratul Filosof</h2>
+
+                <p>Montesquieu s-a născut în castelul La Brède, lângă Bordeaux, într-o familie de nobilime de robă (nobili prin funcții judiciare). A moștenit de la un unchi funcția de președinte al Parlamentului (curte de justiție) din Bordeaux, pe care a exercitat-o 10 ani.</p>
+
+                <p>În 1721, Scrisorile persane l-au făcut celebru: doi persani vizitează Franța și comentează cu naivitate ironică moravurile franceze. Satira ascuțită a societății, religiei și politicii a făcut senzație în saloane.</p>
+
+                <h3>Marea Călătorie</h3>
+
+                <p>Între 1728-31, Montesquieu a călătorit prin Europa: Austria, Ungaria, Italia, Germania, Olanda, Anglia. A stat 18 luni în Anglia, observând sistemul constituțional pe care îl va idealiza. Experiența comparativă a format Spiritul legilor.</p>
+
+                <p>După întoarcere, s-a retras la La Brède pentru a scrie. Spiritul legilor (1748), rod a 20 de ani de muncă, a fost imediat pus la Index dar a avut succes imens. A orbit spre sfârșitul vieții și a murit la Paris în 1755.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Libertatea e dreptul de a face tot ce legile permit."</blockquote>
+                <cite>— Montesquieu, Spiritul legilor</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Spiritul Legilor</span>
+                <h2>Știința Politică</h2>
+
+                <p>Spiritul legilor e o operă monumentală care caută să înțeleagă de ce legile diferă de la o societate la alta. Montesquieu respinge ideea că există legi ideale universal valabile:</p>
+
+                <div class="concept-box">
+                    <h4>Teza Centrală</h4>
+                    <p>Legile trebuie să fie „atât de potrivite poporului pentru care sunt făcute încât e o mare întâmplare dacă cele ale unei națiuni pot conveni alteia." Legile derivă din:<br><br>
+                    • Natura și principiul guvernării<br>
+                    • Clima și geografica<br>
+                    • Religia, moravurile, comerțul<br>
+                    • Istoria și tradițiile</p>
+                </div>
+
+                <p>Această abordare e revoluționară: în loc să prescrie cum ar trebui să fie legile, Montesquieu explică de ce sunt cum sunt. E nașterea sociologiei politice.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Formele de Guvernare</span>
+                <h2>Republică, Monarhie, Despotism</h2>
+
+                <p>Montesquieu clasifică guvernările după natură (cine deține puterea) și principiu (pasiunea care le animă):</p>
+
+                <div class="concept-box">
+                    <h4>Tipurile de Guvernare</h4>
+                    <p><strong>Republica:</strong> Puterea la popor (democrație) sau la o parte (aristocrație). Principiul: virtutea civică — sacrificarea interesului personal pentru binele public.<br><br>
+                    <strong>Monarhia:</strong> Unul conduce după legi fixe. Principiul: onoarea — distincția, rangul, ambiția nobilă.<br><br>
+                    <strong>Despotismul:</strong> Unul conduce după capriciu, fără legi. Principiul: frica.</p>
+                </div>
+
+                <h3>Corupția Guvernărilor</h3>
+
+                <p>Fiecare formă se corupte când principiul ei decade: republica fără virtute devine anarhie sau tiranie, monarhia fără onoare devine despotism, despotismul fără frică se prăbușește în haos.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Separarea Puterilor</span>
+                <h2>Echilibrul ca Garanție</h2>
+
+                <p>Celebra teorie a separării puterilor apare în cartea XI, analizând constituția engleză (idealizată):</p>
+
+                <ul>
+                    <li><strong>Puterea legislativă:</strong> Face legile — aparține reprezentanților poporului și nobilimii</li>
+                    <li><strong>Puterea executivă:</strong> Aplică legile, conduce afacerile externe — aparține monarhului</li>
+                    <li><strong>Puterea judecătorească:</strong> Pedepsește crimele și judecă litigiile — aparține tribunalelor</li>
+                </ul>
+
+                <blockquote class="inline">„Când în aceeași persoană sau în același corp de magistrați puterea legislativă e unită cu puterea executivă, nu există libertate... Nu există libertate nici dacă puterea de a judeca nu e separată de puterea legislativă și de cea executivă."</blockquote>
+
+                <h3>Checks and Balances</h3>
+
+                <p>Separarea nu înseamnă izolare completă — puterile trebuie să se controleze reciproc. Executivul poate veta legislația, legislativul controlează bugetul executivului, judiciarul e independent dar numit de celelalte puteri.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Pentru ca nimeni să nu poată abuza de putere, trebuie ca, prin dispunerea lucrurilor, puterea să oprească puterea."</blockquote>
+                <cite>— Montesquieu</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Teoria Climatică</span>
+                <h2>Determinismul Geografic</h2>
+
+                <p>Montesquieu credea că clima influențează caracterul popoarelor și legile lor. E partea cea mai controversată a operei sale:</p>
+
+                <ul>
+                    <li>Clima caldă: relaxează fibrele corpului, face oamenii leneși, pasionali, supuși despotismului</li>
+                    <li>Clima rece: întărește fibrele, face oamenii energici, curajoși, iubitori de libertate</li>
+                    <li>Clima temperată: produce echilibrul potrivit pentru monarhie moderată</li>
+                </ul>
+
+                <p>Această teorie e naivă și a fost folosită pentru a justifica colonialismul și rasismul. Dar intuiția de bază — că mediul influențează societatea — a fost preluată de sociologie și geografie umană.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Scrisorile Persane</span>
+                <h2>Satira Iluminată</h2>
+
+                <p>Scrisorile persane (1721) e un roman epistolar: Usbek și Rica, doi persani, vizitează Parisul și scriu acasă impresiile lor. Prin ochii „străinului", Montesquieu satirizează:</p>
+
+                <ul>
+                    <li><strong>Religia:</strong> Papa e „un magician vechi" care face să se creadă că trei fac unu</li>
+                    <li><strong>Regele:</strong> „Un mare magician" care face bani din hârtie</li>
+                    <li><strong>Societatea:</strong> Francezii sunt superficiali, vanitoși, obsedați de modă</li>
+                    <li><strong>Despotismul:</strong> Prin povestea haremului lui Usbek — alegorie a puterii absolute</li>
+                </ul>
+
+                <p>E o capodoperă de ironie iluminată și un model pentru critica socială prin defamiliarizare.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Moștenirea</span>
+                <h2>Constituționalismul Modern</h2>
+
+                <h3>Constituția SUA</h3>
+                <p>Părinții fondatori — Madison, Hamilton, Jefferson — l-au citit cu atenție pe Montesquieu. Separarea puterilor și federalismul american îi datorează mult.</p>
+
+                <h3>Revoluția Franceză</h3>
+                <p>Declarația Drepturilor Omului (1789) afirmă: „Orice societate în care garanția drepturilor nu e asigurată, nici separarea puterilor determinată, nu are constituție."</p>
+
+                <h3>Sociologia</h3>
+                <p>Abordarea comparativă, atenția la factori sociali și culturali, ideea de „spirit" al legilor — toate anticipează sociologia modernă. Durkheim îl considera precursor.</p>
+
+                <h3>Dreptul Internațional</h3>
+                <p>Discuția despre dreptul ginților, legile războiului, relațiile între state a influențat dreptul internațional.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Montesquieu pentru Viața de Azi</h2>
+
+                <h3>Fii Atent la Concentrarea Puterii</h3>
+                <p>Când o instituție sau o persoană acumulează prea multă putere fără control, libertatea e în pericol. Aceasta e valabil în politică, afaceri, tehnologie.</p>
+
+                <h3>Contextul Contează</h3>
+                <p>Nu există soluții universale. Ce funcționează într-un loc poate să nu funcționeze în altul. Înțelege condițiile locale înainte de a propune reforme.</p>
+
+                <h3>Moderația ca Virtute</h3>
+                <p>Montesquieu prefera guvernarea moderată — nici despotism, nici democrație radicală. Extremele duc la dezastru; echilibrul protejează libertatea.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Montesquiean</h4>
+                    <p>Analizează o instituție pe care o cunoști (firmă, școală, organizație). Există separare a puterilor sau concentrare? Există mecanisme de control reciproc? Ce s-ar întâmpla dacă cineva ar abuza de poziția sa?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Libertatea prin Instituții</h2>
+
+                <p>Montesquieu nu era un visător utopic — era un realist care credea că libertatea se protejează prin instituții, nu prin bunele intenții. Oamenii vor abuza de putere dacă nu sunt împiedicați; trebuie să construim sisteme care să limiteze posibilitatea abuzului.</p>
+
+                <p>Această înțelepciune rămâne actuală. Democrația nu supraviețuiește prin virtutea cetățenilor (deși aceasta ajută), ci prin mecanisme care împiedică pe oricine să devină atotputernic.</p>
+
+                <p>„Puterea să oprească puterea" — aceasta e formula libertății. Nu e perfectă, nu garantează rezultate ideale, dar e cel mai bun sistem pe care l-am inventat pentru a trăi împreună fără tiranie.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

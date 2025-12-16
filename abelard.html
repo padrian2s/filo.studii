@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abelard - Filozoful Rebel și Amantul Tragic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #c41e3a; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 7rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2.5rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Scolastică / Dialectică</span>
+        <h1>Abelard</h1>
+        <p class="subtitle">Geniul rebel care a iubit-o pe Héloïse și a sfidat întreaga teologie a vremii</p>
+        <span class="years">1079 — 1142</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Cel Mai Periculos Om din Paris</h2>
+
+                <p class="lead">Pierre Abelard a fost starul filozofic al secolului al XII-lea — un profesor atât de carismatic încât studenții îl urmau din oraș în oraș, un dialectician atât de ascuțit încât și-a umilit toți maeștrii, un iubitor atât de pasionat încât povestea lui cu Héloïse a devenit legendă.</p>
+
+                <p>Dar Abelard a fost și un inovator radical. A pus întrebări pe care alții n-au îndrăznit să le pună. A aplicat logica acolo unde alții cereau doar credință. A fost condamnat de două ori pentru erezie. Bernard de Clairvaux, cel mai puternic om al Bisericii, l-a considerat cea mai mare amenințare a vremii.</p>
+
+                <p>Pentru noi, Abelard e fascinant ca prototip al intelectualului rebel: genial, arrogant, tragic. A plătit scump pentru îndrăzneala lui — dar ideile lui au supraviețuit.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Ascensiunea și Căderea</h2>
+
+                <p>Abelard s-a născut în Bretania, fiul cel mare al unui mic nobil. A renunțat la moștenire și la cariera militară pentru studii — era „nebun" după dialectică, cum va spune el însuși.</p>
+
+                <p>A venit la Paris și l-a provocat pe William de Champeaux, cel mai celebru profesor al vremii, pe problema universaliilor. L-a umilit public. A fondat propria școală, atrăgând sute de studenți. Era tânăr, briliant și arrogant.</p>
+
+                <h3>Héloïse</h3>
+
+                <p>În 1115, la aproape 40 de ani, a devenit tutorele Héloïsei, nepoata canonicului Fulbert — o tânără de 17 ani considerată cea mai educată femeie din Franța. S-au îndrăgostit. Au avut un fiu (Astrolabe). S-au căsătorit în secret.</p>
+
+                <p>Fulbert, furios de dezonoare, a trimis bărbați să-l castreze pe Abelard. Scandalul a fost imens. Abelard a intrat în mănăstire; Héloïse a devenit călugăriță. Nu s-au mai văzut niciodată — dar au corespondat pentru tot restul vieții.</p>
+
+                <h3>Condamnările</h3>
+
+                <p>Abelard a continuat să predea și să scrie. În 1121, tratatul său despre Trinitate a fost condamnat la Soissons și ars. În 1140, Bernard de Clairvaux l-a acuzat din nou de erezie la Sens. Abelard a apelat la Papă, dar a murit în 1142 înainte de verdict, adăpostit de Petru Venerabilul la Cluny.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Prin îndoială ajungem la cercetare, prin cercetare ajungem la adevăr."</blockquote>
+                <cite>— Abelard, Sic et Non</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Sic et Non</span>
+                <h2>Da și Nu</h2>
+
+                <p>Lucrarea revoluționară a lui Abelard: o colecție de 158 de întrebări teologice pentru care a adunat citate contradictorii din Părinții Bisericii și din Scriptură. Scopul nu era să distrugă credința, ci să provoace gândirea.</p>
+
+                <div class="concept-box">
+                    <h4>Metoda</h4>
+                    <p>1. Enunță întrebarea<br>
+                    2. Adună toate autoritățile care spun „Da"<br>
+                    3. Adună toate autoritățile care spun „Nu"<br>
+                    4. Nu oferi soluția — lasă studentul să gândească<br><br>
+                    Această metodă va deveni „questio" scolastică — baza întregii educații universitare medievale.</p>
+                </div>
+
+                <p>Abelard nu era sceptic — credea că contradicțiile sunt aparente și pot fi rezolvate prin analiză atentă. Dar insistența pe îndoială metodică era scandaloasă pentru mulți.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Problema Universaliilor</span>
+                <h2>Ce Sunt Generalitățile?</h2>
+
+                <p>Cea mai tehnică, dar și cea mai importantă contribuție a lui Abelard. Există oare „umanitatea" în sine, sau doar oameni individuali? Există „albeața", sau doar lucruri albe?</p>
+
+                <h3>Cele Două Extreme</h3>
+                <ul>
+                    <li><strong>Realismul extrem</strong> (Platon, William de Champeaux): universaliile (umanitatea, albeața) există real, independent de lucrurile individuale</li>
+                    <li><strong>Nominalismul</strong> (Roscelin): universaliile sunt doar „flatus vocis" — sunete, cuvinte goale</li>
+                </ul>
+
+                <h3>Soluția lui Abelard</h3>
+                <p>O cale de mijloc: universaliile nu sunt nici lucruri (res), nici simple cuvinte (voces), ci concepte mentale (sermones) care se referă în mod justificat la multiple indivizi. „Umanitatea" nu există ca lucru separat, dar nu e nici arbitrară — e modul în care mintea conceptualizează corect ce au în comun toți oamenii.</p>
+
+                <p>Această poziție — numită uneori „conceptualism" — anticipează soluții moderne la problema universaliilor.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Etica Intenției</span>
+                <h2>Păcatul Stă în Voință</h2>
+
+                <p>În „Scito te ipsum" (Cunoaște-te pe tine însuți), Abelard propune o etică revoluționară: actul extern nu e bun sau rău în sine — ce contează e intenția.</p>
+
+                <blockquote class="inline">„Dumnezeu ia în considerare nu ce se face, ci cu ce spirit se face; meritul sau lauda celui care face nu stă în faptă, ci în intenție."</blockquote>
+
+                <p>Consecințe radicale: dacă faci ceva rău crezând sincer că e bine, nu păcătuiești (deși greșești). Dacă faci ceva bine cu intenție rea, păcătuiești chiar dacă rezultatul e bun.</p>
+
+                <p>Această etică a intenției anticipează etica kantiană cu șase secole.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Dumnezeu ia în considerare nu ce se face, ci cu ce spirit se face."</blockquote>
+                <cite>— Abelard, Scito te ipsum</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Héloïse</span>
+                <h2>Iubirea Eternă</h2>
+
+                <p>Corespondența dintre Abelard și Héloïse e unul dintre cele mai emoționante documente din Evul Mediu. Héloïse, devenită stareță, îi scrie că încă îl iubește, că a intrat în mănăstire doar pentru el, că rugăciunile ei sunt întunecate de amintirea plăcerilor lor.</p>
+
+                <blockquote class="inline">„Dumnezeu știe că niciodată n-am căutat în tine altceva decât pe tine însuți. Te-am dorit pe tine, nu ceea ce era al tău."</blockquote>
+
+                <p>Abelard încearcă să o îndrepte spre pietate. Héloïse rezistă: preferă să fie numită concubina lui decât împărăteasa lumii. E o iubire care transcende convențiile, timpurile, chiar și religia.</p>
+
+                <p>Au fost înmormântați împreună. Mormântul lor, mutat în cimitirul Père Lachaise din Paris, e încă vizitat de îndrăgostiți.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Moștenirea</span>
+                <h2>Înfrânt dar Victorios</h2>
+
+                <h3>Metoda Scolastică</h3>
+                <p>„Sic et Non" a dat naștere metodei „questio disputata" — baza educației universitare medievale. Toma d'Aquino, în „Summa", urmează exact structura abelardiană: obiecții, contra, răspuns.</p>
+
+                <h3>Etica Modernă</h3>
+                <p>Insistența pe intenție ca criteriu moral anticipează Kant. Distincția între actul extern și atitudinea interioară e fundamentală pentru etica modernă.</p>
+
+                <h3>Spiritul Critic</h3>
+                <p>Abelard a demonstrat că poți pune întrebări dificile și rămâne credincios. Îndoiala metodică nu e dușmanul credinței — e prietenul înțelegerii.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Aplicații Practice</span>
+                <h2>Abelard pentru Viața de Azi</h2>
+
+                <h3>Îndoiala Productivă</h3>
+                <p>„Prin îndoială ajungem la cercetare." Nu accepta pasiv — întreabă, verifică, provoacă. Nu pentru a distruge, ci pentru a înțelege.</p>
+
+                <h3>Intenția Contează</h3>
+                <p>Înainte de a judeca o acțiune, întreabă: cu ce intenție a fost făcută? Aceeași acțiune poate fi virtute sau viciu în funcție de motivație.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Abelardian</h4>
+                    <p>Alege o întrebare controversată. Strânge argumentele „pro" și „contra" — fără să dai încă un verdict. Ce observi? Care argumente sunt mai puternice? Ce informații îți lipsesc?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Concluzie</span>
+                <h2>Îndrăgostitul și Ereticul</h2>
+
+                <p>Abelard a fost un om al extremelor: geniu și arrogant, îndrăgostit și castrat, aclamat și condamnat. Viața lui pare un roman — și a fost transformată în roman, poezie, film.</p>
+
+                <p>Dar dincolo de dramă, ideile lui rămân. A demonstrat că poți iubi pasionat și gândi riguros. Că îndoiala nu e dușmanul credinței. Că intenția contează mai mult decât aparența.</p>
+
+                <p>Și în cimitirul Père Lachaise, îndrăgostiții încă lasă scrisori la mormântul lui și al Héloïsei — dovadă că dragostea și gândirea pot supraviețui împreună, chiar și timpului.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

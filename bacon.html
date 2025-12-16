@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francis Bacon - Părintele Metodei Științifice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #4a6741; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Empirism / Metodologie</span>
+        <h1>Francis Bacon</h1>
+        <p class="subtitle">Vizionarul care a proiectat metoda științifică și a proclamat că „știința e putere"</p>
+        <span class="years">1561 — 1626</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Profetul Științei</h2>
+
+                <p class="lead">„Scientia potentia est" — „Știința e putere." Francis Bacon a fost primul care a văzut clar că știința nu e doar contemplare, ci instrument de transformare a lumii. A visat o „Marea Restaurare" a cunoașterii care să ridice umanitatea deasupra naturii.</p>
+
+                <p>Bacon nu a fost om de știință în sensul modern — n-a făcut experimente sau descoperiri. A fost filosof, jurist, politician, eseist. Dar a fost vizionarul care a proiectat metoda prin care știința avea să schimbe lumea: observație sistematică, experiment, inducție riguroasă.</p>
+
+                <p>Pentru noi, Bacon e important ca fondator al mentalității științifice moderne: ideea că putem și trebuie să cunoaștem natura pentru a o stăpâni, că prejudecățile ne orbesc, că metoda contează mai mult decât geniul individual.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Politicianul Ambitios</h2>
+
+                <p>Francis Bacon s-a născut la Londra, fiul lui Nicholas Bacon, Lord Keeper (echivalentul ministrului justiției) sub regina Elisabeta. A studiat la Cambridge și la Gray's Inn (drept). A intrat în Parlament la 23 de ani.</p>
+
+                <p>Cariera politică a fost lentă sub Elisabeta — regina nu l-a favorizat. Sub Iacob I a urcat rapid: procuror general (1613), Lord Keeper (1617), Lord Chancellor (1618) — cea mai înaltă funcție juridică din Anglia.</p>
+
+                <h3>Căderea</h3>
+
+                <p>În 1621, în vârful puterii, Bacon a fost acuzat de corupție — acceptare de mită. A recunoscut 23 de cazuri. A fost condamnat, amendat, interzis de la funcții publice. Pedeapsa a fost parțial iertată, dar cariera politică s-a încheiat.</p>
+
+                <p>Ultimii ani i-a dedicat scrierii. A murit în 1626, răcit după ce a experimentat conservarea cărnii prin îngropare în zăpadă — o moarte simbolică pentru un profet al experimentului.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Cunoașterea însăși e putere."</blockquote>
+                <cite>— Francis Bacon</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Marea Restaurare</span>
+                <h2>Proiectul Grandios</h2>
+
+                <p>Bacon a plănuit o operă monumentală — Instauratio Magna (Marea Restaurare) — care să reformeze complet cunoașterea umană. Proiectul avea șase părți:</p>
+
+                <div class="concept-box">
+                    <h4>Planul</h4>
+                    <p><strong>1.</strong> Clasificarea științelor (realizat în De Dignitate)<br>
+                    <strong>2.</strong> Noua metodă (realizat parțial în Novum Organum)<br>
+                    <strong>3.</strong> Enciclopedia fenomenelor naturale<br>
+                    <strong>4.</strong> Exemple de aplicare a metodei<br>
+                    <strong>5.</strong> Rezultate provizorii<br>
+                    <strong>6.</strong> Noua filozofie — sistemul complet al naturii</p>
+                </div>
+
+                <p>Bacon n-a finalizat proiectul — dar viziunea a inspirat mișcarea științifică modernă. Royal Society din Londra s-a considerat moștenitoarea proiectului baconian.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Idolii Minții</span>
+                <h2>Obstacolele Cunoașterii</h2>
+
+                <p>Înainte de a construi, trebuie să dărâmi. Bacon identifică patru tipuri de „idoli" — prejudecăți care ne împiedică să cunoaștem adevărul:</p>
+
+                <div class="concept-box">
+                    <h4>Cei Patru Idoli</h4>
+                    <p><strong>Idola tribus (ai tribului):</strong> Prejudecăți comune tuturor oamenilor. Tindem să vedem ordine unde nu e, să generalizăm prea repede, să confirmăm ce deja credem.<br><br>
+                    <strong>Idola specus (ai peșterii):</strong> Prejudecăți individuale — din educație, temperament, experiență personală. Fiecare vede lumea din „peștera" sa.<br><br>
+                    <strong>Idola fori (ai pieței):</strong> Prejudecăți din limbaj. Cuvintele creează confuzie — definim prost, numim lucruri inexistente.<br><br>
+                    <strong>Idola theatri (ai teatrului):</strong> Prejudecăți din sistemele filozofice și teologice. Doctrinele sunt ca piesele de teatru — ficțiuni convingătoare.</p>
+                </div>
+
+                <p>Pentru a cunoaște, trebuie să ne eliberăm de toți acești idoli. Aceasta cere disciplină metodică, nu doar geniu.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Metoda Inductivă</span>
+                <h2>Novum Organum</h2>
+
+                <p>Contra silogismului aristotelian (deducție din principii generale), Bacon propune inducția: de la observații particulare la legi generale. Dar nu inducția simplă (enumerare de cazuri), ci o metodă riguroasă:</p>
+
+                <ul>
+                    <li><strong>Tabla prezenței:</strong> Cazuri unde fenomenul apare</li>
+                    <li><strong>Tabla absenței:</strong> Cazuri similare unde fenomenul nu apare</li>
+                    <li><strong>Tabla gradelor:</strong> Cazuri unde fenomenul variază în intensitate</li>
+                    <li><strong>Excluderea:</strong> Eliminăm cauzele care nu se corelează cu fenomenul</li>
+                    <li><strong>Prima recoltă:</strong> O ipoteză provizorie</li>
+                    <li><strong>Instanțe prerogative:</strong> Cazuri speciale care decid între ipoteze</li>
+                </ul>
+
+                <blockquote class="inline">„Nici mâna goală, nici intelectul lăsat singur nu pot face mare lucru. Lucrarea se face prin instrumente și ajutoare."</blockquote>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Natura nu poate fi învinsă decât supunându-ne ei."</blockquote>
+                <cite>— Francis Bacon, Novum Organum</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Știința ca Instrument</span>
+                <h2>Cunoaștere pentru Acțiune</h2>
+
+                <p>Pentru scolastici, știința era contemplativă — cunoașterea adevărului pentru sine. Pentru Bacon, știința e activă — cunoaștem pentru a transforma:</p>
+
+                <ul>
+                    <li><strong>Știința e putere:</strong> Cine cunoaște cauzele poate produce efecte</li>
+                    <li><strong>Scopul e practic:</strong> Să ușurăm viața, să vindecăm boli, să extindem capacitățile umane</li>
+                    <li><strong>Experimentul e central:</strong> Nu doar observăm natura, o interogăm activ</li>
+                </ul>
+
+                <h3>Noua Atlantidă</h3>
+
+                <p>În fabula utopică Noua Atlantidă (neterminată), Bacon descrie o societate condusă de „Casa lui Solomon" — o instituție de cercetare. Are laboratoare, grădini experimentale, observatoare, centre de studiu. E prototipul academiilor științifice moderne.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Eseurile</span>
+                <h2>Înțelepciune Practică</h2>
+
+                <p>Eseurile lui Bacon sunt capodopere de proză aforistică — observații despre viață, politică, caracter, condensate în formulări memorabile:</p>
+
+                <blockquote class="inline">„Unele cărți trebuie gustate, altele înghițite, iar câteva mestecate și digerate."</blockquote>
+
+                <blockquote class="inline">„Răzbunarea e un fel de dreptate sălbatică; cu cât natura omului o urmează mai mult, cu atât legea trebuie să o curme mai mult."</blockquote>
+
+                <blockquote class="inline">„Oamenii se tem de moarte cum se tem copiii să meargă în întuneric."</blockquote>
+
+                <p>Eseurile au influențat genul literar — de la Montaigne pe care Bacon îl citea, la eseistica modernă.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Moștenirea</span>
+                <h2>Profetul Împlinit</h2>
+
+                <h3>În Știință</h3>
+                <p>Royal Society (fondată 1660) s-a considerat realizarea visului baconian. Metoda experimentală, accentul pe utilitate, colaborarea — toate vin din Bacon. Deși metoda lui e prea rigidă pentru știința reală, spiritul rămâne.</p>
+
+                <h3>În Filozofie</h3>
+                <p>Empirismul britanic (Locke, Berkeley, Hume) continuă direcția baconienă: cunoașterea vine din experiență. Pozitivismul și filozofia științei îi sunt îndatorate.</p>
+
+                <h3>În Cultură</h3>
+                <p>Ideea că știința e putere și progres devine ideologia modernității. Iluminismul, Revoluția Industrială, tehnologia contemporană — toate presupun viziunea baconienă.</p>
+
+                <h3>Critici</h3>
+                <p>Critica modernă (Horkheimer, Adorno) vede în Bacon originea dominației tehnice asupra naturii, cu consecințele ei ecologice și sociale.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Bacon pentru Viața de Azi</h2>
+
+                <h3>Recunoaște-ți Idolii</h3>
+                <p>Ce prejudecăți ai din natura umană (tribul), din experiența ta specifică (peștera), din limbajul și cultura ta (piața), din sistemele de gândire pe care le-ai adoptat (teatrul)?</p>
+
+                <h3>Metoda Contează</h3>
+                <p>Nu doar ce gândești, ci cum gândești. O metodă bună produce rezultate mai bune decât geniul fără disciplină.</p>
+
+                <h3>Cunoaște pentru a Acționa</h3>
+                <p>Cunoașterea care nu se traduce în acțiune e sterilă. Întreabă-te: ce pot face cu ce știu?</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Baconian</h4>
+                    <p>Alege o credință pe care o ai. Identifică: ce dovezi o susțin (prezență)? Ce cazuri nu se potrivesc (absență)? Cum variază forța dovezilor (grade)? Ce prejudecăți personale sau culturale ar putea influența credința ta?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Arhitectul Viitorului</h2>
+
+                <p>Francis Bacon n-a construit el însuși edificiul științei moderne — dar a desenat planurile. A văzut că vechile metode nu funcționează, că prejudecățile ne orbesc, că avem nevoie de instrumente noi pentru a cunoaște. A proclamat că știința poate și trebuie să transforme lumea.</p>
+
+                <p>Viziunea lui s-a împlinit dincolo de orice imaginație. Trăim în lumea pe care Bacon a proiectat-o — o lume în care știința e putere, în care tehnica transformă natura, în care cunoașterea aduce progres (și probleme noi).</p>
+
+                <p>„Natura nu poate fi învinsă decât supunându-ne ei" — această formulare paradoxală captează esența. Trebuie să înțelegem legile naturii pentru a le folosi. Cunoașterea cere smerenie; acțiunea cere curaj. Bacon le-a unit într-o viziune care ne definește încă.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

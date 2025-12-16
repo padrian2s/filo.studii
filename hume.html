@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Hume - Marele Sceptic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #7c5a3c; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Empirism / Scepticism</span>
+        <h1>David Hume</h1>
+        <p class="subtitle">Filozoful care a distrus cauzalitatea, a redus rațiunea la servitor al pasiunilor și a trezit pe Kant din „somnul dogmatic"</p>
+        <span class="years">1711 — 1776</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Distrugătorul Vesel</h2>
+
+                <p class="lead">David Hume a fost cel mai periculos gânditor al secolului XVIII. A arătat că nu avem nici un temei rațional să credem în cauzalitate, în existența lumii externe, în identitatea personală, în miracole, în inducție. Și totuși era un om vesel, sociabil, iubit de prieteni.</p>
+
+                <p>Empirismul lui Locke și Berkeley ajunge la Hume la concluzia logică: dacă tot ce avem sunt impresii și idei, nu putem cunoaște nimic dincolo de ele. Nu putem demonstra că soarele va răsări mâine, că există un „eu" permanent, că evenimentele au cauze.</p>
+
+                <p>Kant a spus că Hume l-a trezit din „somnul dogmatic". Toată filozofia modernă — de la Kant la pozitivism la filozofia analitică — răspunde în diferite feluri la provocările lui Hume.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Scepticul Sociabil</h2>
+
+                <p>David Hume s-a născut la Edinburgh, într-o familie de mici nobili scoțieni. A studiat dreptul dar l-a abandonat pentru filozofie. La 18 ani a avut o criză intelectuală („boala învățaților") care l-a marcat.</p>
+
+                <p>Între 1734-37 a trăit în Franța, la La Flèche (colegiul lui Descartes), unde a scris Tratatul asupra naturii umane. Publicat în 1739-40, a fost un eșec: „a căzut mort-născut din presă", spunea Hume.</p>
+
+                <h3>Succesul Târziu</h3>
+
+                <p>Eseurile morale și politice (1741-42) au adus faima. Cercetările asupra intelectului omenesc (1748) — versiune rescrisă și accesibilă a Tratatului — și Istoria Angliei (1754-62) l-au făcut celebru. A fost bibliotecar, secretar diplomatic, subsecretar de stat.</p>
+
+                <p>A murit de cancer intestinal în 1776, cu seninătate și curaj. Prietenii — inclusiv Adam Smith — au mărturisit că moartea lui a fost un model de demnitate ateă.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Rațiunea este și trebuie să fie doar sclava pasiunilor."</blockquote>
+                <cite>— David Hume, Tratat asupra naturii umane</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Impresii și Idei</span>
+                <h2>Originea Cunoașterii</h2>
+
+                <p>Hume distinge între două tipuri de percepții:</p>
+
+                <div class="concept-box">
+                    <h4>Distincția Fundamentală</h4>
+                    <p><strong>Impresii:</strong> Percepții vii, puternice — senzații, emoții, pasiuni în momentul experimentării lor.<br><br>
+                    <strong>Idei:</strong> Copii palide ale impresiilor — amintiri, imaginații, concepte. Orice idee derivă dintr-o impresie anterioară.</p>
+                </div>
+
+                <h3>Furca lui Hume</h3>
+
+                <p>Toate cunoștințele se împart în două categorii:</p>
+
+                <ul>
+                    <li><strong>Relații de idei:</strong> Matematică, logică — adevărate prin definiție, dar nu spun nimic despre lume</li>
+                    <li><strong>Chestiuni de fapt:</strong> Despre lumea reală — dar nu pot fi demonstrate, doar probabile</li>
+                </ul>
+
+                <blockquote class="inline">„Când cercetăm bibliotecile... ce pustiire trebuie să facem! Luând în mână orice volum... să întrebăm: conține raționament abstract privind cantitatea sau numărul? Nu. Conține raționament experimental privind chestiuni de fapt și existență? Nu. Aruncă-l în foc, căci nu conține decât sofistică și iluzie."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Problema Cauzalității</span>
+                <h2>De Ce Credem în Cauze</h2>
+
+                <p>Cea mai devastatoare critică a lui Hume privește cauzalitatea. Când spunem că A cauzează B, ce observăm de fapt?</p>
+
+                <div class="concept-box">
+                    <h4>Analiza Cauzalității</h4>
+                    <p><strong>Observăm:</strong><br>
+                    1. Contiguitatea: A și B sunt aproape în spațiu și timp<br>
+                    2. Succesiunea: A vine înaintea lui B<br>
+                    3. Conjuncția constantă: De câte ori A, urmează B<br><br>
+                    <strong>Nu observăm:</strong><br>
+                    O „putere" sau „conexiune necesară" prin care A îl produce pe B. Aceasta e o ficțiune a minții.</p>
+                </div>
+
+                <h3>Obișnuința</h3>
+
+                <p>De unde vine ideea de conexiune necesară? Din obișnuință (custom, habit). După ce vedem de multe ori A urmat de B, mintea dezvoltă o „tendință" de a aștepta B când vede A. Această tranziție mentală e proiectată asupra lumii ca „cauzalitate".</p>
+
+                <p>Nu e rațiune — e instinct, obișnuință, natură umană. Dar funcționează pentru viață practică.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Problema Inducției</span>
+                <h2>De Ce Mâine Nu Știm</h2>
+
+                <p>Din critica cauzalității urmează problema inducției: cum putem justifica inferențele de la trecut la viitor?</p>
+
+                <ul>
+                    <li>Soarele a răsărit în fiecare zi din istorie</li>
+                    <li>Deci soarele va răsări mâine?</li>
+                    <li>Această inferență presupune că viitorul va fi ca trecutul</li>
+                    <li>Dar cum știm că viitorul va fi ca trecutul? Doar pentru că în trecut viitorul a fost ca trecutul!</li>
+                    <li>Argument circular — presupunem ce vrem să demonstrăm</li>
+                </ul>
+
+                <p>Știința empirică se bazează pe inducție. Dar inducția nu poate fi justificată rațional. Funcționează — dar nu știm de ce ar trebui să funcționeze.</p>
+
+                <blockquote class="inline">„Chiar și după observarea conjuncției frecvente sau constante a obiectelor, nu avem nici un temei să tragem vreo inferență privind vreun obiect dincolo de cele de care am avut experiență."</blockquote>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Un om înțelept își proporționează credința la evidență."</blockquote>
+                <cite>— David Hume, Cercetare asupra intelectului omenesc</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Eul ca Ficțiune</span>
+                <h2>Cine Sunt Eu?</h2>
+
+                <p>Hume aplică aceeași analiză identității personale. Când mă caut pe mine însumi, ce găsesc?</p>
+
+                <div class="concept-box">
+                    <h4>Analiza Eului</h4>
+                    <p>„Când intru cel mai intim în ceea ce numesc eu însumi, dau întotdeauna de o percepție particulară sau alta, de căldură sau frig, lumină sau umbră, iubire sau ură, durere sau plăcere. Nu mă pot surprinde niciodată pe mine însumi fără o percepție și nu pot observa niciodată altceva decât percepția."</p>
+                </div>
+
+                <p>Nu există un „eu" permanent, substanțial, care să stea în spatele percepțiilor. Eul e doar „un mănunchi sau o colecție de percepții diferite, care se succed unele altora cu o viteză de neconceput."</p>
+
+                <p>Identitatea personală e o ficțiune utilă, produsă de memorie și imaginație care leagă percepțiile.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Morala și Pasiunile</span>
+                <h2>Rațiunea ca Sclav</h2>
+
+                <p>În etică, Hume e la fel de revoluționar. Morala nu se bazează pe rațiune, ci pe sentiment:</p>
+
+                <ul>
+                    <li><strong>Rațiunea</strong> descoperă adevăruri și relații între idei — dar nu poate motiva acțiunea</li>
+                    <li><strong>Pasiunile</strong> (emoțiile, sentimentele) sunt cele care ne mișcă să acționăm</li>
+                    <li><strong>Morala</strong> e o chestiune de sentiment — simțim aprobarea virtuții și dezaprobarea viciului</li>
+                </ul>
+
+                <blockquote class="inline">„Nu e contrar rațiunii să prefer distrugerea întregii lumi zgârierii degetului meu."</blockquote>
+
+                <h3>Ghilotina lui Hume</h3>
+
+                <p>Nu poți deriva un „trebuie" dintr-un „este". Din fapte nu urmează valori. Aceasta e „ghilotina lui Hume" — separarea radicală între descriptiv și normativ.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Religia</span>
+                <h2>Contra Miracolelor</h2>
+
+                <p>Hume e devastator pentru argumentele religioase:</p>
+
+                <h3>Contra Miracolelor</h3>
+
+                <p>Un miracol e o violare a legilor naturii. Dar legile naturii sunt stabilite prin experiență uniformă. Pentru a crede un miracol, mărturia trebuie să fie atât de puternică încât falsitatea ei să fie mai miraculoasă decât faptul raportat. Acest lucru nu se întâmplă practic niciodată.</p>
+
+                <h3>Contra Design-ului</h3>
+
+                <p>În Dialoguri despre religia naturală (publicate postum), Hume atacă argumentul design-ului: lumea pare proiectată, deci are un proiectant. Dar poate fi explicată și prin selecție naturală, întâmplare, sau materie eternă. Și chiar dacă ar avea un proiectant, nu știm nimic despre el — poate e imperfect, poate sunt mai mulți, poate a murit.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Moștenirea</span>
+                <h2>Provocarea Permanentă</h2>
+
+                <h3>Kant</h3>
+                <p>A fost „trezit din somnul dogmatic" de Hume. Toată Critica rațiunii pure e un răspuns la problema lui Hume: cum e posibilă cunoașterea sintetică a priori?</p>
+
+                <h3>Pozitivismul</h3>
+                <p>Furca lui Hume devine principiul verificării: o propoziție e semnificativă doar dacă e analitică sau verificabilă empiric.</p>
+
+                <h3>Filozofia Analitică</h3>
+                <p>Claritatea lui Hume, analiza conceptuală, atenția la limbaj — toate sunt moștenite de filozofia analitică.</p>
+
+                <h3>Științele Cognitive</h3>
+                <p>Ideea că mintea funcționează prin asociații, obișnuință, instinct anticipează psihologia modernă.</p>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Aplicații Practice</span>
+                <h2>Hume pentru Viața de Azi</h2>
+
+                <h3>Proporționează Credința la Evidență</h3>
+                <p>Cu cât o afirmație e mai extraordinară, cu atât evidența trebuie să fie mai puternică. Scepticismul sănătos e o virtute epistemică.</p>
+
+                <h3>Recunoaște Limitele Rațiunii</h3>
+                <p>Nu toate convingerile se pot justifica rațional — și nu trebuie. Viața cere acțiune, nu certitudine.</p>
+
+                <h3>Acceptă Rolul Emoțiilor</h3>
+                <p>Pasiunile nu sunt dușmanii rațiunii — sunt motorul acțiunii. Etica e despre educarea sentimentelor, nu despre demonstrații.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Humean</h4>
+                    <p>Alege o credință pe care o consideri rațională. Întreabă-te: de ce cred acest lucru? Pot justifica inferența? Sau e obișnuință, încredere, sentiment? Recunoașterea surselor non-raționale ale credințelor nu le face mai puțin valide — le face mai sincere.</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">11 / Concluzie</span>
+                <h2>Scepticismul Viu</h2>
+
+                <p>Hume a distrus — dar n-a disperat. După ce a arătat că nu putem justifica rațional cauzalitatea, inducția, eul, a ieșit să joace table și să stea de vorbă cu prietenii. „Natura vindecă" — spunea el — „filozofia severă cedează în fața naturii umane".</p>
+
+                <p>Scepticismul lui Hume nu e un sfârțit, ci un început. Ne eliberează de pretenții false, ne face mai modeți, mai toleranți. Ne arată că viața merge înainte chiar fără certitudini absolute.</p>
+
+                <p>„Un om înțelept își proporționează credința la evidență." Aceasta rămâne cea mai bună regulă a gândirii — și moștenirea durabilă a marelui sceptic scoțian.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

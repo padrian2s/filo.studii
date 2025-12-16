@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epictet - Sclavul Care A Devenit Liber</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #1a4f6e; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 7rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2.5rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Stoicism / Filozofie Practică</span>
+        <h1>Epictet</h1>
+        <p class="subtitle">Sclavul care a descoperit că libertatea adevărată e interioară</p>
+        <span class="years">c. 50 — 135 d.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Libertatea Lanțurilor</h2>
+
+                <p class="lead">S-a născut sclav. A trăit cu un picior infirm — unii spun că stăpânul i l-a rupt. A fost exilat din Roma. Nu a avut avere, familie, putere. Și totuși, Epictet e unul dintre cei mai influenți filozofi ai libertății interioare din istorie.</p>
+
+                <p>Paradoxul lui Epictet: fiind sclav, a înțeles că libertatea reală nu ține de lanțuri externe. Poți fi împărat și sclav al pasiunilor. Poți fi în lanțuri și perfect liber — dacă îți stăpânești mintea.</p>
+
+                <p>Manualul său — Enchiridion — e unul dintre cele mai concentrate și practice texte filozofice din toate timpurile. În câteva pagini, oferă o metodă completă de viață. A fost citit de împărați și sclavi, de generali și călugări. Astăzi, stă la baza terapiei cognitiv-comportamentale.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>Din Sclavie în Nemurire</h2>
+
+                <p>Epictet s-a născut în jurul anului 50 d.Hr. în Hierapolis, Frigia (actuala Turcie). Numele „Epictet" înseamnă literal „cel dobândit" — nu era un nume, ci o etichetă de sclav.</p>
+
+                <p>A ajuns la Roma ca sclav al lui Epafrodit, un libert bogat care fusese secretarul lui Nero. Epafrodit i-a permis să studieze filozofia cu Musonius Rufus, cel mai mare profesor stoic al vremii. La un moment dat, a fost eliberat.</p>
+
+                <h3>Exilul</h3>
+
+                <p>În 93 d.Hr., împăratul Domițian a expulzat toți filozofii din Roma. Epictet s-a stabilit la Nicopolis, în Grecia, unde a deschis o școală. A predat acolo până la moarte, în jurul anului 135.</p>
+
+                <p>Ca și Socrate, nu a scris nimic. Învățăturile sale au fost notate de un elev — Arrian, care va deveni mai târziu un important istoric și general. Arrian a compilat „Discursurile" (Diatribai) și a extras din ele „Manualul" (Enchiridion).</p>
+
+                <h3>Infirmitatea</h3>
+
+                <p>O legendă spune că stăpânul său îi răsucea piciorul. Epictet ar fi spus calm: „Îl vei rupe." Când s-a rupt, a adăugat: „Ți-am spus." Povestea e probabil apocrifă, dar ilustrează perfect atitudinea stoică: acceptă ce nu poți controla.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Nu lucrurile ne tulbură, ci judecățile noastre despre lucruri."</blockquote>
+                <cite>— Epictet, Enchiridion</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Principiul Fundamental</span>
+                <h2>Dichotomia Controlului</h2>
+
+                <p>Prima propoziție din Enchiridion conține toată filozofia lui Epictet:</p>
+
+                <blockquote class="inline">„Dintre lucruri, unele sunt în puterea noastră, altele nu. În puterea noastră sunt: opinia, impulsul, dorința, aversiunea — pe scurt, tot ce e propria noastră acțiune. Nu sunt în puterea noastră: corpul, proprietatea, reputația, funcțiile — pe scurt, tot ce nu e propria noastră acțiune."</blockquote>
+
+                <div class="concept-box">
+                    <h4>Cele Două Categorii</h4>
+                    <p><strong>În controlul nostru (eph' hēmin):</strong><br>
+                    • Judecățile noastre<br>
+                    • Dorințele și aversiunile<br>
+                    • Impulsurile spre acțiune<br>
+                    • Reacțiile emoționale (indirect, prin judecăți)<br><br>
+                    <strong>În afara controlului nostru (ouk eph' hēmin):</strong><br>
+                    • Corpul, sănătatea, moartea<br>
+                    • Ce spun și fac alții<br>
+                    • Vremea, economia, politica<br>
+                    • Trecutul</p>
+                </div>
+
+                <p>Suferința vine din confundarea celor două categorii. Vrei ca alții să te respecte? Nu e în controlul tău — vei suferi. Vrei să acționezi cu integritate? E în controlul tău — poți reuși.</p>
+
+                <h3>Aplicarea Practică</h3>
+
+                <p>Când ești tulburat, întreabă-te: „E în controlul meu?" Dacă da, acționează. Dacă nu, acceptă. Nu pasiv, ci activ — recunoscând limitele realității și concentrându-te pe ce poți schimba.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Teoria Judecăților</span>
+                <h2>Mintea Care Colorează Totul</h2>
+
+                <p>Pentru Epictet, nu evenimentele ne afectează, ci interpretările noastre. Moartea nu e rea în sine — judecata că „moartea e îngrozitoare" produce frica. Sărăcia nu e rea în sine — judecata că „trebuie să fii bogat" produce suferința.</p>
+
+                <blockquote class="inline">„Nu cere ca lucrurile să se întâmple cum vrei tu, ci voiește ca ele să se întâmple cum se întâmplă, și vei fi fericit."</blockquote>
+
+                <h3>Prohecsis — Alegerea Preliminară</h3>
+
+                <p>În fiecare moment avem puterea de a alege cum interpretăm ce ni se întâmplă. Această putere — prohairesis — e cetatea interioară pe care nimeni n-o poate cuceri fără consimțământul nostru.</p>
+
+                <p>Cineva te insultă? Insulta e sunet. Tu alegi să o interpretezi ca ofensă. Poți alege altfel: să o ignori, să o consideri informație despre cel care o rostește, să o vezi ca test al virtuții tale.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„E mai bine să mori de foame liber de durere și frică decât să trăiești în abundență tulburat."</blockquote>
+                <cite>— Epictet, Discursuri</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">05 / Rolurile Vieții</span>
+                <h2>Actorul și Regizorul</h2>
+
+                <p>Epictet folosește metafora teatrului: viața e o piesă, zeul (sau natura) e regizorul, noi suntem actorii. Nu alegem rolul — poate fi de cerșetor sau de rege, scurt sau lung. Dar alegem cum îl jucăm.</p>
+
+                <blockquote class="inline">„Amintește-ți că ești actor într-o piesă de felul pe care îl vrea autorul: scurtă, dacă vrea scurtă; lungă, dacă vrea lungă. Dacă vrea să joci un cerșetor, joacă și acest rol cu talent; la fel dacă joci un șchiop, un magistrat, un om de rând. Căci datoria ta e să joci bine rolul dat; alegerea rolului aparține altuia."</blockquote>
+
+                <h3>Datoriile Rolurilor</h3>
+
+                <p>Fiecare rol vine cu datorii: fiu, părinte, cetățean, profesionist. Epictet nu propovăduiește retragerea din lume, ci angajarea responsabilă în rolurile pe care le avem, oricât de umile ar fi.</p>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Citate și Exerciții</span>
+                <h2>Manualul Practic</h2>
+
+                <blockquote class="inline">„Când vezi pe cineva plângând în durere, fie că și-a pierdut copilul, fie că și-a pierdut averea, ai grijă să nu te lași dus de impresia că e nenorocit din pricina lucrurilor exterioare. Spune-ți imediat: «Nu lucrul îl tulbură, ci judecata lui despre lucru.»"</blockquote>
+                <p>Compasiunea e bună, dar să înțelegem mecanismul suferinței e mai bine. Putem ajuta mai eficient dacă înțelegem că suferința vine din judecăți, nu din evenimente.</p>
+
+                <blockquote class="inline">„Dacă vrei să fii liber, nu dori nimic și nu evita nimic din ce depinde de alții; altfel vei fi în mod necesar sclav."</blockquote>
+                <p>Paradoxul libertății: cu cât dorești mai puțin din ce nu controlezi, cu atât ești mai liber.</p>
+
+                <blockquote class="inline">„Fă totul ca și cum te-ar privi Epictet."</blockquote>
+                <p>Un exercițiu de auto-monitorizare. Cum te-ai comporta dacă un înțelept ar vedea fiecare acțiune?</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Exerciții Stoice</span>
+                <h2>Practica Zilnică</h2>
+
+                <div class="concept-box">
+                    <h4>Exerciții din Epictet</h4>
+                    <p><strong>Dimineața:</strong> „Ce am de făcut azi pentru a progresa în virtute?"<br><br>
+                    <strong>În timpul zilei:</strong> La fiecare eveniment perturbator, întreabă: „E în controlul meu?"<br><br>
+                    <strong>Seara:</strong> „Ce am făcut rău? Ce bine? Ce am omis?" — examinare de conștiință<br><br>
+                    <strong>Premeditatio malorum:</strong> Imaginează-ți dimineața ce rău s-ar putea întâmpla. Nu pesimism, ci pregătire: „Voi întâlni oameni aroganți, mincinoși, invidioși. Nu mă voi mira — fac parte din viață."</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Moștenirea</span>
+                <h2>De la Roma la Terapia Modernă</h2>
+
+                <h3>Marcus Aurelius</h3>
+                <p>Împăratul-filozof a studiat stoicismul și citează frecvent idei epictețiene în „Meditații". Contrastul e remarcabil: sclavul și împăratul, uniți de aceeași filozofie.</p>
+
+                <h3>Creștinismul</h3>
+                <p>Epictet a fost citit de Părinții Bisericii. Ideea că libertatea reală e interioară, că trebuie să acceptăm voința lui Dumnezeu — are ecouri stoice puternice.</p>
+
+                <h3>Terapia Cognitiv-Comportamentală</h3>
+                <p>Albert Ellis, fondatorul REBT (Rational Emotive Behavior Therapy), credita explicit pe Epictet. Ideea centrală a CBT — că gândurile (cogniții) produc emoții — e stoicism pur.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Epictet pentru Viața de Azi</h2>
+
+                <h3>Testul Controlului</h3>
+                <p>Când ești stresat, scrie problema. Apoi: „Ce pot controla aici? Ce nu pot?" Acționează pe prima listă. Acceptă a doua.</p>
+
+                <h3>Recadrarea Cognitivă</h3>
+                <p>Când ai o emoție negativă, identifică judecata din spate. „Sunt furios că X a spus Y" → Judecata: „X n-ar fi trebuit să spună Y." E judecata aceasta rațională? Utilă?</p>
+
+                <h3>Amor Fati</h3>
+                <p>În loc să rezisti realității, iubește-o. Nu pasiv, ci activ: „Asta e situația. Ce pot face cu ea?"</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Epictetian</h4>
+                    <p>Timp de o zi, de fiecare dată când ești tulburat, oprește-te și notează: (1) Evenimentul (2) Judecata ta despre el (3) Emoția rezultată. La sfârșit, analizează: cât din suferință a venit din eveniment și cât din judecată?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Cetatea Interioară</h2>
+
+                <p>Epictet ne învață că suntem mai liberi decât credem — și mai puțin liberi decât pretindem. Mai liberi, pentru că mintea noastră e cetate inexpugnabilă. Mai puțin liberi, pentru că ne predăm această cetate la fiecare plângere, la fiecare furie, la fiecare „de ce mi se întâmplă mie?".</p>
+
+                <p>Nu putem controla lumea. Dar putem controla cum răspundem lumii. Iar în această alegere — în acest spațiu mic dintre stimul și răspuns — stă toată libertatea umană.</p>
+
+                <p>Un sclav a înțeles asta. Un împărat a învățat de la el. Poate și noi putem.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

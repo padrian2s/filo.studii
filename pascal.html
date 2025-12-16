@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blaise Pascal - Geniul între Știință și Credință</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #6b3a3a; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Apologetică / Existențialism</span>
+        <h1>Blaise Pascal</h1>
+        <p class="subtitle">Geniul care a inventat calculatorul, a fondat teoria probabilităților și a pariat pe Dumnezeu</p>
+        <span class="years">1623 — 1662</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Inima și Rațiunea</h2>
+
+                <p class="lead">„Inima are rațiunile ei, pe care rațiunea nu le cunoaște." Blaise Pascal a fost un geniu științific care a ajuns să creadă că știința nu poate răspunde la întrebările cele mai importante. A fost matematician, fizician, inventator — și mistic.</p>
+
+                <p>Pascal a murit la 39 de ani, lăsând în urmă o operă fragmentară dar de o intensitate extraordinară. Cugetările sale, publicate postum, sunt un amestec de apologetică creștină și observații psihologice de o profunzime rareori egalată.</p>
+
+                <p>Pentru noi, Pascal e important prin honestitatea lui. Nu ascunde tensiunile dintre știință și credință, nu oferă soluții facile. Recunoaște că omul e „trestie gânditoare" — fragil dar conștient de fragilitatea lui. Această conștiință e demnitatea noastră.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Geniul Precoce</h2>
+
+                <p>Pascal s-a născut la Clermont-Ferrand, Franța. Mama a murit când avea 3 ani; tatăl, Étienne, funcționar fiscal și matematician amator, l-a educat acasă. La 12 ani, fără să fi primit instrucție matematică, Blaise a redescoperit singur primele 32 de propoziții din Euclid.</p>
+
+                <p>La 16 ani a scris un tratat despre secțiunile conice care l-a uimit pe Descartes. La 19 ani a inventat „pascalina" — prima mașină de calcul funcțională, pentru a-l ajuta pe tatăl său cu calculele fiscale. La 23 a făcut experimente care au demonstrat existența vidului (contra lui Aristotel).</p>
+
+                <h3>Conversia</h3>
+
+                <p>În noaptea de 23 noiembrie 1654, Pascal a avut o experiență mistică intensă. A notat-o pe o hârtie pe care a purtat-o cusută în haină până la moarte: „Foc. Dumnezeul lui Abraham, Dumnezeul lui Isaac, Dumnezeul lui Iacob. Nu al filozofilor și savanților... Certitudine. Bucurie. Pace."</p>
+
+                <p>Din acel moment, Pascal s-a dedicat apologeticii creștine și a întrerupt aproape complet activitatea științifică. A murit la 39 de ani, probabil de cancer gastric combinat cu tuberculoză.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Omul e doar o trestie, cea mai slabă din natură; dar e o trestie gânditoare."</blockquote>
+                <cite>— Blaise Pascal, Cugetări</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Condiția Umană</span>
+                <h2>Mizeria și Grandoarea</h2>
+
+                <p>Pascal vede omul prins între două infinite: infinitul mare al universului și infinitul mic al atomilor. Suntem prea mici pentru a cuprinde cosmosul, prea mari pentru a pătrunde în atom. Locul nostru e incert, existența noastră e precară.</p>
+
+                <div class="concept-box">
+                    <h4>Paradoxul Uman</h4>
+                    <p><strong>Mizeria noastră:</strong> Suntem murituri, ignoranți, neputincioși. Un virus ne poate ucide. Un pic de apă în creier ne poate nebuni. Universul ne poate zdrobi fără să „știe".<br><br>
+                    <strong>Grandoarea noastră:</strong> Dar știm că suntem mizeri. Universul nu știe că ne zdrobește. Noi știm. Această conștiință e demnitatea noastră. „Toată demnitatea omului stă în gândire."</p>
+                </div>
+
+                <h3>Divertismentul</h3>
+
+                <p>Cum răspundem la această condiție? Prin fugă. „Divertismentul" (la Pascal, tot ce ne distrage de la condiția noastră) e modul în care evităm să ne gândim la mizeria și mortalitatea noastră.</p>
+
+                <blockquote class="inline">„Toată nefericirea oamenilor vine dintr-un singur lucru: că nu știu să stea liniștiți într-o cameră."</blockquote>
+
+                <p>Vânătoarea, afacerile, petrecerile, războaiele — toate sunt forme de fugă de noi înșine. Când rămânem singuri în liniște, anxietatea existențială ne copleșește.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Pariul lui Pascal</span>
+                <h2>Logica Credinței</h2>
+
+                <p>Cel mai faimos argument al lui Pascal nu e o demonstrație a existenței lui Dumnezeu — ci un argument pentru a crede, bazat pe teoria probabilităților pe care el însuși a fondat-o:</p>
+
+                <div class="concept-box">
+                    <h4>Argumentul Pariului</h4>
+                    <p><strong>Premisa:</strong> Nu putem demonstra rațional că Dumnezeu există sau nu. Dar trebuie să alegem — a nu alege e deja o alegere.<br><br>
+                    <strong>Analiza:</strong> Dacă pariezi că Dumnezeu există și câștigi → câștigi totul (fericire eternă). Dacă pariezi că Dumnezeu există și pierzi → pierzi puțin (unele plăceri lumești). Dacă pariezi contra și pierzi → pierzi totul. Dacă pariezi contra și câștigi → câștigi puțin.<br><br>
+                    <strong>Concluzia:</strong> Rațional, ar trebui să pariezi pe existența lui Dumnezeu — câștigul potențial e infinit, pierderea potențială e finită.</p>
+                </div>
+
+                <h3>Obiecții și Răspunsuri</h3>
+
+                <p>„Nu pot crede la comandă" — Pascal știe. Pariul nu produce credința, ci motivația de a o căuta. „Îngenunchează, roagă-te, și credința va veni."</p>
+
+                <p>„Care Dumnezeu?" — Pascal vorbește despre Dumnezeul creștin. Dar structura argumentului se aplică oricărei credințe cu consecințe infinite.</p>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Inima și Rațiunea</span>
+                <h2>Două Moduri de Cunoaștere</h2>
+
+                <p>Pascal distinge între „esprit de géométrie" (spiritul geometric) și „esprit de finesse" (spiritul de finețe):</p>
+
+                <ul>
+                    <li><strong>Spiritul geometric:</strong> Lucrează cu principii clare, definite, demonstrabile. E potrivit pentru matematică, logică, știință</li>
+                    <li><strong>Spiritul de finețe:</strong> Prinde ceea ce nu poate fi definit — nuanțe, caractere, situații. E necesar pentru viață, pentru a înțelege oamenii</li>
+                </ul>
+
+                <p>Nimeni nu le are pe amândouă în măsură egală. Matematicienii pot fi orbi la subtilitățile umane; oamenii „de lume" pot fi incapabili de raționament riguros.</p>
+
+                <blockquote class="inline">„Inima are rațiunile ei, pe care rațiunea nu le cunoaște."</blockquote>
+
+                <p>Nu e iraționalism — e recunoașterea că există adevăruri care se simt direct, nu se demonstrează. „Simțim" că existăm, că timpul curge, că spațiul are trei dimensiuni — nu demonstrăm.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Liniștea eternă a acestor spații infinite mă înspăimântă."</blockquote>
+                <cite>— Blaise Pascal, Cugetări</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Critica Filozofiei</span>
+                <h2>Limitele Rațiunii</h2>
+
+                <p>Pascal e sceptic față de metafizică. „Dumnezeul lui Abraham, nu al filozofilor" — Dumnezeu nu se găsește prin silogisme, ci prin experiență.</p>
+
+                <h3>Contra Raționaliștilor</h3>
+
+                <p>Descartes? „Inutil și nesigur." Demonstrațiile sale pentru existența lui Dumnezeu sunt prea abstracte, prea departe de nevoile sufletului. „Nu pot ierta lui Descartes: ar fi vrut să se lipsească de Dumnezeu în toată filozofia lui."</p>
+
+                <h3>Contra Scepticilor</h3>
+
+                <p>Dar nici scepticismul nu e soluția. „Natura confundă pe sceptici, și rațiunea confundă pe dogmatici." Nu putem demonstra totul — dar nu putem nici îndoi de tot. Trăim în incertitudine, dar trebuie să acționăm.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Știința</span>
+                <h2>Contribuțiile Științifice</h2>
+
+                <p>Deși a abandonat știința pentru religie, contribuțiile lui Pascal rămân fundamentale:</p>
+
+                <ul>
+                    <li><strong>Pascalina:</strong> Prima mașină de calcul mecanică funcțională (1642)</li>
+                    <li><strong>Presiunea atmosferică:</strong> A demonstrat că presiunea scade cu altitudinea, confirmând existența vidului</li>
+                    <li><strong>Hidrostatica:</strong> Principiul lui Pascal — presiunea se transmite uniform în fluide</li>
+                    <li><strong>Teoria probabilităților:</strong> Fondată prin corespondența cu Fermat (1654)</li>
+                    <li><strong>Triunghiul lui Pascal:</strong> Proprietăți ale coeficienților binomiali</li>
+                    <li><strong>Cicloida:</strong> A rezolvat probleme despre această curbă sub pseudonim</li>
+                </ul>
+
+                <p>Unitatea de măsură a presiunii (pascal, Pa) îi poartă numele.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Jansenismul</span>
+                <h2>Credința Austeră</h2>
+
+                <p>Pascal a fost asociat cu jansenismul — o mișcare catolică austeră, influențată de Augustin, centrată pe mănăstirea Port-Royal. Jansenismul accentua păcatul originar, predestinarea, necesitatea harului divin — în contrast cu optimismul iezuit.</p>
+
+                <h3>Scrisorile Provinciale</h3>
+
+                <p>În 1656-57, Pascal a scris anonimProvincia les Lettres à un — 18 scrisori satirice atacând teologia morală iezuită, în special „cazuistica" (arta de a găsi scuze pentru orice păcat). Au avut un succes enorm și au stabilit franceza ca limbă filozofică și literară.</p>
+
+                <p>Scrisorile combină rigoarea logică cu ironia devastatoare. Au influențat proza franceză pentru secole.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Moștenirea</span>
+                <h2>Ecouri în Posteritate</h2>
+
+                <h3>În Filozofie</h3>
+                <p>Kierkegaard l-a văzut ca precursor al existențialismului. Nietzsche, deși ostil creștinismului, l-a respectat pentru onestitate. Heidegger și anxietatea existențială, Camus și absurdul — toți au rădăcini pascaliene.</p>
+
+                <h3>În Teologie</h3>
+                <p>Apologetica modernă îi datorează mult: accentul pe experiență, pe nevoile sufletului, pe limitele demonstrației. Simone Weil, C.S. Lewis au urmat modele pascaliene.</p>
+
+                <h3>În Literatură</h3>
+                <p>Stilul Cugetărilor — fragmente intense, aforisme concentrate — a influențat pe Nietzsche, Cioran, E.M. Cioran (care l-a tradus în română).</p>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Aplicații Practice</span>
+                <h2>Pascal pentru Viața de Azi</h2>
+
+                <h3>Recunoaște Divertismentul</h3>
+                <p>Ce faci pentru a fugi de tine însuți? Identifică formele tale de „divertisment". Uneori, liniștea și singurătatea sunt exact ce ai nevoie.</p>
+
+                <h3>Acceptă Incertitudinea</h3>
+                <p>Nu totul se poate demonstra. Uneori trebuie să acționezi fără certitudine. Pariul vieții nu permite abținerea.</p>
+
+                <h3>Cultivă Ambele Spirite</h3>
+                <p>Rigoarea și finețea sunt ambele necesare. Nu sacrifica una pentru alta.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Pascalian</h4>
+                    <p>Stai 30 de minute singur, în liniște, fără telefon, carte, muzică — fără nici un „divertisment". Observă ce gânduri și sentimente apar. Ce încerci să eviți în mod normal?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">11 / Concluzie</span>
+                <h2>Trestia Gânditoare</h2>
+
+                <p>Pascal a fost sfâșiat între știință și credință, între rigoare și mister, între disperare și speranță. Nu a rezolvat aceste tensiuni — le-a trăit cu o intensitate care transpare în fiecare fragment.</p>
+
+                <p>Cugetările sunt o carte neterminată, un șantier al gândirii. Poate de aceea ne vorbesc atât de direct: nu sunt un sistem închis, ci o invitație la propria noastră căutare.</p>
+
+                <p>„Omul e doar o trestie, cea mai slabă din natură; dar e o trestie gânditoare." Această imagine ne definește: fragili dar conștienți, murituri dar capabili să întrebăm de ce. Conștiința fragilității noastre e cea mai înaltă dovadă a demnității noastre.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

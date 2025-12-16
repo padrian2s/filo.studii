@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seneca - Filozoful în Palatul Puterii</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #c41e3a; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 7rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2.5rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Stoicism / Filozofie Romană</span>
+        <h1>Seneca</h1>
+        <p class="subtitle">Filozoful care a trăit în contradicție și a murit cu demnitate</p>
+        <span class="years">c. 4 î.Hr. — 65 d.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Filozoful și Tiranul</h2>
+
+                <p class="lead">Seneca e cel mai controversat dintre stoici. Predica detașarea de bogăție — dar era unul dintre cei mai bogați romani ai vremii. Predica retragerea din viața publică — dar a fost consilierul lui Nero, unul dintre cei mai infami tirani. A scris despre virtute — dar a aprobat matricidul împăratului.</p>
+
+                <p>Și totuși, scrisorile și eseurile sale rămân cele mai accesibile și mai literare texte stoice din antichitate. Seneca nu vorbește de sus, ca un înțelept care a ajuns. Vorbește ca un om care se luptă, care cade și se ridică, care își cunoaște slăbiciunile.</p>
+
+                <p>Poate tocmai de aceea ne vorbește atât de direct: nu e un sfânt, ci un om ca noi, încercând să fie mai bun într-o lume care trage în jos. Iar moartea lui — ordonată de Nero, acceptată cu seninătate stoică — răscumpără multe din compromisurile vieții.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>O Viață la Curte</h2>
+
+                <p>Lucius Annaeus Seneca s-a născut la Corduba (Cordoba), în Spania, într-o familie de rang ecvestru. A venit la Roma tânăr, a studiat filozofia și retorica, a devenit avocat și senator.</p>
+
+                <p>În 41 d.Hr., împărăteasa Messalina l-a acuzat de adulter cu sora împăratului. A fost exilat în Corsica timp de 8 ani — o perioadă de studiu și scriere, dar și de umilință (a scris un elogiu lingușitor pentru a obține grațierea).</p>
+
+                <h3>Tutorele lui Nero</h3>
+
+                <p>În 49 d.Hr., noua împărăteasă Agrippina l-a rechemat pentru a fi tutorele fiului ei, Nero. Când Nero a devenit împărat la 16 ani (54 d.Hr.), Seneca a fost de facto conducător al imperiului, alături de prefectul Burrus.</p>
+
+                <p>Primii cinci ani ai domniei lui Nero — „quinquennium Neronis" — sunt considerați o epocă de aur. Seneca a folosit influența pentru a modera impulsurile tânărului împărat și a conduce cu înțelepciune.</p>
+
+                <h3>Decăderea și Moartea</h3>
+
+                <p>Dar Nero a crescut, iar tirania naturală i-a ieșit la suprafață. A ucis-o pe mama sa Agrippina (cu aprobarea tacită a lui Seneca). A început persecuțiile. Seneca s-a retras treptat de la curte.</p>
+
+                <p>În 65 d.Hr., a fost implicat în conspirația lui Piso — poate vinovat, poate victimă colaterală. Nero i-a ordonat să se sinucidă. Seneca a acceptat cu seninătate stoică, și-a tăiat venele, a băut cucută (ca Socrate), și a murit lent, dictând filozofie până la sfârșit.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Nu pentru că lucrurile sunt dificile nu îndrăznim; ci pentru că nu îndrăznim, lucrurile sunt dificile."</blockquote>
+                <cite>— Seneca, Scrisori către Lucilius</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Despre Timp</span>
+                <h2>Singura Avere Reală</h2>
+
+                <p>Tema centrală la Seneca: timpul e tot ce avem — și îl irosim fără milă. Eseul „De brevitate vitae" (Despre scurtimea vieții) începe cu observația că oamenii se plâng că viața e scurtă, dar o trăiesc ca și cum ar fi infinită.</p>
+
+                <blockquote class="inline">„Nu primim o viață scurtă, ci o facem scurtă. Nu suntem săraci în timp, ci risipitori."</blockquote>
+
+                <p>Enumerarea lui Seneca pare scrisă pentru noi: pierdem timpul cu petreceri fără sens, cu ambiții deșarte, cu griji pentru lucruri ce nu depind de noi, cu amânări infinite, cu plăceri care nu satisfac.</p>
+
+                <div class="concept-box">
+                    <h4>Cele trei timpuri</h4>
+                    <p>Seneca împarte timpul în:<br>
+                    • <strong>Trecut</strong> — sigur, intangibil, al nostru pentru totdeauna<br>
+                    • <strong>Prezent</strong> — o clipă fugară<br>
+                    • <strong>Viitor</strong> — incert, poate nu va veni<br><br>
+                    Majoritatea oamenilor trăiesc în viitor (așteptând, planificând, sperând) și ignoră prezentul. Înțeleptul trăiește prezentul și contemplă trecutul.</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Despre Emoții</span>
+                <h2>Patimile și Controlul Lor</h2>
+
+                <p>„De ira" (Despre mânie) e tratatul lui Seneca despre cea mai distructivă emoție. Mânia, spune el, e „nebunie scurtă" — ne face să distrugem ce iubim, să pierdem ce am construit, să devenim propriii noștri dușmani.</p>
+
+                <h3>Tehnici Anti-Mânie</h3>
+                <ul>
+                    <li><strong>Amânarea</strong> — nu reacționa imediat. „Cel mai bun remediu pentru mânie e amânarea."</li>
+                    <li><strong>Perspectiva</strong> — va conta asta peste un an? Peste zece?</li>
+                    <li><strong>Empatia</strong> — încearcă să înțelegi de ce a acționat celălalt așa</li>
+                    <li><strong>Auto-examinarea</strong> — de câte ori tu ai făcut același lucru?</li>
+                    <li><strong>Oboseala ca prevenție</strong> — mânia vine când suntem obosiți sau flămânzi</li>
+                </ul>
+
+                <blockquote class="inline">„Vei înceta să te mai înfurii dacă îți vei examina în fiecare zi toate greșelile tale."</blockquote>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Viața e lungă dacă știi să o folosești."</blockquote>
+                <cite>— Seneca, De brevitate vitae</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">05 / Scrisorile către Lucilius</span>
+                <h2>124 de Lecții de Viață</h2>
+
+                <p>Capodopera lui Seneca sunt „Epistulae morales ad Lucilium" — 124 de scrisori către un prieten mai tânăr, procuratorul Siciliei. Sunt scrisori filozofice, dar cu un ton personal, cald, practic.</p>
+
+                <h3>Teme Recurente</h3>
+                <ul>
+                    <li>Folosirea timpului și evitarea irosiri</li>
+                    <li>Pregătirea pentru moarte</li>
+                    <li>Prietenia adevărată</li>
+                    <li>Critica bogăției și luxului</li>
+                    <li>Exerciții de autoexaminare</li>
+                    <li>Lectura și studiul</li>
+                </ul>
+
+                <blockquote class="inline">„Citește mereu autori de prim rang; iar dacă te abați uneori spre alții, întoarce-te la primii."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Citate Memorabile</span>
+                <h2>Aforisme pentru Eternitate</h2>
+
+                <blockquote class="inline">„Nu e că avem puțin timp, ci că pierdem mult."</blockquote>
+                <p>Viața e suficient de lungă pentru mari realizări — dacă n-o irosim.</p>
+
+                <blockquote class="inline">„Unii nu trăiesc, ci se pregătesc să trăiască."</blockquote>
+                <p>Amânăm fericirea pentru un „mai târziu" care nu vine niciodată.</p>
+
+                <blockquote class="inline">„Adevărata fericire e să te bucuri de prezent, fără dependență anxioasă de viitor."</blockquote>
+                <p>Mindfulness stoic avant la lettre.</p>
+
+                <blockquote class="inline">„Dacă vrei să fii iubit, iubește."</blockquote>
+                <p>Simplitatea relațiilor autentice.</p>
+
+                <blockquote class="inline">„Fiecare zi trebuie trăită ca și cum ar fi ultima."</blockquote>
+                <p>Nu pesimism, ci intensitate: dacă ar fi ultima zi, ce ar conta cu adevărat?</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Contradicțiile</span>
+                <h2>Filozoful Imperfect</h2>
+
+                <h3>Bogăția</h3>
+                <p>Seneca era imens de bogat — vile, sclavi, împrumuturi în Britania care au declanșat o revoltă. Predica detașarea, dar nu renunța la lux. Apărarea lui: nu e rău să ai bani, ci să fii stăpânit de ei. El le poseda fără să fie posedat.</p>
+
+                <h3>Puterea</h3>
+                <p>A rămas la curtea lui Nero chiar când tirania a devenit evidentă. A aprobat uciderea Agrippinei. A scris discursul lui Nero care justifica matricidul. Apărarea: făcea ce putea într-o situație imposibilă, moderând răul.</p>
+
+                <h3>Ipocrizia sau Onestitatea?</h3>
+                <p>Seneca însuși recunoaște: „Nu sunt un înțelept și nici nu voi fi." Nu pretindea perfecțiune. Scria despre virtute tocmai pentru că îi era greu s-o atingă. „Nu vorbesc despre mine ca și cum aș fi sănătos, ci ca un bolnav în același pat."</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Aplicații Practice</span>
+                <h2>Seneca pentru Secolul XXI</h2>
+
+                <h3>Auditul Timpului</h3>
+                <p>Pentru o săptămână, notează cum îți petreci fiecare oră. La sfârșit, întreabă: cât a fost investiție, cât a fost risipă? Ce am de arătat?</p>
+
+                <h3>Meditatio Mortis</h3>
+                <p>Dimineața, amintește-ți: „Poate fi ultima zi." Nu morbid — realist. Dacă ar fi ultima, ce ai face diferit? Fă acel lucru.</p>
+
+                <h3>Răgaz pentru Sine</h3>
+                <p>Seneca insista pe „otium" — timp liber pentru studiu și reflecție. Programează-ți timp gol, fără productivitate, doar pentru a gândi.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Senecan</h4>
+                    <p>Seara, înainte de culcare, examinează ziua:<br>
+                    „Ce boală mi-am vindecat azi? Cărui viciu i-am rezistat? În ce privință sunt mai bun?"<br>
+                    Notează într-un jurnal. Consistența e mai importantă decât profunzimea.</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Concluzie</span>
+                <h2>Moartea Filozofului</h2>
+
+                <p>În 65 d.Hr., când Nero i-a ordonat să moară, Seneca era pregătit. Și-a luat rămas bun de la prieteni, și-a consolat soția, și-a tăiat venele. Sângele curgea prea încet din corpul său bătrân și slăbit. A luat cucută — nu a funcționat. A intrat într-o baie fierbinte pentru a accelera sângerarea. A dictat filozofie până în ultima clipă.</p>
+
+                <p>Moartea lui Seneca răscumpără contradicțiile vieții. A murit cum a predicat că trebuie să murim: cu demnitate, fără frică, cu gândul la virtute. Momentul suprem de coerență.</p>
+
+                <p>Pentru noi, rămâne întrebarea: cum vom muri? Și, mai important: cum vom trăi până atunci? Seneca ne dă instrumentele — e treaba noastră să le folosim.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

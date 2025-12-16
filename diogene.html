@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diogene din Sinope - Filozoful Câine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #2d5a27; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2.5rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Cinism / Filozofie Radicală</span>
+        <h1>Diogene din Sinope</h1>
+        <p class="subtitle">Filozoful care trăia într-un butoi și sfida întreaga civilizație</p>
+        <span class="years">c. 412 — 323 î.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Câinele Regal</h2>
+
+                <p class="lead">Alexandru cel Mare, cuceritorul lumii, a venit să-l viziteze pe Diogene care stătea în soare, lângă butoiul său. „Sunt Alexandru, marele rege", a spus el. „Sunt Diogene, câinele", a răspuns filozoful. „Ce pot face pentru tine?" „Dă-te din soare." Alexandru ar fi spus apoi: „Dacă n-aș fi Alexandru, aș vrea să fiu Diogene."</p>
+
+                <p>Diogene e cel mai scandalos filozof al antichității. Trăia într-un butoi (sau pithos — un vas mare de ceramică). Mânca resturi. Făcea nevoile în public. Se masturba în agora. Umbla ziua cu o lampă aprinsă „căutând un om". L-a scuipat pe un om bogat în față. L-a numit pe Platon „Socrate înnebunit".</p>
+
+                <p>Dar în spatele provocărilor stă o filozofie coerentă și radicală: eliberarea de toate convențiile, de toate nevoile artificiale, de toate lanțurile pe care societatea ni le pune. Diogene trăia ceea ce alții doar teoretizau.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>Exilatul Din Sinope</h2>
+
+                <p>Diogene s-a născut în Sinope, o colonie greacă pe țărmul Mării Negre (în actuala Turcie). Tatăl său era bancher. Dar tatăl și fiul au fost exilați pentru falsificarea monedei — fie literal, fie metaforic, sensul exact rămâne neclar.</p>
+
+                <p>Exilul a fost eliberare. Diogene a venit la Atena și l-a căutat pe Antisthenes, un elev al lui Socrate care propovăduia simplitatea și dispretuia convențiile sociale. Antisthenes l-a refuzat inițial; Diogene a insistat până l-a acceptat.</p>
+
+                <h3>Cinismul</h3>
+
+                <p>Numele vine de la „kyon" (câine) — fie de la Kynosarges, gimnaziul unde preda Antisthenes, fie de la modul de viață „canin" al cinicilor. Diogene și-a asumat epitetu: trăia ca un câine, fără rușine, fără posesiuni, fără casă. „Câinii" erau liberi; oamenii „civilizați" erau sclavi.</p>
+
+                <h3>Sfârșitul</h3>
+
+                <p>A murit în Corint în 323 î.Hr. — în aceeași zi cu Alexandru cel Mare, conform legendei. Cauza morții: fie o mușcătură de câine, fie o caracatiță mâncată crudă, fie pur și simplu și-a ținut respirația. Ceruse să fie aruncat câinilor după moarte; corintienii i-au ridicat în schimb o coloană cu un câine din marmură.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Căutăm onoare la oameni care nu-și dau seama de propria lor lipsă de valoare."</blockquote>
+                <cite>— Diogene din Sinope</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Filozofia Cinică</span>
+                <h2>Să Falsifici Moneda Curentă</h2>
+
+                <p>„Falsifică moneda curentă" (parakharattein to nomisma) era motto-ul lui Diogene. Nu doar moneda literală — ci „moneda" convențiilor sociale. Tot ce societatea consideră valoros — bogăție, faimă, confort, rușine — trebuie „falsificat", devalorizat, respins.</p>
+
+                <div class="concept-box">
+                    <h4>Principiile Cinice</h4>
+                    <p>• <strong>Autarkeia</strong> — autosuficiența, independența de tot ce e extern<br>
+                    • <strong>Parrhesia</strong> — vorbirea liberă, brutală, fără teamă<br>
+                    • <strong>Askesis</strong> — antrenamentul prin lipsuri voluntare<br>
+                    • <strong>Anaideia</strong> — lipsa rușinii pentru ce e natural<br>
+                    • <strong>Kosmopolites</strong> — cetățean al lumii, nu al unei cetăți</p>
+                </div>
+
+                <h3>Natura ca Normă</h3>
+
+                <p>Ce e natural e bun. Ce e artificial e suspect. Animalele mănâncă, dorm, se împerechează fără rușine. De ce oamenii transformă acte naturale în tabuuri? Rușinea, pentru Diogene, e o boală socială.</p>
+
+                <p>Când l-au criticat că mânca în agora: „Dacă a mânca e normal, de ce nu și aici?" Când se masturba în public: „De-ar fi la fel de ușor să-mi potolesc foamea frecându-mi burta."</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Anecdotele</span>
+                <h2>Filozofia în Acțiune</h2>
+
+                <p>Diogene nu a scris tratate — a trăit. Filozofia lui supraviețuiește în anecdote, colectate de Diogenes Laertios câteva secole mai târziu.</p>
+
+                <h3>Lampa în Plină Zi</h3>
+                <blockquote class="inline">Umbla ziua cu o lampă aprinsă. „Ce faci?" „Caut un om." — adică un om autentic, în mijlocul mulțimii de marionete sociale.</blockquote>
+
+                <h3>Puiul și Platon</h3>
+                <blockquote class="inline">Platon definise omul ca „biped fără pene". Diogene a adus un pui jumulit în Academie: „Iată omul lui Platon!"</blockquote>
+
+                <h3>Apa din Palmă</h3>
+                <blockquote class="inline">Văzând un copil bând apă din palmă, și-a aruncat cana: „Un copil m-a învățat că mai am lucruri de prisos."</blockquote>
+
+                <h3>Sclavul Vândut</h3>
+                <blockquote class="inline">Capturat de pirați și vândut ca sclav, când l-au întrebat ce știe să facă, a răspuns: „Să comand oameni." Și către cumpărător: „Cumpără-mă; ai nevoie de un stăpân."</blockquote>
+
+                <h3>Casa lui</h3>
+                <blockquote class="inline">Trăia într-un pithos (butoi de ceramică). Când a văzut un șoarece mulțumit cu firimituri: „Chiar și un șoarece nu are nevoie de atât cât credeam." Și-a simplificat viața și mai mult.</blockquote>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Oamenii și-au complicat fiecare act simplu al vieții."</blockquote>
+                <cite>— Diogene din Sinope</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">05 / Dialoguri Celebre</span>
+                <h2>Replica Ascuțită</h2>
+
+                <p><strong>„De unde ești?"</strong> — „Sunt cetățean al lumii" (kosmopolites). E prima folosire cunoscută a cuvântului „cosmopolit".</p>
+
+                <p><strong>„Ce câștigi din filozofie?"</strong> — „Dacă nimic altceva, măcar sunt pregătit pentru orice soartă."</p>
+
+                <p><strong>„Nu ți-e rușine să mănânci în piață?"</strong> — „Mi-era foame în piață."</p>
+
+                <p><strong>„Cei mai mulți te consideră nebun."</strong> — „Și eu îi consider nebuni pe ei. Diferența: ei sunt mai mulți."</p>
+
+                <p><strong>„De ce primești de la toți?"</strong> — „Nu primesc, ci îi învăț să dea."</p>
+
+                <p><strong>„Ce e cel mai frumos lucru din lume?"</strong> — „Parrhesia" (libertatea de a spune adevărul).</p>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Critica Societății</span>
+                <h2>Totul e Fum</h2>
+
+                <h3>Bogăția</h3>
+                <p>Bogații sunt cei mai săraci — au cele mai multe nevoi. Diogene nu poseda nimic și nu îi lipsea nimic. Bogatul e sclav al averilor sale.</p>
+
+                <h3>Faima</h3>
+                <p>Ce valoare are părerea unor oameni care nu știu ce vor? Faima e dependența de judecata proștilor.</p>
+
+                <h3>Politica</h3>
+                <p>Când l-au întrebat care e cel mai bun moment pentru cină, Diogene a răspuns: „Pentru bogat, când vrea; pentru sărac, când poate." Politica e jocul bogaților.</p>
+
+                <h3>Educația Convențională</h3>
+                <p>La un concurs de muzică, Diogene s-a îndreptat spre plecareul unde nu era nimeni. „De ce?" „Pentru că acolo vor merge toți — eu merg unde nu merge nimeni."</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Moștenirea</span>
+                <h2>Câinii Istoriei</h2>
+
+                <h3>Stoicismul</h3>
+                <p>Zenon din Citium, fondatorul stoicismului, a fost elevul lui Crates, care fusese elevul lui Diogene. Stoicismul e cinism îmblânzit, făcut acceptabil pentru societate.</p>
+
+                <h3>Creștinismul</h3>
+                <p>Ascetismul creștin timpuriu are ecouri cinice: Sfântul Antonie în deșert, stilișii pe coloane, renunțarea la lume. Cinismul e proto-monasticism laic.</p>
+
+                <h3>Contracultura Modernă</h3>
+                <p>Hippies, punks, freegani — toți au ceva din Diogene. Refuzul consumerismului, critica convențiilor, alegerea sărăciei voluntare.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Critici</span>
+                <h2>Limitele Cinismului</h2>
+
+                <h3>Antisocial?</h3>
+                <p>Diogene nega obligațiile sociale. Dar societatea funcționează prin cooperare. Poți fi cinic singur; poți fi cinic în comunitate?</p>
+
+                <h3>Parazitism</h3>
+                <p>Diogene trăia din milostenie. Nu producea nimic. Cinismul e posibil doar într-o societate care îl tolerează și îl hrănește.</p>
+
+                <h3>Fericire?</h3>
+                <p>Era Diogene fericit sau doar demonstra un punct? E o diferență între libertate autentică și spectacol filosofic.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Diogene pentru Viața de Azi</h2>
+
+                <h3>Auditul Nevoilor</h3>
+                <p>Câte din „nevoile" tale sunt reale și câte sunt create de societate, publicitate, obișnuință? Diogene întreabă: poți trăi fără asta?</p>
+
+                <h3>Parrhesia</h3>
+                <p>Când taci pentru că ți-e teamă de ce vor spune alții, pierzi libertatea. Spune adevărul — cu tact, dar fără teamă.</p>
+
+                <h3>Askesis</h3>
+                <p>Antrenează-te cu lipsuri mici. O zi fără telefon. O săptămână fără cumpărături inutile. Descoperă cât de puțin ai nevoie de fapt.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Cinic</h4>
+                    <p>Timp de o zi, înainte de fiecare acțiune, întreabă-te: „Fac asta pentru că vreau, sau pentru că «așa se face»?" Câte din acțiunile tale sunt autentice și câte sunt performanță socială?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Omul din Butoi</h2>
+
+                <p>Diogene e imposibil de imitat complet — și poate că nu ar trebui. Dar e un corectiv necesar. Când ne pierdem în convenții, în acumulări, în aparențe, cinismul ne amintește: nimic din astea nu e necesar. Libertatea e posibilă.</p>
+
+                <p>„Dă-te din soare" — poate cea mai îndrăzneață replică din istoria filozofiei. Un cerșetor îi spune celui mai puternic om din lume că îi blochează singura resursă care contează: lumina.</p>
+
+                <p>Câte „sori" ne blocăm singuri — cu posesiunile noastre, cu temerile noastre, cu convențiile noastre? Diogene întreabă. Răspunsul e al nostru.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

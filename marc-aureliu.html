@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcus Aurelius - Împăratul Filozof</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #8b4513; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2.5rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Stoicism / Filozofie Romană</span>
+        <h1>Marcus Aurelius</h1>
+        <p class="subtitle">Împăratul care și-a scris meditațiile în cortul de război</p>
+        <span class="years">121 — 180 d.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Jurnalul Secret al unui Împărat</h2>
+
+                <p class="lead">Imaginați-vă cel mai puternic om din lume — stăpânul unui imperiu de 70 de milioane de oameni — scriind noaptea, la lumina lumânării, în cortul său de campanie: „Dimineața, când nu ai chef să te ridici, spune-ți: «Mă trezesc să fac treaba unui om.»" Acesta era Marcus Aurelius.</p>
+
+                <p>„Meditațiile" lui Marcus Aurelius nu erau destinate publicării. Erau note către sine, exerciții de auto-disciplină, amintiri ale principiilor stoice scrise în mijlocul războaielor și crizelor. Tocmai de aceea sunt atât de puternice — nu sunt teorie, ci practică. Nu predică, ci muncesc.</p>
+
+                <p>Pentru noi, aceste fragmente sunt o fereastră extraordinară în mintea unui om care avea tot ce și-ar putea dori cineva — putere, bogăție, faimă — și care scria zilnic despre cum să nu fie corupt de ele.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>Ultimul dintre Cei Buni</h2>
+
+                <p>Marcus a crescut într-o familie senatorială din Roma. La 17 ani, a fost adoptat de împăratul Antoninus Pius și pregătit să conducă imperiul. A primit cea mai bună educație posibilă, studiind retorica, dreptul și filozofia.</p>
+
+                <p>La 40 de ani (161 d.Hr.), a devenit împărat. Primise puterea supremă — și o detesta. „Nu te transforma în Cezar", își scria el. „Nu te lasă muiat în purpură." Iubea filozofia și studiul; a primit în schimb războaie, plăgi și intrigi.</p>
+
+                <h3>Domnia Grea</h3>
+
+                <p>Marcus a condus în vremuri teribile:</p>
+                <ul>
+                    <li><strong>Războaiele cu parții</strong> (161-166) — campanii epuizante în Orient</li>
+                    <li><strong>Plaga Antonină</strong> (165-180) — variolă care a ucis milioane</li>
+                    <li><strong>Războaiele cu marcomanii</strong> (166-180) — triburi germanice presând Dunărea</li>
+                    <li><strong>Revolta lui Avidius Cassius</strong> (175) — uzurpare sufocată</li>
+                </ul>
+
+                <p>Și-a petrecut ultimii 15 ani aproape continuu pe front. „Meditațiile" au fost scrise în mare parte în cortul de campanie, pe malul Dunării, în frig și noroi.</p>
+
+                <h3>Moartea</h3>
+
+                <p>A murit în 180 d.Hr., probabil de plagă, la Vindobona (Viena) sau Sirmium. Este considerat ultimul dintre „cei cinci împărați buni" — după el, Roma a intrat în „Criza secolului III".</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Fericirea vieții tale depinde de calitatea gândurilor tale."</blockquote>
+                <cite>— Marcus Aurelius, Meditații</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Meditațiile</span>
+                <h2>Note Către Sine</h2>
+
+                <p>„Ta eis heauton" (Către sine) — titlul original — nu e un tratat filozofic sistematic. Sunt 12 cărți de fragmente: observații, exhortații, exerciții mentale. Marcus repeta principiile stoice pentru a și le întipări în minte, nu pentru a le explica altora.</p>
+
+                <h3>Structura</h3>
+                <p>Cartea I e unică: o listă de mulțumiri față de cei care l-au format — părinți, bunici, profesori, prieteni. Din fiecare a învățat ceva: de la bunic, „blândețea și calmul"; de la mamă, „evlavia și generozitatea"; de la profesor, „să îndur munca și să am nevoie de puține".</p>
+
+                <p>Cărțile II-XII sunt meditațiile propriu-zise — fără ordine aparentă, fragmente între un rând și câteva pagini, repetând obsesiv câteva teme.</p>
+
+                <div class="concept-box">
+                    <h4>Temele Recurente</h4>
+                    <p>• <strong>Temporalitatea</strong> — tot ce există e efemer<br>
+                    • <strong>Controlul</strong> — distinge ce depinde de tine<br>
+                    • <strong>Cosmopolitismul</strong> — ești cetățean al universului<br>
+                    • <strong>Datoria</strong> — fă ce e drept, indiferent de consecințe<br>
+                    • <strong>Moartea</strong> — amintește-ți că vei muri<br>
+                    • <strong>Prezentul</strong> — trăiește acum, nu în trecut sau viitor</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Principii Stoice</span>
+                <h2>Filozofia Practică</h2>
+
+                <h3>Dichotomia Controlului</h3>
+                <p>Ca Epictet, Marcus revine constant la distincția dintre ce putem și ce nu putem controla. „Nu cere ca lucrurile să se întâmple cum vrei, ci acceptă-le cum se întâmplă."</p>
+
+                <blockquote class="inline">„În fiecare zi, amintește-ți că vei întâlni oameni indiscreți, ingrați, aroganți, necinstiți, invidioși, egoiști. Ei sunt așa din ignoranță. Tu știi ce e binele — deci nu poți fi rănit de ei."</blockquote>
+
+                <h3>Memento Mori</h3>
+                <p>Marcus medita constant asupra morții — nu din morbiditate, ci pentru a pune viața în perspectivă. Alexandru cel Mare și grăjdarul său zac în același pământ. Tot ce facem va fi uitat.</p>
+
+                <blockquote class="inline">„În curând vei fi uitat de toți, și toți vor fi uitați de tine."</blockquote>
+
+                <h3>Viziunea Cosmică</h3>
+                <p>Privește pământul din cer: cetăți ca furnicare, armate ca cete de furnici. De ce te agiți pentru fleacuri? Ești o scânteie în cosmos, o clipă în eternitate. Dar tocmai de aceea: fă ca scânteia să lumineze, ca clipa să conteze.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Nu irosi ce a rămas din viață gândindu-te la alții, decât dacă o faci pentru binele comun."</blockquote>
+                <cite>— Marcus Aurelius, Meditații</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">05 / Citate Esențiale</span>
+                <h2>Vocea Împăratului</h2>
+
+                <blockquote class="inline">„Când dimineața nu ai chef să te ridici, spune-ți: «Mă trezesc să fac treaba unui om. De ce să mă plâng că trebuie să fac ceea ce m-am născut să fac?»"</blockquote>
+                <p>Cel mai citat pasaj. Datoria nu e opțională — e natura ta.</p>
+
+                <blockquote class="inline">„Ai puterea de a nu avea nicio opinie despre un lucru și de a nu-ți lăsa sufletul tulburat de el. Căci lucrurile în sine nu au puterea de a ne crea judecăți."</blockquote>
+                <p>Esența stoicismului: evenimentele sunt neutre; judecățile noastre le colorează.</p>
+
+                <blockquote class="inline">„Cel mai bun mod de a te răzbuna pe un dușman e să nu te asemeni lui."</blockquote>
+                <p>Nu te cobori la nivelul agresorului. Virtutea ta e răzbunarea supremă.</p>
+
+                <blockquote class="inline">„Tot ce auzim e o opinie, nu un fapt. Tot ce vedem e o perspectivă, nu adevărul."</blockquote>
+                <p>Epistemologie stoică — conștiența limitelor cunoașterii.</p>
+
+                <blockquote class="inline">„Pierderea e doar o formă de schimbare, iar schimbarea e bucuria naturii."</blockquote>
+                <p>Acceptarea impermanenței ca lege a universului.</p>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Critica și Umbrele</span>
+                <h2>Împăratul Imperfect</h2>
+
+                <h3>Commodus</h3>
+                <p>Cea mai mare umbră: fiul său, Commodus, care i-a succedat și a fost un dezastru. După cinci împărați adoptați (aleși pe merit), Marcus a revenit la succesiunea ereditară. Rezultatul a fost tirania lui Commodus și sfârșitul „epocii de aur".</p>
+
+                <h3>Persecuțiile Creștinilor</h3>
+                <p>Sub Marcus au avut loc persecuții ale creștinilor — inclusiv martirii de la Lyon (177). Marcus nu le-a ordonat direct, dar nici nu le-a oprit. Toleranța stoică avea limite.</p>
+
+                <h3>Fatalism?</h3>
+                <p>Criticii spun că stoicismul duce la pasivitate — acceptarea a tot ce se întâmplă. Dar Marcus nu era pasiv: a luptat războaie, a condus un imperiu. Accepta ceea ce nu putea schimba; pentru rest, acționa.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Aplicații Practice</span>
+                <h2>Marcus pentru Secolul XXI</h2>
+
+                <h3>Jurnalul Stoic</h3>
+                <p>Ca Marcus, scrie dimineața sau seara. Nu pentru posteritate — pentru tine. Ce principii uiți mereu? Ce slăbiciuni recurente ai? Scrisul le face vizibile.</p>
+
+                <h3>Viziunea de Sus</h3>
+                <p>Când ești copleșit, „zboară" mental. Privește-te de sus, din oraș, din țară, de pe planetă. Problemele tale devin mici. Nu pentru a le ignora, ci pentru a le vedea în proporție.</p>
+
+                <h3>Dimineața Stoică</h3>
+                <p>Înainte să te ridici din pat: „Azi voi întâlni oameni dificili. Dar am și eu defecte. Scopul meu e să fac ce e drept, nu să fiu iubit."</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Aurelian</h4>
+                    <p>Alege un lucru care te irită constant — traficul, un coleg, o situație. Scrie:<br>
+                    1. Ce se întâmplă obiectiv?<br>
+                    2. Ce judecată adaug eu?<br>
+                    3. Este în controlul meu?<br>
+                    4. Cum ar vedea asta Marcus Aurelius?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Concluzie</span>
+                <h2>Împăratul în Noi</h2>
+
+                <p>Marcus Aurelius ne arată că puterea externă nu aduce pace interioară. Cel mai puternic om din lume se lupta zilnic cu aceleași demoni cu care ne luptăm noi: lenea, furia, teama, vanitatea.</p>
+
+                <p>Dar ne arată și că victoria e posibilă. Nu o victorie definitivă — lupta se reia în fiecare dimineață. Dar o victorie reală, zi de zi, gând după gând.</p>
+
+                <p>„Meditațiile" nu sunt o carte de citit o dată. Sunt o carte de trăit, de revizitat, de aplicat. Fiecare fragment e un exercițiu. Fiecare pagină, o lecție.</p>
+
+                <p>Marcus Aurelius a murit acum aproape două milenii. Dar în fiecare dimineață în care cineva se ridică din pat și își spune: „Mă trezesc să fac treaba unui om" — împăratul trăiește.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

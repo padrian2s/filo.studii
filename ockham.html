@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William de Ockham - Filozoful Briciului</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #2d5a27; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Scolastică Târzie / Nominalism</span>
+        <h1>William de Ockham</h1>
+        <p class="subtitle">Filozoful care a tăiat entitățile inutile și a pregătit terenul pentru știința modernă</p>
+        <span class="years">c. 1287 — 1347</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Briciul Care Taie</h2>
+
+                <p class="lead">„Entitățile nu trebuie multiplicate fără necesitate." Acest principiu — cunoscut ca „briciul lui Ockham" — a devenit unul dintre cele mai influente instrumente ale gândirii științifice. Preferă explicația mai simplă. Nu inventa entități dacă poți explica fără ele.</p>
+
+                <p>William de Ockham a fost un franciscan englez care a zguduit scolastica medievală din temelii. A negat existența universaliilor. A separat radical credința de rațiune. A contestat puterea papală. A fost excomunicat. Și a deschis calea modernității.</p>
+
+                <p>Pentru noi, Ockham e important ca model de gândire economică. Într-o lume plină de complexități inutile, briciul său rămâne actual: taie ce nu e necesar.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Franciscanul Rebel</h2>
+
+                <p>William s-a născut la Ockham, un sat din Surrey, Anglia. A intrat în Ordinul Franciscan tânăr și a studiat la Oxford, unde a predat logică și teologie.</p>
+
+                <p>În 1324, a fost chemat la Avignon pentru a fi anchetat de o comisie papală. Acuzația: 51 de propoziții eretice. Procesul s-a tărăgănat 4 ani. În acest timp, Ockham a studiat disputa privind sărăcia apostolică — franciscanii radicali susțineau că nici Hristos, nici apostolii n-au avut proprietăți.</p>
+
+                <h3>Fuga și Exilul</h3>
+
+                <p>În 1328, Ockham a fugit din Avignon împreună cu generalul franciscan și alți frați. S-au refugiat la curtea lui Ludovic de Bavaria, inamicul papei. Ockham ar fi spus: „Tu apără-mă cu sabia, eu te voi apăra cu pana."</p>
+
+                <p>A rămas în exil până la moarte (probabil în 1347, de ciumă), scriind tratate politice împotriva papalității. A fost excomunicat, dar și-a continuat opera.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Pluralitatea nu trebuie presupusă fără necesitate."</blockquote>
+                <cite>— William de Ockham</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Briciul lui Ockham</span>
+                <h2>Principiul Parcimoniei</h2>
+
+                <p>„Briciul" nu e formulat exact așa de Ockham — e o sinteză a mai multor pasaje. Ideea de bază:</p>
+
+                <div class="concept-box">
+                    <h4>Formulări</h4>
+                    <p>• „Pluralitatea nu trebuie presupusă fără necesitate"<br>
+                    • „E zadarnic să faci cu mai mult ce poți face cu mai puțin"<br>
+                    • „Entitățile nu trebuie multiplicate peste necesitate" (formulare tradițională)<br><br>
+                    <strong>În practică:</strong> Dacă două teorii explică la fel de bine un fenomen, alege-o pe cea mai simplă.</p>
+                </div>
+
+                <h3>Aplicații în Știință</h3>
+
+                <p>Briciul a devenit instrument fundamental al metodei științifice:</p>
+                <ul>
+                    <li>Newton: „Nu trebuie admise mai multe cauze ale lucrurilor naturale decât cele care sunt adevărate și suficiente"</li>
+                    <li>Einstein: „Totul ar trebui făcut cât mai simplu posibil, dar nu mai simplu"</li>
+                    <li>În statistică: preferă modelele cu mai puțini parametri (dacă explică la fel de bine)</li>
+                </ul>
+
+                <h3>Limite</h3>
+
+                <p>Briciul nu spune că explicația mai simplă e întotdeauna corectă — doar că e preferabilă în absența altor criterii. Uneori realitatea e complexă.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Nominalismul</span>
+                <h2>Doar Indivizii Există</h2>
+
+                <p>Ockham e cel mai radical nominalist medieval. Universaliile — „umanitatea", „albeața", „dreptatea" — nu există în realitate. Există doar indivizi concreți: acest om, acest lucru alb, această acțiune dreaptă.</p>
+
+                <p>Cuvintele universale (termenii generali) sunt doar semne mentale care pot fi predicate despre mai multe indivizi. „Umanitatea" nu e un lucru — e un concept care se aplică tuturor oamenilor individuali.</p>
+
+                <h3>Consecințe</h3>
+
+                <ul>
+                    <li><strong>Ontologie austeră:</strong> Doar substanțele și calitățile individuale există. Nu există esențe comune, forme abstracte, relații ca entități.</li>
+                    <li><strong>Cunoaștere directă:</strong> Cunoaștem direct indivizii prin intuiție; conceptele sunt secundare.</li>
+                    <li><strong>Știință empirică:</strong> Nu putem deduce fapte despre lume din definiții; trebuie să observăm.</li>
+                </ul>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Credință și Rațiune</span>
+                <h2>Separarea Radială</h2>
+
+                <p>Pentru Toma d'Aquino, rațiunea putea demonstra multe adevăruri teologice. Ockham neagă aceasta. Rațiunea nu poate demonstra existența lui Dumnezeu, nemurirea sufletului, creația. Toate acestea sunt cunoscute doar prin credință și revelație.</p>
+
+                <blockquote class="inline">„Nu putem ști în mod evident că Dumnezeu există."</blockquote>
+
+                <p>Aceasta nu e ateism — Ockham era franciscan devotat. Dar e o separare radicală: teologia nu e știință în sensul propriu (bazată pe dovezi), ci disciplină a credinței.</p>
+
+                <h3>Consecințe</h3>
+
+                <p>Această separare a eliberat știința de teologie — și teologia de știință. Fiecare își are domeniul propriu. Paradoxal, un călugăr excomunicat a deschis calea secularizării științei.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„E zadarnic să faci cu mai mult ce poți face cu mai puțin."</blockquote>
+                <cite>— William de Ockham</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Filosofia Politică</span>
+                <h2>Împotriva Absolutismului Papal</h2>
+
+                <p>În exil, Ockham a scris tratate politice atacând pretențiile papale la putere absolută:</p>
+
+                <ul>
+                    <li>Papa nu e infailibil — poate greși, chiar în materie de credință</li>
+                    <li>Puterea papală e limitată — vine de la comunitatea credincioșilor</li>
+                    <li>Împăratul are autoritate proprie, nu delegată de Papă</li>
+                    <li>Proprietatea e un drept natural, anterior Bisericii</li>
+                </ul>
+
+                <p>Aceste idei anticipează separarea Biserică-Stat, limitarea puterii, drepturile individuale.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Moștenirea</span>
+                <h2>Pregătirea Modernității</h2>
+
+                <h3>Știința Modernă</h3>
+                <p>Briciul lui Ockham e principiu metodologic fundamental. Separarea credință-rațiune a eliberat știința de autoritatea teologică.</p>
+
+                <h3>Empirismul</h3>
+                <p>Insistența pe cunoașterea directă a indivizilor anticipează empirismul britanic (Locke, Hume).</p>
+
+                <h3>Reforma</h3>
+                <p>Atacul la autoritarismul papal a inspirat reformatorii. Luther a fost ockhamist format.</p>
+
+                <h3>Logica Modernă</h3>
+                <p>Analiza lui Ockham a termenilor și propozițiilor anticipează logica simbolică.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Aplicații Practice</span>
+                <h2>Ockham pentru Viața de Azi</h2>
+
+                <h3>Simplitatea</h3>
+                <p>Când ai de ales între explicații, teorii, sau soluții, preferă cea mai simplă care funcționează. Nu adăuga complexitate inutilă.</p>
+
+                <h3>Scepticism față de Entități Abstracte</h3>
+                <p>Când cineva vorbește despre „piața", „societatea", „cultura" — întreabă: ce indivizi, ce acțiuni concrete se ascund în spatele acestor abstracțiuni?</p>
+
+                <h3>Separarea Domeniilor</h3>
+                <p>Nu amesteca tipuri diferite de cunoaștere. Știința, etica, credința au metode și autorități diferite.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Ockhamian</h4>
+                    <p>Alege o explicație complexă pentru ceva din viața ta. Aplică briciul: care sunt elementele esențiale? Ce poți elimina fără a pierde puterea explicativă? Poți explica același lucru mai simplu?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Concluzie</span>
+                <h2>Simplitatea Radicală</h2>
+
+                <p>William de Ockham a fost un distrugător — a tăiat entități metafizice, a separat domenii, a contestat autorități. Dar distrugerea lui a fost constructivă: a eliberat gândirea de balast, a făcut loc pentru știința modernă, a deschis calea autonomiei intelectuale.</p>
+
+                <p>Briciul său rămâne un instrument prețios: într-o lume plină de teorii complicate, de conspirații elaborate, de sisteme supraîncărcate — întoarce-te la simplu. Taie ce nu e necesar. Preferă explicația minimală.</p>
+
+                <p>Nu pentru că simplu e întotdeauna adevărat — ci pentru că e un bun punct de plecare.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

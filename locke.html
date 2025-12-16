@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Locke - Părintele Liberalismului</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #2c5282; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Empirism / Liberalism</span>
+        <h1>John Locke</h1>
+        <p class="subtitle">Filozoful care a afirmat că mintea e o tablă goală și că guvernul există pentru a proteja drepturile naturale</p>
+        <span class="years">1632 — 1704</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Arhitectul Lumii Moderne</h2>
+
+                <p class="lead">Declarația de Independență americană, Constituția SUA, Revoluția Franceză — toate poartă amprenta lui John Locke. Ideile sale despre drepturile naturale, consimțământul guvernaților și limitele puterii au modelat democrațiile moderne.</p>
+
+                <p>Dar Locke e și fondatorul empirismului britanic. Contra lui Descartes și a ideilor înnăscute, Locke susține că mintea la naștere e o „tabula rasa" — o tablă goală. Toate cunoștințele vin din experiență, din simțuri și reflecție.</p>
+
+                <p>Pentru noi, Locke e important dublu: ca teoretician al cunoașterii și ca teoretician al politicii. Ambele proiecte sunt legate: dacă nu avem idei înnăscute, dacă totul se învață, atunci educația și instituțiile sunt esențiale. Societatea se poate schimba.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Filozoful Revoluției</h2>
+
+                <p>John Locke s-a născut la Wrington, Somerset, într-o familie puritană. Tatăl a luptat în Războiul Civil de partea Parlamentului. A studiat la Christ Church, Oxford, unde a întâlnit noua știință experimentală și l-a cunoscut pe Robert Boyle.</p>
+
+                <p>A studiat medicina dar nu a practicat niciodată formal. În 1667 a intrat în serviciul lordului Ashley (viitorul Earl de Shaftesbury), lider al opoziției Whig. Această asociere l-a transformat din academic în actor politic.</p>
+
+                <h3>Exilul și Revoluția</h3>
+
+                <p>Când Shaftesbury a căzut în dizgrație, Locke a fugit în Olanda (1683). A rămas în exil 5 ani, scriind și conspirând. S-a întors odată cu Revoluția Glorioasă (1688) și cu încoronarea lui Wilhelm de Orania.</p>
+
+                <p>În 1689-90 a publicat operele majore: Eseu asupra intelectului omenesc, Două tratate despre guvernare, Scrisoare despre toleranță. A devenit celebru, consilier al noului regim. A murit în 1704, la Essex.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Mintea e, să zicem așa, o hârtie albă, lipsită de orice caractere, fără nici o idee."</blockquote>
+                <cite>— John Locke, Eseu asupra intelectului omenesc</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Tabula Rasa</span>
+                <h2>Contra Ideilor Înnăscute</h2>
+
+                <p>Descartes credea că anumite idei (Dumnezeu, infinitul, axiomele) sunt înnăscute — le avem de la naștere, nu le învățăm. Locke neagă categoric:</p>
+
+                <div class="concept-box">
+                    <h4>Argumentele lui Locke</h4>
+                    <p><strong>1. Copiii și „sălbaticii":</strong> Dacă ideile ar fi înnăscute, copiii și popoarele „primitive" le-ar avea. Dar nu le au — deci nu sunt înnăscute.<br><br>
+                    <strong>2. Consensul universal:</strong> Nici un principiu nu e acceptat universal — nici măcar principiul non-contradicției. Deci nu există idei pe care toți le au de la naștere.<br><br>
+                    <strong>3. Explicația mai simplă:</strong> Tot ce numim „înnăscut" se poate explica prin experiență și educație. De ce să postulăm entități inutile?</p>
+                </div>
+
+                <h3>Consecințe</h3>
+
+                <p>Dacă mintea e tablă goală, educația e totul. Nu există „natură umană" fixă care să determine soarta. Oamenii și societățile se pot transforma prin învățare și instituții corecte.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Teoria Cunoașterii</span>
+                <h2>De Unde Vin Ideile</h2>
+
+                <p>Dacă nu sunt înnăscute, de unde vin ideile? Din experiență — dar de două feluri:</p>
+
+                <ul>
+                    <li><strong>Senzația:</strong> Simțurile ne dau idei despre lumea externă — culori, sunete, forme</li>
+                    <li><strong>Reflecția:</strong> Mintea observă propriile operații — gândire, îndoială, credință, voință</li>
+                </ul>
+
+                <h3>Idei Simple și Complexe</h3>
+
+                <p>Ideile simple vin direct din senzație sau reflecție — nu le putem analiza în părți mai mici. Ideile complexe sunt construite de minte din idei simple: substanța, relația, modul.</p>
+
+                <p>„Aur" e o idee complexă: galben + greu + maleabil + fuzibil etc. Mintea combină ideile simple într-un pachet pe care îl numește „aur".</p>
+
+                <h3>Calități Primare și Secundare</h3>
+
+                <div class="concept-box">
+                    <h4>Distincția</h4>
+                    <p><strong>Calități primare:</strong> Aparțin obiectului însuși — extensiune, formă, mișcare, număr. Ideile noastre le reprezintă fidel.<br><br>
+                    <strong>Calități secundare:</strong> Sunt efecte ale obiectului asupra noastră — culoare, sunet, gust, miros. Nu există în obiect așa cum le experimentăm.</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Limitele Cunoașterii</span>
+                <h2>Ce Putem și Ce Nu Putem Ști</h2>
+
+                <p>Locke e modest despre pretențiile cunoașterii. Cunoașterea certă e limitată la:</p>
+
+                <ul>
+                    <li>Intuiție: știm imediat că existăm, că albul nu e negrul</li>
+                    <li>Demonstrație: adevărurile matematice, existența lui Dumnezeu</li>
+                    <li>Senzație: știm că există ceva în afara noastră (când experimentăm)</li>
+                </ul>
+
+                <p>Dar despre esențele reale ale lucrurilor nu putem ști nimic cert. Știm cum lucrurile ni se arată, nu ce sunt în sine. Știința naturală e probabilă, nu certă — dar probabilitatea e suficientă pentru viața practică.</p>
+
+                <blockquote class="inline">„Luminarea noastră e suficientă pentru starea noastră... Ne ajunge să vedem și să știm atât cât e necesar pentru drumul nostru."</blockquote>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Guvernul nu are alt scop decât prezervarea proprietății."</blockquote>
+                <cite>— John Locke, Al doilea tratat</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Filosofia Politică</span>
+                <h2>Drepturile Naturale</h2>
+
+                <p>În Două tratate despre guvernare, Locke respinge teoria dreptului divin al regilor (susținută de Robert Filmer) și propune o fundamentare contractualistă a statului:</p>
+
+                <div class="concept-box">
+                    <h4>Starea Naturală</h4>
+                    <p>Înainte de stat, oamenii trăiau în „starea naturală" — nu anarhie, ci o condiție de libertate și egalitate guvernată de legea naturală (rațiunea). În această stare, fiecare are drepturi naturale la viață, libertate și proprietate.</p>
+                </div>
+
+                <h3>Originea Proprietății</h3>
+
+                <p>Pământul a fost dat în comun tuturor. Dar când amestec munca mea cu ceva (culeg mere, cultiv un câmp), acel lucru devine al meu. Proprietatea e anterioară statului și derivă din muncă.</p>
+
+                <h3>Contractul Social</h3>
+
+                <p>Problema stării naturale: fiecare e judecător în propria cauză. Pentru a evita conflictele, oamenii formează societatea civilă prin consimțământ. Cedează dreptul de a pedepsi în schimbul protecției drepturilor.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Guvernul Limitat</span>
+                <h2>Separarea Puterilor</h2>
+
+                <p>Scopul guvernului e protejarea drepturilor naturale — viață, libertate, proprietate. Guvernul care nu îndeplinește acest scop își pierde legitimitatea.</p>
+
+                <ul>
+                    <li><strong>Puterea legislativă:</strong> Supremă, dar nu absolută — limitată de legea naturală și de scopul pentru care a fost instituită</li>
+                    <li><strong>Puterea executivă:</strong> Aplică legile făcute de legislativ</li>
+                    <li><strong>Puterea federativă:</strong> Gestionează relațiile externe</li>
+                </ul>
+
+                <h3>Dreptul la Revoluție</h3>
+
+                <p>Dacă guvernul încalcă drepturile pentru care a fost instituit, poporul are dreptul să îl înlăture. Aceasta nu e rebeliune — rebeliunea e actul tiranului care încalcă contractul.</p>
+
+                <blockquote class="inline">„Când legislatorul încalcă această regulă fundamentală a societății și încearcă să ia sau să distrugă proprietatea poporului... poporul e absolvit de orice obligație de supunere."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Toleranța</span>
+                <h2>Separarea Biserică-Stat</h2>
+
+                <p>În Scrisoare despre toleranță, Locke argumentează pentru separarea sferei religioase de cea politică:</p>
+
+                <ul>
+                    <li>Statul se ocupă de bunuri civile — viață, libertate, proprietate</li>
+                    <li>Biserica se ocupă de mântuirea sufletelor — prin persuasiune, nu forță</li>
+                    <li>Credința forțată nu e credință autentică — nimeni nu poate crede la comandă</li>
+                    <li>Persecuția nu convinge, ci creează ipocriți sau martiri</li>
+                </ul>
+
+                <h3>Limitele Toleranței</h3>
+
+                <p>Locke nu extinde toleranța la toți: ateii nu pot fi tolerați (pentru că nu au garanția jurământului), nici catolicii (pentru că servesc o putere străină). Aceste excluderi arată limitele istorice ale gândirii sale.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Moștenirea</span>
+                <h2>Fondatorul Modernității</h2>
+
+                <h3>În Filozofie</h3>
+                <p>Empirismul britanic (Berkeley, Hume) dezvoltă și radicalizează ideile lui Locke. Kant pornește de la critica empirismului pentru a-l depăși.</p>
+
+                <h3>În Politică</h3>
+                <p>Declarația de Independență americană preia aproape literal ideile lui Locke despre drepturile naturale și consimțământ. Constituțiile moderne reflectă principiile sale despre separarea puterilor și limitarea guvernului.</p>
+
+                <h3>În Educație</h3>
+                <p>Some Thoughts Concerning Education a influențat Rousseau și pedagogia modernă — ideea că educația formează omul.</p>
+
+                <h3>În Economie</h3>
+                <p>Teoria proprietății bazate pe muncă influențează Adam Smith, dar și Marx (care o critică).</p>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Aplicații Practice</span>
+                <h2>Locke pentru Viața de Azi</h2>
+
+                <h3>Scepticism Sănătos</h3>
+                <p>Nu accepta „adevăruri" doar pentru că sunt prezentate ca evidente sau tradiționale. Întreabă: de unde vine această idee? Pe ce experiență se bazează?</p>
+
+                <h3>Drepturile și Responsabilitatea</h3>
+                <p>Drepturile naturale vin cu responsabilitatea de a respecta drepturile altora. Libertatea ta se oprește unde începe libertatea altuia.</p>
+
+                <h3>Consimțământul Contează</h3>
+                <p>Legitimitatea oricărei autorități — politice, instituționale, chiar familiale — depinde de consimțământul celor guvernați.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Lockean</h4>
+                    <p>Alege o credință pe care o consideri „de la sine înțeleasă". Întreabă-te: de unde am această idee? Prin ce experiențe am ajuns să o accept? Aș crede același lucru dacă m-aș fi născut în altă cultură?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">11 / Concluzie</span>
+                <h2>Modestia Rațională</h2>
+
+                <p>Locke e un filozof al moderației. Nu pretinde certitudini absolute — recunoaște limitele cunoașterii. Nu propune utopii — cere doar protejarea drepturilor fundamentale. Nu cere revoluții permanente — dar recunoaște dreptul la revoltă când tirania devine insuportabilă.</p>
+
+                <p>Această modestie e și forța și slăbiciunea sa. A evitat extremele, dar a creat cadrul intelectual în care democrațiile liberale au putut înflori. Ideile sale despre toleranță, drepturi și guvern limitat rămân fundamentul societăților deschise.</p>
+
+                <p>Mintea e tablă goală — ceea ce înseamnă că totul e posibil. Dar această deschidere cere responsabilitate: ce scriem pe tablă depinde de noi.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

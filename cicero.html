@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cicero - Oratorul Republicii</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #c41e3a; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 7rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2.5rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Filozofie Romană / Retorică</span>
+        <h1>Cicero</h1>
+        <p class="subtitle">Oratorul care a salvat Republica și a murit pentru ea</p>
+        <span class="years">106 — 43 î.Hr.</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Vocea Romei</h2>
+
+                <p class="lead">Marcus Tullius Cicero nu era un filozof original — era un popularizator genial. Nu era un general — dar a salvat Roma printr-un discurs. Nu era aristocrat de naștere — dar a ajuns consul prin puterea cuvintelor. A fost cel mai mare orator al antichității și unul dintre cei mai influenți gânditori politici din istorie.</p>
+
+                <p>Cicero a scris despre retorică, politică, etică, teologie, prietenie, bătrânețe. A tradus filozofia greacă în latină, creând terminologia care a format gândirea occidentală. Cuvinte ca „moralis", „qualitas", „humanitas" — le datorăm lui Cicero.</p>
+
+                <p>Dar mai important: Cicero a trăit filozofia în vremuri de criză. A apărat Republica împotriva dictatorilor, și-a riscat viața pentru principii, a murit pentru că a refuzat să tacă. E un model de angajament civic — și un avertisment despre prețul lui.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Context Istoric</span>
+                <h2>Ultimele Zile ale Republicii</h2>
+
+                <p>Cicero s-a născut în Arpinum, un orășel italian, într-o familie de rang ecvestru — respectabilă, dar nu aristocratică. Era un „om nou" (homo novus) într-o Romă unde doar familiile nobile ajungeau în vârf.</p>
+
+                <p>A studiat dreptul, retorica și filozofia — la Roma, Atena, Rodos. A revenit să practice avocatura și a urcat rapid: questor, edil, pretor, și în 63 î.Hr. — consul, cea mai înaltă funcție a Republicii.</p>
+
+                <h3>Conspirația lui Catilina</h3>
+
+                <p>În anul consulatului său, Cicero a descoperit și zdrobit o conspirație condusă de Catilina pentru a răsturna Republica. Cele patru discursuri împotriva lui Catilina („Quousque tandem abutere, Catilina, patientia nostra?" — „Până când, Catilina, vei abuza de răbdarea noastră?") sunt capodopere retorice. Cicero s-a proclamat „părinte al patriei".</p>
+
+                <p>Dar a executat conspiratorii fără proces — o decizie care îl va bântui. Clodius, un dușman personal, l-a forțat în exil în 58 î.Hr. A revenit după 16 luni, dar Roma se schimbase.</p>
+
+                <h3>Sfârșitul Republicii</h3>
+
+                <p>Cezar, Pompei, Crassus — triumvirii — împărțeau puterea. Cicero a încercat să medieze, dar războaiele civile au urmat. După asasinarea lui Cezar (44 î.Hr.), Cicero a ieșit din retragere pentru a ataca pe Antoniu în cele 14 „Filipice" — discursuri de o violență retorică extremă.</p>
+
+                <p>Când Octavian (viitorul Augustus) s-a aliat cu Antoniu, Cicero era pe lista morții. În 43 î.Hr., asasinii l-au prins fugind. Și-a scos capul din lectică: „Nu mai e nimic demn aici." I-au tăiat capul și mâinile — expuse în Forum, acolo unde vorbise timp de 40 de ani.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„O tempora, o mores!" — „Ce vremuri, ce moravuri!"</blockquote>
+                <cite>— Cicero, Prima Catilinară</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Opera Filozofică</span>
+                <h2>Puntea Dintre Grecia și Roma</h2>
+
+                <p>Cicero a scris cele mai multe din operele sale filozofice în ultimii ani de viață, când era retras din politică. A tradus și adaptat filozofia greacă pentru publicul roman.</p>
+
+                <h3>Opere Principale</h3>
+                <ul>
+                    <li><strong>De re publica</strong> — Despre stat, incluzând celebrul „Vis lui Scipio"</li>
+                    <li><strong>De legibus</strong> — Despre legi, teoria dreptului natural</li>
+                    <li><strong>De officiis</strong> — Despre datorii, manual de etică practică</li>
+                    <li><strong>De finibus</strong> — Despre scopurile ultime (plăcere, virtute, etc.)</li>
+                    <li><strong>De natura deorum</strong> — Despre natura zeilor</li>
+                    <li><strong>Tusculanae disputationes</strong> — Meditații despre moarte, durere, emoții</li>
+                    <li><strong>De amicitia</strong> — Despre prietenie</li>
+                    <li><strong>De senectute</strong> — Despre bătrânețe</li>
+                </ul>
+
+                <h3>Eclectismul</h3>
+
+                <p>Cicero nu era adeptul unei singure școli. Prelua de la stoici teoria datoriei și dreptul natural, de la academici scepticismul metodic, de la peripatetici etica virtuților. Scopul lui era practic: ce ne ajută să trăim bine?</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Idei Centrale</span>
+                <h2>Dreptul Natural și Demnitatea Umană</h2>
+
+                <h3>Lex Naturalis</h3>
+
+                <p>Există o lege naturală, rațională, universală, eternă, care stă deasupra legilor umane. Această lege nu poate fi anulată de senatori sau de popor. E aceeași la Roma și la Atena, azi și mâine.</p>
+
+                <blockquote class="inline">„Există o lege adevărată, rațiunea dreaptă, conformă cu natura, răspândită în toți, constantă, eternă... Nu e permis s-o modificăm, nici să-i derogăm vreo parte, nici s-o abrogăm cu totul."</blockquote>
+
+                <p>Această idee — că există drepturi pe care niciun stat nu le poate viola — stă la baza drepturilor omului și a constituționalismului modern.</p>
+
+                <h3>Res Publica</h3>
+
+                <p>Statul nu e proprietatea conducătorului — e „res publica", lucru public, bun comun. Cetățenii au datorii față de stat, dar și drepturi. Tirania — fie a unuia, fie a mulțimii — e nelegitimă.</p>
+
+                <div class="concept-box">
+                    <h4>Constituția Mixtă</h4>
+                    <p>Cicero propune, după Polybios, o constituție care combină elemente de:<br>
+                    • <strong>Monarhie</strong> — consulii<br>
+                    • <strong>Aristocrație</strong> — senatul<br>
+                    • <strong>Democrație</strong> — adunările populare<br><br>
+                    Echilibrul dintre cele trei previne degenerarea în tiranie, oligarhie sau anarhie.</p>
+                </div>
+
+                <h3>Humanitas</h3>
+
+                <p>Conceptul de „humanitas" — umanitate, cultură, bunătate — e central pentru Cicero. Educația în litere și filozofie rafinează caracterul, face oamenii mai umani. Cultura nu e lux; e necesitate morală.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Nu pentru noi singuri ne-am născut; patria cere o parte din noi, prietenii o parte."</blockquote>
+                <cite>— Cicero, De officiis</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">05 / Despre Datorii</span>
+                <h2>De Officiis — Manualul Omului Onest</h2>
+
+                <p>Scrisă în ultimele luni de viață, ca scrisoare către fiul său, „De officiis" a fost cea mai citită carte din antichitate până în Renaștere. Tratează întrebarea: ce e de făcut când utilul pare să contrazică onestul?</p>
+
+                <h3>Cele Patru Virtuți Cardinale</h3>
+                <ul>
+                    <li><strong>Înțelepciunea</strong> (sapientia) — cunoașterea adevărului</li>
+                    <li><strong>Dreptatea</strong> (iustitia) — a da fiecăruia ce i se cuvine</li>
+                    <li><strong>Curajul</strong> (fortitudo) — fermitatea în fața pericolului</li>
+                    <li><strong>Cumpătarea</strong> (temperantia) — moderația dorințelor</li>
+                </ul>
+
+                <h3>Utilul și Onestul</h3>
+
+                <p>Cicero argumentează că, în realitate, niciodată nu există conflict real între util și onest. Ce pare util dar e nedrept, nu e cu adevărat util — pentru că dăunează sufletului și, pe termen lung, societății.</p>
+
+                <blockquote class="inline">„Orice lucru care pare util și nu e onest, aduce cu sine mai multă pagubă decât folos."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Citate Memorabile</span>
+                <h2>Vocea Care Încă Se Aude</h2>
+
+                <blockquote class="inline">„Istoria e martora timpurilor, lumina adevărului, viața memoriei, învățătoarea vieții, mesagera antichității."</blockquote>
+                <p>Definiția clasică a istoriei ca „magistra vitae".</p>
+
+                <blockquote class="inline">„Cât timp va exista un om care să apere statul, Roma nu va pieri."</blockquote>
+                <p>Cicero credea în puterea individului angajat civic.</p>
+
+                <blockquote class="inline">„Rădăcina tuturor relelor e iubirea de bani."</blockquote>
+                <p>Avertisment atemporal despre corupție.</p>
+
+                <blockquote class="inline">„Prefer cea mai nedreaptă pace celui mai drept război."</blockquote>
+                <p>Pacifismul juridic — conflictele se rezolvă prin lege, nu prin forță.</p>
+
+                <blockquote class="inline">„Virtuții îi e suficientă ea însăși pentru fericire."</blockquote>
+                <p>Poziția stoică adoptată de Cicero.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Moștenirea</span>
+                <h2>Părintele Umanismului</h2>
+
+                <h3>Evul Mediu</h3>
+                <p>Cicero a fost citit continuu — „De officiis" era manual școlar. Augustin l-a creditat cu convertirea sa la filozofie. Vocabularul filozofic latin e ciceronian.</p>
+
+                <h3>Renașterea</h3>
+                <p>Petrarca a redescoperit scrisorile lui Cicero și a lansat umanismul. Cicero a devenit modelul latinității și al angajamentului civic. „Vita activa" renascentistă e ciceroniană.</p>
+
+                <h3>Iluminismul</h3>
+                <p>Fondatorii americani — Jefferson, Adams, Madison — citeau Cicero. Conceptul de republică, separarea puterilor, drepturile naturale — toate au rădăcini ciceroniene.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Aplicații Practice</span>
+                <h2>Cicero pentru Viața de Azi</h2>
+
+                <h3>Angajamentul Civic</h3>
+                <p>„Nu pentru noi singuri ne-am născut." Retragerea din viața publică e dezertare. Chiar când pare inutil, participarea contează.</p>
+
+                <h3>Comunicarea Clară</h3>
+                <p>Cicero e maestrul argumentului structurat. Orice discurs: exordium (introducere), narratio (fapte), confirmatio (argumente), refutatio (contraargumente), peroratio (concluzie emoțională).</p>
+
+                <h3>Integritatea</h3>
+                <p>Când utilul pare să contrazică onestul, alege onestul. Pe termen lung, integritatea e cea mai utilă strategie.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Ciceronian</h4>
+                    <p>Gândește-te la o decizie dificilă pe care o ai de luat. Întreabă-te:<br>
+                    1. Ce e onest în această situație?<br>
+                    2. Ce pare util?<br>
+                    3. Există conflict real, sau utilul aparent e de fapt dăunător?<br>
+                    4. Ce ar spune un observator imparțial?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Concluzie</span>
+                <h2>Vocea Din Forum</h2>
+
+                <p>Cicero a trăit într-o epocă de criză — și a murit în ea. A văzut Republica degenerând în dictatură, a văzut violența înlocuind dezbaterea, a văzut principiile călcate în picioare. Și totuși a continuat să vorbească.</p>
+
+                <p>Poate că a fost naiv. Poate că discursurile nu pot opri armele. Dar Cicero ne amintește că tăcerea e complicitate. Că a vorbi adevărul are valoare în sine, chiar dacă nu schimbă imediat nimic. Că ideile — dreptul natural, demnitatea umană, republica — supraviețuiesc celor care le-au rostit.</p>
+
+                <p>Capul și mâinile lui Cicero au fost expuse în Forum. Dar vocea lui încă se aude — de două mii de ani, în fiecare apel la dreptate, în fiecare apărare a libertății, în fiecare refuz de a tăcea.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

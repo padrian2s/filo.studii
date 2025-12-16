@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toma d'Aquino - Doctorul Angelic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #1a4f6e; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2.2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Scolastică / Teologie Filozofică</span>
+        <h1>Toma d'Aquino</h1>
+        <p class="subtitle">Geniul care a reconciliat credința cu rațiunea și Aristotel cu Hristos</p>
+        <span class="years">1225 — 1274</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Boșul Mut din Sicilia</h2>
+
+                <p class="lead">Colegii îl numeau „boul mut" — era masiv, tăcut, aparent lent. Profesorul Albert cel Mare i-a apărat: „Acest bou va mugf atât de tare încât mugetul lui va umple lumea." A avut dreptate. Toma d'Aquino a scris peste 8 milioane de cuvinte și a reconstruit întreaga gândire creștină.</p>
+
+                <p>Toma a realizat o sinteză monumentală: a integrat filozofia lui Aristotel — redescoperită recent în Occident — în teologia creștină. Părea imposibil: Aristotel era păgân, negase nemurirea sufletului individual, propusese un univers etern. Cum să-l împaci cu Biblia?</p>
+
+                <p>Toma a arătat că se poate — și în acest proces a creat un sistem filozofic care rămâne baza gândirii catolice și una dintre cele mai impresionante construcții intelectuale din istoria umanității.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Nobilul Devenit Cerșetor</h2>
+
+                <p>Toma s-a născut în castelul Roccasecca, lângă Aquino (Italia), într-o familie nobilă. A fost trimis la 5 ani la mănăstirea Monte Cassino — familia spera să devină abate și să aducă prestigiu.</p>
+
+                <p>Dar la 19 ani, Toma a ales să intre în Ordinul Dominican — un ordin cerșetoresc, recent fondat. Familia a fost scandalizată: un nobil să cerșească pe străzi? L-au răpit și l-au ținut prizonier un an. Legendele spun că i-au trimis o prostituată să-l ispitească; Toma a alungat-o cu un tăciune aprins.</p>
+
+                <h3>Studiul și Predarea</h3>
+
+                <p>A studiat la Paris și Köln cu Albert cel Mare, cel mai mare savant al timpului. A predat la Paris, Roma, Neapole. Era un profesor atipic — dicta mai multor secretari simultan, pe teme diferite. Lucrările sale sunt sistematice până la obsesie: obiecții, contra-argumente, răspunsuri.</p>
+
+                <h3>Viziunea și Tăcerea</h3>
+
+                <p>Pe 6 decembrie 1273, în timpul liturghiei, Toma a avut o experiență mistică. A încetat să mai scrie. Când secretarul l-a implorat să continue „Summa Theologiae", a răspuns: „Tot ce am scris mi se pare paie în comparație cu ce mi s-a revelat." A murit trei luni mai târziu, la 49 de ani.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Harul nu desființează natura, ci o desăvârșește."</blockquote>
+                <cite>— Toma d'Aquino, Summa Theologiae</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Credință și Rațiune</span>
+                <h2>Armonia Celor Două Căi</h2>
+
+                <p>Pentru Toma, credința și rațiunea nu sunt în conflict — sunt două căi spre același adevăr. Rațiunea poate demonstra unele adevăruri despre Dumnezeu (existența, unicitatea); alte adevăruri sunt accesibile doar prin revelație (Trinitatea, Întruparea).</p>
+
+                <div class="concept-box">
+                    <h4>Cele Două Ordine</h4>
+                    <p><strong>Adevăruri naturale:</strong> accesibile rațiunii, demonstrate filosofic (ex: existența lui Dumnezeu)<br><br>
+                    <strong>Adevăruri supranaturale:</strong> accesibile doar prin revelație, crezute prin credință (ex: Trinitatea)<br><br>
+                    Nu se contrazic — același Dumnezeu e autor al rațiunii și al revelației.</p>
+                </div>
+
+                <p>Această poziție evită două extreme: fideismul (credința împotriva rațiunii) și raționalismul (respingerea a tot ce nu poate fi demonstrat). Toma crede în „praeambula fidei" — preambuluri raționale ale credinței.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Cele Cinci Căi</span>
+                <h2>Demonstrarea Existenței lui Dumnezeu</h2>
+
+                <p>În „Summa Theologiae", Toma oferă cinci argumente pentru existența lui Dumnezeu — nu din revelație, ci din rațiune:</p>
+
+                <h3>1. Argumentul Mișcării</h3>
+                <p>Tot ce se mișcă e mișcat de altceva. Dar nu putem merge la infinit. Deci există un Prim Motor Nemișcat — Dumnezeu.</p>
+
+                <h3>2. Argumentul Cauzalității</h3>
+                <p>Tot ce există are o cauză. Lanțul cauzelor nu poate fi infinit. Deci există o Cauză Primă Necauzată — Dumnezeu.</p>
+
+                <h3>3. Argumentul Contingenței</h3>
+                <p>Lucrurile există, dar ar fi putut să nu existe (sunt contingente). Dacă totul ar fi contingent, la un moment dat n-ar fi existat nimic. Dar din nimic nu vine nimic. Deci există o Ființă Necesară — Dumnezeu.</p>
+
+                <h3>4. Argumentul Gradelor</h3>
+                <p>Există grade de perfecțiune (mai bun, mai adevărat, mai nobil). Gradul maxim e cauza gradelor inferioare. Deci există o Perfecțiune Maximă — Dumnezeu.</p>
+
+                <h3>5. Argumentul Teleologic</h3>
+                <p>Lucrurile fără minte acționează spre scopuri (ghinda spre stejar). Dar scopul presupune o inteligență directoare. Deci există un Inteligent care ordonează totul — Dumnezeu.</p>
+
+                <blockquote class="inline">Toate aceste cinci căi converg: „și pe acesta toți îl numesc Dumnezeu."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Metafizica</span>
+                <h2>Ființă și Esență</h2>
+
+                <p>Toma preia și rafinează metafizica lui Aristotel:</p>
+
+                <h3>Act și Potență</h3>
+                <p>Tot ce există e o combinație de act (ce este în fapt) și potență (ce ar putea fi). Doar Dumnezeu e Act Pur — fără nicio potențialitate nerealizată.</p>
+
+                <h3>Esență și Existență</h3>
+                <p>În toate creaturile, esența (ce e lucrul) e diferită de existență (că e). Poți înțelege ce e un unicorn fără să știi dacă există. Doar în Dumnezeu esența și existența coincid — El e Ipsum Esse Subsistens (Existența Însăși Subsistentă).</p>
+
+                <h3>Analogia Ființei</h3>
+                <p>Când spunem că Dumnezeu e „bun" sau „înțelept", nu înseamnă exact același lucru ca pentru oameni — dar nici ceva complet diferit. E o analogie: asemănare în diferență.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Binele trebuie făcut și promovat, răul trebuie evitat."</blockquote>
+                <cite>— Toma d'Aquino, primul principiu al legii naturale</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Etica</span>
+                <h2>Legea Naturală</h2>
+
+                <p>Toma dezvoltă o etică bazată pe „legea naturală" — principii morale înscrise în natura umană și descoperibile prin rațiune.</p>
+
+                <div class="concept-box">
+                    <h4>Ierarhia Legilor</h4>
+                    <p><strong>Legea eternă:</strong> planul lui Dumnezeu pentru creație<br>
+                    <strong>Legea naturală:</strong> participarea rațiunii umane la legea eternă<br>
+                    <strong>Legea umană:</strong> aplicarea legii naturale în contexte concrete<br>
+                    <strong>Legea divină:</strong> revelația biblică</p>
+                </div>
+
+                <h3>Primul Principiu</h3>
+                <p>„Binele trebuie făcut și promovat, răul trebuie evitat." Din acest principiu se derivă toate celelalte: păstrarea vieții, reproducerea și educarea copiilor, viața în societate, căutarea adevărului, evitarea ignoranței.</p>
+
+                <h3>Teoria Războiului Drept</h3>
+                <p>Toma formulează condițiile pentru un război legitim: cauză dreaptă, autoritate legitimă, intenție dreaptă, proporționalitate, ultimă instanță. Aceste criterii sunt încă folosite în dreptul internațional.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Citate Memorabile</span>
+                <h2>Vocea Doctorului Angelic</h2>
+
+                <blockquote class="inline">„Nimic nu e în intelect care să nu fi fost mai întâi în simțuri."</blockquote>
+                <p>Empirismul moderat al lui Toma — cunoașterea începe cu experiența senzorială.</p>
+
+                <blockquote class="inline">„Frica e de un rău viitor pe care socotim că nu-l putem evita."</blockquote>
+                <p>Analiza pasiunilor — Toma le clasifică sistematic.</p>
+
+                <blockquote class="inline">„A iubi înseamnă a voi binele celuilalt."</blockquote>
+                <p>Definiția tomistă a iubirii — nu sentiment, ci voință.</p>
+
+                <blockquote class="inline">„O lege nedreaptă nu e lege."</blockquote>
+                <p>Legea care contrazice legea naturală nu obligă în conștiință.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Aplicații Practice</span>
+                <h2>Toma pentru Viața de Azi</h2>
+
+                <h3>Gândirea Sistematică</h3>
+                <p>Toma ne învață să examinăm toate obiecțiile înainte de a concluziona. În orice problemă: care sunt argumentele contra? Care sunt contra-argumentele? Abia apoi: care e răspunsul?</p>
+
+                <h3>Armonia Credință-Rațiune</h3>
+                <p>Chiar dacă nu ești credincios, principiul e valid: nu trebuie să alegi între convingeri și rațiune. Caută să le integrezi.</p>
+
+                <h3>Legea Naturală</h3>
+                <p>Există standarde morale obiective, descoperibile prin rațiune? Toma răspunde da. Chiar dacă nu accepți teologia lui, întrebarea rămâne: pe ce se bazează etica?</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Tomist</h4>
+                    <p>Alege o problemă etică. Enumerează 3 obiecții. Găsește un principiu general care să răspundă. Apoi răspunde fiecărei obiecții specific. Aceasta e metoda scolastică.</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Concluzie</span>
+                <h2>Paiele Geniului</h2>
+
+                <p>Toma d'Aquino a construit o catedrală a gândirii — sistematică, monumentală, impresionantă. Dar la sfârșit, tot ce scrisese i s-a părut „paie". Poate că aceasta e lecția finală: oricât de mult am construi, misterul rămâne.</p>
+
+                <p>Pentru noi, tomismul oferă un model de gândire: riguroasă, sistematică, deschisă la obiecții, curajoasă în sinteze. Chiar dacă nu acceptăm toate concluziile, metoda rămâne valoroasă.</p>
+
+                <p>Boul mut a mugit — și mugetul lui încă se aude.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>

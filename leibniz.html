@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gottfried Wilhelm Leibniz - Ultimul Geniu Universal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #5d4e37; --border: #e5e5e5; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+    </style>
+</head>
+<body>
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+
+    <header class="hero">
+        <span class="category">Raționalism / Metafizică</span>
+        <h1>Gottfried Wilhelm Leibniz</h1>
+        <p class="subtitle">Geniul care a inventat calculul, a conceput monadele și a afirmat că trăim în cea mai bună lume posibilă</p>
+        <span class="years">1646 — 1716</span>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Optimistul Radical</h2>
+
+                <p class="lead">„Aceasta este cea mai bună dintre toate lumile posibile." Această afirmație, satirizată de Voltaire în Candide, exprimă convingerea profundă a lui Leibniz: un Dumnezeu perfect nu ar fi putut crea decât o lume optimă. Răul există, dar e necesar pentru maximizarea binelui total.</p>
+
+                <p>Gottfried Wilhelm Leibniz a fost poate ultimul om care a știut totul. Matematician, fizician, logician, filosof, teolog, diplomat, istoric, jurist — a excelat în toate. A inventat calculul diferențial și integral (independent de Newton), a conceput mașini de calcul, a formulat principiul rațiunii suficiente, a dezvoltat logica simbolică.</p>
+
+                <p>În filozofie, sistemul monadelor sale oferă o alternativă radicală la materialismul și dualismul vremii: realitatea e alcătuită din infinite centre de forță și percepție, fiecare reflectând întregul univers din perspectiva sa unică.</p>
+            </section>
+
+            <section>
+                <span class="section-number">02 / Viața</span>
+                <h2>Geniul Politic</h2>
+
+                <p>Leibniz s-a născut la Leipzig, Germania, într-o familie de universitari. La 6 ani a învățat latina singur din cărțile tatălui. La 15 ani studia la universitate. La 20 avea doctoratul în drept (refuzat la Leipzig pentru că era prea tânăr, obținut la Altdorf).</p>
+
+                <p>Spre deosebire de Descartes sau Spinoza, Leibniz a trăit în lume, nu retras. A fost consilier la curtea Electorului de Mainz, apoi bibliotecar și consilier la curtea din Hanovra. A călătorit mult, a corespondat cu toată Europa intelectuală (peste 15.000 de scrisori păstrate!), a încercat să unifice bisericile creștine.</p>
+
+                <h3>Conflictul cu Newton</h3>
+
+                <p>Cea mai amară dispută a vieții sale: cine a inventat calculul? Newton a lucrat primul, dar a publicat târziu. Leibniz a publicat primul (1684), dar cu o notație superioară — cea folosită și azi. Acuzațiile de plagiat, în ambele direcții, au otrăvit ultimii ani ai ambilor genii.</p>
+
+                <p>Leibniz a murit singur la Hanovra, uittat de curtea care îl angajase. La înmormântare a participat doar secretarul său.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„De ce există ceva și nu mai degrabă nimic?"</blockquote>
+                <cite>— Gottfried Wilhelm Leibniz</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">03 / Principiile Fundamentale</span>
+                <h2>Bazele Rațiunii</h2>
+
+                <p>Leibniz identifică două principii fundamentale ale gândirii raționale:</p>
+
+                <div class="concept-box">
+                    <h4>Cele Două Principii</h4>
+                    <p><strong>Principiul Contradicției:</strong> O propoziție nu poate fi simultan adevărată și falsă. Stă la baza adevărurilor de rațiune (matematică, logică).<br><br>
+                    <strong>Principiul Rațiunii Suficiente:</strong> Nimic nu există fără un motiv suficient pentru care există astfel și nu altfel. Stă la baza adevărurilor de fapt (lume, natură).</p>
+                </div>
+
+                <h3>Adevăruri de Rațiune vs. Adevăruri de Fapt</h3>
+
+                <p>Adevărurile de rațiune sunt necesare — contrarul lor e contradictoriu (ex: 2+2=4). Adevărurile de fapt sunt contingente — contrarul e posibil (ex: „Ploua acum"). Dar tot au o rațiune suficientă — doar că e atât de complexă încât doar Dumnezeu o poate cuprinde.</p>
+            </section>
+
+            <section>
+                <span class="section-number">04 / Monadologia</span>
+                <h2>Atomii Spirituali</h2>
+
+                <p>Pentru Leibniz, substanța fundamentală nu e materia (întindere), ci forța. Realitatea e alcătuită din unități simple, indestructibile, fără părți — pe care le numește „monade".</p>
+
+                <ul>
+                    <li><strong>Monadele nu au ferestre:</strong> Nu interacționează cauzal între ele. Fiecare monadă e o lume închisă</li>
+                    <li><strong>Fiecare monadă reflectă întreg universul:</strong> Din perspectiva sa unică, ca într-o oglindă</li>
+                    <li><strong>Monadele diferă prin claritatea percepțiilor:</strong> De la cele confuze (materia) la cele clare (spiritele)</li>
+                    <li><strong>Dumnezeu e monada supremă:</strong> Cu percepții perfect clare ale tuturor lucrurilor</li>
+                </ul>
+
+                <h3>Armonia Prestabilită</h3>
+
+                <p>Dacă monadele nu interacționează, de ce par să o facă? De ce, când vreau să ridic mâna, mâna se ridică? Răspunsul lui Leibniz: Dumnezeu a creat toate monadele de la început astfel încât să fie perfect sincronizate — ca ceasuri care arată același timp fără a fi conectate.</p>
+
+                <blockquote class="inline">„Sufletele acționează conform legilor cauzelor finale... Corpurile acționează conform legilor cauzelor eficiente... Și cele două regnuri sunt în armonie."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">05 / Cea Mai Bună Lume Posibilă</span>
+                <h2>Teodiceea</h2>
+
+                <p>Dacă Dumnezeu e atotputernic, atotștiutor și bun, de ce există răul? Această „problemă a răului" a primit de la Leibniz un răspuns celebru în Teodiceea (1710):</p>
+
+                <div class="concept-box">
+                    <h4>Argumentul</h4>
+                    <p><strong>1.</strong> Dumnezeu, fiind perfect, cunoaște toate lumile posibile.<br><br>
+                    <strong>2.</strong> Dintre toate lumile posibile, Dumnezeu alege să creeze pe cea mai bună.<br><br>
+                    <strong>3.</strong> „Cea mai bună" nu înseamnă fără rău, ci cu raportul optim bine/rău.<br><br>
+                    <strong>4.</strong> Unele rele sunt necesare pentru binele maxim — cum umbrele sunt necesare pentru a percepe lumina.<br><br>
+                    <strong>5.</strong> Deci această lume, cu toate relele ei, e cea mai bună lume posibilă.</p>
+                </div>
+
+                <h3>Critica lui Voltaire</h3>
+
+                <p>După cutremurul din Lisabona (1755), Voltaire a ridicat-o în satiră în Candide. Dar Leibniz nu spunea că totul e bine pentru fiecare individ — ci că totalul e optim. E o diferență subtilă, dar importantă.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„Această monadă... e o oglindă vie perpetuă a universului."</blockquote>
+                <cite>— Gottfried Wilhelm Leibniz, Monadologia</cite>
+            </aside>
+
+            <section>
+                <span class="section-number">06 / Logica și Calculul</span>
+                <h2>Visul Caracteristicii Universale</h2>
+
+                <p>Leibniz a visat un „alfabet al gândirii umane" — un sistem de simboluri care ar exprima toate conceptele posibile și regulile combinării lor. Disputele s-ar rezolva prin calcul: „Să calculăm!"</p>
+
+                <h3>Contribuții Concrete</h3>
+
+                <ul>
+                    <li><strong>Calculul diferențial și integral:</strong> Notația lui (dx, ∫) e folosită universal azi</li>
+                    <li><strong>Sistemul binar:</strong> A văzut în 0 și 1 o imagine a creației din nimic</li>
+                    <li><strong>Mașina de calculat:</strong> A construit una care făcea cele patru operații</li>
+                    <li><strong>Logica simbolică:</strong> A anticipat logica matematică cu două secole</li>
+                </ul>
+
+                <p>Visul caracteristicii universale nu s-a realizat în forma imaginată de Leibniz. Dar informatica și inteligența artificială sunt moștenitoarele acestui vis.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Identitatea și Individuația</span>
+                <h2>Principiul Indiscernabilelor</h2>
+
+                <p>Leibniz formulează un principiu metafizic celebru: două lucruri nu pot fi perfect identice în toate proprietățile — altfel ar fi același lucru, nu două.</p>
+
+                <div class="concept-box">
+                    <h4>Identitatea Indiscernabilelor</h4>
+                    <p>Dacă A și B au exact aceleași proprietăți, atunci A = B. Nu pot exista două frunze perfect identice în întreaga natură — căci ce le-ar distinge?</p>
+                </div>
+
+                <p>Fiecare monadă (fiecare substanță individuală) conține în noțiunea sa completă tot ce i se va întâmpla vreodată. Cesar trecând Rubiconul era deja „conținut" în noțiunea completă a lui Cesar de la creație.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Moștenirea</span>
+                <h2>Geniul Redescoperit</h2>
+
+                <h3>În Matematică și Știință</h3>
+                <p>Notația leibniziană pentru calcul a triumfat. Ideile sale despre forța vie (energia cinetică), relativitatea spațiului, conservare, anticipează fizica modernă.</p>
+
+                <h3>În Logică și Informatică</h3>
+                <p>Russell și logica simbolică, calculatoarele și sistemul binar, inteligența artificială și visul calculului universal — toate au rădăcini leibniziene.</p>
+
+                <h3>În Filozofie</h3>
+                <p>Kant îl numea cel mai mare dintre metafizicienii „dogmatici". Fenomenologia și filozofia procesului au preluări din monadologie. Etica lui Rawls folosește argumentul „vălului ignoranței" similar cu lumile posibile.</p>
+
+                <h3>În Teologie</h3>
+                <p>Teodiceea rămâne cel mai elaborat răspuns la problema răului în tradiția raționalistă.</p>
+            </section>
+
+            <section>
+                <span class="section-number">09 / Aplicații Practice</span>
+                <h2>Leibniz pentru Viața de Azi</h2>
+
+                <h3>Rațiunea Suficientă</h3>
+                <p>Când ceva se întâmplă, întreabă: de ce? Întotdeauna există o explicație. Căutarea cauzelor e fundamentul gândirii raționale.</p>
+
+                <h3>Optimismul Activ</h3>
+                <p>Chiar dacă nu trăim în „cea mai bună lume posibilă", atitudinea de a căuta binele în rău, de a vedea cum suferința poate contribui la un bine mai mare, e psihologic sănătoasă.</p>
+
+                <h3>Perspectivele Multiple</h3>
+                <p>Fiecare „monadă" (persoană) vede universul din unghiul său. Nici o perspectivă nu e completă. Dialogul și pluralitatea sunt necesare pentru a ne apropia de adevăr.</p>
+
+                <div class="concept-box">
+                    <h4>Exercițiu Leibnizian</h4>
+                    <p>Gândește-te la un rău din viața ta. Întreabă-te: ce bine a rezultat sau ar putea rezulta din acest rău? Ce ai învățat? Cum te-a format? Poți vedea locul acestui rău într-un tablou mai larg?</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">10 / Concluzie</span>
+                <h2>Universul ca Armonie</h2>
+
+                <p>Leibniz a văzut universul ca o simfonie — infinite voci (monade) cântând fiecare partitura sa, fără să se audă între ele, și totuși perfect armonizate de Compozitorul divin. E o viziune grandioasă, poate prea frumoasă pentru a fi adevărată.</p>
+
+                <p>Dar ceva din optimismul leibnizian merită păstrat: convingerea că universul are sens, că răul nu e ultimul cuvânt, că rațiunea poate lumina chiar și cele mai întunecate colțuri ale existenței.</p>
+
+                <p>„De ce există ceva și nu mai degrabă nimic?" — întrebarea lui Leibniz rămâne cea mai fundamentală din filozofie. Faptul că o putem pune arată că suntem, așa cum credea el, mici oglinzi ale infinitului.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+</body>
+</html>
