@@ -209,8 +209,368 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Vulpea sau Leul?</h2>
+
+                <p>Machiavelli spunea că principele trebuie să fie și leu (forță) și vulpe (viclenie). Acest simulator te ajută să analizezi situații de putere și să alegi strategia potrivită.</p>
+
+                <div class="simulator-container">
+                    <div class="scenario-selector">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Alege un scenariu</h4>
+                        <div class="scenario-butoane">
+                            <button onclick="incarcaScenariu('rival')">Rivalul la serviciu</button>
+                            <button onclick="incarcaScenariu('negociere')">Negocierea</button>
+                            <button onclick="incarcaScenariu('criza')">Criza de imagine</button>
+                            <button onclick="incarcaScenariu('aliati')">Aliați nesiguri</button>
+                        </div>
+                    </div>
+
+                    <div id="scenariu-activ" style="display: none;">
+                        <div class="scenariu-box">
+                            <h5 id="scenariu-titlu"></h5>
+                            <p id="scenariu-descriere"></p>
+                        </div>
+
+                        <div class="alegere-strategie">
+                            <p style="font-weight: bold; margin-bottom: 1rem;">Ce strategie alegi?</p>
+                            <div class="strategie-optiuni">
+                                <button class="strategie-btn leu" onclick="alegeStrategie('leu')">
+                                    <span class="icon">🦁</span>
+                                    <span class="label">LEU</span>
+                                    <span class="desc">Forță directă</span>
+                                </button>
+                                <button class="strategie-btn vulpe" onclick="alegeStrategie('vulpe')">
+                                    <span class="icon">🦊</span>
+                                    <span class="label">VULPE</span>
+                                    <span class="desc">Viclenie, diplomație</span>
+                                </button>
+                                <button class="strategie-btn ambele" onclick="alegeStrategie('ambele')">
+                                    <span class="icon">⚖️</span>
+                                    <span class="label">AMBELE</span>
+                                    <span class="desc">Combinație</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="strategie-rezultat" style="display: none;"></div>
+                    </div>
+
+                    <div class="virtu-fortuna" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Calculatorul Virtù vs Fortuna</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Analizează o situație din viața ta: cât e virtù (ce poți controla) și cât e fortuna (noroc/circumstanțe)?</p>
+                        <textarea id="situatie-input" placeholder="Descrie pe scurt o situație pe care o analizezi..."></textarea>
+                        <div class="virtu-slider-container">
+                            <div class="slider-labels">
+                                <span>100% Fortuna</span>
+                                <span>50/50</span>
+                                <span>100% Virtù</span>
+                            </div>
+                            <input type="range" id="virtu-slider" min="0" max="100" value="50">
+                            <div id="slider-feedback" class="slider-feedback"></div>
+                        </div>
+                        <button onclick="analizeazaVirtu()">Obține sfat machiavellian</button>
+                        <div id="virtu-rezultat"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .scenario-butoane {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                }
+                .scenario-butoane button {
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    padding: 0.75rem 1rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    transition: all 0.3s;
+                }
+                .scenario-butoane button:hover {
+                    border-color: var(--accent);
+                }
+                .scenariu-box {
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    padding: 1.5rem;
+                    margin: 1.5rem 0;
+                    border-radius: 0 4px 4px 0;
+                }
+                .scenariu-box h5 {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 1.1rem;
+                    margin-bottom: 0.75rem;
+                }
+                .strategie-optiuni {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 1rem;
+                }
+                .strategie-btn {
+                    background: var(--primary);
+                    border: 2px solid var(--border);
+                    padding: 1.5rem 1rem;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    text-align: center;
+                    transition: all 0.3s;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+                .strategie-btn:hover { transform: translateY(-2px); }
+                .strategie-btn.leu:hover { border-color: #c0392b; background: rgba(192, 57, 43, 0.05); }
+                .strategie-btn.vulpe:hover { border-color: #d35400; background: rgba(211, 84, 0, 0.05); }
+                .strategie-btn.ambele:hover { border-color: #8e44ad; background: rgba(142, 68, 173, 0.05); }
+                .strategie-btn .icon { font-size: 2rem; }
+                .strategie-btn .label { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: bold; letter-spacing: 0.1em; }
+                .strategie-btn .desc { font-size: 0.75rem; color: var(--text-muted); }
+                #strategie-rezultat {
+                    margin-top: 1.5rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                }
+                .simulator-container textarea {
+                    width: 100%;
+                    min-height: 60px;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                    resize: vertical;
+                }
+                .virtu-slider-container {
+                    margin: 1.5rem 0;
+                }
+                .slider-labels {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.75rem;
+                    color: var(--text-muted);
+                    margin-bottom: 0.5rem;
+                }
+                #virtu-slider {
+                    width: 100%;
+                    height: 8px;
+                    -webkit-appearance: none;
+                    background: linear-gradient(to right, #3498db, #9b59b6, #e74c3c);
+                    border-radius: 4px;
+                    outline: none;
+                }
+                #virtu-slider::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    width: 20px;
+                    height: 20px;
+                    background: var(--accent);
+                    border-radius: 50%;
+                    cursor: pointer;
+                }
+                .slider-feedback {
+                    text-align: center;
+                    font-style: italic;
+                    color: var(--text-muted);
+                    margin-top: 0.5rem;
+                    min-height: 1.5rem;
+                }
+                .simulator-container > button, .virtu-fortuna > button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                #virtu-rezultat {
+                    margin-top: 1rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    display: none;
+                }
+                #virtu-rezultat.visible { display: block; }
+                @media (max-width: 600px) {
+                    .strategie-optiuni { grid-template-columns: 1fr; }
+                }
+            </style>
+
+            <script>
+            (function() {
+                let scenariuCurent = null;
+
+                const scenarii = {
+                    rival: {
+                        titlu: 'Rivalul la serviciu',
+                        descriere: 'Un coleg îți subminează constant munca în fața șefilor. Își atribuie ideile tale și te vorbește de rău. Are relații bune cu conducerea.',
+                        leu: {
+                            actiune: 'Confruntare directă — îl expui public, documentezi totul, ceri o întâlnire cu șeful.',
+                            riscuri: 'Poți părea agresiv. Dacă are aliați puternici, te poți izola. Conflictul deschis poate dăuna mediului.',
+                            cand: 'Când ai dovezi clare și aliați proprii. Când tăcerea ta e interpretată ca slăbiciune.'
+                        },
+                        vulpe: {
+                            actiune: 'Construiește-ți vizibilitatea independent. Documentează totul în scris. Creează aliați. Lasă-l să se expună singur.',
+                            riscuri: 'Poate dura mult. Poate fi perceput ca pasivitate. Rivalul continuă între timp.',
+                            cand: 'Când încă nu ai poziție solidă. Când vrei să păstrezi opțiuni deschise.'
+                        },
+                        ambele: {
+                            actiune: 'Documentează sistematic (vulpe), apoi când ai dovezi solide, acționează decisiv (leu). Timing-ul e totul.',
+                            sfat: 'Machiavelli: „Principele prudent nu trebuie să-și țină cuvântul când aceasta i-ar dăuna." Dar trebuie să pară loial.'
+                        }
+                    },
+                    negociere: {
+                        titlu: 'Negocierea',
+                        descriere: 'Negociezi un contract important. Cealaltă parte e mai puternică și știe că ai nevoie de acest deal.',
+                        leu: {
+                            actiune: 'Arată că ai alternative. Pune deadline-uri. Fii dispus să pleci de la masă. Demonstrează forță.',
+                            riscuri: 'Dacă blufezi și ești prins, pierzi totul. Agresivitatea poate închide ușile.',
+                            cand: 'Când ai cu adevărat alternative. Când timpul e de partea ta.'
+                        },
+                        vulpe: {
+                            actiune: 'Găsește ce vor ei cu adevărat (nu ce spun). Oferă lucruri care te costă puțin dar valorează mult pentru ei. Creează dependențe subtile.',
+                            riscuri: 'Poți fi perceput ca slab. Concesiile pot deveni așteptări permanente.',
+                            cand: 'Când ești în dezavantaj clar. Când vrei relație pe termen lung.'
+                        },
+                        ambele: {
+                            actiune: 'Diplomație în ton, fermitate în substanță. Oferă ieșiri elegante dar nu ceda pe punctele esențiale.',
+                            sfat: 'Machiavelli: „E mai bine să fii temut decât iubit, dar niciodată urât."'
+                        }
+                    },
+                    criza: {
+                        titlu: 'Criza de imagine',
+                        descriere: 'O greșeală (a ta sau a organizației tale) a devenit publică. Media și rețelele sociale te atacă. Reputația e în joc.',
+                        leu: {
+                            actiune: 'Asumă-ți responsabilitatea imediat și public. Acțiune decisivă de corectare. Demite vinovații dacă există.',
+                            riscuri: 'Asumarea poate fi folosită împotriva ta. Acțiunile grăbite pot fi greșite.',
+                            cand: 'Când greșeala e de nedovedită. Când tăcerea amplifică scandalul.'
+                        },
+                        vulpe: {
+                            actiune: 'Controlează narativul. Distrage atenția. Găsește vinovați externi. Așteaptă să treacă furtuna.',
+                            riscuri: 'Dacă iese la iveală manipularea, criza se dublează. Poate părea lipsă de caracter.',
+                            cand: 'Când ai informații incomplete. Când atacul e politic, nu substanțial.'
+                        },
+                        ambele: {
+                            actiune: 'Transparență strategică: recunoaște ce trebuie, controlează ce se dezvăluie și când. Acționează vizibil dar calculat.',
+                            sfat: 'Machiavelli: „Cruzimile trebuie făcute dintr-o dată... beneficiile trebuie acordate încetul cu încetul."'
+                        }
+                    },
+                    aliati: {
+                        titlu: 'Aliații nesiguri',
+                        descriere: 'Ai aliați care te-au ajutat să ajungi unde ești. Acum unii dintre ei devin o povară sau chiar un risc. Loialitatea ta e testată.',
+                        leu: {
+                            actiune: 'Rupe legăturile clar și rapid. Elimină riscul. Nu te uita înapoi.',
+                            riscuri: 'Creezi dușmani. Alții văd cum tratezi foștii aliați. Reputație de neloialitate.',
+                            cand: 'Când aliații devin dușmani activi. Când riscul de a-i păstra depășește costul de a-i pierde.'
+                        },
+                        vulpe: {
+                            actiune: 'Distanță graduală. Reduce-le rolul fără confruntare. Găsește-le poziții „onorifice" dar fără putere.',
+                            riscuri: 'Poate dura prea mult. Pot înțelege și deveni ostili oricum.',
+                            cand: 'Când au încă putere sau informații. Când alții te urmăresc.'
+                        },
+                        ambele: {
+                            actiune: 'Marginalizează subtil, dar fii pregătit pentru acțiune decisivă dacă rezistă. Păstrează aparențele cât mai mult posibil.',
+                            sfat: 'Machiavelli: „Oamenii trebuie ori mângâiați, ori nimiciți; căci se răzbună de ofensele ușoare, dar de cele grave nu pot."'
+                        }
+                    }
+                };
+
+                window.incarcaScenariu = function(tip) {
+                    scenariuCurent = tip;
+                    const s = scenarii[tip];
+                    document.getElementById('scenariu-titlu').textContent = s.titlu;
+                    document.getElementById('scenariu-descriere').textContent = s.descriere;
+                    document.getElementById('scenariu-activ').style.display = 'block';
+                    document.getElementById('strategie-rezultat').style.display = 'none';
+                };
+
+                window.alegeStrategie = function(strategie) {
+                    const s = scenarii[scenariuCurent];
+                    const info = s[strategie];
+                    const rezultat = document.getElementById('strategie-rezultat');
+
+                    let html = '';
+                    if (strategie === 'ambele') {
+                        html = `
+                            <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem;">⚖️ Strategia combinată</h5>
+                            <p><strong>Acțiune:</strong> ${info.actiune}</p>
+                            <p style="margin-top: 1rem; font-style: italic; color: var(--accent);">${info.sfat}</p>
+                        `;
+                    } else {
+                        const icon = strategie === 'leu' ? '🦁' : '🦊';
+                        html = `
+                            <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem;">${icon} Strategia ${strategie === 'leu' ? 'Leului' : 'Vulpii'}</h5>
+                            <p><strong>Acțiune:</strong> ${info.actiune}</p>
+                            <p style="margin-top: 0.75rem;"><strong>Riscuri:</strong> <span style="color: var(--text-muted);">${info.riscuri}</span></p>
+                            <p style="margin-top: 0.75rem;"><strong>Când funcționează:</strong> <span style="color: var(--text-muted);">${info.cand}</span></p>
+                            <p style="margin-top: 1rem; font-style: italic; color: var(--accent);">„${s.ambele.sfat}"</p>
+                        `;
+                    }
+                    rezultat.innerHTML = html;
+                    rezultat.style.display = 'block';
+                };
+
+                const slider = document.getElementById('virtu-slider');
+                const feedback = document.getElementById('slider-feedback');
+
+                slider.addEventListener('input', function() {
+                    const val = this.value;
+                    if (val < 30) {
+                        feedback.textContent = 'Fortuna domină — concentrează-te pe adaptare';
+                    } else if (val < 70) {
+                        feedback.textContent = 'Echilibru — virtù și fortuna împart responsabilitatea';
+                    } else {
+                        feedback.textContent = 'Virtù domină — succesul depinde de acțiunile tale';
+                    }
+                });
+
+                window.analizeazaVirtu = function() {
+                    const situatie = document.getElementById('situatie-input').value.trim();
+                    const virtu = parseInt(document.getElementById('virtu-slider').value);
+
+                    let sfat;
+                    if (virtu < 30) {
+                        sfat = `<strong>Fortuna e puternică aici.</strong> Machiavelli ar spune: „Fortuna e arbitrul a jumătate din acțiunile noastre." Dar nu abandona! Construiește diguri înainte de inundație. Ce poți face acum pentru a te pregăti pentru orice scenariu?`;
+                    } else if (virtu < 70) {
+                        sfat = `<strong>Echilibru între virtù și fortuna.</strong> Ai putere de acțiune, dar și variabile necontrolabile. Machiavelli: „Principele care se bazează doar pe fortuna cade odată cu ea." Concentrează-te pe ce poți controla, dar fii pregătit pentru surprize.`;
+                    } else {
+                        sfat = `<strong>Virtù domină.</strong> Succesul sau eșecul depind în mare parte de acțiunile tale. Aceasta e și o veste bună și o responsabilitate. Machiavelli: „Oamenii cad pentru că nu-și adaptează metodele la timpuri." Acționează decisiv!`;
+                    }
+
+                    const rezultat = document.getElementById('virtu-rezultat');
+                    rezultat.innerHTML = `
+                        <p style="margin-bottom: 1rem;">${sfat}</p>
+                        <div style="padding: 1rem; background: rgba(139, 0, 0, 0.05); border-radius: 4px;">
+                            <p style="font-size: 0.9rem; margin: 0;">
+                                <strong>Întrebarea machiavelliana:</strong> Indiferent de proporția virtù/fortuna, ce acțiune concretă poți face <em>acum</em> care îți crește șansele?
+                            </p>
+                        </div>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Adevărul Incomod</h2>
 
                 <p>Machiavelli nu ne învață să fim răi — ne arată că lumea politică operează după reguli diferite de cele ale moralei private. Nu putem ignora aceste reguli fără a plăti prețul.</p>

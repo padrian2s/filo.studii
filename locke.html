@@ -240,8 +240,239 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">11 / Simulator</span>
+                <h2>Tabula Rasa</h2>
+
+                <p>Locke credea că mintea e o „tablă goală" la naștere și că toate ideile vin din experiență. Acest simulator te ajută să explorezi sursele ideilor tale și drepturile naturale.</p>
+
+                <div class="simulator-container">
+                    <div class="idei-test">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">De unde vine ideea?</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Alege o idee și urmărește sursa ei:</p>
+                        <div class="idei-butoane">
+                            <button onclick="urmaresteSursa('libertate')">Libertate</button>
+                            <button onclick="urmaresteSursa('dumnezeu')">Dumnezeu</button>
+                            <button onclick="urmaresteSursa('dreptate')">Dreptate</button>
+                            <button onclick="urmaresteSursa('timp')">Timp</button>
+                        </div>
+                        <div id="sursa-rezultat"></div>
+                    </div>
+
+                    <div class="drepturi-test" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Testul Drepturilor Naturale</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Verifică dacă un drept e „natural" sau doar convențional:</p>
+                        <input type="text" id="drept-input" placeholder="Ex: Dreptul la căsătorie / Dreptul la muncă / Dreptul la internet...">
+                        <button onclick="testeazaDrept()">Testează</button>
+                        <div id="drept-rezultat"></div>
+                    </div>
+
+                    <div class="consimtamant-test" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Calculatorul Consimțământului</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Evaluează legitimitatea unei autorități:</p>
+                        <div class="consimtamant-intrebari">
+                            <label><input type="checkbox" id="c1"> Ai consimțit explicit? (contract, vot)</label><br>
+                            <label><input type="checkbox" id="c2"> Ai consimțit tacit? (beneficiezi de protecție)</label><br>
+                            <label><input type="checkbox" id="c3"> Autoritatea îți protejează drepturile?</label><br>
+                            <label><input type="checkbox" id="c4"> Ai posibilitatea de a te retrage/pleca?</label><br>
+                        </div>
+                        <button onclick="calculeazaLegitimitate()">Evaluează</button>
+                        <div id="legitimitate-rezultat"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .idei-butoane {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-bottom: 1rem;
+                }
+                .idei-butoane button {
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    color: var(--text);
+                }
+                .simulator-container input[type="text"] {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                }
+                .consimtamant-intrebari label {
+                    display: block;
+                    padding: 0.5rem 0;
+                    font-size: 0.9rem;
+                }
+                #sursa-rezultat, #drept-rezultat, #legitimitate-rezultat {
+                    margin-top: 1.5rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    display: none;
+                }
+                #sursa-rezultat.visible, #drept-rezultat.visible, #legitimitate-rezultat.visible {
+                    display: block;
+                }
+                .sursa-diagrama {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    margin: 1rem 0;
+                }
+                .sursa-nivel {
+                    padding: 0.75rem;
+                    border-radius: 4px;
+                    font-size: 0.9rem;
+                }
+                .sursa-nivel.senzatie { background: rgba(52, 152, 219, 0.1); border-left: 3px solid #3498db; }
+                .sursa-nivel.reflectie { background: rgba(155, 89, 182, 0.1); border-left: 3px solid #9b59b6; }
+                .sursa-nivel.compusa { background: rgba(46, 204, 113, 0.1); border-left: 3px solid #2ecc71; }
+            </style>
+
+            <script>
+            (function() {
+                const surse = {
+                    libertate: {
+                        explicatie: 'Ideea de libertate nu e înnăscută — vine din experiență.',
+                        nivele: [
+                            { tip: 'senzatie', text: 'Senzație: experimentezi mișcare liberă vs constrângere fizică' },
+                            { tip: 'reflectie', text: 'Reflecție: observi că poți alege între acțiuni, că voința ta contează' },
+                            { tip: 'compusa', text: 'Idee compusă: combini aceste experiențe în conceptul abstract de „libertate"' }
+                        ],
+                        intrebare: 'Dacă ai fi crescut într-o închisoare totală, ai avea această idee?'
+                    },
+                    dumnezeu: {
+                        explicatie: 'Contra lui Descartes, Locke neagă că ideea de Dumnezeu e înnăscută.',
+                        nivele: [
+                            { tip: 'senzatie', text: 'Senzație: experimentezi lucruri finite, imperfecte, cauzate' },
+                            { tip: 'reflectie', text: 'Reflecție: observi că trebuie să existe o cauză primă, o perfecțiune' },
+                            { tip: 'compusa', text: 'Idee compusă: extrapolezi la infinit, perfect, necauzat = „Dumnezeu"' }
+                        ],
+                        intrebare: 'Copiii și „sălbaticii" au idei foarte diferite despre divinitate. Dacă ar fi înnăscută, ar fi identică.'
+                    },
+                    dreptate: {
+                        explicatie: 'Dreptatea nu e înnăscută — se învață din experiență socială.',
+                        nivele: [
+                            { tip: 'senzatie', text: 'Senzație: experimentezi tratament egal sau inegal' },
+                            { tip: 'reflectie', text: 'Reflecție: observi că te simți diferit când ești tratat corect vs incorect' },
+                            { tip: 'compusa', text: 'Idee compusă: generalizezi în principiul abstract al „dreptății"' }
+                        ],
+                        intrebare: 'Ce ai crede despre dreptate dacă ai fi crescut într-o societate complet diferită?'
+                    },
+                    timp: {
+                        explicatie: 'Ideea de timp vine din experiență, nu e înnăscută.',
+                        nivele: [
+                            { tip: 'senzatie', text: 'Senzație: experimentezi succesiunea evenimentelor' },
+                            { tip: 'reflectie', text: 'Reflecție: observi că unele lucruri durează mai mult, că există înainte și după' },
+                            { tip: 'compusa', text: 'Idee compusă: abstractizezi în conceptul de „timp"' }
+                        ],
+                        intrebare: 'Cum ar fi ideea ta de timp dacă nu ai fi experimentat niciodată schimbarea?'
+                    }
+                };
+
+                window.urmaresteSursa = function(idee) {
+                    const info = surse[idee];
+                    const rezultat = document.getElementById('sursa-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.75rem;">Sursa ideii de „${idee}"</h5>
+                        <p>${info.explicatie}</p>
+                        <div class="sursa-diagrama">
+                            ${info.nivele.map(n => `<div class="sursa-nivel ${n.tip}"><strong>${n.tip === 'senzatie' ? 'Senzație' : n.tip === 'reflectie' ? 'Reflecție' : 'Idee compusă'}:</strong> ${n.text.split(': ')[1]}</div>`).join('')}
+                        </div>
+                        <p style="font-style: italic; color: var(--accent);">${info.intrebare}</p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+
+                window.testeazaDrept = function() {
+                    const drept = document.getElementById('drept-input').value.trim();
+                    if (!drept) { alert('Scrie un drept.'); return; }
+
+                    const rezultat = document.getElementById('drept-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.75rem;">Testul lui Locke: „${drept}"</h5>
+
+                        <p><strong>Întrebări pentru a determina dacă e natural:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li>Ai avea acest drept în <strong>starea naturală</strong> (fără stat, fără legi)?</li>
+                            <li>Derivă din cele trei drepturi fundamentale: <strong>viață, libertate, proprietate</strong>?</li>
+                            <li>E necesar pentru <strong>auto-conservare</strong>?</li>
+                            <li>Respectarea lui cere doar <strong>ne-interferență</strong> sau cere acțiune activă din partea altora?</li>
+                        </ul>
+
+                        <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(44, 82, 130, 0.05); border-radius: 4px;">
+                            <p style="margin: 0; font-size: 0.9rem;">
+                                <strong>Criteriul lui Locke:</strong> Drepturile naturale sunt cele pe care le ai înainte de orice stat sau convenție. Alte „drepturi" sunt de fapt privilegii acordate de societate — importante, dar diferite în natură.
+                            </p>
+                        </div>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+
+                window.calculeazaLegitimitate = function() {
+                    const c1 = document.getElementById('c1').checked;
+                    const c2 = document.getElementById('c2').checked;
+                    const c3 = document.getElementById('c3').checked;
+                    const c4 = document.getElementById('c4').checked;
+
+                    let scor = (c1 ? 2 : 0) + (c2 ? 1 : 0) + (c3 ? 2 : 0) + (c4 ? 1 : 0);
+                    let verdict, descriere;
+
+                    if (scor >= 5) {
+                        verdict = 'Autoritate legitimă (Locke)';
+                        descriere = 'Autoritatea îndeplinește criteriile contractualiste: consimțământ și protecție a drepturilor.';
+                    } else if (scor >= 3) {
+                        verdict = 'Legitimitate parțială';
+                        descriere = 'Unele criterii sunt îndeplinite, dar nu toate. Autoritatea are legitimitate limitată.';
+                    } else if (c3) {
+                        verdict = 'Legitimitate funcțională';
+                        descriere = 'Chiar fără consimțământ explicit, dacă protejează drepturile, are o formă de legitimitate (consimțământ tacit).';
+                    } else {
+                        verdict = 'Autoritate nelegitimă (tiraniei)';
+                        descriere = 'Fără consimțământ și fără protecție a drepturilor, autoritatea devine tiraniei. Locke ar justifica dreptul la revoltă.';
+                    }
+
+                    const rezultat = document.getElementById('legitimitate-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.75rem;">${verdict}</h5>
+                        <p>${descriere}</p>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--accent);">
+                            Locke: „Când legislatorul încalcă regula fundamentală a societății... poporul e absolvit de orice obligație de supunere."
+                        </p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">11 / Concluzie</span>
+                <span class="section-number">12 / Concluzie</span>
                 <h2>Modestia Rațională</h2>
 
                 <p>Locke e un filozof al moderației. Nu pretinde certitudini absolute — recunoaște limitele cunoașterii. Nu propune utopii — cere doar protejarea drepturilor fundamentale. Nu cere revoluții permanente — dar recunoaște dreptul la revoltă când tirania devine insuportabilă.</p>

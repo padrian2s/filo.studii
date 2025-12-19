@@ -199,8 +199,218 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Experimentează Tetrapharmakos</h2>
+
+                <p>Epicur ne-a lăsat „cele patru leacuri" pentru o viață liniștită. Aplică-le la temerile tale.</p>
+
+                <div class="simulator-container">
+                    <div class="tetrapharmakos-grid">
+                        <div class="leac" onclick="selecteazaLeac(1)">
+                            <div class="leac-numar">1</div>
+                            <div class="leac-titlu">Nu te teme de zei</div>
+                            <p>Zeii există dar nu se amestecă în viețile noastre.</p>
+                        </div>
+                        <div class="leac" onclick="selecteazaLeac(2)">
+                            <div class="leac-numar">2</div>
+                            <div class="leac-titlu">Nu te teme de moarte</div>
+                            <p>Când suntem noi, moartea nu e; când e moartea, noi nu mai suntem.</p>
+                        </div>
+                        <div class="leac" onclick="selecteazaLeac(3)">
+                            <div class="leac-numar">3</div>
+                            <div class="leac-titlu">Binele e ușor de obținut</div>
+                            <p>Plăcerile naturale și necesare sunt simple și accesibile.</p>
+                        </div>
+                        <div class="leac" onclick="selecteazaLeac(4)">
+                            <div class="leac-numar">4</div>
+                            <div class="leac-titlu">Răul e ușor de suportat</div>
+                            <p>Durerea intensă e scurtă; durerea lungă e suportabilă.</p>
+                        </div>
+                    </div>
+
+                    <div id="leac-detalii" class="leac-explicatie"></div>
+
+                    <div class="clasificare-placeri" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Clasificarea Plăcerilor</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Scrie o dorință și clasifică-o:</p>
+                        <input type="text" id="dorinta-epicur" placeholder="Ex: Vacanță exotică / Masă bună / Mașină nouă...">
+                        <button onclick="clasificaPlacere()">Clasifică</button>
+                        <div id="clasificare-rezultat"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .tetrapharmakos-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1rem;
+                }
+                .leac {
+                    background: var(--primary);
+                    padding: 1.25rem;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    border: 1px solid var(--border);
+                }
+                .leac:hover {
+                    border-color: var(--accent);
+                    transform: translateY(-2px);
+                }
+                .leac-numar {
+                    width: 30px;
+                    height: 30px;
+                    background: var(--accent);
+                    color: var(--primary);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.85rem;
+                    margin-bottom: 0.75rem;
+                }
+                .leac-titlu {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 1rem;
+                    margin-bottom: 0.5rem;
+                }
+                .leac p {
+                    font-size: 0.85rem;
+                    color: var(--text-muted);
+                    margin: 0;
+                }
+                .leac-explicatie {
+                    margin-top: 1.5rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                .leac-explicatie.visible {
+                    display: block;
+                    animation: fadeIn 0.3s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                .clasificare-placeri input {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin: 0.75rem 0;
+                }
+                .clasificare-placeri button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                #clasificare-rezultat {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                #clasificare-rezultat.visible { display: block; }
+            </style>
+
+            <script>
+            (function() {
+                const leacuri = {
+                    1: {
+                        titlu: "Nu te teme de zei",
+                        explicatie: "Epicur nu era ateu — credea în zei, dar zei fericiți, imperturbabili, care nu se amestecă în lume. Nu ne pedepsesc, nu ne răsplătesc. Frica de pedeapsă divină e inutilă.",
+                        aplicare: "Când te temi de „soartă" sau „destin", întreabă-te: universul chiar e preocupat de tine personal? Sau pur și simplu... funcționează?"
+                    },
+                    2: {
+                        titlu: "Nu te teme de moarte",
+                        explicatie: "Moartea e absența senzației. Când ești, ea nu e. Când e ea, tu nu mai ești. Nu o poți experimenta, deci de ce să te temi de ea?",
+                        aplicare: "În loc să te temi de moarte, concentrează-te pe a trăi bine acum. Fiecare moment petrecut temându-te de moarte e un moment pierdut din viață."
+                    },
+                    3: {
+                        titlu: "Binele e ușor de obținut",
+                        explicatie: "Plăcerile necesare (hrană, adăpost, prietenie) sunt simple și accesibile. Luxul nu adaugă fericire — adaugă dependență și teamă de pierdere.",
+                        aplicare: "Ultima dată când ai fost cu adevărat fericit — era vorba de ceva scump sau de ceva simplu? Prietenie, natură, odihnă?"
+                    },
+                    4: {
+                        titlu: "Răul e ușor de suportat",
+                        explicatie: "Durerea extremă e scurtă (corpul cedează sau se adaptează). Durerea cronică e suportabilă (ne obișnuim). În ambele cazuri, e gestionabilă.",
+                        aplicare: "Gândește-te la cea mai mare durere din trecut. Ești încă aici. Ai supraviețuit. Și vei supraviețui și ce va veni."
+                    }
+                };
+
+                window.selecteazaLeac = function(nr) {
+                    const l = leacuri[nr];
+                    const container = document.getElementById('leac-detalii');
+                    container.innerHTML = `
+                        <strong>${l.titlu}</strong><br><br>
+                        ${l.explicatie}<br><br>
+                        <em>Aplicare practică: ${l.aplicare}</em>
+                    `;
+                    container.classList.add('visible');
+                };
+
+                window.clasificaPlacere = function() {
+                    const input = document.getElementById('dorinta-epicur').value.trim();
+                    if (!input) { alert('Scrie o dorință.'); return; }
+
+                    const rezultat = document.getElementById('clasificare-rezultat');
+
+                    // Clasificare simplificată
+                    const necesare = ['mâncare', 'apă', 'adăpost', 'prieteni', 'sănătate', 'odihnă', 'somn', 'casă'];
+                    const naturale = ['vacanță', 'masă', 'distracție', 'hobby', 'relaxare', 'muzică'];
+                    const nenaturale = ['mașină', 'telefon', 'brand', 'lux', 'faimă', 'promovare', 'bani'];
+
+                    const inputLower = input.toLowerCase();
+                    let categorie, culoare, mesaj;
+
+                    if (necesare.some(n => inputLower.includes(n))) {
+                        categorie = "Naturală și necesară";
+                        culoare = "#4CAF50";
+                        mesaj = "Această plăcere e fundamentală. Satisface-o simplu și fără exces. E calea spre ataraxia (liniștea sufletească).";
+                    } else if (naturale.some(n => inputLower.includes(n))) {
+                        categorie = "Naturală dar nu necesară";
+                        culoare = "#FF9800";
+                        mesaj = "E OK să o urmărești, dar nu te atașa. Dacă vine — bine. Dacă nu — liniștea nu depinde de ea.";
+                    } else {
+                        categorie = "Nici naturală, nici necesară";
+                        culoare = "#F44336";
+                        mesaj = "Epicur ar spune: e vanitate. Nu aduce fericire durabilă — doar dependență și teamă de pierdere. Reevaluează.";
+                    }
+
+                    rezultat.innerHTML = `
+                        <strong style="color: ${culoare};">${categorie}</strong><br><br>
+                        ${mesaj}
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Filozoful Grădinii</h2>
 
                 <p>Epicur ne oferă un antidot la anxietatea modernă: nu ai nevoie de mai mult. Ai nevoie să apreciezi ce ai. Nu trebuie să te temi de moarte. Nu trebuie să te temi de zei. Fericirea e aici, în lucrurile simple, în prietenia autentică, în absența dorințelor nebuneștI.</p>

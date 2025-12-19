@@ -208,8 +208,250 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Detectorul de Fanatism</h2>
+
+                <p>Voltaire a luptat toată viața împotriva fanatismului și intoleranței. Acest simulator te ajută să identifici semne ale gândirii fanatice — în alții și în tine.</p>
+
+                <div class="simulator-container">
+                    <div class="fanatism-test">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Testul Fanatismului</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Evaluează aceste afirmații pentru o credință pe care o ai:</p>
+
+                        <div class="fanatism-intrebari">
+                            <div class="intrebare-item">
+                                <p>1. Sunt 100% sigur că am dreptate în această chestiune.</p>
+                                <input type="range" min="1" max="5" value="3" class="fanatism-slider" id="f1">
+                                <div class="slider-extremes"><span>Deloc</span><span>Total</span></div>
+                            </div>
+                            <div class="intrebare-item">
+                                <p>2. Cei care nu sunt de acord cu mine sunt fie proști, fie răi.</p>
+                                <input type="range" min="1" max="5" value="3" class="fanatism-slider" id="f2">
+                                <div class="slider-extremes"><span>Deloc</span><span>Total</span></div>
+                            </div>
+                            <div class="intrebare-item">
+                                <p>3. Aș fi dispus să impun această credință altora „pentru binele lor".</p>
+                                <input type="range" min="1" max="5" value="3" class="fanatism-slider" id="f3">
+                                <div class="slider-extremes"><span>Deloc</span><span>Total</span></div>
+                            </div>
+                            <div class="intrebare-item">
+                                <p>4. Nu există argumente care m-ar putea face să-mi schimb părerea.</p>
+                                <input type="range" min="1" max="5" value="3" class="fanatism-slider" id="f4">
+                                <div class="slider-extremes"><span>Deloc</span><span>Total</span></div>
+                            </div>
+                        </div>
+                        <button onclick="calculeazaFanatism()">Evaluează</button>
+                        <div id="fanatism-rezultat"></div>
+                    </div>
+
+                    <div class="candide-test" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Testul lui Candide: Optimism vs Realism</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Dr. Pangloss spunea că „trăim în cea mai bună lume posibilă". Unde te situezi?</p>
+
+                        <div class="optimism-slider-container">
+                            <input type="range" min="0" max="100" value="50" id="optimism-slider">
+                            <div class="slider-labels">
+                                <span>Pesimist total<br><small>„Totul e rău"</small></span>
+                                <span>Pangloss<br><small>„Totul e bine"</small></span>
+                            </div>
+                            <div id="optimism-feedback"></div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; padding: 1rem; background: var(--primary); border-radius: 4px;">
+                            <p style="margin: 0; font-size: 0.9rem;"><strong>Concluzia lui Candide:</strong> „Trebuie să ne cultivăm grădina."</p>
+                            <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--text-muted);">Nici optimism naiv, nici pesimism paralizant — ci muncă concretă, utilă, în locul nostru.</p>
+                        </div>
+                    </div>
+
+                    <div class="ironie-generator" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Generatorul de Ironie Voltairiană</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Voltaire știa că ironia e mai eficientă decât furia. Descrie o absurditate pe care ai observat-o:</p>
+                        <textarea id="absurditate-input" placeholder="Ex: Oameni care predică pacea dar urăsc pe cei diferiți..."></textarea>
+                        <button onclick="genereazaIronie()">Transformă în ironie</button>
+                        <div id="ironie-rezultat"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .intrebare-item {
+                    margin-bottom: 1.5rem;
+                }
+                .intrebare-item p {
+                    margin-bottom: 0.5rem;
+                    font-size: 0.9rem;
+                }
+                .fanatism-slider, #optimism-slider {
+                    width: 100%;
+                    height: 8px;
+                    -webkit-appearance: none;
+                    background: linear-gradient(to right, #27ae60, #f1c40f, #e74c3c);
+                    border-radius: 4px;
+                }
+                .fanatism-slider::-webkit-slider-thumb, #optimism-slider::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    width: 18px;
+                    height: 18px;
+                    background: var(--accent);
+                    border-radius: 50%;
+                    cursor: pointer;
+                }
+                .slider-extremes, .slider-labels {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.7rem;
+                    color: var(--text-muted);
+                    margin-top: 0.25rem;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                .simulator-container textarea {
+                    width: 100%;
+                    min-height: 80px;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                    resize: vertical;
+                }
+                #fanatism-rezultat, #ironie-rezultat {
+                    margin-top: 1.5rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    display: none;
+                }
+                #fanatism-rezultat.visible, #ironie-rezultat.visible {
+                    display: block;
+                }
+                #optimism-feedback {
+                    text-align: center;
+                    margin-top: 0.75rem;
+                    font-style: italic;
+                    color: var(--text-muted);
+                }
+                .optimism-slider-container {
+                    margin: 1rem 0;
+                }
+            </style>
+
+            <script>
+            (function() {
+                window.calculeazaFanatism = function() {
+                    const f1 = parseInt(document.getElementById('f1').value);
+                    const f2 = parseInt(document.getElementById('f2').value);
+                    const f3 = parseInt(document.getElementById('f3').value);
+                    const f4 = parseInt(document.getElementById('f4').value);
+                    const total = f1 + f2 + f3 + f4;
+
+                    let verdict, descriere, citat;
+                    if (total <= 8) {
+                        verdict = 'Spirit tolerant';
+                        descriere = 'Ai trăsăturile pe care Voltaire le aprecia: dubiu sănătos, respect pentru diferență, deschidere la argumente.';
+                        citat = '„Dubiul nu e o stare plăcută, dar certitudinea e o stare absurdă."';
+                    } else if (total <= 12) {
+                        verdict = 'Tendințe moderate spre dogmatism';
+                        descriere = 'Ai convingeri puternice, ceea ce e natural. Dar fii atent să nu aluneci spre intoleranță.';
+                        citat = '„Oamenii vor înceta să comită atrocități când vor înceta să creadă absurdități."';
+                    } else if (total <= 16) {
+                        verdict = 'Tendințe fanatice';
+                        descriere = 'Certitudinea ta e înaltă și toleranța pentru dezacord e scăzută. Voltaire ar ridica o sprânceană.';
+                        citat = '„Este interzis să ucizi; de aceea toți ucigașii sunt pedepsiți, exceptând cei care ucid în număr mare și cu fanfare."';
+                    } else {
+                        verdict = 'Risc de fanatism';
+                        descriere = 'Scorul tău indică trăsături pe care Voltaire le combătea: certitudine absolută, intoleranță, dorința de a impune.';
+                        citat = '„Cei care te pot face să crezi absurdități te pot face să comiți atrocități."';
+                    }
+
+                    const rezultat = document.getElementById('fanatism-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.75rem;">${verdict}</h5>
+                        <p>${descriere}</p>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--accent);">Voltaire: „${citat}"</p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+
+                // Optimism slider feedback
+                const optimismSlider = document.getElementById('optimism-slider');
+                const optimismFeedback = document.getElementById('optimism-feedback');
+
+                optimismSlider.addEventListener('input', function() {
+                    const val = parseInt(this.value);
+                    if (val < 20) {
+                        optimismFeedback.textContent = 'Pesimist radical — Schopenhauer ar fi mândru, dar e paralizant';
+                    } else if (val < 40) {
+                        optimismFeedback.textContent = 'Pesimist moderat — vezi problemele, dar riști cinismul';
+                    } else if (val < 60) {
+                        optimismFeedback.textContent = 'Realist voltairian — recunoști răul dar acționezi totuși';
+                    } else if (val < 80) {
+                        optimismFeedback.textContent = 'Optimist moderat — vezi binele dar nu ignori răul';
+                    } else {
+                        optimismFeedback.textContent = 'Pangloss — „totul e spre bine"? Voltaire râde de tine.';
+                    }
+                });
+
+                window.genereazaIronie = function() {
+                    const absurditate = document.getElementById('absurditate-input').value.trim();
+                    if (!absurditate) { alert('Descrie o absurditate.'); return; }
+
+                    const tehnici = [
+                        {
+                            nume: 'Naivitatea',
+                            exemplu: `„Ce frumos că ${absurditate.toLowerCase()}! Un observator naiv ar putea crede că e cel mai natural lucru din lume."`,
+                            explicatie: 'Pretinde că nu înțelegi absurditatea — lăsând cititorul să o vadă singur.'
+                        },
+                        {
+                            nume: 'Exagerarea',
+                            exemplu: `„Și de ce să ne oprim aici? Dacă ${absurditate.toLowerCase()}, de ce nu am merge și mai departe?"`,
+                            explicatie: 'Duce logica absurdă la consecințele ei extreme.'
+                        },
+                        {
+                            nume: 'Comparația',
+                            exemplu: `„În Sirius, unde extratereștrii sunt mai înțelepți, probabil fac exact la fel — sau poate au evoluat dincolo de astfel de obiceiuri."`,
+                            explicatie: 'Privește din exterior, ca un străin care vede proaspăt.'
+                        }
+                    ];
+
+                    const tehnica = tehnici[Math.floor(Math.random() * tehnici.length)];
+
+                    const rezultat = document.getElementById('ironie-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.75rem;">Tehnica: ${tehnica.nume}</h5>
+                        <p style="font-style: italic; padding: 1rem; background: rgba(184, 134, 11, 0.1); border-radius: 4px;">${tehnica.exemplu}</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>De ce funcționează:</strong> ${tehnica.explicatie}</p>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--accent);">
+                            Voltaire știa că ridicolul ucide mai eficient decât argumentul. Fă-i pe oameni să râdă de absurditate, nu să se înfurie.
+                        </p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Spiritul Care Iluminează</h2>
 
                 <p>Voltaire n-a fost un filozof sistematic — a fost un luptător cu cuvântul. N-a construit sisteme; a dărâmat prejudecăți. N-a demonstrat; a ridicularizat. Și în felul său, a schimbat lumea mai mult decât mulți filozofi „serioși".</p>

@@ -238,8 +238,247 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">11 / Simulator</span>
+                <h2>Testul Credințelor</h2>
+
+                <p>Hume ne-a arătat că multe din credințele noastre nu au fundament rațional — se bazează pe obișnuință și sentiment. Acest simulator te ajută să-ți analizezi credințele prin lentila humeană.</p>
+
+                <div class="simulator-container">
+                    <div class="cauzalitate-test">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Testul Cauzalității</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Gândește-te la o relație cauză-efect pe care o consideri certă:</p>
+                        <input type="text" id="cauza-input" placeholder="Ex: Focul cauzează arsuri / Cafeau mă trezește...">
+                        <button onclick="analizeazaCauza()">Aplică analiza lui Hume</button>
+                        <div id="cauza-rezultat"></div>
+                    </div>
+
+                    <div class="furca-hume" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Furca lui Hume</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Clasifică aceste propoziții:</p>
+                        <div class="furca-propozitii" id="furca-propozitii"></div>
+                        <div id="furca-rezultat"></div>
+                    </div>
+
+                    <div class="credinta-analyzer" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Analizatorul Credințelor</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Scrie o credință pe care o ai și analizează sursa ei:</p>
+                        <textarea id="credinta-input" placeholder="O credință pe care o consideri adevărată..."></textarea>
+                        <button onclick="analizeazaCredinta()">Analizează sursa</button>
+                        <div id="credinta-rezultat"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container input[type="text"], .simulator-container textarea {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                }
+                .simulator-container textarea {
+                    min-height: 80px;
+                    resize: vertical;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                    margin-bottom: 0.5rem;
+                }
+                #cauza-rezultat, #furca-rezultat, #credinta-rezultat {
+                    margin-top: 1.5rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    display: none;
+                }
+                #cauza-rezultat.visible, #furca-rezultat.visible, #credinta-rezultat.visible {
+                    display: block;
+                }
+                .furca-propozitii {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.75rem;
+                }
+                .propozitie-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    padding: 0.75rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                }
+                .propozitie-item span { flex: 1; font-size: 0.9rem; }
+                .propozitie-item button {
+                    padding: 0.5rem 0.75rem;
+                    font-size: 0.7rem;
+                    margin: 0;
+                }
+                .propozitie-item button.selected {
+                    opacity: 0.5;
+                }
+                .analiza-step {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    border-left: 3px solid var(--accent);
+                    background: rgba(124, 90, 60, 0.05);
+                }
+                .analiza-step h6 {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--accent);
+                    margin-bottom: 0.5rem;
+                }
+            </style>
+
+            <script>
+            (function() {
+                window.analizeazaCauza = function() {
+                    const cauza = document.getElementById('cauza-input').value.trim();
+                    if (!cauza) { alert('Scrie o relație cauzală.'); return; }
+
+                    const rezultat = document.getElementById('cauza-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem;">Analiza humeană: "${cauza}"</h5>
+
+                        <div class="analiza-step">
+                            <h6>1. Ce observi de fapt?</h6>
+                            <p style="margin: 0;">Observi <strong>contiguitate</strong> (evenimentele sunt apropiate în spațiu și timp), <strong>succesiune</strong> (unul vine înainte de celălalt) și <strong>conjuncție constantă</strong> (de câte ori A, urmează B).</p>
+                        </div>
+
+                        <div class="analiza-step">
+                            <h6>2. Ce NU observi?</h6>
+                            <p style="margin: 0;">Nu observi niciodată o „putere" sau „conexiune necesară" prin care A îl <em>produce</em> pe B. Nu vezi cauzalitatea — vezi doar succesiunea.</p>
+                        </div>
+
+                        <div class="analiza-step">
+                            <h6>3. De unde vine ideea de cauză?</h6>
+                            <p style="margin: 0;">Din <strong>obișnuință</strong>. După ce ai văzut de multe ori A urmat de B, mintea ta dezvoltă o tendință de a aștepta B când vezi A. Această tranziție mentală e proiectată asupra lumii ca „cauzalitate".</p>
+                        </div>
+
+                        <div class="analiza-step" style="background: rgba(124, 90, 60, 0.1);">
+                            <h6>Concluzia lui Hume</h6>
+                            <p style="margin: 0;">Credința ta în această cauzalitate nu e rațională — e instinctivă. Dar funcționează pentru viața practică. „Natura vindecă" — nu ai nevoie de justificare rațională pentru a trăi.</p>
+                        </div>
+
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--text-muted);">
+                            „Chiar și după observarea conjuncției frecvente, nu avem nici un temei să tragem vreo inferență privind vreun obiect dincolo de cele de care am avut experiență."
+                        </p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+
+                // Furca lui Hume
+                const propozitii = [
+                    { text: '2 + 2 = 4', tip: 'idei', explicatie: 'Relație de idei — adevărat prin definiție, nu spune nimic despre lume' },
+                    { text: 'Soarele va răsări mâine', tip: 'fapte', explicatie: 'Chestiune de fapt — nu poate fi demonstrat, doar probabil prin inducție' },
+                    { text: 'Un triunghi are trei laturi', tip: 'idei', explicatie: 'Relație de idei — negația e contradictorie' },
+                    { text: 'Apa fierbe la 100°C', tip: 'fapte', explicatie: 'Chestiune de fapt — știm din experiență, nu din logică' },
+                    { text: 'Binele trebuie urmărit', tip: 'nici', explicatie: 'Nici una! Nu e nici analitic, nici verificabil. „Trebuie" nu se derivă din „este".' }
+                ];
+                let raspunsuriFurca = [];
+                let indexCurent = 0;
+
+                function afiseazaPropozitie() {
+                    const container = document.getElementById('furca-propozitii');
+                    if (indexCurent >= propozitii.length) {
+                        afiseazaRezultatFurca();
+                        return;
+                    }
+                    const p = propozitii[indexCurent];
+                    container.innerHTML = `
+                        <div class="propozitie-item">
+                            <span>"${p.text}"</span>
+                            <button onclick="raspundeFurca('idei')">Relație de idei</button>
+                            <button onclick="raspundeFurca('fapte')">Chestiune de fapt</button>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Propozitia ${indexCurent + 1} din ${propozitii.length}</p>
+                    `;
+                }
+
+                window.raspundeFurca = function(raspuns) {
+                    raspunsuriFurca.push({
+                        propozitie: propozitii[indexCurent],
+                        raspuns: raspuns,
+                        corect: raspuns === propozitii[indexCurent].tip
+                    });
+                    indexCurent++;
+                    afiseazaPropozitie();
+                };
+
+                function afiseazaRezultatFurca() {
+                    const corecte = raspunsuriFurca.filter(r => r.corect).length;
+                    const rezultat = document.getElementById('furca-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem;">Rezultat: ${corecte}/${propozitii.length} corecte</h5>
+                        ${raspunsuriFurca.map(r => `
+                            <div style="padding: 0.75rem; margin-bottom: 0.5rem; background: ${r.corect ? 'rgba(39, 174, 96, 0.1)' : 'rgba(231, 76, 60, 0.1)'}; border-radius: 4px;">
+                                <p style="margin: 0;"><strong>"${r.propozitie.text}"</strong></p>
+                                <p style="margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-muted);">${r.propozitie.explicatie}</p>
+                            </div>
+                        `).join('')}
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--accent);">
+                            Hume: „Aruncă în foc orice carte care nu conține nici raționament abstract nici raționament experimental — căci nu conține decât sofistică și iluzie."
+                        </p>
+                    `;
+                    rezultat.classList.add('visible');
+                }
+
+                afiseazaPropozitie();
+
+                window.analizeazaCredinta = function() {
+                    const credinta = document.getElementById('credinta-input').value.trim();
+                    if (!credinta) { alert('Scrie o credință.'); return; }
+
+                    const rezultat = document.getElementById('credinta-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem;">Sursa credintei tale</h5>
+                        <p><strong>Credința:</strong> "${credinta}"</p>
+
+                        <p style="margin-top: 1rem;"><strong>Întrebări humene:</strong></p>
+                        <ul style="font-size: 0.9rem;">
+                            <li>E aceasta o <strong>relație de idei</strong> (adevărată prin definiție) sau o <strong>chestiune de fapt</strong> (bazată pe experiență)?</li>
+                            <li>Dacă e chestiune de fapt: pe ce <strong>experiență</strong> se bazează? Cât de mult din ea e <strong>obișnuință</strong>?</li>
+                            <li>Ai putea imagina că opusul e adevărat fără contradicție logică? Dacă da, nu e demonstrabilă rațional.</li>
+                            <li>Cât de mult din această credință vine din <strong>sentiment</strong> sau <strong>încredere</strong> în surse, nu din dovezi directe?</li>
+                        </ul>
+
+                        <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(124, 90, 60, 0.1); border-radius: 4px;">
+                            <p style="margin: 0; font-size: 0.9rem;">
+                                <strong>Consolarea lui Hume:</strong> Recunoașterea că o credință nu e pe deplin rațională nu o face nevalidă. Trăim prin obișnuință și sentiment — și asta e în regulă. „Un om înțelept își proporționează credința la evidență" — dar viața cere acțiune, nu certitudine.
+                            </p>
+                        </div>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">11 / Concluzie</span>
+                <span class="section-number">12 / Concluzie</span>
                 <h2>Scepticismul Viu</h2>
 
                 <p>Hume a distrus — dar n-a disperat. După ce a arătat că nu putem justifica rațional cauzalitatea, inducția, eul, a ieșit să joace table și să stea de vorbă cu prietenii. „Natura vindecă" — spunea el — „filozofia severă cedează în fața naturii umane".</p>

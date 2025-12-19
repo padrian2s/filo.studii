@@ -194,8 +194,328 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Explorează Sufletul cu Augustin</h2>
+
+                <p>Augustin a inventat introspecția ca metodă filozofică. Experimentează analiza voinței, a timpului și a celor două cetăți.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Voința Împărțită</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">"A voi era în puterea mea, dar a face, nu." Analizează conflictul interior.</p>
+
+                        <div class="vointa-analiza">
+                            <label style="font-size: 0.85rem;">Gândește-te la ceva ce vrei să faci, dar nu reușești:</label>
+                            <input type="text" id="vointa-dorinta" placeholder="Ex: să mă trezesc devreme, să fac sport, să fiu mai răbdător..." style="width: 100%; padding: 0.75rem; margin: 0.5rem 0; border: 1px solid var(--border); border-radius: 4px;">
+
+                            <div style="margin-top: 1rem;">
+                                <label>Cât de mult vrei asta? (1-10)</label>
+                                <input type="range" id="vointa-cat" min="1" max="10" value="5" style="width: calc(100% - 50px); vertical-align: middle;">
+                                <span id="vointa-cat-val" style="width: 40px; display: inline-block; text-align: center;">5</span>
+                            </div>
+
+                            <div style="margin-top: 0.5rem;">
+                                <label>Cât de mult vrei contrariul (confort, amânare, plăcere imediată)?</label>
+                                <input type="range" id="vointa-contra" min="1" max="10" value="5" style="width: calc(100% - 50px); vertical-align: middle;">
+                                <span id="vointa-contra-val" style="width: 40px; display: inline-block; text-align: center;">5</span>
+                            </div>
+                        </div>
+
+                        <button onclick="analizeazaVointa()" style="margin-top: 1rem;">Analizează conflictul</button>
+                        <div id="vointa-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Misterul Timpului</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">"Ce e timpul? Dacă nimeni nu mă întreabă, știu; dacă trebuie să explic, nu știu."</p>
+
+                        <div class="timp-vizual" style="text-align: center; padding: 2rem; background: var(--primary); border-radius: 4px;">
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 2rem;">
+                                <div class="timp-segment" style="text-align: center;">
+                                    <div style="font-size: 2rem; color: var(--text-muted);">◀</div>
+                                    <div style="font-weight: bold;">Trecut</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">Nu mai este</div>
+                                </div>
+                                <div class="timp-segment" style="text-align: center;">
+                                    <div id="prezent-ceas" style="font-size: 2rem; color: var(--accent);"></div>
+                                    <div style="font-weight: bold;">Prezent</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">O clipă ce fuge</div>
+                                </div>
+                                <div class="timp-segment" style="text-align: center;">
+                                    <div style="font-size: 2rem; color: var(--text-muted);">▶</div>
+                                    <div style="font-weight: bold;">Viitor</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">Nu este încă</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="timp-intrebare" style="margin-top: 1rem; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 4px;">
+                            <p style="font-style: italic; margin-bottom: 1rem;">Dacă trecutul nu mai e și viitorul nu e încă, unde e timpul?</p>
+                            <button onclick="revelaTimp()">Răspunsul lui Augustin</button>
+                        </div>
+                        <div id="timp-raspuns" style="display: none;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Cele Două Cetăți</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">În fiecare decizie, te miști spre Cetatea lui Dumnezeu sau spre Cetatea Pământească.</p>
+
+                        <div id="cetatii-test"></div>
+
+                        <button onclick="calculeazaCetatii()">Vezi unde te afli</button>
+                        <div id="cetatii-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Confesiunea Ta</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Augustin a scris pentru a înțelege. Scrie-ți propria micro-confesiune.</p>
+
+                        <textarea id="confesiune-text" placeholder="Reflectează: Care a fost o rătăcire a ta? Ce ai învățat din ea? Ce cauți acum?" style="width: 100%; height: 120px; padding: 1rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; font-size: 0.95rem;"></textarea>
+
+                        <button onclick="genereazaReflectie()">Generează reflecție augustiniană</button>
+                        <div id="confesiune-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                }
+                .cetatii-item {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .cetatii-optiuni {
+                    display: flex;
+                    gap: 1rem;
+                    margin-top: 0.75rem;
+                }
+                .cetatii-optiuni label {
+                    flex: 1;
+                    padding: 0.75rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 0.85rem;
+                    text-align: center;
+                    transition: all 0.2s;
+                }
+                .cetatii-optiuni input:checked + span {
+                    color: var(--accent);
+                    font-weight: bold;
+                }
+                .cetatii-optiuni label:hover {
+                    border-color: var(--accent);
+                }
+                .cetatii-optiuni input {
+                    display: none;
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Voința împărțită
+                document.getElementById('vointa-cat').addEventListener('input', function() {
+                    document.getElementById('vointa-cat-val').textContent = this.value;
+                });
+                document.getElementById('vointa-contra').addEventListener('input', function() {
+                    document.getElementById('vointa-contra-val').textContent = this.value;
+                });
+
+                window.analizeazaVointa = function() {
+                    const dorinta = document.getElementById('vointa-dorinta').value;
+                    const cat = parseInt(document.getElementById('vointa-cat').value);
+                    const contra = parseInt(document.getElementById('vointa-contra').value);
+
+                    const rezultat = document.getElementById('vointa-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    const diferenta = cat - contra;
+
+                    let analiza = `<strong>Conflictul interior pentru "${dorinta || 'obiectivul tău'}":</strong><br><br>`;
+
+                    if (diferenta > 3) {
+                        rezultat.style.background = 'rgba(76, 175, 80, 0.1)';
+                        analiza += `Voința ta pare <strong>unificată</strong>. Vrei cu adevărat — probabil doar îți lipsește un declanșator extern sau un plan concret.<br><br>`;
+                        analiza += `<em>Augustin spune: "Dă-mi ce poruncești și poruncește ce vrei." Caută ce îți dă putere.</em>`;
+                    } else if (diferenta < -3) {
+                        rezultat.style.background = 'rgba(244, 67, 54, 0.1)';
+                        analiza += `Voința ta e <strong>în conflict serios</strong>. Partea care vrea contrariul e mai puternică. Poate nu vrei cu adevărat, ci doar crezi că "ar trebui".<br><br>`;
+                        analiza += `<em>Augustin: "Nimeni nu poate face binele fără să-l iubească." Întreabă-te: de ce ar trebui să vreau asta? Găsește iubirea, nu doar datoria.</em>`;
+                    } else {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        analiza += `Voința ta e <strong>împărțită</strong> — vrei și nu vrei în egală măsură. Aceasta e condiția umană pe care Augustin o descrie în Confesiuni.<br><br>`;
+                        analiza += `<em>"Voința mea era inamicul meu... voiam și nu voiam — eram ambele." Nu te judeca; recunoaște sciziunea și cere ajutor (har, disciplină, comunitate).</em>`;
+                    }
+
+                    analiza += `<br><br><strong>Vizual:</strong><br>`;
+                    analiza += `<div style="height: 20px; background: linear-gradient(to right, #4CAF50 ${cat * 10}%, #e5e5e5 ${cat * 10}%); border-radius: 10px; margin: 0.5rem 0;"></div>`;
+                    analiza += `<div style="height: 20px; background: linear-gradient(to right, #F44336 ${contra * 10}%, #e5e5e5 ${contra * 10}%); border-radius: 10px;"></div>`;
+                    analiza += `<div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted);"><span>Dorință: ${cat}/10</span><span>Rezistență: ${contra}/10</span></div>`;
+
+                    rezultat.innerHTML = analiza;
+                };
+
+                // Timpul
+                function updateCeas() {
+                    const now = new Date();
+                    const ms = now.getMilliseconds();
+                    document.getElementById('prezent-ceas').textContent =
+                        now.toLocaleTimeString() + '.' + String(ms).padStart(3, '0');
+                }
+                setInterval(updateCeas, 50);
+                updateCeas();
+
+                window.revelaTimp = function() {
+                    const raspuns = document.getElementById('timp-raspuns');
+                    raspuns.style.display = 'block';
+                    raspuns.style.marginTop = '1rem';
+                    raspuns.style.padding = '1rem';
+                    raspuns.style.background = 'rgba(139, 69, 19, 0.1)';
+                    raspuns.style.borderRadius = '4px';
+
+                    raspuns.innerHTML = `
+                        <strong>Răspunsul lui Augustin:</strong><br><br>
+                        Timpul există <strong>în suflet</strong>, nu în lucruri:<br><br>
+                        • <strong>Trecutul</strong> = memoria (prezentul lucrurilor trecute)<br>
+                        • <strong>Prezentul</strong> = atenția (prezentul lucrurilor prezente)<br>
+                        • <strong>Viitorul</strong> = așteptarea (prezentul lucrurilor viitoare)<br><br>
+                        <em>"Timpul e o extensiune a sufletului." Nu măsurăm timpul — măsurăm impresii în minte.</em><br><br>
+                        <strong>Implicația:</strong> Eternitatea nu e timp infinit, ci ieșirea din timp — un "acum" permanent. Poate de aceea căutăm "momente" care par să oprească timpul?
+                    `;
+                };
+
+                // Cele două cetăți
+                const intrebari = [
+                    { text: "Când faci un bine, te gândești mai mult la...", a: "recunoașterea celorlalți", b: "binele în sine" },
+                    { text: "Ce te motivează mai mult?", a: "succesul și confortul personal", b: "sensul și conexiunea cu ceva mai mare" },
+                    { text: "Când iei o decizie grea, prioritizezi...", a: "ce e bine pentru mine și ai mei", b: "ce e drept, chiar dacă mă costă" },
+                    { text: "Cum vezi bogăția?", a: "scop de atins", b: "instrument de folosit pentru alții" },
+                    { text: "Ce te neliniștește mai mult?", a: "să nu reușesc în viață", b: "să nu trăiesc cu sens" }
+                ];
+
+                const container = document.getElementById('cetatii-test');
+                intrebari.forEach((q, i) => {
+                    container.innerHTML += `
+                        <div class="cetatii-item">
+                            <div>${q.text}</div>
+                            <div class="cetatii-optiuni">
+                                <label>
+                                    <input type="radio" name="cetatii${i}" value="0">
+                                    <span>${q.a}</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="cetatii${i}" value="1">
+                                    <span>${q.b}</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                window.calculeazaCetatii = function() {
+                    let scor = 0;
+                    let raspunse = 0;
+
+                    intrebari.forEach((q, i) => {
+                        const sel = document.querySelector(`input[name="cetatii${i}"]:checked`);
+                        if (sel) {
+                            scor += parseInt(sel.value);
+                            raspunse++;
+                        }
+                    });
+
+                    const rezultat = document.getElementById('cetatii-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (raspunse < intrebari.length) {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        rezultat.innerHTML = 'Răspunde la toate întrebările.';
+                        return;
+                    }
+
+                    const procent = (scor / intrebari.length) * 100;
+
+                    rezultat.innerHTML = `
+                        <div style="height: 30px; background: linear-gradient(to right, #c41e3a ${100 - procent}%, #4CAF50 ${100 - procent}%); border-radius: 15px; position: relative;">
+                            <div style="position: absolute; left: 10px; top: 5px; color: white; font-size: 0.75rem;">Cetatea Pământească</div>
+                            <div style="position: absolute; right: 10px; top: 5px; color: white; font-size: 0.75rem;">Cetatea lui Dumnezeu</div>
+                        </div>
+                        <br>
+                        ${procent >= 70 ?
+                            `<strong>Inclinație spre Cetatea lui Dumnezeu</strong> — cauți sens, conexiune, transcendență. "Iubirea de Dumnezeu până la uitarea de sine."` :
+                          procent <= 30 ?
+                            `<strong>Inclinație spre Cetatea Pământească</strong> — prioritizezi eul, succesul, controlul. "Iubirea de sine până la uitarea lui Dumnezeu."` :
+                            `<strong>Între cele două cetăți</strong> — ca majoritatea oamenilor, ești amestecat. Ambele iubiri coexistă în tine.`
+                        }
+                        <br><br>
+                        <em>Augustin: Cele două cetăți sunt amestecate în istorie și în fiecare suflet. Separarea finală e abia la Judecată. Dar în fiecare clipă alegi spre care te miști.</em>
+                    `;
+                };
+
+                // Confesiunea
+                window.genereazaReflectie = function() {
+                    const text = document.getElementById('confesiune-text').value;
+                    const rezultat = document.getElementById('confesiune-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'rgba(139, 69, 19, 0.1)';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (!text.trim()) {
+                        rezultat.innerHTML = '<em>Scrie ceva — introspecția cere cuvinte.</em>';
+                        return;
+                    }
+
+                    const reflectii = [
+                        `Augustin ar întreba: <em>"De ce ai vrut ceea ce ai vrut? Ce lipsă în tine căutai să umpli?"</em>`,
+                        `<em>"Târziu Te-am iubit, Frumusețe atât de veche și atât de nouă."</em> Ce ai descoperit "târziu" despre tine?`,
+                        `Augustin a trecut prin maniheism, scepticism, neoplatonism înainte de convertire. <em>Fiecare rătăcire a fost pregătire. Nimic nu e pierdut.</em>`,
+                        `<em>"Inima noastră e neliniștită până se odihnește în Tine."</em> Neliniștea ta prezentă — e simptom al bolii sau busola către vindecare?`,
+                        `Augustin spune: <em>"Înăuntru, în omul interior, locuiește adevărul."</em> Ce ai găsit când ai privit înăuntru?`
+                    ];
+
+                    const reflectie = reflectii[Math.floor(Math.random() * reflectii.length)];
+
+                    rezultat.innerHTML = `
+                        <strong>Reflecție augustiniană:</strong><br><br>
+                        ${reflectie}<br><br>
+                        <hr style="border: none; border-top: 1px solid var(--border); margin: 1rem 0;">
+                        <em>Confesiunile nu sunt doar despre trecut — sunt despre înțelegere. Scriind, înțelegi. Înțelegând, te transformi.</em>
+                    `;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Concluzie</span>
+                <span class="section-number">10 / Concluzie</span>
                 <h2>Neliniștea Eternă</h2>
 
                 <p>Augustin ne lasă un paradox: inima e neliniștită până se odihnește în Dumnezeu — dar în această viață, odihna nu e deplină. Suntem pelerini, călători, mereu în drum.</p>

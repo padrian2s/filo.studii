@@ -208,8 +208,301 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Experimentează Teoria lui Montesquieu</h2>
+
+                <p>Testează echilibrul puterilor, identifică tipuri de guvernare și analizează sisteme politice.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Construiește Echilibrul Puterilor</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ajustează distribuția puterilor. Ce se întâmplă când una domină?</p>
+
+                        <div class="puteri-controls">
+                            <div class="putere-item">
+                                <label><strong>Legislativă</strong> (face legile)</label>
+                                <input type="range" id="legislativ" min="0" max="100" value="33">
+                                <span class="putere-val">33%</span>
+                            </div>
+                            <div class="putere-item">
+                                <label><strong>Executivă</strong> (aplică legile)</label>
+                                <input type="range" id="executiv" min="0" max="100" value="33">
+                                <span class="putere-val">33%</span>
+                            </div>
+                            <div class="putere-item">
+                                <label><strong>Judecătorească</strong> (interpretează legile)</label>
+                                <input type="range" id="judiciar" min="0" max="100" value="34">
+                                <span class="putere-val">34%</span>
+                            </div>
+                        </div>
+
+                        <div id="echilibru-vizual" style="margin-top: 1.5rem;">
+                            <canvas id="puteri-canvas" width="300" height="300" style="width: 100%; max-width: 300px; display: block; margin: 0 auto;"></canvas>
+                        </div>
+
+                        <div id="echilibru-analiza" style="margin-top: 1rem; padding: 1rem; background: var(--secondary); border-radius: 4px;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Identifică Tipul de Guvernare</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Bazându-te pe descriere, identifică forma de guvernare după Montesquieu.</p>
+
+                        <div id="guvernare-test"></div>
+
+                        <button onclick="verificaGuverne()">Verifică răspunsurile</button>
+                        <div id="guvernare-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Analizează un Sistem</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Aplică grila lui Montesquieu la o organizație sau țară.</p>
+
+                        <input type="text" id="sistem-input" placeholder="Ex: România, UE, firma mea, școala mea..." style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem;">
+
+                        <div class="sistem-checkboxes">
+                            <p style="font-size: 0.85rem; font-weight: bold; margin-bottom: 0.5rem;">Verifică ce există:</p>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="ch1"> Legislativul e separat de executiv</label>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="ch2"> Judecătorii sunt independenți</label>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="ch3"> Există mecanisme de veto reciproc</label>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="ch4"> Mandatele sunt limitate</label>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="ch5"> Există presă liberă (puterea a 4-a)</label>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="ch6"> Minoritățile au protecție</label>
+                        </div>
+
+                        <button onclick="analizeazaSistem()" style="margin-top: 1rem;">Analizează sistemul</button>
+                        <div id="sistem-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                .putere-item {
+                    margin-bottom: 1rem;
+                }
+                .putere-item label {
+                    display: block;
+                    font-size: 0.85rem;
+                    margin-bottom: 0.25rem;
+                }
+                .putere-item input[type="range"] {
+                    width: calc(100% - 60px);
+                    vertical-align: middle;
+                }
+                .putere-val {
+                    display: inline-block;
+                    width: 50px;
+                    text-align: right;
+                    font-weight: bold;
+                    color: var(--accent);
+                }
+                .guvernare-item {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .guvernare-optiuni {
+                    display: flex;
+                    gap: 0.5rem;
+                    margin-top: 0.75rem;
+                    flex-wrap: wrap;
+                }
+                .guvernare-optiuni label {
+                    padding: 0.5rem 1rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 0.85rem;
+                }
+                .guvernare-optiuni input {
+                    display: none;
+                }
+                .guvernare-optiuni input:checked + span {
+                    color: var(--accent);
+                    font-weight: bold;
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Canvas pentru echilibrul puterilor
+                const canvas = document.getElementById('puteri-canvas');
+                const ctx = canvas.getContext('2d');
+
+                function drawPieChart() {
+                    const leg = parseInt(document.getElementById('legislativ').value);
+                    const exe = parseInt(document.getElementById('executiv').value);
+                    const jud = parseInt(document.getElementById('judiciar').value);
+                    const total = leg + exe + jud || 1;
+
+                    ctx.clearRect(0, 0, 300, 300);
+
+                    const data = [
+                        { val: leg / total, color: '#4CAF50', label: 'Legislativă' },
+                        { val: exe / total, color: '#2196F3', label: 'Executivă' },
+                        { val: jud / total, color: '#FF9800', label: 'Judecătorească' }
+                    ];
+
+                    let start = -Math.PI / 2;
+                    const cx = 150, cy = 150, r = 120;
+
+                    data.forEach(d => {
+                        const angle = d.val * 2 * Math.PI;
+                        ctx.beginPath();
+                        ctx.moveTo(cx, cy);
+                        ctx.arc(cx, cy, r, start, start + angle);
+                        ctx.fillStyle = d.color;
+                        ctx.fill();
+                        start += angle;
+                    });
+
+                    // Legendă
+                    ctx.font = '12px Inter';
+                    ctx.fillStyle = '#4CAF50';
+                    ctx.fillText('■ Legislativă', 10, 20);
+                    ctx.fillStyle = '#2196F3';
+                    ctx.fillText('■ Executivă', 10, 40);
+                    ctx.fillStyle = '#FF9800';
+                    ctx.fillText('■ Judecătorească', 10, 60);
+
+                    // Analiză
+                    const analiza = document.getElementById('echilibru-analiza');
+                    const max = Math.max(leg, exe, jud);
+                    const echilibrat = max < 50 && Math.abs(leg - exe) < 20 && Math.abs(exe - jud) < 20;
+
+                    if (echilibrat) {
+                        analiza.style.background = 'rgba(76, 175, 80, 0.1)';
+                        analiza.innerHTML = `<strong style="color: #4CAF50;">Echilibru!</strong> Montesquieu ar aproba — nicio putere nu domină. Aceasta e condiția libertății.`;
+                    } else if (exe > 60) {
+                        analiza.style.background = 'rgba(244, 67, 54, 0.1)';
+                        analiza.innerHTML = `<strong style="color: #F44336;">Pericol de despotism!</strong> Executivul concentrează prea multă putere. „Când în aceeași persoană puterea legislativă e unită cu puterea executivă, nu există libertate."`;
+                    } else if (leg > 60) {
+                        analiza.style.background = 'rgba(255, 152, 0, 0.1)';
+                        analiza.innerHTML = `<strong style="color: #FF9800;">Tirania majorității?</strong> Legislativul domină. Fără control, poate deveni opresiv — chiar democrația poate fi tiranică.`;
+                    } else if (jud > 60) {
+                        analiza.style.background = 'rgba(255, 152, 0, 0.1)';
+                        analiza.innerHTML = `<strong style="color: #FF9800;">Guvernarea judecătorilor?</strong> Judiciarul domină. Poate deveni o formă de elitism tehnocratic.`;
+                    } else {
+                        analiza.style.background = 'rgba(255, 152, 0, 0.1)';
+                        analiza.innerHTML = `<strong>Dezechilibru moderat.</strong> Una dintre puteri tinde să domine — monitorizează și ajustează.`;
+                    }
+                }
+
+                document.querySelectorAll('.putere-item input').forEach(input => {
+                    input.addEventListener('input', function() {
+                        this.nextElementSibling.textContent = this.value + '%';
+                        drawPieChart();
+                    });
+                });
+
+                drawPieChart();
+
+                // Test guvernare
+                const scenarii = [
+                    { text: "Un singur lider ia toate deciziile. Poporul îl ascultă de frică.", corect: "despotism" },
+                    { text: "Cetățenii aleg reprezentanți. Legile reflectă voința majorității. Virtutea civică e prețuită.", corect: "republica" },
+                    { text: "Un rege domnește, dar respectă legile și privilegiile nobilimii. Onoarea e valoarea centrală.", corect: "monarhie" },
+                    { text: "O grupă mică de familii bogate controlează statul. Restul n-au putere.", corect: "aristocratie" }
+                ];
+
+                const testContainer = document.getElementById('guvernare-test');
+                scenarii.forEach((s, i) => {
+                    testContainer.innerHTML += `
+                        <div class="guvernare-item">
+                            <div>${s.text}</div>
+                            <div class="guvernare-optiuni">
+                                <label><input type="radio" name="guv${i}" value="republica"><span>Republică</span></label>
+                                <label><input type="radio" name="guv${i}" value="monarhie"><span>Monarhie</span></label>
+                                <label><input type="radio" name="guv${i}" value="despotism"><span>Despotism</span></label>
+                                <label><input type="radio" name="guv${i}" value="aristocratie"><span>Aristocrație</span></label>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                window.verificaGuverne = function() {
+                    let corecte = 0;
+                    scenarii.forEach((s, i) => {
+                        const sel = document.querySelector(`input[name="guv${i}"]:checked`);
+                        if (sel && sel.value === s.corect) corecte++;
+                    });
+
+                    const rezultat = document.getElementById('guvernare-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    rezultat.style.background = corecte === scenarii.length ? 'rgba(76, 175, 80, 0.1)' : 'rgba(255, 152, 0, 0.1)';
+                    rezultat.innerHTML = `
+                        <strong>${corecte}/${scenarii.length} corecte</strong><br><br>
+                        • Republica: poporul deține puterea, principiul e virtutea civică<br>
+                        • Monarhia: unul conduce după legi, principiul e onoarea<br>
+                        • Despotismul: unul conduce după capriciu, principiul e frica<br>
+                        • Aristocrația: o grupă mică deține puterea
+                    `;
+                };
+
+                // Analizează sistem
+                window.analizeazaSistem = function() {
+                    const sistem = document.getElementById('sistem-input').value || 'Sistemul tău';
+                    const checks = [
+                        document.getElementById('ch1').checked,
+                        document.getElementById('ch2').checked,
+                        document.getElementById('ch3').checked,
+                        document.getElementById('ch4').checked,
+                        document.getElementById('ch5').checked,
+                        document.getElementById('ch6').checked
+                    ];
+                    const score = checks.filter(c => c).length;
+
+                    const rezultat = document.getElementById('sistem-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    let diagnostic = '';
+                    if (score >= 5) {
+                        rezultat.style.background = 'rgba(76, 175, 80, 0.1)';
+                        diagnostic = `<strong style="color: #4CAF50;">${sistem} — Solid!</strong> Montesquieu ar aproba: separarea puterilor e bine realizată.`;
+                    } else if (score >= 3) {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        diagnostic = `<strong style="color: #FF9800;">${sistem} — Moderat.</strong> Există elemente de separare, dar și vulnerabilități. Atenție la concentrarea puterii!`;
+                    } else {
+                        rezultat.style.background = 'rgba(244, 67, 54, 0.1)';
+                        diagnostic = `<strong style="color: #F44336;">${sistem} — Periculos!</strong> Prea puține mecanisme de control. Libertatea e în pericol când puterea nu e limitată.`;
+                    }
+
+                    rezultat.innerHTML = `${diagnostic}<br><br>
+                        <strong>Scor:</strong> ${score}/6 criterii îndeplinite<br><br>
+                        <em>„Pentru ca nimeni să nu poată abuza de putere, trebuie ca, prin dispunerea lucrurilor, puterea să oprească puterea."</em>`;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Libertatea prin Instituții</h2>
 
                 <p>Montesquieu nu era un visător utopic — era un realist care credea că libertatea se protejează prin instituții, nu prin bunele intenții. Oamenii vor abuza de putere dacă nu sunt împiedicați; trebuie să construim sisteme care să limiteze posibilitatea abuzului.</p>

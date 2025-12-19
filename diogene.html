@@ -213,8 +213,211 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Experimentează Cinismul</h2>
+
+                <p>Diogene ne provoacă să întrebăm: „Chiar am nevoie de asta?" Testează-ți posesiunile și dorințele cu testul cinic.</p>
+
+                <div class="simulator-container">
+                    <div class="test-cinic">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Testul lui Diogene</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Scrie ceva ce crezi că ai nevoie sau vrei:</p>
+                        <input type="text" id="dorinta-input" placeholder="Ex: Mașină nouă / Telefon mai bun / Casă mai mare / Promovare...">
+                        <button onclick="testeazaCinic()">Întreabă-l pe Diogene</button>
+                        <div id="raspuns-diogene" class="raspuns-cinic"></div>
+                    </div>
+
+                    <div class="inventar-cinic" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Inventarul lui Diogene</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Diogene avea doar: un butoi, o pelerină, o desagă și o căniță (pe care a aruncat-o când a văzut un copil bând din palme). Câte lucruri ai tu?</p>
+
+                        <div class="butoi-vizual">
+                            <div class="butoi">🏺</div>
+                            <div class="mesaj-butoi">Tot ce îți trebuie încape într-un butoi.</div>
+                        </div>
+
+                        <div class="intrebare-cinica">
+                            <p>Dacă mâine ți-ai pierde totul în afară de 5 obiecte, care ar fi acelea?</p>
+                            <ol id="lista-esential">
+                                <li><input type="text" placeholder="Obiect esențial 1..."></li>
+                                <li><input type="text" placeholder="Obiect esențial 2..."></li>
+                                <li><input type="text" placeholder="Obiect esențial 3..."></li>
+                                <li><input type="text" placeholder="Obiect esențial 4..."></li>
+                                <li><input type="text" placeholder="Obiect esențial 5..."></li>
+                            </ol>
+                            <button onclick="reflecteazaEsential()">Reflectează</button>
+                            <div id="reflexie-esential"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-box" style="margin-top: 2rem;">
+                    <h4>Provocarea Zilei</h4>
+                    <p>Diogene se masturba în piața publică. Când l-au criticat, a răspuns: „De s-ar putea și foamea alina frecându-ți burta!"</p>
+                    <p style="margin-bottom: 0;">Provocarea (mai puțin extremă): Pentru o zi, observă câte din acțiunile tale sunt pentru tine și câte sunt pentru „ce vor crede alții". Notează. Diogene ar fi șocat de cât de puțin trăim autentic.</p>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .test-cinic input {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin: 0.75rem 0;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                .raspuns-cinic {
+                    margin-top: 1rem;
+                    padding: 1.25rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                .raspuns-cinic.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                .butoi-vizual {
+                    text-align: center;
+                    margin: 2rem 0;
+                }
+                .butoi {
+                    font-size: 4rem;
+                    animation: rock 2s ease-in-out infinite;
+                }
+                @keyframes rock {
+                    0%, 100% { transform: rotate(-5deg); }
+                    50% { transform: rotate(5deg); }
+                }
+                .mesaj-butoi {
+                    font-style: italic;
+                    color: var(--text-muted);
+                    font-size: 0.9rem;
+                }
+                .intrebare-cinica {
+                    margin-top: 1.5rem;
+                }
+                .intrebare-cinica ol {
+                    list-style: decimal;
+                    padding-left: 1.5rem;
+                    margin: 1rem 0;
+                }
+                .intrebare-cinica li {
+                    margin-bottom: 0.5rem;
+                }
+                .intrebare-cinica input {
+                    width: calc(100% - 1rem);
+                    padding: 0.5rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.9rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                #reflexie-esential {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                #reflexie-esential.visible {
+                    display: block;
+                }
+            </style>
+
+            <script>
+            (function() {
+                const raspunsuriDiogene = [
+                    "Ai nevoie sau doar vrei? Un câine nu „vrea" — doar are nevoie. Tu ești mai prost decât un câine?",
+                    "Alexandru cel Mare avea tot imperiul. Diogene avea un butoi. Cine era mai liber?",
+                    "Când ai asta, vei vrea altceva. Când ai altceva, vei vrea mai mult. Cercul dorințelor nu se termină niciodată.",
+                    "De ce muncești pentru lucruri pe care le vei pierde oricum? Corpul tău va putrezi. Lucrurile tale vor rugini. Ce rămâne?",
+                    "Îți complici viața pentru a o simplifica. Dar complicația devine viața ta.",
+                    "Dacă ai nevoie de atâtea lucruri ca să fii fericit, nu vei fi niciodată fericit. Fericirea e să nu ai nevoie.",
+                    "Natura îți dă tot ce ai nevoie: aer, apă, hrană simplă, soare. Restul e luxul care te înrobește.",
+                    "Dă-te din soare! Singura resursă de care ai nevoie e lumina — și e gratuită."
+                ];
+
+                const intrebariCinice = [
+                    "Vei muri fără asta?",
+                    "Cine vrei să impresionezi?",
+                    "Ce problemă rezolvă, de fapt?",
+                    "Un copil are nevoie de asta?",
+                    "Ce ai face cu timpul câștigat dacă n-ai urmări asta?",
+                    "Bunicii tăi au trăit fără asta. Au fost nefericiți?"
+                ];
+
+                window.testeazaCinic = function() {
+                    const input = document.getElementById('dorinta-input').value.trim();
+                    if (!input) {
+                        alert('Scrie ceva ce vrei.');
+                        return;
+                    }
+
+                    const raspuns = document.getElementById('raspuns-diogene');
+                    const citatie = raspunsuriDiogene[Math.floor(Math.random() * raspunsuriDiogene.length)];
+                    const intrebare = intrebariCinice[Math.floor(Math.random() * intrebariCinice.length)];
+
+                    raspuns.innerHTML = `
+                        <strong>Tu:</strong> „Vreau ${input}."<br><br>
+                        <strong>Diogene:</strong> ${citatie}<br><br>
+                        <em>Întrebarea cinică: ${intrebare}</em>
+                    `;
+                    raspuns.classList.add('visible');
+                };
+
+                window.reflecteazaEsential = function() {
+                    const inputs = document.querySelectorAll('#lista-esential input');
+                    const obiecte = Array.from(inputs).map(i => i.value.trim()).filter(v => v);
+
+                    const reflexie = document.getElementById('reflexie-esential');
+
+                    if (obiecte.length === 0) {
+                        reflexie.innerHTML = `<strong>Diogene zâmbește.</strong> Poate nu ai nevoie de nimic. Asta e libertatea.`;
+                    } else {
+                        let html = `<strong>Ai ales ${obiecte.length} obiecte:</strong> ${obiecte.join(', ')}.<br><br>`;
+                        html += `<strong>Întrebările lui Diogene:</strong><br>`;
+                        html += `• Câte din acestea existau acum 100 de ani?<br>`;
+                        html += `• Câte sunt pentru supraviețuire și câte pentru confort?<br>`;
+                        html += `• Poți trăi o viață bună cu mai puțin?<br><br>`;
+                        html += `<em>„Am văzut un copil bând apă din palme și mi-am aruncat căniță. Ce simplu e să trăiești!"</em>`;
+                    }
+
+                    reflexie.innerHTML = reflexie.innerHTML || html;
+                    reflexie.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Omul din Butoi</h2>
 
                 <p>Diogene e imposibil de imitat complet — și poate că nu ar trebui. Dar e un corectiv necesar. Când ne pierdem în convenții, în acumulări, în aparențe, cinismul ne amintește: nimic din astea nu e necesar. Libertatea e posibilă.</p>

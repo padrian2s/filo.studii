@@ -212,8 +212,229 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Experimentul Stării Naturale</h2>
+
+                <p>Hobbes ne cere să ne imaginăm viața fără stat. Ce s-ar întâmpla dacă nu ar exista autoritate, legi, poliție? Acest simulator te ajută să experimentezi logica hobbeseanà.</p>
+
+                <div class="simulator-container">
+                    <div class="stare-naturala-test">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Scenariul</h4>
+                        <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">Imaginează-ți că mâine dimineață te trezești și toate legile, poliția, tribunalele au dispărut. Nimeni nu mai pedepsește furtul, violența sau încălcarea promisiunilor.</p>
+
+                        <div class="dilema-box">
+                            <p style="font-weight: bold; margin-bottom: 1rem;">Vecinul tău are resurse pe care le dorești. Ce faci?</p>
+                            <div class="dilema-optiuni">
+                                <button onclick="alegeDilema('cooperare')">Cooperez și sper că și el va coopera</button>
+                                <button onclick="alegeDilema('preventiv')">Atac preventiv — el probabil va ataca primul</button>
+                                <button onclick="alegeDilema('aparare')">Mă apăr dar nu atac primul</button>
+                            </div>
+                        </div>
+
+                        <div id="dilema-rezultat" style="display: none;"></div>
+                    </div>
+
+                    <div class="tradeoff-calculator" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Calculatorul Securitate vs Libertate</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Câtă libertate ești dispus să cedezi pentru securitate?</p>
+
+                        <div class="slider-container">
+                            <div class="slider-labels">
+                                <span>Libertate maximă<br><small>(risc maxim)</small></span>
+                                <span>Securitate maximă<br><small>(control maxim)</small></span>
+                            </div>
+                            <input type="range" id="tradeoff-slider" min="0" max="100" value="50">
+                            <div id="tradeoff-feedback"></div>
+                        </div>
+
+                        <div class="cedari-checkboxes" style="margin-top: 1.5rem;">
+                            <p style="font-size: 0.9rem; margin-bottom: 0.75rem;"><strong>Ce ai ceda pentru siguranță?</strong></p>
+                            <label><input type="checkbox" id="ced1"> Dreptul de a purta arme</label><br>
+                            <label><input type="checkbox" id="ced2"> Libertatea de exprimare nelimitată</label><br>
+                            <label><input type="checkbox" id="ced3"> Dreptul la privacy complet</label><br>
+                            <label><input type="checkbox" id="ced4"> Dreptul de a-ți face singur dreptate</label><br>
+                            <button onclick="calculeazaProfil()" style="margin-top: 1rem;">Analizează profilul tău</button>
+                        </div>
+                        <div id="profil-rezultat" style="display: none;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .dilema-optiuni {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .dilema-optiuni button {
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    padding: 0.75rem 1rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    text-align: left;
+                    transition: all 0.3s;
+                }
+                .dilema-optiuni button:hover {
+                    border-color: var(--accent);
+                    background: rgba(47, 79, 79, 0.05);
+                }
+                #dilema-rezultat, #profil-rezultat {
+                    margin-top: 1.5rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    border-left: 3px solid var(--accent);
+                }
+                .slider-container {
+                    margin: 1rem 0;
+                }
+                .slider-labels {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.75rem;
+                    color: var(--text-muted);
+                    margin-bottom: 0.5rem;
+                }
+                #tradeoff-slider {
+                    width: 100%;
+                    height: 8px;
+                    -webkit-appearance: none;
+                    background: linear-gradient(to right, #27ae60, #f1c40f, #e74c3c);
+                    border-radius: 4px;
+                }
+                #tradeoff-slider::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    width: 20px;
+                    height: 20px;
+                    background: var(--accent);
+                    border-radius: 50%;
+                    cursor: pointer;
+                }
+                #tradeoff-feedback {
+                    text-align: center;
+                    font-style: italic;
+                    color: var(--text-muted);
+                    margin-top: 0.5rem;
+                    min-height: 1.5rem;
+                }
+                .cedari-checkboxes label {
+                    display: block;
+                    padding: 0.5rem 0;
+                    font-size: 0.9rem;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+            </style>
+
+            <script>
+            (function() {
+                const raspunsuri = {
+                    cooperare: {
+                        titlu: 'Optimistul',
+                        raspuns: 'Ai ales cooperarea. Hobbes ar spune că ești naiv: fără garanții, cum știi că vecinul va coopera? Într-un mediu de neîncredere, cooperatorul e prima victimă.',
+                        hobbes: '„Pactele fără sabie sunt doar vorbe." Cooperarea funcționează doar când există o forță care pedepsește trădarea.'
+                    },
+                    preventiv: {
+                        titlu: 'Hobbesianul',
+                        raspuns: 'Ai ales atacul preventiv. Hobbes ar fi de acord: într-o lume fără autoritate, anticiparea atacului altuia e rațională. Dar toți gândesc la fel — rezultă „războiul tuturor contra tuturor".',
+                        hobbes: '„În această condiție... există frică continuă și pericol de moarte violentă." Exact de aceea avem nevoie de Leviatan.'
+                    },
+                    aparare: {
+                        titlu: 'Prudentul',
+                        raspuns: 'Ai ales apărarea pasivă. E o poziție morală, dar Hobbes ar întrebat: cât timp poți sta treaz? Cât de puternic poate fi zidul tău? Apărarea eternă e epuizantă.',
+                        hobbes: '„Chiar și cel mai slab poate ucide pe cel mai puternic — prin vicleșug sau alianță cu alții." Nimeni nu e în siguranță fără stat.'
+                    }
+                };
+
+                window.alegeDilema = function(alegere) {
+                    const info = raspunsuri[alegere];
+                    const rezultat = document.getElementById('dilema-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.75rem;">${info.titlu}</h5>
+                        <p>${info.raspuns}</p>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--accent);">Hobbes: „${info.hobbes}"</p>
+                    `;
+                    rezultat.style.display = 'block';
+                };
+
+                const slider = document.getElementById('tradeoff-slider');
+                const feedback = document.getElementById('tradeoff-feedback');
+
+                slider.addEventListener('input', function() {
+                    const val = parseInt(this.value);
+                    if (val < 25) {
+                        feedback.textContent = 'Libertarian: preferi riscul haosului decât controlul';
+                    } else if (val < 50) {
+                        feedback.textContent = 'Liberal moderat: unele reguli, multe libertăți';
+                    } else if (val < 75) {
+                        feedback.textContent = 'Hobbesean moderat: securitatea primează, dar cu limite';
+                    } else {
+                        feedback.textContent = 'Absolutist: orice sacrificiu pentru ordine';
+                    }
+                });
+
+                window.calculeazaProfil = function() {
+                    const cedari = [
+                        document.getElementById('ced1').checked,
+                        document.getElementById('ced2').checked,
+                        document.getElementById('ced3').checked,
+                        document.getElementById('ced4').checked
+                    ];
+                    const numarCedari = cedari.filter(x => x).length;
+                    const sliderVal = parseInt(document.getElementById('tradeoff-slider').value);
+
+                    let profil, descriere;
+                    if (numarCedari === 0 && sliderVal < 30) {
+                        profil = 'Anarhist sau Libertarian Radical';
+                        descriere = 'Nu cedezi nimic. Hobbes ar spune că trăiești într-o iluzie — sau într-o stare naturală deja.';
+                    } else if (numarCedari <= 1 && sliderVal < 50) {
+                        profil = 'Liberal Clasic';
+                        descriere = 'Cedezi minim pentru securitate de bază. Ești mai aproape de Locke decât de Hobbes.';
+                    } else if (numarCedari <= 3 && sliderVal < 75) {
+                        profil = 'Hobbesean Moderat';
+                        descriere = 'Accepți autoritatea ca necesară dar cu limite. Echilibru între securitate și libertate.';
+                    } else {
+                        profil = 'Hobbesean Pur';
+                        descriere = 'Cedezi mult pentru pace. Hobbes ar fi mândru — sau îngrijorat de cât de mult putere dai suveranului.';
+                    }
+
+                    const rezultat = document.getElementById('profil-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.75rem;">${profil}</h5>
+                        <p>${descriere}</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+                            <strong>Întrebarea lui Hobbes:</strong> Dacă maine ar dispărea statul, ai regreta cedările sau ai regreta că nu ai cedat mai mult?
+                        </p>
+                    `;
+                    rezultat.style.display = 'block';
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Monstrul Necesar</h2>
 
                 <p>Hobbes nu e un tiran care iubește puterea — e un om speriat care caută securitate. A văzut războiul civil, a văzut cum societatea se poate dezintegra. A concluzionat că orice ordine e mai bună decât dezordinea.</p>

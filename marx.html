@@ -72,8 +72,257 @@
                 <h2>Munca Străinată</h2>
                 <p>Muncitorul e alienat de produs, de procesul muncii, de propria natură umană, de ceilalți oameni. „Capitalul e muncă moartă care trăiește sugând munca vie."</p>
             </section>
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">04 / Simulator</span>
+                <h2>Detectorul de Alienare</h2>
+
+                <p>Marx a identificat patru forme de alienare în muncă. Acest simulator te ajută să-ți analizezi propria relație cu munca.</p>
+
+                <div class="simulator-container">
+                    <div class="alienare-test">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1.5rem;">Testul celor 4 alienări</h4>
+
+                        <div class="alienare-intrebare" id="q1">
+                            <p style="font-weight: bold; margin-bottom: 0.75rem;">1. Alienarea de produs</p>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Poți vedea rezultatul final al muncii tale? Ai control asupra a ce se întâmplă cu ce produci?</p>
+                            <div class="alienare-optiuni">
+                                <button onclick="raspunsAlienare(1, 0)">Da, văd și controlez</button>
+                                <button onclick="raspunsAlienare(1, 1)">Parțial</button>
+                                <button onclick="raspunsAlienare(1, 2)">Nu, munca mea dispare într-un proces mai mare</button>
+                            </div>
+                        </div>
+
+                        <div class="alienare-intrebare" id="q2" style="display: none;">
+                            <p style="font-weight: bold; margin-bottom: 0.75rem;">2. Alienarea de procesul muncii</p>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ai control asupra modului în care muncești? Îți folosești creativitatea?</p>
+                            <div class="alienare-optiuni">
+                                <button onclick="raspunsAlienare(2, 0)">Da, decid cum lucrez</button>
+                                <button onclick="raspunsAlienare(2, 1)">Parțial, cu constrângeri</button>
+                                <button onclick="raspunsAlienare(2, 2)">Nu, urmez proceduri stricte</button>
+                            </div>
+                        </div>
+
+                        <div class="alienare-intrebare" id="q3" style="display: none;">
+                            <p style="font-weight: bold; margin-bottom: 0.75rem;">3. Alienarea de sine (species-being)</p>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Munca ta îți exprimă potențialul uman? Te simți împlinit prin ea?</p>
+                            <div class="alienare-optiuni">
+                                <button onclick="raspunsAlienare(3, 0)">Da, mă exprim prin muncă</button>
+                                <button onclick="raspunsAlienare(3, 1)">Uneori</button>
+                                <button onclick="raspunsAlienare(3, 2)">Nu, muncesc doar pentru bani</button>
+                            </div>
+                        </div>
+
+                        <div class="alienare-intrebare" id="q4" style="display: none;">
+                            <p style="font-weight: bold; margin-bottom: 0.75rem;">4. Alienarea de ceilalți</p>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Relațiile tale de muncă sunt de cooperare sau de competiție?</p>
+                            <div class="alienare-optiuni">
+                                <button onclick="raspunsAlienare(4, 0)">Cooperare autentică</button>
+                                <button onclick="raspunsAlienare(4, 1)">Amestec</button>
+                                <button onclick="raspunsAlienare(4, 2)">Competiție sau izolare</button>
+                            </div>
+                        </div>
+
+                        <div id="alienare-rezultat" style="display: none;"></div>
+                    </div>
+
+                    <div class="baza-suprastructura" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Analizatorul Bază-Suprastructură</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Alege o idee sau instituție și vezi cum ar analiza-o Marx:</p>
+                        <div class="baza-butoane">
+                            <button onclick="analizaBaza('religie')">Religia</button>
+                            <button onclick="analizaBaza('drept')">Dreptul</button>
+                            <button onclick="analizaBaza('meritocratia')">Meritocrația</button>
+                            <button onclick="analizaBaza('nationalism')">Naționalismul</button>
+                        </div>
+                        <div id="baza-rezultat"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .alienare-optiuni {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .alienare-optiuni button, .baza-butoane button {
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    padding: 0.75rem 1rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    text-align: left;
+                    transition: all 0.3s;
+                }
+                .alienare-optiuni button:hover, .baza-butoane button:hover {
+                    border-color: var(--accent);
+                    background: rgba(178, 34, 34, 0.05);
+                }
+                .baza-butoane {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-bottom: 1rem;
+                }
+                .baza-butoane button {
+                    flex: none;
+                    text-align: center;
+                }
+                #alienare-rezultat, #baza-rezultat {
+                    margin-top: 1.5rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    border-left: 3px solid var(--accent);
+                }
+                #baza-rezultat { display: none; }
+                #baza-rezultat.visible { display: block; }
+                .alienare-score {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin: 1rem 0;
+                }
+                .score-bar {
+                    flex: 1;
+                    height: 20px;
+                    background: #e0e0e0;
+                    border-radius: 10px;
+                    overflow: hidden;
+                }
+                .score-fill {
+                    height: 100%;
+                    background: linear-gradient(to right, #27ae60, #f1c40f, #e74c3c);
+                    transition: width 0.5s;
+                }
+            </style>
+
+            <script>
+            (function() {
+                let raspunsuri = [];
+
+                window.raspunsAlienare = function(q, val) {
+                    raspunsuri[q-1] = val;
+                    document.getElementById('q' + q).style.display = 'none';
+
+                    if (q < 4) {
+                        document.getElementById('q' + (q+1)).style.display = 'block';
+                    } else {
+                        afiseazaRezultat();
+                    }
+                };
+
+                function afiseazaRezultat() {
+                    const total = raspunsuri.reduce((a, b) => a + b, 0);
+                    const maxScore = 8;
+                    const procent = (total / maxScore) * 100;
+
+                    let diagnostic, recomandare;
+                    if (procent <= 25) {
+                        diagnostic = 'Alienare scăzută';
+                        recomandare = 'Ai o relație relativ sănătoasă cu munca ta. Marx ar fi surprins!';
+                    } else if (procent <= 50) {
+                        diagnostic = 'Alienare moderată';
+                        recomandare = 'Experimentezi forme parțiale de alienare. Întreabă-te: ce ar trebui să se schimbe pentru a te simți mai împlinit?';
+                    } else if (procent <= 75) {
+                        diagnostic = 'Alienare semnificativă';
+                        recomandare = 'Marx ar recunoaște situația ta. Munca a devenit în mare parte un mijloc de supraviețuire, nu de expresie.';
+                    } else {
+                        diagnostic = 'Alienare severă';
+                        recomandare = 'Ești în situația pe care Marx o descria: „Muncitorul se simte acasă doar când nu muncește și când muncește se simte străin."';
+                    }
+
+                    const rezultat = document.getElementById('alienare-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem;">${diagnostic}</h5>
+
+                        <div class="alienare-score">
+                            <span style="font-size: 0.8rem;">Nealienant</span>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: ${procent}%;"></div>
+                            </div>
+                            <span style="font-size: 0.8rem;">Alienat</span>
+                        </div>
+
+                        <p style="margin: 1rem 0;">${recomandare}</p>
+
+                        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                            <p style="font-size: 0.9rem; color: var(--text-muted);"><strong>Cele 4 forme de alienare:</strong></p>
+                            <ul style="font-size: 0.85rem; margin-top: 0.5rem;">
+                                <li><strong>De produs:</strong> ${raspunsuri[0] === 0 ? '✓' : '✗'} Nu controlezi ce produci</li>
+                                <li><strong>De proces:</strong> ${raspunsuri[1] === 0 ? '✓' : '✗'} Nu controlezi cum muncești</li>
+                                <li><strong>De sine:</strong> ${raspunsuri[2] === 0 ? '✓' : '✗'} Munca nu te exprimă</li>
+                                <li><strong>De alții:</strong> ${raspunsuri[3] === 0 ? '✓' : '✗'} Competiție în loc de cooperare</li>
+                            </ul>
+                        </div>
+
+                        <button onclick="resetTest()" style="margin-top: 1rem; background: var(--accent); color: white; border: none; padding: 0.5rem 1rem; cursor: pointer; border-radius: 2px; font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase;">Refă testul</button>
+                    `;
+                    rezultat.style.display = 'block';
+                }
+
+                window.resetTest = function() {
+                    raspunsuri = [];
+                    document.getElementById('alienare-rezultat').style.display = 'none';
+                    document.getElementById('q1').style.display = 'block';
+                    document.getElementById('q2').style.display = 'none';
+                    document.getElementById('q3').style.display = 'none';
+                    document.getElementById('q4').style.display = 'none';
+                };
+
+                const analize = {
+                    religie: {
+                        idee: 'Religia',
+                        baza: 'Într-o societate de clasă, religia servește să justifice ordinea existentă. „Oful poporului" oferă consolare în loc de schimbare.',
+                        functie: 'Promite recompense în viața de apoi pentru suferința din viața de acum. Legitimează ierarhiile („dat de Dumnezeu").',
+                        intrebare: 'Cui îi folosește dacă muncitorii acceptă suferința ca „voința lui Dumnezeu"?'
+                    },
+                    drept: {
+                        idee: 'Dreptul',
+                        baza: 'Legile par neutre și universale, dar protejează relațiile de proprietate existente — deci clasa care deține.',
+                        functie: 'Dreptul de proprietate sacralizează acumularea. Furtul e ilegalizat, dar exploatarea e legală.',
+                        intrebare: 'De ce furtul direct e crimă, dar extragerea plusvalorii din munca altuia e „afaceri"?'
+                    },
+                    meritocratia: {
+                        idee: 'Meritocrația',
+                        baza: 'Ideea că fiecare primește ce merită ascunde moștenirea de clasă și avantajele structurale.',
+                        functie: 'Transformă inegalitatea în „vina" celor de jos. Dacă nu ai reușit, nu ai muncit destul.',
+                        intrebare: 'Pornesc toți copiii de la aceeași linie de start?'
+                    },
+                    nationalism: {
+                        idee: 'Naționalismul',
+                        baza: 'Unitatea națională ascunde conflictul de clasă. Muncitorul și patronul „sunt frați" ca cetățeni.',
+                        functie: 'Dirijează furia în jos (spre imigranți) sau în afară (spre alte națiuni), nu în sus (spre clasa conducătoare).',
+                        intrebare: 'Când „sacrificăm pentru țară", cine sacrifică și cine beneficiază?'
+                    }
+                };
+
+                window.analizaBaza = function(tip) {
+                    const info = analize[tip];
+                    const rezultat = document.getElementById('baza-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.75rem;">${info.idee}</h5>
+                        <p><strong>Analiza marxistă:</strong> ${info.baza}</p>
+                        <p><strong>Funcția ideologică:</strong> ${info.functie}</p>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--accent);"><strong>Întrebarea critică:</strong> ${info.intrebare}</p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">04 / Concluzie</span>
+                <span class="section-number">05 / Concluzie</span>
                 <h2>Spectrul Care Rămâne</h2>
                 <p>Marx a greșit în multe predicții. Dar întrebările lui rămân: de ce unii au atât și alții atât de puțin? Cum putem organiza societatea altfel?</p>
             </section>

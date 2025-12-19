@@ -210,8 +210,175 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Experimentează Starea Naturală</h2>
+
+                <p>Rousseau ne întreabă: cât din comportamentul tău e natural și cât e modelat de societate? Testează-ți autenticitatea.</p>
+
+                <div class="simulator-container">
+                    <div class="test-autenticitate">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Testul Autenticității</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Răspunde sincer: de ce faci următoarele?</p>
+
+                        <div id="intrebari-rousseau">
+                            <div class="intrebare-item" data-q="1">
+                                <p>De ce postezi pe social media?</p>
+                                <button onclick="raspundeRousseau(1, 'natural')">Să împărtășesc cu prietenii</button>
+                                <button onclick="raspundeRousseau(1, 'social')">Să fiu văzut/apreciat</button>
+                            </div>
+                        </div>
+
+                        <div id="scor-autenticitate" class="scor-container" style="display: none;"></div>
+                    </div>
+
+                    <div class="comparatie-state" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Omul Natural vs. Omul Social</h4>
+                        <div class="comparatie-grid">
+                            <div class="natural">
+                                <strong>Starea Naturală</strong><br>
+                                • Liber și independent<br>
+                                • Fără vanitate, fără comparație<br>
+                                • Compasiune naturală<br>
+                                • Fericit în simplitate
+                            </div>
+                            <div class="social">
+                                <strong>Starea Socială</strong><br>
+                                • Dependent de opinia altora<br>
+                                • Vanitate și invidie<br>
+                                • Competiție și conflict<br>
+                                • Nefericit în abundență
+                            </div>
+                        </div>
+                        <p style="margin-top: 1rem; text-align: center; font-style: italic; color: var(--text-muted);">„Omul se naște liber, și pretutindeni e în lanțuri."</p>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .intrebare-item {
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                }
+                .intrebare-item p {
+                    margin: 0 0 1rem 0;
+                    font-weight: 500;
+                }
+                .intrebare-item button {
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    padding: 0.5rem 1rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                    margin-bottom: 0.5rem;
+                    transition: all 0.2s;
+                }
+                .intrebare-item button:hover {
+                    border-color: var(--accent);
+                    color: var(--accent);
+                }
+                .scor-container {
+                    margin-top: 1.5rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                }
+                .comparatie-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1rem;
+                }
+                .natural, .social {
+                    padding: 1rem;
+                    border-radius: 4px;
+                    font-size: 0.9rem;
+                    line-height: 1.8;
+                }
+                .natural {
+                    background: rgba(76, 175, 80, 0.1);
+                    border: 1px solid rgba(76, 175, 80, 0.3);
+                }
+                .social {
+                    background: rgba(244, 67, 54, 0.1);
+                    border: 1px solid rgba(244, 67, 54, 0.3);
+                }
+            </style>
+
+            <script>
+            (function() {
+                const intrebari = [
+                    { q: "De ce postezi pe social media?", natural: "Să împărtășesc cu prietenii", social: "Să fiu văzut/apreciat" },
+                    { q: "De ce vrei să câștigi mai mulți bani?", natural: "Să acopăr nevoile reale", social: "Să am mai mult decât alții" },
+                    { q: "De ce îți cumperi haine noi?", natural: "Cele vechi s-au uzat", social: "Să fiu la modă/admirat" },
+                    { q: "De ce vrei promovare la job?", natural: "Să fac muncă mai interesantă", social: "Să am titlu mai impresionant" },
+                    { q: "De ce ții la anumite relații?", natural: "Îmi fac bine, mă simt conectat", social: "E util să cunosc acești oameni" }
+                ];
+
+                let raspunsuri = { natural: 0, social: 0 };
+                let indexCurent = 0;
+
+                function afiseazaIntrebare() {
+                    if (indexCurent >= intrebari.length) {
+                        afiseazaRezultat();
+                        return;
+                    }
+                    const i = intrebari[indexCurent];
+                    document.getElementById('intrebari-rousseau').innerHTML = `
+                        <div class="intrebare-item">
+                            <p>${i.q}</p>
+                            <button onclick="raspundeRousseau('natural')">${i.natural}</button>
+                            <button onclick="raspundeRousseau('social')">${i.social}</button>
+                        </div>
+                    `;
+                }
+
+                window.raspundeRousseau = function(tip) {
+                    raspunsuri[tip]++;
+                    indexCurent++;
+                    afiseazaIntrebare();
+                };
+
+                function afiseazaRezultat() {
+                    const total = raspunsuri.natural + raspunsuri.social;
+                    const procNatural = Math.round((raspunsuri.natural / total) * 100);
+                    const scor = document.getElementById('scor-autenticitate');
+
+                    let mesaj;
+                    if (procNatural >= 80) {
+                        mesaj = "Rousseau ar fi impresionat! Ești remarcabil de autentic — motivațiile tale sunt mai mult interne decât externe.";
+                    } else if (procNatural >= 50) {
+                        mesaj = "Un echilibru rezonabil. Dar Rousseau te-ar întreba: câte din alegerile tale sunt cu adevărat ale tale?";
+                    } else {
+                        mesaj = "„Omul în societate este sclav." Multe din motivațiile tale vin din comparație cu alții. E normal în lumea noastră — dar e autentic?";
+                    }
+
+                    scor.innerHTML = `
+                        <strong>Rezultat:</strong> ${procNatural}% motivații naturale, ${100-procNatural}% motivații sociale<br><br>
+                        ${mesaj}
+                    `;
+                    scor.style.display = 'block';
+                    document.getElementById('intrebari-rousseau').innerHTML = '<button onclick="location.reload()">Reîncepe testul</button>';
+                }
+
+                afiseazaIntrebare();
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Nostalgia și Speranța</h2>
 
                 <p>Rousseau e filozoful nostalgiei — dar și al speranței. Ne arată ce am pierdut: libertatea naturală, autenticitatea, comunitatea. Ne arată și cum am putea recupera ceva: prin educație dreaptă, instituții legitime, sinceritate cu noi înșine.</p>

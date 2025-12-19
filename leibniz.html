@@ -211,8 +211,339 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Experimentează Gândirea lui Leibniz</h2>
+
+                <p>Explorează lumile posibile, principiul rațiunii suficiente și vizualizează monadele.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Lumile Posibile</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Dumnezeu a ales această lume dintre infinite lumi posibile. Imaginează alternative.</p>
+
+                        <div class="lumi-posibile">
+                            <div style="margin-bottom: 1rem;">
+                                <label style="font-size: 0.85rem;">Ce ar fi diferit?</label>
+                                <select id="variabila-lume" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 0.5rem;">
+                                    <option value="suferinta">Fără suferință</option>
+                                    <option value="moarte">Fără moarte</option>
+                                    <option value="liberarbitru">Fără liber arbitru</option>
+                                    <option value="fizica">Alte legi ale fizicii</option>
+                                </select>
+                            </div>
+                            <button onclick="analizeazaLume()">Analizează această lume posibilă</button>
+                        </div>
+
+                        <div id="lume-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Principiul Rațiunii Suficiente</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">"Nimic nu este fără un motiv suficient." Aplică principiul.</p>
+
+                        <input type="text" id="fapt-input" placeholder="Introdu un fapt (ex: Azi a plouat, Am întârziat la muncă...)" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem;">
+                        <button onclick="cautaRatiune()">Caută rațiunea suficientă</button>
+                        <div id="ratiune-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Vizualizează Monadele</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Fiecare monadă e o oglindă a universului din perspectiva sa unică.</p>
+
+                        <canvas id="monade-canvas" width="400" height="300" style="width: 100%; border: 1px solid var(--border); border-radius: 4px;"></canvas>
+
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <button onclick="adaugaMonada()">Adaugă monadă</button>
+                            <button onclick="resetMonade()" style="background: transparent; border: 1px solid var(--border); color: var(--text);">Reset</button>
+                        </div>
+
+                        <div id="monade-info" style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Teodiceea: Răul în Cea Mai Bună Lume</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Gândește-te la un rău din viața ta. Cum l-ar explica Leibniz?</p>
+
+                        <textarea id="rau-input" placeholder="Descrie un rău sau o suferință pe care ai experimentat-o..." style="width: 100%; height: 80px; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit;"></textarea>
+                        <button onclick="analizeazaRau()">Analiză leibniziană</button>
+                        <div id="rau-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Lumile posibile
+                const lumiPosibile = {
+                    suferinta: {
+                        titlu: "Lume fără suferință",
+                        problema: "Pare perfectă, dar...",
+                        consecinte: [
+                            "Fără suferință, nu există compasiune (nu ai pentru ce să o simți)",
+                            "Fără durere, nu există avertisment despre pericol",
+                            "Fără efort, nu există realizare și satisfacție",
+                            "Fără pierdere, nu există apreciere a ceea ce ai",
+                            "Eroismul și sacrificiul devin imposibile"
+                        ],
+                        leibniz: "Leibniz ar spune: o lume fără suferință ar avea mai puțin BINE total. Suferința face posibile virtuți mai mari. E ca umbrele într-un tablou — fără ele, lumina n-ar străluci."
+                    },
+                    moarte: {
+                        titlu: "Lume fără moarte",
+                        problema: "Nemurire pentru toți, dar...",
+                        consecinte: [
+                            "Suprapopulare inevitabilă — resurse finite, oameni infiniti",
+                            "Fără moarte, nașterea ar trebui oprită — nicio viață nouă",
+                            "Plictiseală eternă — ce faci după un milion de ani?",
+                            "Tiranii nemuritori — Hitler pentru totdeauna",
+                            "Nicio urgență, nicio semnificație a timpului"
+                        ],
+                        leibniz: "Leibniz ar observa: moartea face loc pentru viață nouă, dă semnificație timpului, limitează răul. O lume nemuritoare ar fi mai rea în total, nu mai bună."
+                    },
+                    liberarbitru: {
+                        titlu: "Lume fără liber arbitru",
+                        problema: "Nicio alegere rea, dar...",
+                        consecinte: [
+                            "Fără libertate, nici bine nici rău — doar mecanisme",
+                            "Iubirea devine imposibilă (cine iubește forțat?)",
+                            "Nicio responsabilitate, nicio virtute, nicio creștere",
+                            "Am fi roboți, nu persoane",
+                            "Relațiile autentice dispar — totul e programat"
+                        ],
+                        leibniz: "Leibniz ar argumenta: libertatea face posibil răul, dar și binele autentic. O lume de automate „fericite" ar fi mai săracă decât o lume de ființe libere care pot alege binele."
+                    },
+                    fizica: {
+                        titlu: "Lume cu alte legi ale fizicii",
+                        problema: "Poate mai convenabilă, dar...",
+                        consecinte: [
+                            "Mici schimbări în constante → nicio chimie complexă",
+                            "Gravitația diferită → nicio stea, nicio planetă",
+                            "Fără regularitate → nicio știință, nicio predicție",
+                            "Universul „fin reglat" pentru viață — alterări îl distrug",
+                            "Fizica e matematică — și matematica are limite"
+                        ],
+                        leibniz: "Leibniz ar observa: legile fizicii sunt deja optimizate pentru a permite complexitatea maximă (viață, conștiință). Alterările par îmbunătățiri locale, dar distrug armonia globală."
+                    }
+                };
+
+                window.analizeazaLume = function() {
+                    const variabila = document.getElementById('variabila-lume').value;
+                    const data = lumiPosibile[variabila];
+                    const rezultat = document.getElementById('lume-rezultat');
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'var(--primary)';
+                    rezultat.style.border = '1px solid var(--border)';
+                    rezultat.style.borderRadius = '4px';
+
+                    rezultat.innerHTML = `
+                        <strong>${data.titlu}</strong><br>
+                        <em>${data.problema}</em><br><br>
+                        <strong>Consecințe neprevăzute:</strong>
+                        <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                            ${data.consecinte.map(c => `<li>${c}</li>`).join('')}
+                        </ul>
+                        <br>
+                        <div style="padding: 0.75rem; background: rgba(93, 78, 55, 0.1); border-radius: 4px;">
+                            <strong>Răspunsul lui Leibniz:</strong> ${data.leibniz}
+                        </div>
+                    `;
+                };
+
+                // Principiul rațiunii suficiente
+                window.cautaRatiune = function() {
+                    const fapt = document.getElementById('fapt-input').value;
+                    const rezultat = document.getElementById('ratiune-rezultat');
+
+                    if (!fapt.trim()) {
+                        rezultat.style.display = 'block';
+                        rezultat.innerHTML = '<em>Introdu un fapt.</em>';
+                        return;
+                    }
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'rgba(93, 78, 55, 0.1)';
+                    rezultat.style.borderRadius = '4px';
+
+                    rezultat.innerHTML = `
+                        <strong>Faptul:</strong> "${fapt}"<br><br>
+
+                        <strong>Principiul Rațiunii Suficiente întreabă:</strong><br>
+                        De ce acest fapt și nu altfel? Ce l-a cauzat?<br><br>
+
+                        <strong>Lanțul cauzal:</strong><br>
+                        1. Care e cauza imediată? (ex: am întârziat PENTRU CĂ...)<br>
+                        2. Care e cauza acelei cauze? (și asta PENTRU CĂ...)<br>
+                        3. Continuă — fiecare cauză are cauza ei...<br><br>
+
+                        <strong>Problema:</strong><br>
+                        Lanțul cauzal poate merge la infinit? Leibniz spune: NU. Trebuie să existe o Rațiune Ultimă — ceva care se explică prin sine însuși. Aceasta e Dumnezeu.<br><br>
+
+                        <em>"De ce există ceva și nu mai degrabă nimic?" — întrebarea fundamentală.</em><br><br>
+
+                        <strong>Pentru faptul tău:</strong><br>
+                        Faptul "${fapt}" are o rațiune suficientă — chiar dacă nu o cunoști complet. Nimic nu e pur întâmplător.
+                    `;
+                };
+
+                // Monadele
+                const canvas = document.getElementById('monade-canvas');
+                const ctx = canvas.getContext('2d');
+                let monade = [];
+
+                function drawMonade() {
+                    ctx.fillStyle = '#f8f8f8';
+                    ctx.fillRect(0, 0, 400, 300);
+
+                    // Centru - Dumnezeu (monada supremă)
+                    ctx.fillStyle = '#5d4e37';
+                    ctx.beginPath();
+                    ctx.arc(200, 150, 20, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = '#fff';
+                    ctx.font = '10px Inter';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('D', 200, 154);
+
+                    // Monade
+                    monade.forEach((m, i) => {
+                        // Desenează "oglindirea" - linie spre centru
+                        ctx.strokeStyle = 'rgba(93, 78, 55, 0.2)';
+                        ctx.beginPath();
+                        ctx.moveTo(m.x, m.y);
+                        ctx.lineTo(200, 150);
+                        ctx.stroke();
+
+                        // Monada
+                        const claritate = m.claritate / 10;
+                        ctx.fillStyle = `rgba(93, 78, 55, ${0.3 + claritate * 0.7})`;
+                        ctx.beginPath();
+                        ctx.arc(m.x, m.y, 8 + claritate * 7, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        ctx.fillStyle = '#fff';
+                        ctx.font = '8px Inter';
+                        ctx.fillText(i + 1, m.x, m.y + 3);
+                    });
+                }
+
+                window.adaugaMonada = function() {
+                    if (monade.length >= 15) {
+                        alert('Maxim 15 monade pentru vizualizare.');
+                        return;
+                    }
+
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 50 + Math.random() * 100;
+                    const x = 200 + Math.cos(angle) * distance;
+                    const y = 150 + Math.sin(angle) * distance;
+                    const claritate = Math.floor(Math.random() * 10) + 1;
+
+                    monade.push({ x, y, claritate });
+                    drawMonade();
+
+                    document.getElementById('monade-info').innerHTML = `
+                        <strong>${monade.length} monade.</strong> Fiecare oglindește universul din perspectiva sa.<br>
+                        Claritatea variază: de la materie confuză la spirite clare.<br>
+                        Monadele NU interacționează direct — sunt sincronizate de Dumnezeu (armonia prestabilită).
+                    `;
+                };
+
+                window.resetMonade = function() {
+                    monade = [];
+                    drawMonade();
+                    document.getElementById('monade-info').innerHTML = '';
+                };
+
+                drawMonade();
+
+                // Teodiceea
+                window.analizeazaRau = function() {
+                    const rau = document.getElementById('rau-input').value;
+                    const rezultat = document.getElementById('rau-rezultat');
+
+                    if (!rau.trim()) {
+                        rezultat.style.display = 'block';
+                        rezultat.innerHTML = '<em>Descrie o suferință.</em>';
+                        return;
+                    }
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'var(--primary)';
+                    rezultat.style.border = '1px solid var(--border)';
+                    rezultat.style.borderRadius = '4px';
+
+                    const tipuriRau = [
+                        "Răul metafizic (imperfecțiunea inerentă creaturii — nu suntem Dumnezeu)",
+                        "Răul moral (rezultat al libertății — alegerile greșite ale ființelor libere)",
+                        "Răul fizic (suferința care poate avea rol punitiv, corectiv, sau pedagogic)"
+                    ];
+
+                    const posibileBineluri = [
+                        "A dezvoltat reziliență și caracter",
+                        "A generat compasiune în tine sau în alții",
+                        "A prevenit un rău mai mare (pe care nu-l cunoști)",
+                        "A făcut posibilă o virtute (răbdare, curaj, iertare)",
+                        "A contribuit la un bine mai mare în tabloul cosmic",
+                        "A învățat ceva esențial"
+                    ];
+
+                    const bine1 = posibileBineluri[Math.floor(Math.random() * posibileBineluri.length)];
+                    const bine2 = posibileBineluri[Math.floor(Math.random() * posibileBineluri.length)];
+
+                    rezultat.innerHTML = `
+                        <strong>Suferința ta:</strong> "${rau}"<br><br>
+
+                        <strong>Cele trei tipuri de rău (Leibniz):</strong>
+                        <ul style="margin: 0.5rem 0; padding-left: 1.5rem; font-size: 0.9rem;">
+                            ${tipuriRau.map(t => `<li>${t}</li>`).join('')}
+                        </ul><br>
+
+                        <strong>Posibile funcții ale acestui rău:</strong>
+                        <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                            <li>${bine1}</li>
+                            <li>${bine2}</li>
+                        </ul><br>
+
+                        <div style="padding: 0.75rem; background: rgba(93, 78, 55, 0.1); border-radius: 4px;">
+                            <strong>Perspectiva leibniziană:</strong><br>
+                            Nu spune că suferința ta e „bună" — spune că în tabloul TOTAL al universului, această suferință contribuie la maximizarea binelui global. Noi vedem doar un fragment; Dumnezeu vede întreg mozaicul.<br><br>
+                            <em>E aceasta consolare sau insultă? Depinde de tine să judeci. Dar Leibniz ne invită să căutăm sensul chiar în suferință.</em>
+                        </div>
+                    `;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Universul ca Armonie</h2>
 
                 <p>Leibniz a văzut universul ca o simfonie — infinite voci (monade) cântând fiecare partitura sa, fără să se audă între ele, și totuși perfect armonizate de Compozitorul divin. E o viziune grandioasă, poate prea frumoasă pentru a fi adevărată.</p>

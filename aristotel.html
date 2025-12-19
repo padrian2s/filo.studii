@@ -411,8 +411,295 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Experimentează Media Aurie</h2>
+
+                <p>Aristotel ne învață că virtutea e o „medie" între două extreme. Găsește-ți echilibrul pentru fiecare virtute.</p>
+
+                <div class="simulator-container">
+                    <div class="virtute-selectie">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Alege o virtute</h4>
+                        <div class="virtuti-grid">
+                            <button onclick="selecteazaVirtute('curaj')" class="virtute-btn">Curaj</button>
+                            <button onclick="selecteazaVirtute('generozitate')" class="virtute-btn">Generozitate</button>
+                            <button onclick="selecteazaVirtute('mandrie')" class="virtute-btn">Mândrie</button>
+                            <button onclick="selecteazaVirtute('rabdare')" class="virtute-btn">Răbdare</button>
+                            <button onclick="selecteazaVirtute('sinceritate')" class="virtute-btn">Sinceritate</button>
+                            <button onclick="selecteazaVirtute('umor')" class="virtute-btn">Umor</button>
+                        </div>
+                    </div>
+
+                    <div id="medie-vizualizare" class="medie-container" style="display: none;">
+                        <div class="medie-bar">
+                            <div class="extrema deficit"><span id="deficit-label"></span></div>
+                            <div class="medie-punct"><span id="virtute-label"></span></div>
+                            <div class="extrema exces"><span id="exces-label"></span></div>
+                        </div>
+                        <div class="medie-slider">
+                            <input type="range" id="medie-range" min="0" max="100" value="50" oninput="actualizeazaMedia()">
+                        </div>
+                        <div id="feedback-medie" class="feedback-medie"></div>
+                    </div>
+                </div>
+
+                <div class="concept-box" style="margin-top: 2rem;">
+                    <h4>Cele 4 Cauze - Analizează Orice</h4>
+                    <p>Aristotel explica lucrurile prin 4 cauze. Aplică-le la un obiect din jurul tău:</p>
+                    <input type="text" id="obiect-cauze" placeholder="Ex: O casă / Un smartphone / O carte...">
+                    <button onclick="analizeazaCauze()">Analizează</button>
+                    <div id="cauze-rezultat"></div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .virtuti-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                    gap: 0.5rem;
+                }
+                .virtute-btn {
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    padding: 0.75rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    transition: all 0.2s;
+                }
+                .virtute-btn:hover, .virtute-btn.activa {
+                    border-color: var(--accent);
+                    color: var(--accent);
+                }
+                .medie-container {
+                    margin-top: 2rem;
+                    padding-top: 1.5rem;
+                    border-top: 1px solid var(--border);
+                }
+                .medie-bar {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 1rem;
+                    position: relative;
+                    height: 60px;
+                }
+                .extrema {
+                    background: rgba(244, 67, 54, 0.1);
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                    text-align: center;
+                    color: #F44336;
+                    width: 30%;
+                }
+                .medie-punct {
+                    background: rgba(76, 175, 80, 0.2);
+                    border: 2px solid #4CAF50;
+                    padding: 0.75rem 1rem;
+                    border-radius: 4px;
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    color: #4CAF50;
+                    text-align: center;
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                .medie-slider {
+                    margin: 1rem 0;
+                }
+                .medie-slider input[type="range"] {
+                    width: 100%;
+                    accent-color: var(--accent);
+                }
+                .feedback-medie {
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    border-left: 3px solid var(--accent);
+                }
+                .concept-box input {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin: 0.75rem 0;
+                }
+                .concept-box button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                #cauze-rezultat {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--secondary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                #cauze-rezultat.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+            </style>
+
+            <script>
+            (function() {
+                const virtuti = {
+                    curaj: {
+                        deficit: "Lașitate",
+                        medie: "Curaj",
+                        exces: "Nesăbuință",
+                        descriere: {
+                            deficit: "Fugi de orice risc, chiar și când ar fi corect să acționezi.",
+                            medie: "Înfrunți pericolele când e cazul, cu judecată.",
+                            exces: "Te arunci în pericol fără discernământ."
+                        }
+                    },
+                    generozitate: {
+                        deficit: "Zgârcenie",
+                        medie: "Generozitate",
+                        exces: "Risipă",
+                        descriere: {
+                            deficit: "Nu dai nimic, chiar și când ai putea și ar fi bine să o faci.",
+                            medie: "Dai cu măsură, persoanelor potrivite, pentru motive bune.",
+                            exces: "Dai fără discernământ, până te sărăcești."
+                        }
+                    },
+                    mandrie: {
+                        deficit: "Umilință excesivă",
+                        medie: "Mândrie justificată",
+                        exces: "Vanitate",
+                        descriere: {
+                            deficit: "Te subestimezi, nu îți recunoști meritele.",
+                            medie: "Îți cunoști valoarea reală, fără exagerare.",
+                            exces: "Te supraestimezi, crezi că meriți mai mult decât e cazul."
+                        }
+                    },
+                    rabdare: {
+                        deficit: "Irascibilitate",
+                        medie: "Răbdare",
+                        exces: "Pasivitate",
+                        descriere: {
+                            deficit: "Te enervezi pentru orice, explozia e prima reacție.",
+                            medie: "Te superi când e cazul, în măsura potrivită.",
+                            exces: "Nu te superi niciodată, nici când ar fi justificat."
+                        }
+                    },
+                    sinceritate: {
+                        deficit: "Falsă modestie",
+                        medie: "Sinceritate",
+                        exces: "Lăudăroșenie",
+                        descriere: {
+                            deficit: "Îți minimizezi realizările, negi adevărul despre tine.",
+                            medie: "Spui adevărul despre tine, fără exagerare.",
+                            exces: "Exagerezi tot, te lauzi constant."
+                        }
+                    },
+                    umor: {
+                        deficit: "Seriozitate excesivă",
+                        medie: "Umor echilibrat",
+                        exces: "Bufon",
+                        descriere: {
+                            deficit: "Nu glumești niciodată, totul e grav.",
+                            medie: "Glumești cu măsură, la momentul potrivit.",
+                            exces: "Transformi totul în glumă, chiar și ce e serios."
+                        }
+                    }
+                };
+
+                let virtuteSelectata = null;
+
+                window.selecteazaVirtute = function(v) {
+                    virtuteSelectata = v;
+                    const virtute = virtuti[v];
+
+                    document.querySelectorAll('.virtute-btn').forEach(b => b.classList.remove('activa'));
+                    event.target.classList.add('activa');
+
+                    document.getElementById('deficit-label').textContent = virtute.deficit;
+                    document.getElementById('virtute-label').textContent = virtute.medie;
+                    document.getElementById('exces-label').textContent = virtute.exces;
+                    document.getElementById('medie-range').value = 50;
+
+                    document.getElementById('medie-vizualizare').style.display = 'block';
+                    actualizeazaMedia();
+                };
+
+                window.actualizeazaMedia = function() {
+                    if (!virtuteSelectata) return;
+
+                    const val = parseInt(document.getElementById('medie-range').value);
+                    const virtute = virtuti[virtuteSelectata];
+                    const feedback = document.getElementById('feedback-medie');
+
+                    let mesaj, culoare;
+                    if (val < 35) {
+                        mesaj = `<strong>${virtute.deficit}:</strong> ${virtute.descriere.deficit}`;
+                        culoare = '#F44336';
+                    } else if (val > 65) {
+                        mesaj = `<strong>${virtute.exces}:</strong> ${virtute.descriere.exces}`;
+                        culoare = '#F44336';
+                    } else {
+                        mesaj = `<strong>${virtute.medie}:</strong> ${virtute.descriere.medie}<br><br><em>„Virtutea e o dispoziție de a alege, constând într-o medie relativă la noi, determinată de rațiune." — Aristotel</em>`;
+                        culoare = '#4CAF50';
+                    }
+
+                    feedback.innerHTML = mesaj;
+                    feedback.style.borderLeftColor = culoare;
+                };
+
+                window.analizeazaCauze = function() {
+                    const input = document.getElementById('obiect-cauze').value.trim();
+                    if (!input) {
+                        alert('Te rog scrie un obiect.');
+                        return;
+                    }
+
+                    const rezultat = document.getElementById('cauze-rezultat');
+
+                    let html = `<strong>Analiză aristotelică: ${input}</strong><br><br>`;
+                    html += `<strong>1. Cauza materială</strong> (din ce e făcut?)<br>`;
+                    html += `Materia din care e compus — lemn, metal, pixeli, hârtie...<br><br>`;
+                    html += `<strong>2. Cauza formală</strong> (ce formă/structură are?)<br>`;
+                    html += `Configurația care îl face să fie ce este — designul, structura, planul.<br><br>`;
+                    html += `<strong>3. Cauza eficientă</strong> (cine/ce l-a făcut?)<br>`;
+                    html += `Agentul care l-a produs — meșterul, fabrica, programatorul, natura.<br><br>`;
+                    html += `<strong>4. Cauza finală</strong> (pentru ce e făcut?)<br>`;
+                    html += `Scopul, funcția — pentru ce există? Ce „bine" urmărește?<br><br>`;
+                    html += `<em>Aristotel: „Nu cunoaștem ceva până nu-i cunoaștem cauza."</em>`;
+
+                    rezultat.innerHTML = html;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Maestrul Celor Ce Știu</h2>
 
                 <p>Aristotel ne învață că filozofia nu e evadare din lume, ci angajare cu lumea. Adevărul e aici, în lucrurile pe care le vedem și le atingem, în comunitățile în care trăim, în acțiunile pe care le facem zilnic.</p>

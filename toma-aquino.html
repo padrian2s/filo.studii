@@ -201,8 +201,388 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Gândirea Scolastică în Acțiune</h2>
+
+                <p>Experimentează metoda lui Toma: cele 5 căi, argumentația scolastică și principiile legii naturale.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Cele Cinci Căi</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Explorează fiecare argument pentru existența lui Dumnezeu și evaluează-l critic.</p>
+
+                        <div id="cinci-cai"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Metoda Scolastică</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Aplică metoda lui Toma: Quaestio → Obiecții → Sed contra → Respondeo.</p>
+
+                        <div class="scolastica-input">
+                            <label style="font-size: 0.85rem;">Întrebarea (quaestio):</label>
+                            <input type="text" id="quaestio-input" placeholder="Ex: Este permis să minți pentru a salva o viață?" style="width: 100%; padding: 0.75rem; margin: 0.5rem 0; border: 1px solid var(--border); border-radius: 4px;">
+                        </div>
+
+                        <button onclick="genereazaScolastica()">Structurează argumentul</button>
+                        <div id="scolastica-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Legea Naturală</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Primul principiu: "Binele trebuie făcut, răul evitat." Derivă principii secundare.</p>
+
+                        <div id="lege-naturala-test"></div>
+
+                        <button onclick="verificaLege()">Verifică înțelegerea</button>
+                        <div id="lege-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Act și Potență</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Vizualizează distincția fundamentală: ce e în act vs ce e în potență.</p>
+
+                        <div class="act-potenta-viz">
+                            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                                <div class="exemplu-ap" style="flex: 1; min-width: 200px;">
+                                    <select id="exemplu-select" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px;">
+                                        <option value="ghinda">Ghinda</option>
+                                        <option value="student">Student</option>
+                                        <option value="marmura">Bloc de marmură</option>
+                                        <option value="apa">Apă la 20°C</option>
+                                    </select>
+                                </div>
+                                <button onclick="analizeazaActPotenta()">Analizează</button>
+                            </div>
+                            <div id="act-potenta-rezultat" style="margin-top: 1rem;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                }
+                .cale-item {
+                    padding: 1.5rem;
+                    margin-bottom: 1rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                }
+                .cale-item:hover {
+                    border-color: var(--accent);
+                }
+                .cale-item.expanded {
+                    border-color: var(--accent);
+                    border-left-width: 3px;
+                }
+                .cale-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .cale-numar {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 1.5rem;
+                    color: var(--accent);
+                }
+                .cale-nume {
+                    font-weight: bold;
+                }
+                .cale-continut {
+                    display: none;
+                    margin-top: 1rem;
+                    padding-top: 1rem;
+                    border-top: 1px solid var(--border);
+                }
+                .cale-item.expanded .cale-continut {
+                    display: block;
+                }
+                .scolastica-sectiune {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    border-left: 3px solid var(--accent);
+                    background: var(--primary);
+                }
+                .scolastica-sectiune h5 {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--accent);
+                    margin-bottom: 0.5rem;
+                }
+                .lege-item {
+                    padding: 0.75rem;
+                    margin-bottom: 0.5rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .lege-item label {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Cele 5 căi
+                const cai = [
+                    {
+                        numar: "I",
+                        nume: "Argumentul Mișcării",
+                        premize: ["Tot ce se mișcă e mișcat de altceva", "Nu putem merge la infinit în cauze", "Trebuie să existe un Prim Motor"],
+                        concluzie: "Există un Motor Nemișcat — pe care toți îl numesc Dumnezeu.",
+                        critica: "Obiecție modernă: De ce nu poate fi lanțul infinit? Sau de ce Motorul e 'Dumnezeu' și nu doar energia primordială?",
+                        raspuns: "Toma ar răspunde: infinitul actual e imposibil (doar potențial). Iar Motorul trebuie să fie imaterial (altfel ar fi și el mișcat), deci e minte/spirit."
+                    },
+                    {
+                        numar: "II",
+                        nume: "Argumentul Cauzalității",
+                        premize: ["Nimic nu e cauza propriei existențe", "Lanțul cauzelor nu poate fi infinit", "Trebuie să existe o Cauză Primă"],
+                        concluzie: "Există o Cauză Necauzată — pe care toți o numesc Dumnezeu.",
+                        critica: "Obiecție: Dacă totul are o cauză, ce a cauzat pe Dumnezeu? Sau: Big Bang-ul nu e cauză suficientă?",
+                        raspuns: "Toma: Dumnezeu nu 'are' cauză pentru că nu e în timp. E Existența Însăși. Big Bang-ul e eveniment temporal, deci presupune cauză."
+                    },
+                    {
+                        numar: "III",
+                        nume: "Argumentul Contingenței",
+                        premize: ["Lucrurile există dar pot să nu existe (sunt contingente)", "Dacă totul ar fi contingent, la un moment n-ar fi existat nimic", "Din nimic nu vine nimic"],
+                        concluzie: "Trebuie să existe o Ființă Necesară — pe care toți o numesc Dumnezeu.",
+                        critica: "Obiecție: De ce universul însuși nu poate fi necesar? Sau: eternitatea materiei?",
+                        raspuns: "Toma: Universul fizic e compus, schimbător — caracteristici ale contingenței. Necesarul trebuie să fie simplu, neschimbat."
+                    },
+                    {
+                        numar: "IV",
+                        nume: "Argumentul Gradelor",
+                        premize: ["Există grade de perfecțiune (mai bun, mai adevărat)", "Gradele presupun un maxim", "Maximul cauzează gradele inferioare"],
+                        concluzie: "Există o Perfecțiune Maximă — pe care toți o numesc Dumnezeu.",
+                        critica: "Obiecție: Nu toate calitățile au maxim real (cât de 'roșu' e maximul roșului?). Și de ce maximul ar fi o ființă?",
+                        raspuns: "Toma vizează perfecțiunile pure (bunătate, adevăr, ființă) care se pot predica în mod analogic despre Dumnezeu."
+                    },
+                    {
+                        numar: "V",
+                        nume: "Argumentul Teleologic",
+                        premize: ["Lucrurile fără minte acționează spre scopuri (ghinda→stejar)", "Scopul presupune o inteligență care dirijează", "Natura e plină de finalitate"],
+                        concluzie: "Există un Inteligent care ordonează totul — pe care toți îl numesc Dumnezeu.",
+                        critica: "Obiecție: Darwin explică finalitatea aparentă prin selecție naturală, nu prin design inteligent.",
+                        raspuns: "Tomistul modern: Selecția naturală presupune legi ale naturii. De unde vin legile? Ele exprimă raționalitatea fundamentală a realității."
+                    }
+                ];
+
+                const caiContainer = document.getElementById('cinci-cai');
+                cai.forEach((c, i) => {
+                    caiContainer.innerHTML += `
+                        <div class="cale-item" onclick="toggleCale(${i})">
+                            <div class="cale-header">
+                                <span class="cale-numar">${c.numar}</span>
+                                <span class="cale-nume">${c.nume}</span>
+                                <span>▼</span>
+                            </div>
+                            <div class="cale-continut">
+                                <p><strong>Premize:</strong></p>
+                                <ul>
+                                    ${c.premize.map(p => `<li>${p}</li>`).join('')}
+                                </ul>
+                                <p><strong>Concluzie:</strong> ${c.concluzie}</p>
+                                <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border);">
+                                <p style="color: var(--text-muted);"><strong>Critică:</strong> ${c.critica}</p>
+                                <p style="color: var(--accent);"><strong>Răspuns tomist:</strong> ${c.raspuns}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                window.toggleCale = function(index) {
+                    const items = document.querySelectorAll('.cale-item');
+                    items[index].classList.toggle('expanded');
+                };
+
+                // Metoda scolastică
+                window.genereazaScolastica = function() {
+                    const quaestio = document.getElementById('quaestio-input').value;
+                    const rezultat = document.getElementById('scolastica-rezultat');
+
+                    if (!quaestio.trim()) {
+                        rezultat.style.display = 'block';
+                        rezultat.innerHTML = '<em>Introdu o întrebare.</em>';
+                        return;
+                    }
+
+                    rezultat.style.display = 'block';
+                    rezultat.innerHTML = `
+                        <div class="scolastica-sectiune">
+                            <h5>Quaestio (Întrebarea)</h5>
+                            <p><strong>${quaestio}</strong></p>
+                        </div>
+
+                        <div class="scolastica-sectiune">
+                            <h5>Videtur quod non... (Obiecții)</h5>
+                            <p><strong>Obiecția 1:</strong> [Primul argument împotriva poziției tale — cel mai puternic]</p>
+                            <p><strong>Obiecția 2:</strong> [Al doilea argument împotrivă]</p>
+                            <p><strong>Obiecția 3:</strong> [Un argument bazat pe autoritate sau tradiție]</p>
+                        </div>
+
+                        <div class="scolastica-sectiune">
+                            <h5>Sed contra (Dar dimpotrivă...)</h5>
+                            <p>[O autoritate sau principiu care susține poziția corectă]</p>
+                        </div>
+
+                        <div class="scolastica-sectiune">
+                            <h5>Respondeo dicendum quod... (Răspunsul)</h5>
+                            <p>[Argumentul principal care răspunde la întrebare, cu distincții clare]</p>
+                            <p><em>Făcând distincții: „X se poate înțelege în două moduri: ca... sau ca... În primul sens, răspunsul e... În al doilea sens..."</em></p>
+                        </div>
+
+                        <div class="scolastica-sectiune">
+                            <h5>Ad primum, ad secundum... (Răspunsuri la obiecții)</h5>
+                            <p><strong>La prima:</strong> [Unde greșește prima obiecție]</p>
+                            <p><strong>La a doua:</strong> [Unde greșește a doua]</p>
+                            <p><strong>La a treia:</strong> [Cum se reconciliază cu autoritatea citată]</p>
+                        </div>
+
+                        <div style="margin-top: 1rem; padding: 1rem; background: rgba(26, 79, 110, 0.1); border-radius: 4px;">
+                            <strong>Puterea metodei:</strong> Forțează să iei în serios obiecțiile înainte de a concluziona. Evită argumentarea doar pentru „tabăra ta".
+                        </div>
+                    `;
+                };
+
+                // Legea naturală
+                const principii = [
+                    { text: "Păstrarea vieții proprii", corect: true },
+                    { text: "Reproducerea și educarea copiilor", corect: true },
+                    { text: "Viața în societate", corect: true },
+                    { text: "Căutarea adevărului", corect: true },
+                    { text: "Maximizarea plăcerii", corect: false },
+                    { text: "Evitarea ignoranței", corect: true },
+                    { text: "Supunerea față de cei puternici", corect: false },
+                    { text: "Respectarea proprietății altora", corect: true }
+                ];
+
+                const legeContainer = document.getElementById('lege-naturala-test');
+                legeContainer.innerHTML = `<p style="font-size: 0.85rem; margin-bottom: 1rem;">Care dintre următoarele sunt principii derivate din legea naturală conform lui Toma?</p>`;
+
+                principii.forEach((p, i) => {
+                    legeContainer.innerHTML += `
+                        <div class="lege-item">
+                            <label>
+                                <input type="checkbox" id="lege${i}">
+                                ${p.text}
+                            </label>
+                        </div>
+                    `;
+                });
+
+                window.verificaLege = function() {
+                    let corecte = 0;
+                    principii.forEach((p, i) => {
+                        const checked = document.getElementById(`lege${i}`).checked;
+                        if (checked === p.corect) corecte++;
+                    });
+
+                    const rezultat = document.getElementById('lege-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (corecte === principii.length) {
+                        rezultat.style.background = 'rgba(76, 175, 80, 0.1)';
+                        rezultat.innerHTML = `<strong>Perfect!</strong> Ai identificat corect principiile legii naturale. Ele se derivă din natura umană: viața, reproducerea, socialitatea, raționalitatea.`;
+                    } else {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        rezultat.innerHTML = `<strong>${corecte}/${principii.length} corecte.</strong><br><br>
+                            <strong>Criteriul:</strong> Principiile legii naturale derivă din natura umană și sunt descoperibile prin rațiune:<br>
+                            ✓ Păstrarea vieții (instinct fundamental)<br>
+                            ✓ Reproducerea și educarea (comun cu animalele, dar rațional la om)<br>
+                            ✓ Viața în societate (omul e zoon politikon)<br>
+                            ✓ Căutarea adevărului și evitarea ignoranței (specific uman)<br>
+                            ✓ Respectarea proprietății (derivat din dreptate)<br><br>
+                            ✗ „Maximizarea plăcerii" e hedonism, nu lege naturală<br>
+                            ✗ „Supunerea față de cei puternici" e injust — legea nedreaptă nu obligă`;
+                    }
+                };
+
+                // Act și Potență
+                const exemple = {
+                    ghinda: {
+                        act: "Este o ghindă — rotundă, mică, căzută din stejar",
+                        potente: ["Stejar (dacă e plantată)", "Hrană pentru veverițe", "Putrezire", "Rămâne ghindă indefinit"],
+                        explicatie: "Ghinda e în act ghindă, dar în potență stejar. Potențialitatea e reală dar nu actualizată. Stejarului îi lipsește potența de a deveni ghindă (nu merge invers)."
+                    },
+                    student: {
+                        act: "Este student — învață, studiază, are statut academic",
+                        potente: ["Absolvent", "Expert în domeniu", "Profesor", "Să abandoneze studiile"],
+                        explicatie: "Studentul e în act student, în potență expert. Educația e actualizarea potențelor intelectuale. Fără studiu, potența rămâne nerealizată."
+                    },
+                    marmura: {
+                        act: "Este un bloc de marmură — solid, alb, neșlefuit",
+                        potente: ["Statuie (dacă e sculptată)", "Praf (dacă e sfărâmat)", "Bloc de construcție", "Rămâne bloc brut"],
+                        explicatie: "Michelangelo spunea că el doar 'eliberează' figura din marmură. În termeni tomisti: sculptorul actualizează potența statuii care 'era' deja în piatră."
+                    },
+                    apa: {
+                        act: "Este apă lichidă la 20°C",
+                        potente: ["Gheață (sub 0°C)", "Abur (peste 100°C)", "Componentă a unei băuturi", "Să susțină viață"],
+                        explicatie: "Apa la 20°C e în act lichidă, în potență solidă sau gazoasă. Potența e reală dar cere o cauză externă (răcire/încălzire) pentru actualizare."
+                    }
+                };
+
+                window.analizeazaActPotenta = function() {
+                    const sel = document.getElementById('exemplu-select').value;
+                    const ex = exemple[sel];
+                    const rezultat = document.getElementById('act-potenta-rezultat');
+
+                    rezultat.innerHTML = `
+                        <div style="padding: 1rem; background: var(--primary); border-radius: 4px; margin-bottom: 1rem;">
+                            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 200px;">
+                                    <strong style="color: #4CAF50;">În ACT:</strong><br>
+                                    ${ex.act}
+                                </div>
+                                <div style="flex: 1; min-width: 200px;">
+                                    <strong style="color: #2196F3;">În POTENȚĂ:</strong><br>
+                                    <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                                        ${ex.potente.map(p => `<li>${p}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding: 1rem; background: rgba(26, 79, 110, 0.1); border-radius: 4px;">
+                            <strong>Explicație:</strong> ${ex.explicatie}<br><br>
+                            <em>Dumnezeu, pentru Toma, e Act Pur — fără nicio potență nerealizată. Nu poate deveni „mai mult" decât e, pentru că e deja toate perfecțiunile.</em>
+                        </div>
+                    `;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Concluzie</span>
+                <span class="section-number">10 / Concluzie</span>
                 <h2>Paiele Geniului</h2>
 
                 <p>Toma d'Aquino a construit o catedrală a gândirii — sistematică, monumentală, impresionantă. Dar la sfârșit, tot ce scrisese i s-a părut „paie". Poate că aceasta e lecția finală: oricât de mult am construi, misterul rămâne.</p>

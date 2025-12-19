@@ -154,8 +154,324 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">08 / Simulator</span>
+                <h2>Experimentează Argumentul Ontologic</h2>
+
+                <p>Construiește argumentul pas cu pas, evaluează obiecțiile și descoperă puterea definiției.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Construiește Argumentul</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Click pe fiecare pas pentru a vedea cum se construiește argumentul.</p>
+
+                        <div id="argument-pasi"></div>
+
+                        <div id="argument-concluzie" style="display: none; margin-top: 1.5rem; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 4px;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Evaluează Obiecțiile</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Cât de puternică este fiecare obiecție? Evaluează și vezi răspunsurile.</p>
+
+                        <div id="obiectii-container"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Puterea Definiției</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Anselm a arătat că definiția are consecințe. Testează cu alte concepte.</p>
+
+                        <div class="definitie-test">
+                            <input type="text" id="concept-input" placeholder="Introdu un concept (ex: dreptate, frumusețe, prietenie...)" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem;">
+                            <button onclick="analizeazaConcept()">Analizează conceptul</button>
+                        </div>
+
+                        <div id="concept-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Insula lui Gaunilo</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Aplică argumentul la „insula perfectă" — funcționează?</p>
+
+                        <button onclick="afisamGaunilo()">Experimentează paradoxul</button>
+                        <div id="gaunilo-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                }
+                .pas-item {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                }
+                .pas-item:hover {
+                    border-color: var(--accent);
+                }
+                .pas-item.activ {
+                    border-left: 3px solid var(--accent);
+                    background: rgba(139, 69, 19, 0.05);
+                }
+                .pas-numar {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 1.2rem;
+                    color: var(--accent);
+                    margin-right: 0.75rem;
+                }
+                .pas-explicatie {
+                    display: none;
+                    margin-top: 0.75rem;
+                    padding-top: 0.75rem;
+                    border-top: 1px solid var(--border);
+                    font-size: 0.9rem;
+                    color: var(--text-muted);
+                }
+                .pas-item.activ .pas-explicatie {
+                    display: block;
+                }
+                .obiectie-item {
+                    padding: 1rem;
+                    margin-bottom: 1rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .obiectie-slider {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin: 0.75rem 0;
+                }
+                .obiectie-slider input {
+                    flex: 1;
+                }
+                .raspuns-btn {
+                    background: transparent !important;
+                    border: 1px solid var(--border) !important;
+                    color: var(--text) !important;
+                    font-size: 0.7rem !important;
+                    padding: 0.5rem 1rem !important;
+                }
+                .raspuns-obiectie {
+                    display: none;
+                    margin-top: 0.75rem;
+                    padding: 0.75rem;
+                    background: rgba(139, 69, 19, 0.1);
+                    border-radius: 4px;
+                    font-size: 0.85rem;
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Construiește argumentul
+                const pasi = [
+                    {
+                        text: "Definiția: Dumnezeu este „ceva mai mare decât care nimic nu poate fi gândit"",
+                        explicatie: "Aceasta nu e o afirmație despre existență, ci o definiție. Chiar și ateul înțelege CE înseamnă cuvântul „Dumnezeu" — maximul concepibil."
+                    },
+                    {
+                        text: "Chiar și „nebunul" (ateul) are această idee în minte",
+                        explicatie: "Când ateul spune „Dumnezeu nu există", el înțelege CE neagă. Ideea de „maximul concepibil" există cel puțin în mintea lui."
+                    },
+                    {
+                        text: "E mai mare să exiști în realitate decât doar în minte",
+                        explicatie: "Premisa crucială: existența reală adaugă „măreție". Un prieten real e mai bun decât unul imaginar. 100€ reali sunt mai buni decât 100€ imaginari."
+                    },
+                    {
+                        text: "Presupunem (reductio) că „maximul concepibil" există doar în minte",
+                        explicatie: "Acesta e pasul reductio ad absurdum — presupunem negarea pentru a arăta că duce la contradicție."
+                    },
+                    {
+                        text: "Atunci am putea gândi ceva și mai mare: același lucru, dar existând și în realitate",
+                        explicatie: "Dacă X există doar în minte, atunci X + existență reală > X. Deci X nu e maximul concepibil — contradicție cu definiția!"
+                    },
+                    {
+                        text: "CONCLUZIE: „Ceva mai mare decât care nimic nu poate fi gândit" trebuie să existe în realitate",
+                        explicatie: "Negarea existenței lui Dumnezeu e auto-contradictorie. Din simpla definiție a lui Dumnezeu rezultă că El există necesar."
+                    }
+                ];
+
+                const pasiContainer = document.getElementById('argument-pasi');
+                pasi.forEach((p, i) => {
+                    pasiContainer.innerHTML += `
+                        <div class="pas-item" onclick="togglePas(${i})">
+                            <span class="pas-numar">${i + 1}.</span>
+                            <span class="pas-text">${p.text}</span>
+                            <div class="pas-explicatie">${p.explicatie}</div>
+                        </div>
+                    `;
+                });
+
+                let pasiActivi = 0;
+                window.togglePas = function(index) {
+                    const items = document.querySelectorAll('.pas-item');
+                    items[index].classList.toggle('activ');
+
+                    pasiActivi = document.querySelectorAll('.pas-item.activ').length;
+
+                    if (pasiActivi >= 4) {
+                        const concluzie = document.getElementById('argument-concluzie');
+                        concluzie.style.display = 'block';
+                        concluzie.innerHTML = `
+                            <strong>Observații:</strong><br><br>
+                            Argumentul e <em>a priori</em> — nu apelează la experiență, ci doar la definiție și logică.<br><br>
+                            E <em>ontologic</em> — derivă existența din esență/concept.<br><br>
+                            E controversat de aproape 1000 de ani. Unde crezi că e eroarea (dacă e)?
+                        `;
+                    }
+                };
+
+                // Obiecțiile
+                const obiectii = [
+                    {
+                        autor: "Gaunilo",
+                        text: "Cu același argument putem „demonstra" existența insulei perfecte.",
+                        raspuns: "Anselm răspunde: argumentul funcționează doar pentru „maximul concepibil absolut", nu pentru „cel mai bun X" (insulă, pizza, etc.). Insula perfectă e încă un lucru contingent; Dumnezeu e unic prin definiție."
+                    },
+                    {
+                        autor: "Toma d'Aquino",
+                        text: "Nu putem ști ce e în esența lui Dumnezeu, deci nu putem demonstra existența din definiție.",
+                        raspuns: "Obiecție serioasă: poate definiția noastră de Dumnezeu e incompletă sau incorectă. Anselm ar răspunde: definim minimul — „maximul concepibil" — și asta e suficient."
+                    },
+                    {
+                        autor: "Kant",
+                        text: "„Existența nu e un predicat real" — a spune că ceva există nu adaugă nimic la concept.",
+                        raspuns: "Cea mai influentă obiecție. 100 de taleri reali nu au mai multe proprietăți decât 100 de taleri imaginari. Dar susținătorii argumentului răspund: poate existența NU e predicat obișnuit, dar e „perfecțiune" pentru maximul concepibil."
+                    },
+                    {
+                        autor: "Modernă",
+                        text: "Poți defini orice în existență? „Cel mai mare număr prim existent"?",
+                        raspuns: "Anselmienii răspund: definiții contradictorii nu dovedesc nimic. „Maximul concepibil" nu e contradictoriu — e coerent. Dar „cel mai mare număr prim" E contradictoriu (nu există)."
+                    }
+                ];
+
+                const obiectiiContainer = document.getElementById('obiectii-container');
+                obiectii.forEach((o, i) => {
+                    obiectiiContainer.innerHTML += `
+                        <div class="obiectie-item">
+                            <strong>${o.autor}:</strong> ${o.text}
+                            <div class="obiectie-slider">
+                                <span style="font-size: 0.8rem;">Slabă</span>
+                                <input type="range" id="obiectie${i}" min="1" max="10" value="5">
+                                <span style="font-size: 0.8rem;">Puternică</span>
+                                <span id="obiectie${i}-val" style="font-weight: bold; width: 30px;">5</span>
+                            </div>
+                            <button class="raspuns-btn" onclick="afisamRaspuns(${i})">Vezi răspunsul lui Anselm</button>
+                            <div class="raspuns-obiectie" id="raspuns${i}">${o.raspuns}</div>
+                        </div>
+                    `;
+                });
+
+                document.querySelectorAll('.obiectie-slider input').forEach((input, i) => {
+                    input.addEventListener('input', function() {
+                        document.getElementById(`obiectie${i}-val`).textContent = this.value;
+                    });
+                });
+
+                window.afisamRaspuns = function(index) {
+                    const raspuns = document.getElementById(`raspuns${index}`);
+                    raspuns.style.display = raspuns.style.display === 'none' ? 'block' : 'none';
+                };
+
+                // Puterea definiției
+                window.analizeazaConcept = function() {
+                    const concept = document.getElementById('concept-input').value.trim();
+                    const rezultat = document.getElementById('concept-rezultat');
+
+                    if (!concept) {
+                        rezultat.style.display = 'block';
+                        rezultat.innerHTML = '<em>Introdu un concept.</em>';
+                        return;
+                    }
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'rgba(139, 69, 19, 0.1)';
+                    rezultat.style.borderRadius = '4px';
+
+                    rezultat.innerHTML = `
+                        <strong>Analiza conceptului "${concept}":</strong><br><br>
+
+                        <strong>1. Definiție:</strong> Ce înseamnă „${concept}" la modul maximal?<br>
+                        → „${concept} mai mare decât care nimic nu poate fi gândit"<br><br>
+
+                        <strong>2. Întrebare:</strong> Există ${concept}-ul maximal în realitate sau doar în minte?<br><br>
+
+                        <strong>3. Argument anselmian:</strong> Dacă ${concept}-ul maximal există doar în minte, atunci am putea concepe ${concept} și mai mare (unul care există și în realitate). Contradicție?<br><br>
+
+                        <strong>4. Problemă:</strong> Funcționează asta pentru „${concept}"? <br>
+                        → Probabil nu, pentru că „${concept}" nu e definit ca „maximul concepibil absolut".<br>
+                        → Argumentul lui Anselm funcționează doar pentru conceptul de Dumnezeu — singurul concept definit ca maximalitate absolută.<br><br>
+
+                        <em>Aceasta e replica lui Anselm la Gaunilo: argumentul e unic pentru Dumnezeu.</em>
+                    `;
+                };
+
+                // Insula lui Gaunilo
+                window.afisamGaunilo = function() {
+                    const rezultat = document.getElementById('gaunilo-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'var(--primary)';
+                    rezultat.style.border = '1px solid var(--border)';
+                    rezultat.style.borderRadius = '4px';
+
+                    rezultat.innerHTML = `
+                        <strong>Argumentul insulei perfecte (Gaunilo):</strong><br><br>
+
+                        1. Insula perfectă = insula mai mare decât care nicio insulă nu poate fi gândită<br>
+                        2. Am această idee în minte<br>
+                        3. E mai mare să exiști în realitate decât doar în minte<br>
+                        4. Dacă insula perfectă există doar în minte, pot concepe una și mai bună (una care există)<br>
+                        5. Deci insula perfectă trebuie să existe!<br><br>
+
+                        <strong>Dar insulele perfecte evident NU există.</strong><br>
+                        Deci argumentul e invalid?<br><br>
+
+                        <hr style="border: none; border-top: 1px solid var(--border); margin: 1rem 0;">
+
+                        <strong>Răspunsul lui Anselm:</strong><br><br>
+
+                        „Insula perfectă" ≠ „maximul concepibil absolut"<br><br>
+
+                        • Poți întotdeauna adăuga încă un palmier, încă o plajă — nu există „maxim" pentru insule<br>
+                        • Insula e limitată prin natura sa; Dumnezeu nu e<br>
+                        • Argumentul funcționează DOAR pentru ceva definit ca „mai mare decât care nimic nu poate fi gândit" — și aceasta e o definiție unică<br><br>
+
+                        <em>Ești convins? Mulți nu sunt — dar obiecția nu e atât de simplă pe cât pare.</em>
+                    `;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">08 / Concluzie</span>
+                <span class="section-number">09 / Concluzie</span>
                 <h2>Credința Care Gândește</h2>
 
                 <p>Anselm ne lasă un paradox: un argument care pare simultan genial și greșit. De aproape un mileniu, filozofii încearcă să spună exact unde e eroarea — și nu reușesc pe deplin.</p>

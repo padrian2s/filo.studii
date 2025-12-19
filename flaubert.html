@@ -624,9 +624,365 @@
 
             <hr>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">08 / Simulator</span>
+                <h2>Experimentează Arta lui Flaubert</h2>
+
+                <p>Caută „le mot juste", testează-ți tendințele bovariste și analizează stilul.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4>Le Mot Juste — Cuvântul Exact</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Flaubert petrecea săptămâni căutând cuvântul perfect. Alege varianta cea mai precisă.</p>
+
+                        <div id="mot-juste-test"></div>
+
+                        <button onclick="verificaMotJuste()">Verifică alegerile</button>
+                        <div id="mot-juste-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4>Testul Bovarismului</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Bovarismul = a confunda realitatea cu ficțiunea, a trăi în fantezie. Cât de bovariat ești?</p>
+
+                        <div id="bovarism-test"></div>
+
+                        <button onclick="calculeazaBovarism()">Calculează scorul</button>
+                        <div id="bovarism-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4>Rescrie în Stil Flaubert</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ia o frază banală și rescrie-o cu precizie chirurgicală.</p>
+
+                        <div class="fraza-originala" style="padding: 1rem; background: var(--secondary); border-radius: 4px; margin-bottom: 1rem;">
+                            <strong>Fraza banală:</strong> <span id="fraza-banala"></span>
+                            <button onclick="novaFraza()" style="margin-left: 1rem; background: transparent; border: 1px solid var(--border); color: var(--text); font-size: 0.7rem; padding: 0.25rem 0.5rem;">Altă frază</button>
+                        </div>
+
+                        <textarea id="fraza-rescrisa" placeholder="Rescrie fraza cu precizie. Elimină cuvintele inutile. Găsește nuanța exactă." style="width: 100%; height: 100px; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit;"></textarea>
+
+                        <button onclick="analizeazaStil()">Analizează stilul</button>
+                        <div id="stil-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4>Testul Gueuloir</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Flaubert citea cu voce tare fiecare frază ("gueuloir" = loc de strigat). Dacă te împiedici, fraza e proastă.</p>
+
+                        <textarea id="gueuloir-text" placeholder="Scrie o frază sau copiază un text..." style="width: 100%; height: 80px; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; margin-bottom: 1rem;"></textarea>
+
+                        <button onclick="analizaRitm()">Analizează ritmul</button>
+                        <div id="gueuloir-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                #simulator .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                #simulator h4 {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--accent);
+                    margin-bottom: 1rem;
+                    margin-top: 0;
+                }
+                #simulator button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                .mot-item {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .mot-context {
+                    font-style: italic;
+                    margin-bottom: 0.75rem;
+                }
+                .mot-optiuni {
+                    display: flex;
+                    gap: 0.5rem;
+                    flex-wrap: wrap;
+                }
+                .mot-optiuni label {
+                    padding: 0.5rem 1rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+                .mot-optiuni input {
+                    display: none;
+                }
+                .mot-optiuni input:checked + span {
+                    color: var(--accent);
+                    font-weight: bold;
+                }
+                .bovarism-item {
+                    padding: 0.75rem;
+                    margin-bottom: 0.5rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .bovarism-item label {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Le mot juste
+                const exercitii = [
+                    {
+                        context: "Ea privea ___ pe fereastră.",
+                        optiuni: ["absent", "distrat", "pierdut", "visător"],
+                        corect: 0,
+                        explicatie: "„Absent" e mai precis — implică lipsa prezenței mentale, fără conotația de reverie sau lipsă de atenție."
+                    },
+                    {
+                        context: "Căldura verii era ___.",
+                        optiuni: ["mare", "sufocantă", "puternică", "intensă"],
+                        corect: 1,
+                        explicatie: "„Sufocantă" e fizic — simți presiunea pe piept. „Mare" e vag, „puternică" și „intensă" sunt generice."
+                    },
+                    {
+                        context: "El i-a spus cuvintele cu o voce ___.",
+                        optiuni: ["joasă", "înceată", "stinsă", "moale"],
+                        corect: 2,
+                        explicatie: "„Stinsă" sugerează emoție epuizată, resemnare — nu doar volum redus. E mai bogat decât celelalte."
+                    },
+                    {
+                        context: "Ploaia ___ pe acoperiș.",
+                        optiuni: ["cădea", "bătea", "lovea", "ciocănea"],
+                        corect: 3,
+                        explicatie: "„Ciocănea" e onomatopeic și specific — auzi sunetul. „Cădea" e neutru, „bătea" și „lovea" sunt prea violente."
+                    }
+                ];
+
+                const motContainer = document.getElementById('mot-juste-test');
+                exercitii.forEach((e, i) => {
+                    motContainer.innerHTML += `
+                        <div class="mot-item">
+                            <div class="mot-context">${e.context}</div>
+                            <div class="mot-optiuni">
+                                ${e.optiuni.map((o, j) => `
+                                    <label><input type="radio" name="mot${i}" value="${j}"><span>${o}</span></label>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                window.verificaMotJuste = function() {
+                    let corecte = 0;
+                    let explicatii = [];
+
+                    exercitii.forEach((e, i) => {
+                        const sel = document.querySelector(`input[name="mot${i}"]:checked`);
+                        if (sel && parseInt(sel.value) === e.corect) {
+                            corecte++;
+                        } else {
+                            explicatii.push(`„${e.optiuni[e.corect]}" — ${e.explicatie}`);
+                        }
+                    });
+
+                    const rezultat = document.getElementById('mot-juste-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (corecte === exercitii.length) {
+                        rezultat.style.background = 'rgba(26, 79, 110, 0.1)';
+                        rezultat.innerHTML = `<strong>Perfect!</strong> Ai simțul nuanței. Flaubert ar aproba.<br><br><em>„Printre toate expresiile posibile, există una singură care e justă."</em>`;
+                    } else {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        rezultat.innerHTML = `<strong>${corecte}/${exercitii.length} corecte.</strong><br><br>Cuvintele corecte și de ce:<br>` + explicatii.map(e => `• ${e}`).join('<br>');
+                    }
+                };
+
+                // Bovarism
+                const intrebari = [
+                    "Mă compar frecvent cu viețile altora pe social media",
+                    "Simt că viața mea reală e mai puțin interesantă decât în filme/cărți",
+                    "Am așteptări romantice bazate pe ficțiune",
+                    "Mă plictisesc ușor de rutina zilnică",
+                    "Visez des la o viață complet diferită",
+                    "Cred că fericirea e undeva „acolo", nu aici",
+                    "Mă simt dezamăgit când realitatea nu corespunde imaginilor din cap",
+                    "Prefer să visez decât să acționez"
+                ];
+
+                const bovarismContainer = document.getElementById('bovarism-test');
+                intrebari.forEach((q, i) => {
+                    bovarismContainer.innerHTML += `
+                        <div class="bovarism-item">
+                            <label>
+                                <input type="checkbox" id="bov${i}">
+                                ${q}
+                            </label>
+                        </div>
+                    `;
+                });
+
+                window.calculeazaBovarism = function() {
+                    let scor = 0;
+                    intrebari.forEach((q, i) => {
+                        if (document.getElementById(`bov${i}`).checked) scor++;
+                    });
+
+                    const rezultat = document.getElementById('bovarism-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    let diagnostic = '';
+                    if (scor <= 2) {
+                        rezultat.style.background = 'rgba(76, 175, 80, 0.1)';
+                        diagnostic = `<strong style="color: #4CAF50;">Realist.</strong> Trăiești în prezent. Nu ești Emma Bovary — ești ancorat în realitate.`;
+                    } else if (scor <= 5) {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        diagnostic = `<strong style="color: #FF9800;">Bovariat moderat.</strong> Ai tendințe de a confunda ficțiunea cu realitatea, dar le controlezi.`;
+                    } else {
+                        rezultat.style.background = 'rgba(244, 67, 54, 0.1)';
+                        diagnostic = `<strong style="color: #F44336;">Bovariat avansat.</strong> Riști să trăiești în fantezie și să fii dezamăgit permanent de realitate.`;
+                    }
+
+                    rezultat.innerHTML = `
+                        <strong>Scor bovarism: ${scor}/${intrebari.length}</strong><br><br>
+                        ${diagnostic}<br><br>
+                        <em>Emma Bovary „își dorește o viață pe care a citit-o în romane". Leacul? Atenția reală la lumea reală — aceeași atenție cu care Flaubert scria.</em>
+                    `;
+                };
+
+                // Rescrie în stil Flaubert
+                const frazeBanale = [
+                    "Ea era foarte tristă.",
+                    "Afară era cald.",
+                    "El a intrat în cameră.",
+                    "Mâncarea era bună.",
+                    "Strada era liniștită.",
+                    "Ea l-a privit lung.",
+                    "Era o zi frumoasă.",
+                    "El era obosit."
+                ];
+
+                let frazaIdx = 0;
+
+                function afisaFraza() {
+                    document.getElementById('fraza-banala').textContent = frazeBanale[frazaIdx];
+                }
+
+                window.novaFraza = function() {
+                    frazaIdx = (frazaIdx + 1) % frazeBanale.length;
+                    afisaFraza();
+                };
+
+                afisaFraza();
+
+                window.analizeazaStil = function() {
+                    const rescrisa = document.getElementById('fraza-rescrisa').value;
+                    const rezultat = document.getElementById('stil-rezultat');
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'rgba(26, 79, 110, 0.1)';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (!rescrisa.trim()) {
+                        rezultat.innerHTML = '<em>Rescrie fraza. Fiecare cuvânt contează.</em>';
+                        return;
+                    }
+
+                    const originala = frazeBanale[frazaIdx];
+                    const lenO = originala.split(' ').length;
+                    const lenR = rescrisa.split(' ').length;
+
+                    let feedback = `<strong>Original:</strong> „${originala}" (${lenO} cuvinte)<br>`;
+                    feedback += `<strong>Rescris:</strong> „${rescrisa}" (${lenR} cuvinte)<br><br>`;
+
+                    if (lenR > lenO * 1.5) {
+                        feedback += `<strong>Atenție:</strong> Ai adăugat cuvinte. Flaubert tăia, nu adăuga. Simplitatea e forță.<br><br>`;
+                    } else if (lenR < lenO) {
+                        feedback += `<strong>Bine!</strong> Ai condensat. Flaubert ar aproba economia.<br><br>`;
+                    }
+
+                    feedback += `<strong>Întrebări flaubertiene:</strong><br>`;
+                    feedback += `• Există cuvinte care pot fi tăiate fără pierdere de sens?<br>`;
+                    feedback += `• Există cuvinte vagi care pot fi înlocuite cu altele precise?<br>`;
+                    feedback += `• Citită cu voce tare, fraza curge sau te împiedici?<br><br>`;
+                    feedback += `<em>„Talentul este o lungă răbdare." Rescrie din nou. Și din nou.</em>`;
+
+                    rezultat.innerHTML = feedback;
+                };
+
+                // Gueuloir
+                window.analizaRitm = function() {
+                    const text = document.getElementById('gueuloir-text').value;
+                    const rezultat = document.getElementById('gueuloir-rezultat');
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'rgba(26, 79, 110, 0.1)';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (!text.trim()) {
+                        rezultat.innerHTML = '<em>Scrie un text pentru analiză.</em>';
+                        return;
+                    }
+
+                    const cuvinte = text.split(/\s+/).length;
+                    const propozitii = text.split(/[.!?]+/).filter(p => p.trim()).length;
+                    const avgLen = cuvinte / propozitii;
+                    const virgule = (text.match(/,/g) || []).length;
+
+                    let feedback = `<strong>Analiză tehnică:</strong><br>`;
+                    feedback += `• ${cuvinte} cuvinte în ${propozitii} propoziție/i<br>`;
+                    feedback += `• Media: ${avgLen.toFixed(1)} cuvinte/propoziție<br>`;
+                    feedback += `• ${virgule} virgule (pauze de respirație)<br><br>`;
+
+                    if (avgLen > 25) {
+                        feedback += `<strong style="color: #FF9800;">Atenție:</strong> Propozițiile sunt lungi. Risc de a te împiedica la citit.<br>`;
+                    } else if (avgLen < 8) {
+                        feedback += `<strong>Stil staccato.</strong> Propozițiile scurte creează ritm rapid. E intenționat?<br>`;
+                    } else {
+                        feedback += `<strong style="color: #4CAF50;">Ritm echilibrat.</strong> Propozițiile au lungime moderată.<br>`;
+                    }
+
+                    feedback += `<br><strong>Testul gueuloir:</strong> Citește textul cu voce tare, repede. Unde te-ai împiedicat? Acolo e problema.<br><br>`;
+                    feedback += `<em>„Proza trebuie să se țină dreaptă de la un capăt la altul, ca un zid."</em>`;
+
+                    rezultat.innerHTML = feedback;
+                };
+            })();
+            </script>
+
             <!-- Concluzie -->
             <section>
-                <span class="section-number">08 / În Loc de Concluzie</span>
+                <span class="section-number">09 / În Loc de Concluzie</span>
                 <h2>Flaubert și Bovarismul</h2>
 
                 <p>Emma Bovary își dorește o viață pe care a citit-o în romane. Își imaginează că adulterul va fi romantic, că dragostea va fi pasiune continuă, că viața poate fi ca în ficțiune. Această incapacitate de a accepta realitatea — și de a găsi frumusețe în ea — o distruge.</p>

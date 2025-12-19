@@ -620,10 +620,210 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <div class="section-header">
+                    <span class="section-number">09 / Simulator</span>
+                    <h2>Experimentează Saltul</h2>
+                </div>
+
+                <p>Kierkegaard ne învață că anxietatea deciziei e normală — e „amețeala libertății". Nu aștepta să dispară anxietatea; ea dispare doar după salt. Folosește acest simulator pentru a-ți analiza o decizie pe care o amâni.</p>
+
+                <div class="simulator-container">
+                    <div class="salt-input">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Ce decizie amâni?</h4>
+                        <textarea id="decizie-input" placeholder="Descrie o decizie pe care o tot amâni... (să accept acel job, să-i spun ce simt, să încep acel proiect, să renunț la acea relație...)"></textarea>
+                        <button onclick="analizeazaDecizia()">Analizează saltul</button>
+                    </div>
+
+                    <div id="salt-rezultat" class="salt-vizualizare"></div>
+
+                    <div class="stadii-existenta" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Testul Stadiilor</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">În ce stadiu existențial te afli predominant?</p>
+                        <div class="stadii-butoane">
+                            <button class="stadiu-btn" onclick="arastaStadiul('estetic')">Estetic</button>
+                            <button class="stadiu-btn" onclick="arastaStadiul('etic')">Etic</button>
+                            <button class="stadiu-btn" onclick="arastaStadiul('religios')">Religios</button>
+                        </div>
+                        <div id="stadiu-rezultat"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .salt-input textarea {
+                    width: 100%;
+                    min-height: 100px;
+                    padding: 1rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                    resize: vertical;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                    margin-bottom: 0.5rem;
+                    transition: opacity 0.3s;
+                }
+                .simulator-container button:hover { opacity: 0.85; }
+                .stadii-butoane button {
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    color: var(--text-muted);
+                }
+                .salt-vizualizare {
+                    display: none;
+                    margin-top: 1.5rem;
+                }
+                .salt-vizualizare.visible { display: block; }
+                .analiza-box {
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    padding: 1.5rem;
+                    margin-bottom: 1rem;
+                    border-radius: 4px;
+                }
+                .analiza-box h5 {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--accent);
+                    margin-bottom: 0.75rem;
+                }
+                .intrebare-salt {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 1rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    margin-bottom: 0.75rem;
+                }
+                .intrebare-salt .icon { font-size: 1.5rem; }
+                #stadiu-rezultat {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    display: none;
+                }
+                #stadiu-rezultat.visible { display: block; }
+            </style>
+
+            <script>
+            (function() {
+                window.analizeazaDecizia = function() {
+                    const decizie = document.getElementById('decizie-input').value.trim();
+                    if (!decizie) { alert('Descrie o decizie pe care o amâni.'); return; }
+
+                    const rezultat = document.getElementById('salt-rezultat');
+                    rezultat.innerHTML = `
+                        <div class="analiza-box">
+                            <h5>Decizia ta</h5>
+                            <p style="margin: 0; font-style: italic;">"${decizie}"</p>
+                        </div>
+
+                        <div class="analiza-box">
+                            <h5>Întrebări kierkegaardiene</h5>
+                            <div class="intrebare-salt">
+                                <span class="icon">⏳</span>
+                                <div>
+                                    <strong>Aștepți informații sau aștepți să dispară anxietatea?</strong>
+                                    <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text-muted);">Dacă aștepți informații concrete, amânarea poate fi justificată. Dar dacă aștepți să te simți „pregătit" — anxietatea nu va dispărea. Ea dispare doar după salt.</p>
+                                </div>
+                            </div>
+                            <div class="intrebare-salt">
+                                <span class="icon">🪞</span>
+                                <div>
+                                    <strong>Ce ai pierde dacă nu sari niciodată?</strong>
+                                    <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text-muted);">„A îndrăzni înseamnă a-ți pierde echilibrul pentru o clipă. A nu îndrăzni înseamnă a te pierde pe tine însuți."</p>
+                                </div>
+                            </div>
+                            <div class="intrebare-salt">
+                                <span class="icon">🌀</span>
+                                <div>
+                                    <strong>Această decizie te definește sau doar te afectează?</strong>
+                                    <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text-muted);">Tu te creezi prin alegerile tale. Fiecare amânare e tot o alegere — alegerea de a nu fi încă tu însuți.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="analiza-box" style="background: rgba(26, 79, 110, 0.05); border-color: var(--accent);">
+                            <h5>Provocarea lui Kierkegaard</h5>
+                            <p style="margin: 0; font-size: 1.1rem;">„Viața poate fi înțeleasă doar privind înapoi, dar trebuie trăită mergând înainte."</p>
+                            <p style="margin: 1rem 0 0; font-size: 0.9rem; color: var(--text-muted);">Nu vei avea niciodată toate răspunsurile înainte de salt. Adevărata întrebare: ești dispus să devii cine ai putea fi?</p>
+                        </div>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+
+                const stadiiInfo = {
+                    estetic: {
+                        titlu: 'Stadiul Estetic',
+                        descriere: 'Trăiești pentru plăcere, senzație, noutate. Fugi de plictiseală și de angajament.',
+                        semne: ['Căutarea constantă a noului', 'Evitarea angajamentelor pe termen lung', 'FOMO (frica de a pierde ceva)', 'Scrollul infinit, zapping-ul'],
+                        riscuri: 'Plăcerile se tocesc. La capăt rămâne vidul. „Don Juan-ismul" duce la disperare.',
+                        intrebare: 'Ce ar rămâne din tine dacă ai opri goana după stimulare?'
+                    },
+                    etic: {
+                        titlu: 'Stadiul Etic',
+                        descriere: 'Ai ales să te angajezi. Respecti reguli, îți asumi responsabilități, construiești.',
+                        semne: ['Loialitate față de principii', 'Respectarea promisiunilor', 'Viață structurată, cu sens', 'Identitate prin roluri (soț, părinte, profesionist)'],
+                        riscuri: 'Poți respecta toate regulile și totuși să simți că ceva esențial lipsește. Etica universală poate sufoca unicitatea ta.',
+                        intrebare: 'Există ceva dincolo de datorie? Ceva doar al tău, neimpus de nimeni?'
+                    },
+                    religios: {
+                        titlu: 'Stadiul Religios',
+                        descriere: 'Dincolo de reguli universale, ai o relație personală cu Absolutul — un angajament care te transcende.',
+                        semne: ['Angajament care depășește logica', 'Relație unică cu sensul ultim', 'Acceptarea paradoxului', 'Trăirea ca „cavaler al credinței"'],
+                        riscuri: 'Poate fi confundat cu fanatismul. Diferența: cavalerul credinței trăiește în lume, nu fuge de ea.',
+                        intrebare: 'Pentru ce ai sări chiar dacă nu ai nicio garanție?'
+                    }
+                };
+
+                window.arastaStadiul = function(stadiu) {
+                    const info = stadiiInfo[stadiu];
+                    const rezultat = document.getElementById('stadiu-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.75rem;">${info.titlu}</h5>
+                        <p style="margin-bottom: 1rem;">${info.descriere}</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Semne:</strong></p>
+                        <ul style="font-size: 0.9rem; margin-bottom: 1rem;">
+                            ${info.semne.map(s => '<li>' + s + '</li>').join('')}
+                        </ul>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Riscuri:</strong> ${info.riscuri}</p>
+                        <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); font-style: italic; color: var(--accent);">"${info.intrebare}"</p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <!-- CONCLUZIE -->
             <section>
                 <div class="section-header">
-                    <span class="section-number">09 / Concluzie</span>
+                    <span class="section-number">10 / Concluzie</span>
                     <h2>Cavalerul Credinței</h2>
                 </div>
 

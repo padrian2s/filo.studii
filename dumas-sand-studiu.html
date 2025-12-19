@@ -640,9 +640,316 @@
                 </blockquote>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <div class="section-header">
+                    <span class="section-number">09 / Simulator</span>
+                    <h2>Experimentează Romantismul</h2>
+                </div>
+
+                <p>Descoperă ce tip de romantic ești, compară stilurile celor doi titani și creează în spirit romantic.</p>
+
+                <div class="simulator-container" style="background: var(--secondary); border: 1px solid var(--border); padding: 2rem; margin: 2rem 0; border-radius: 4px;">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Ce Tip de Romantic Ești?</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Răspunde și descoperă dacă ești mai aproape de Dumas sau de Sand.</p>
+
+                        <div id="romantic-test"></div>
+
+                        <button onclick="calculeazaRomantic()" style="background: var(--accent); color: var(--primary); border: none; padding: 0.75rem 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 2px;">Descoperă tipul</button>
+                        <div id="romantic-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Compară Stilurile</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Citește pasajele și identifică autorul.</p>
+
+                        <div id="stil-test"></div>
+
+                        <button onclick="verificaStiluri()" style="background: var(--accent); color: var(--primary); border: none; padding: 0.75rem 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 2px;">Verifică răspunsurile</button>
+                        <div id="stil-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Creează o Scenă Romantică</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Alege elementele și generează începutul unei scene în stil romantic.</p>
+
+                        <div class="scena-controls" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="flex: 1; min-width: 150px;">
+                                <label style="font-size: 0.85rem;">Personaj:</label>
+                                <select id="personaj-select" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 0.25rem;">
+                                    <option value="muschetar">Un muschetar</option>
+                                    <option value="contesa">O contesă</option>
+                                    <option value="artist">Un artist sărac</option>
+                                    <option value="revolutionar">O revoluționară</option>
+                                </select>
+                            </div>
+                            <div style="flex: 1; min-width: 150px;">
+                                <label style="font-size: 0.85rem;">Loc:</label>
+                                <select id="loc-select" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 0.25rem;">
+                                    <option value="paris">Paris nocturn</option>
+                                    <option value="castel">Un castel în ruină</option>
+                                    <option value="nohant">O moșie rurală</option>
+                                    <option value="baricada">Pe baricade</option>
+                                </select>
+                            </div>
+                            <div style="flex: 1; min-width: 150px;">
+                                <label style="font-size: 0.85rem;">Situație:</label>
+                                <select id="situatie-select" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; margin-top: 0.25rem;">
+                                    <option value="duel">Înaintea unui duel</option>
+                                    <option value="iubire">O întâlnire secretă</option>
+                                    <option value="razbunare">Planificând răzbunarea</option>
+                                    <option value="libertate">Luptând pentru libertate</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button onclick="genereazaScena()" style="background: var(--accent); color: var(--primary); border: none; padding: 0.75rem 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 2px;">Generează scena</button>
+                        <div id="scena-rezultat" style="display: none; margin-top: 1rem; padding: 1.5rem; background: var(--primary); border: 1px solid var(--border); border-radius: 4px; font-style: italic;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Scrie-le O Scrisoare</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ce le-ai spune lui Dumas sau Sand dacă ai fi contemporan cu ei?</p>
+
+                        <textarea id="scrisoare-text" placeholder="Dragă Alexandre / Dragă George,..." style="width: 100%; height: 120px; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; font-size: 0.95rem;"></textarea>
+
+                        <button onclick="trimiteScrisoare()" style="margin-top: 1rem; background: var(--accent); color: var(--primary); border: none; padding: 0.75rem 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border-radius: 2px;">Trimite scrisoarea</button>
+                        <div id="scrisoare-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+            (function() {
+                // Test romantic
+                const intrebari = [
+                    { text: "Cum reacționezi la nedreptate?", a: "Acțiune imediată, spectaculoasă", b: "Reflecție, apoi scriere/artă" },
+                    { text: "Ce te atrage mai mult?", a: "Aventură și acțiune", b: "Introspecție și emoție" },
+                    { text: "Stilul tău de comunicare?", a: "Vivace, anecdotic, expansiv", b: "Profund, analitic, intim" },
+                    { text: "Ce cauți într-o relație?", a: "Pasiune intensă, efemeră", b: "Conexiune profundă, durabilă" },
+                    { text: "Cum îți exprimi idealurile?", a: "Prin fapte și exemple", b: "Prin cuvinte și idei" }
+                ];
+
+                const testContainer = document.getElementById('romantic-test');
+                intrebari.forEach((q, i) => {
+                    testContainer.innerHTML += `
+                        <div style="padding: 0.75rem; margin-bottom: 0.5rem; background: var(--primary); border: 1px solid var(--border); border-radius: 4px;">
+                            <div style="font-weight: bold; margin-bottom: 0.5rem;">${q.text}</div>
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <label style="flex: 1; min-width: 150px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; cursor: pointer;">
+                                    <input type="radio" name="rom${i}" value="a" style="margin-right: 0.5rem;">${q.a}
+                                </label>
+                                <label style="flex: 1; min-width: 150px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; cursor: pointer;">
+                                    <input type="radio" name="rom${i}" value="b" style="margin-right: 0.5rem;">${q.b}
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                window.calculeazaRomantic = function() {
+                    let scorA = 0, scorB = 0;
+                    intrebari.forEach((q, i) => {
+                        const sel = document.querySelector(`input[name="rom${i}"]:checked`);
+                        if (sel) {
+                            if (sel.value === 'a') scorA++;
+                            else scorB++;
+                        }
+                    });
+
+                    const rezultat = document.getElementById('romantic-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (scorA > scorB) {
+                        rezultat.style.background = 'rgba(196, 30, 58, 0.1)';
+                        rezultat.innerHTML = `
+                            <strong>Ești un Dumas!</strong><br><br>
+                            Ai spiritul aventuros, expansiv, plin de energie. Preferi acțiunea reflecției, spectacolul subtilității. Ca Dumas, probabil că ai mulți prieteni, râzi mult, și îți trăiești viața la intensitate maximă.<br><br>
+                            <em>„Unul pentru toți și toți pentru unul!"</em>
+                        `;
+                    } else if (scorB > scorA) {
+                        rezultat.style.background = 'rgba(196, 30, 58, 0.1)';
+                        rezultat.innerHTML = `
+                            <strong>Ești un Sand!</strong><br><br>
+                            Ai profunzime emoțională, cauți sensul în toate, ești atras de introspecție și de conexiuni autentice. Ca Sand, probabil că ți-ai pus întrebări despre cine ești cu adevărat și refuzi să te conformezi așteptărilor altora.<br><br>
+                            <em>„Există o singură fericire în viață: să iubești și să fii iubit."</em>
+                        `;
+                    } else {
+                        rezultat.style.background = 'rgba(196, 30, 58, 0.1)';
+                        rezultat.innerHTML = `
+                            <strong>Ești amândoi!</strong><br><br>
+                            Ai atât energia lui Dumas cât și profunzimea lui Sand. Ca prietenia lor, în tine coexistă acțiunea și reflecția, aventura și introspecția.<br><br>
+                            <em>Ai cele mai bune din ambele lumi.</em>
+                        `;
+                    }
+                };
+
+                // Compară stilurile
+                const pasaje = [
+                    {
+                        text: "„D'Artagnan rămase o clipă nemișcat, apoi se repezi cu săbiile în mână. Adversarul îl aștepta cu un zâmbet ironic pe buze."",
+                        autor: "dumas",
+                        explicatie: "Stilul lui Dumas: acțiune rapidă, dialog dramatic, suspans."
+                    },
+                    {
+                        text: "„Ea se întrebă pentru prima dată ce înseamnă să fii femeie într-o lume făcută de bărbați. Răspunsul nu veni în cuvinte, ci într-o hotărâre tăcută."",
+                        autor: "sand",
+                        explicatie: "Stilul lui Sand: introspecție, întrebări sociale, emoție profundă."
+                    },
+                    {
+                        text: "„Contele privi marea și văzu în ea imaginea propriei vieți — agitată, imprevizibilă, dar mereu îndreptată spre un țel."",
+                        autor: "dumas",
+                        explicatie: "Dumas folosește metafore grandioase și personaje cu scop clar."
+                    },
+                    {
+                        text: "„Iubirea, spunea ea, nu e un contract. E o grădină care cere îngrijire zilnică sau moare."",
+                        autor: "sand",
+                        explicatie: "Sand filosofează despre iubire, folosește imagini din natură."
+                    }
+                ];
+
+                const stilContainer = document.getElementById('stil-test');
+                pasaje.forEach((p, i) => {
+                    stilContainer.innerHTML += `
+                        <div style="padding: 1rem; margin-bottom: 0.75rem; background: var(--primary); border: 1px solid var(--border); border-radius: 4px;">
+                            <div style="font-style: italic; margin-bottom: 0.75rem;">${p.text}</div>
+                            <div style="display: flex; gap: 1rem;">
+                                <label style="padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 4px; cursor: pointer;">
+                                    <input type="radio" name="stil${i}" value="dumas"> Dumas
+                                </label>
+                                <label style="padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 4px; cursor: pointer;">
+                                    <input type="radio" name="stil${i}" value="sand"> Sand
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                window.verificaStiluri = function() {
+                    let corecte = 0;
+                    let explicatii = [];
+
+                    pasaje.forEach((p, i) => {
+                        const sel = document.querySelector(`input[name="stil${i}"]:checked`);
+                        if (sel && sel.value === p.autor) {
+                            corecte++;
+                        } else {
+                            explicatii.push(`Pasajul ${i + 1}: ${p.explicatie}`);
+                        }
+                    });
+
+                    const rezultat = document.getElementById('stil-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+                    rezultat.style.background = 'rgba(196, 30, 58, 0.1)';
+
+                    if (corecte === pasaje.length) {
+                        rezultat.innerHTML = `<strong>Perfect!</strong> Cunoști bine stilurile celor doi.<br><br>Dumas = acțiune, dialog, spectacol<br>Sand = introspecție, filosofie, emoție`;
+                    } else {
+                        rezultat.innerHTML = `<strong>${corecte}/${pasaje.length} corecte.</strong><br><br>` + explicatii.join('<br>');
+                    }
+                };
+
+                // Generează scenă
+                const scene = {
+                    muschetar: {
+                        paris: "Luna se ridica deasupra Parisului când tânărul muschetar ieși din umbra unei străzi înguste. Mâna îi sta pe gardă, ochii cercetau întunericul.",
+                        castel: "Zidurile prăbușite ale castelului se ridicau ca niște fantome din vremuri apuse. Muschetarul simți că istoria îl privește.",
+                        nohant: "Drumul plin de praf ducea spre o moșie liniștită. Muschetarul își scoase pălăria — aici săbiile nu aveau ce căuta.",
+                        baricada: "Fumul prafului de pușcă încă plutea în aer. Muschetarul știa: aceasta nu era o luptă pentru rege, ci pentru popor."
+                    },
+                    contesa: {
+                        paris: "Trăsura o purta prin Parisul nocturn, dar gândurile ei erau departe — în amintirea unei iubiri imposibile.",
+                        castel: "Castelul fusese al familiei ei. Acum stătea în ruine, ca și visele cu care crescuse.",
+                        nohant: "La Nohant găsise liniștea. Aici putea fi ea însăși, fără măștile pe care Parisul le cerea.",
+                        baricada: "Nimeni nu se aștepta să o vadă pe baricade. Dar contesa învățase că libertatea nu cunoaște rang."
+                    },
+                    artist: {
+                        paris: "Mansarda lui dădea spre acoperișurile Parisului. Sărăcia era compania lui constantă, dar și inspirația.",
+                        castel: "Pictase ruinele de atâtea ori încât le știa mai bine decât pe sine.",
+                        nohant: "Fusese invitat să picteze portretul doamnei casei. Dar adevărata artă era în sufletul ei.",
+                        baricada: "Creionul lui devenise armă. Fiecare schiță era un manifest."
+                    },
+                    revolutionar: {
+                        paris: "Parisul fermenta. Ea simțea revoluția în aer ca parfumul primăverii — inevitabil.",
+                        castel: "În subsolurile castelului părăsit, tipăreau manifestele. Cuvintele erau gloanțe.",
+                        nohant: "Chiar și aici, departe de capitală, ideile prindeau rădăcini. Țăranii ascultau.",
+                        baricada: "Aceasta era clipa pentru care trăise. Steagul în mână, viitorul în față."
+                    }
+                };
+
+                window.genereazaScena = function() {
+                    const personaj = document.getElementById('personaj-select').value;
+                    const loc = document.getElementById('loc-select').value;
+                    const situatie = document.getElementById('situatie-select').value;
+
+                    const intro = scene[personaj][loc];
+
+                    const continuari = {
+                        duel: "În zori avea să lupte. Victoria sau moartea — nu exista cale de mijloc.",
+                        iubire: "Inima îi bătea mai tare. Întâlnirea era interzisă, dar iubirea nu cunoaște interdicții.",
+                        razbunare: "Ani de așteptare ajungeau la final. Răzbunarea va fi dulce — sau distrugătoare.",
+                        libertate: "Pentru libertate ar fi dat totul. Unele idealuri merită orice sacrificiu."
+                    };
+
+                    const rezultat = document.getElementById('scena-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.innerHTML = `${intro}<br><br>${continuari[situatie]}<br><br><span style="font-style: normal; font-size: 0.85rem; color: var(--text-muted);">— În spiritul lui Dumas și Sand</span>`;
+                };
+
+                // Scrisoare
+                const raspunsuri = {
+                    dumas: [
+                        "Prietene drag, scrisoarea ta m-a făcut să râd și să plâng deopotrivă! Viața e prea scurtă pentru tristețe — hai să bem un vin și să povestim!",
+                        "Ah, ce bucurie să primesc vești de la tine! Tocmai termin un capitol în care d'Artagnan face o nebunie — cam ca noi în tinerețe, nu-i așa?",
+                        "Scrisoarea ta a ajuns în cel mai potrivit moment. Eram tocmai în criză de inspirație — acum am material pentru trei romane!"
+                    ],
+                    sand: [
+                        "Dragă prieten, cuvintele tale m-au atins adânc. În singurătatea de la Nohant, știu că există suflete înrudite.",
+                        "Scrisoarea ta ridică întrebări pe care și eu mi le pun zilnic. Ce înseamnă să fii liber? Să iubești? Să trăiești autentic? Caută răspunsurile în tine.",
+                        "Mulțumesc pentru onestitate. În lumea noastră de măști și convenții, sinceritatea e cea mai mare virtute."
+                    ]
+                };
+
+                window.trimiteScrisoare = function() {
+                    const text = document.getElementById('scrisoare-text').value.toLowerCase();
+                    const rezultat = document.getElementById('scrisoare-rezultat');
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1.5rem';
+                    rezultat.style.background = 'var(--primary)';
+                    rezultat.style.border = '1px solid var(--border)';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (!text.trim()) {
+                        rezultat.innerHTML = '<em>Scrie o scrisoare...</em>';
+                        return;
+                    }
+
+                    const pentruDumas = text.includes('alexandre') || text.includes('dumas');
+                    const pentruSand = text.includes('george') || text.includes('sand');
+
+                    let raspuns;
+                    if (pentruDumas && !pentruSand) {
+                        raspuns = raspunsuri.dumas[Math.floor(Math.random() * raspunsuri.dumas.length)];
+                        rezultat.innerHTML = `<strong>Răspunsul lui Dumas:</strong><br><br><em>"${raspuns}"</em><br><br>— Alexandre Dumas`;
+                    } else if (pentruSand && !pentruDumas) {
+                        raspuns = raspunsuri.sand[Math.floor(Math.random() * raspunsuri.sand.length)];
+                        rezultat.innerHTML = `<strong>Răspunsul lui Sand:</strong><br><br><em>"${raspuns}"</em><br><br>— George Sand`;
+                    } else {
+                        rezultat.innerHTML = `<strong>Amândoi răspund:</strong><br><br><em>Dumas:</em> "${raspunsuri.dumas[0]}"<br><br><em>Sand:</em> "${raspunsuri.sand[0]}"`;
+                    }
+                };
+            })();
+            </script>
+
             <section>
                 <div class="section-header">
-                    <span class="section-number">09 / Epilog</span>
+                    <span class="section-number">10 / Epilog</span>
                     <h2>O prietenie pentru veșnicie</h2>
                 </div>
 

@@ -191,8 +191,231 @@
                 <p>Scrisorile combină rigoarea logică cu ironia devastatoare. Au influențat proza franceză pentru secole.</p>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Experimentează Pariul</h2>
+
+                <p>Pascal ne propune cel mai celebru argument pragmatic pentru credință: Pariul lui Pascal. Nu e despre dovezi — e despre riscuri și recompense. Simulează-l tu însuți.</p>
+
+                <div class="simulator-container">
+                    <div class="pariu-vizualizare">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Matricea Deciziei</h4>
+
+                        <div class="matrice-pariu">
+                            <div class="matrice-header">
+                                <div class="cell header-corner"></div>
+                                <div class="cell header-col">Dumnezeu EXISTĂ</div>
+                                <div class="cell header-col">Dumnezeu NU există</div>
+                            </div>
+                            <div class="matrice-row">
+                                <div class="cell header-row">PARIEZ că există<br>(cred)</div>
+                                <div class="cell rezultat pozitiv" onclick="explica('cred-exista')">∞ CÂȘTIG<br><small>Viață veșnică</small></div>
+                                <div class="cell rezultat neutru" onclick="explica('cred-nu-exista')">~ PIERDERE MICĂ<br><small>Viață morală, fără recompensă</small></div>
+                            </div>
+                            <div class="matrice-row">
+                                <div class="cell header-row">PARIEZ că NU există<br>(nu cred)</div>
+                                <div class="cell rezultat negativ" onclick="explica('nu-cred-exista')">∞ PIERDERE<br><small>Damnare veșnică</small></div>
+                                <div class="cell rezultat neutru" onclick="explica('nu-cred-nu-exista')">~ CÂȘTIG MIC<br><small>Viață „liberă", fără cost</small></div>
+                            </div>
+                        </div>
+
+                        <div id="explicatie-pariu" class="explicatie-pariu"></div>
+                    </div>
+
+                    <div class="calcul-pariu" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Calculul lui Pascal</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Chiar dacă șansa ca Dumnezeu să existe e mică...</p>
+
+                        <div class="slider-container">
+                            <label>Probabilitatea ca Dumnezeu să existe:</label>
+                            <input type="range" id="prob-dumnezeu" min="1" max="99" value="50" oninput="calculeazaValoare()">
+                            <span id="prob-display">50%</span>
+                        </div>
+
+                        <div id="rezultat-calcul" class="rezultat-calcul"></div>
+                    </div>
+                </div>
+
+                <div class="concept-box" style="margin-top: 2rem;">
+                    <h4>Obiecții la Pariu</h4>
+                    <p>Pariul nu e perfect. Gândește-te la aceste contra-argumente:</p>
+                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                        <li><strong>Care Dumnezeu?</strong> Dacă pariezi pe zeul creștin și cel islamic e adevărat?</li>
+                        <li><strong>Credința e alegere?</strong> Poți decide să crezi ceva doar pentru că e avantajos?</li>
+                        <li><strong>Dumnezeu știe.</strong> Un Dumnezeu atotștiutor ar vedea prin pariul cinic.</li>
+                        <li><strong>Costul e real.</strong> O viață de practici religioase nu e „pierdere mică" pentru necredincioși.</li>
+                    </ul>
+                    <p style="margin-bottom: 0;">Pascal știa aceste obiecții. Pariul nu e demonstrație — e invitație la reflecție.</p>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .matrice-pariu {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+                    background: var(--border);
+                    border-radius: 4px;
+                    overflow: hidden;
+                }
+                .matrice-header, .matrice-row {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    gap: 2px;
+                }
+                .cell {
+                    padding: 1rem;
+                    background: var(--primary);
+                    text-align: center;
+                    font-size: 0.85rem;
+                }
+                .header-corner {
+                    background: var(--secondary);
+                }
+                .header-col, .header-row {
+                    background: var(--secondary);
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .rezultat {
+                    cursor: pointer;
+                    transition: all 0.2s;
+                }
+                .rezultat:hover {
+                    transform: scale(1.02);
+                }
+                .rezultat small {
+                    display: block;
+                    font-size: 0.7rem;
+                    color: var(--text-muted);
+                    margin-top: 0.25rem;
+                }
+                .pozitiv {
+                    background: rgba(76, 175, 80, 0.1);
+                    color: #4CAF50;
+                    font-weight: bold;
+                }
+                .negativ {
+                    background: rgba(244, 67, 54, 0.1);
+                    color: #F44336;
+                    font-weight: bold;
+                }
+                .neutru {
+                    background: var(--primary);
+                    color: var(--text-muted);
+                }
+                .explicatie-pariu {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                .explicatie-pariu.visible {
+                    display: block;
+                    animation: fadeIn 0.3s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                .slider-container {
+                    margin: 1rem 0;
+                }
+                .slider-container label {
+                    display: block;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    color: var(--text-muted);
+                    margin-bottom: 0.5rem;
+                }
+                .slider-container input[type="range"] {
+                    width: 100%;
+                    accent-color: var(--accent);
+                }
+                .slider-container span {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 1.2rem;
+                    color: var(--accent);
+                    font-weight: 500;
+                }
+                .rezultat-calcul {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                }
+            </style>
+
+            <script>
+            (function() {
+                const explicatii = {
+                    'cred-exista': {
+                        titlu: "Cel mai bun caz",
+                        text: "Ai pariat corect. Câștigi totul — viață veșnică, fericire infinită. Orice ai „pierdut" în viață (plăceri renunțate, timp în rugăciune) e nimic comparativ cu infinitul."
+                    },
+                    'cred-nu-exista': {
+                        titlu: "Pierdere mică",
+                        text: "Ai pariat greșit, dar ce-ai pierdut? O viață trăită moral, cu speranță și sens. Pascal ar spune: nu e o viață rea, chiar fără recompensă transcendentă."
+                    },
+                    'nu-cred-exista': {
+                        titlu: "Cel mai rău caz",
+                        text: "Ai pariat greșit. Pierzi totul — damnare veșnică, suferință infinită. Niciun câștig finit nu poate compensa o pierdere infinită."
+                    },
+                    'nu-cred-nu-exista': {
+                        titlu: "Câștig mic",
+                        text: "Ai pariat corect, dar ce-ai câștigat? Libertatea de a face ce vrei? Câteva plăceri? Un câștig finit, mărunt, care dispare la moarte oricum."
+                    }
+                };
+
+                window.explica = function(key) {
+                    const e = explicatii[key];
+                    const container = document.getElementById('explicatie-pariu');
+                    container.innerHTML = `<strong>${e.titlu}:</strong> ${e.text}`;
+                    container.classList.add('visible');
+                };
+
+                window.calculeazaValoare = function() {
+                    const prob = parseInt(document.getElementById('prob-dumnezeu').value);
+                    document.getElementById('prob-display').textContent = prob + '%';
+
+                    const rezultat = document.getElementById('rezultat-calcul');
+
+                    // Valoare așteptată simplificată
+                    const castigCred = prob * Infinity; // Simbolic
+                    const pierdereCred = (100 - prob) * 10; // Valoare arbitrară pentru "costul" credinței
+                    const castigNuCred = (100 - prob) * 5;
+                    const pierdereNuCred = prob * Infinity;
+
+                    let html = `<strong>Cu ${prob}% șansă că Dumnezeu există:</strong><br><br>`;
+
+                    if (prob > 0) {
+                        html += `<strong>Dacă crezi:</strong> ${prob}% × ∞ (viață veșnică) − ${100-prob}% × costul mic = <span style="color: #4CAF50;">∞ valoare așteptată</span><br><br>`;
+                        html += `<strong>Dacă nu crezi:</strong> ${100-prob}% × câștig mic − ${prob}% × ∞ (damnare) = <span style="color: #F44336;">−∞ valoare așteptată</span><br><br>`;
+                        html += `<em>„Dacă câștigi, câștigi totul. Dacă pierzi, nu pierzi nimic. Pariază deci că există, fără ezitare." — Pascal</em>`;
+                    }
+
+                    rezultat.innerHTML = html;
+                };
+
+                calculeazaValoare();
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Moștenirea</span>
+                <span class="section-number">10 / Moștenirea</span>
                 <h2>Ecouri în Posteritate</h2>
 
                 <h3>În Filozofie</h3>

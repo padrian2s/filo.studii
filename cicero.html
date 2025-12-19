@@ -223,8 +223,370 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Arta Oratoriei și Eticii</h2>
+
+                <p>Experimentează structura discursului ciceronian și testează-ți judecata în dileme etice.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Construiește un Discurs</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Structura clasică a oratoriei: exordium, narratio, confirmatio, refutatio, peroratio.</p>
+
+                        <div class="discurs-tema" style="margin-bottom: 1rem;">
+                            <label style="font-size: 0.85rem;">Tema discursului:</label>
+                            <select id="tema-discurs" style="width: 100%; padding: 0.5rem; margin-top: 0.5rem; border: 1px solid var(--border); border-radius: 4px;">
+                                <option value="libertate">Apărarea libertății de expresie</option>
+                                <option value="coruptie">Împotriva corupției</option>
+                                <option value="educatie">Pentru educația clasică</option>
+                                <option value="custom">Temă proprie...</option>
+                            </select>
+                            <input type="text" id="tema-custom" placeholder="Scrie tema ta..." style="display: none; width: 100%; padding: 0.5rem; margin-top: 0.5rem; border: 1px solid var(--border); border-radius: 4px;">
+                        </div>
+
+                        <div id="structura-discurs"></div>
+
+                        <button onclick="genereazaStructura()">Generează structura</button>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Utilul vs Onestul</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Cicero spunea că niciodată nu există conflict real între util și onest. Testează-ți judecata.</p>
+
+                        <div id="dileme-container"></div>
+
+                        <div id="dilema-rezultat" style="display: none; margin-top: 1.5rem; padding: 1rem; border-radius: 4px;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Cele Patru Virtuți Cardinale</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Evaluează-ți echilibrul între cele patru virtuți fundamentale.</p>
+
+                        <div class="virtuti-slider">
+                            <div class="virtute-item">
+                                <label><strong>Înțelepciune</strong> (sapientia) — cunoașterea adevărului</label>
+                                <input type="range" id="sapientia" min="1" max="10" value="5">
+                                <span class="virtute-val">5</span>
+                            </div>
+                            <div class="virtute-item">
+                                <label><strong>Dreptate</strong> (iustitia) — a da fiecăruia ce i se cuvine</label>
+                                <input type="range" id="iustitia" min="1" max="10" value="5">
+                                <span class="virtute-val">5</span>
+                            </div>
+                            <div class="virtute-item">
+                                <label><strong>Curaj</strong> (fortitudo) — fermitatea în fața pericolului</label>
+                                <input type="range" id="fortitudo" min="1" max="10" value="5">
+                                <span class="virtute-val">5</span>
+                            </div>
+                            <div class="virtute-item">
+                                <label><strong>Cumpătare</strong> (temperantia) — moderația dorințelor</label>
+                                <input type="range" id="temperantia" min="1" max="10" value="5">
+                                <span class="virtute-val">5</span>
+                            </div>
+                        </div>
+
+                        <button onclick="analizeazaVirtuti()">Analizează profilul</button>
+                        <div id="virtuti-rezultat" style="margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                }
+                .structura-parte {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    border-radius: 0 4px 4px 0;
+                }
+                .structura-parte h5 {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--accent);
+                    margin-bottom: 0.5rem;
+                }
+                .dilema-item {
+                    padding: 1.5rem;
+                    margin-bottom: 1rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .dilema-text {
+                    font-style: italic;
+                    margin-bottom: 1rem;
+                }
+                .dilema-optiuni button {
+                    background: transparent !important;
+                    border: 1px solid var(--border) !important;
+                    color: var(--text) !important;
+                    margin-bottom: 0.5rem;
+                    width: 100%;
+                    text-align: left;
+                    text-transform: none !important;
+                    letter-spacing: normal !important;
+                    font-size: 0.9rem !important;
+                }
+                .dilema-optiuni button:hover {
+                    border-color: var(--accent) !important;
+                }
+                .dilema-optiuni button.selected {
+                    border-color: var(--accent) !important;
+                    background: rgba(196, 30, 58, 0.1) !important;
+                }
+                .virtute-item {
+                    margin-bottom: 1rem;
+                }
+                .virtute-item label {
+                    display: block;
+                    font-size: 0.85rem;
+                    margin-bottom: 0.5rem;
+                }
+                .virtute-item input[type="range"] {
+                    width: calc(100% - 40px);
+                    vertical-align: middle;
+                }
+                .virtute-val {
+                    display: inline-block;
+                    width: 30px;
+                    text-align: center;
+                    font-weight: bold;
+                    color: var(--accent);
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Structura discursului
+                document.getElementById('tema-discurs').addEventListener('change', function() {
+                    document.getElementById('tema-custom').style.display = this.value === 'custom' ? 'block' : 'none';
+                });
+
+                const structuri = {
+                    libertate: {
+                        exordium: "Cetățeni! În vremuri când vocile celor curajoși sunt reduse la tăcere, când adevărul e numit pericol...",
+                        narratio: "Faptele sunt cunoscute: legea propusă ar pedepsi orice critică a guvernării. În ultimele luni, trei oratori au fost arestați...",
+                        confirmatio: "1) Libertatea de expresie e fundament al republicii — fără ea, tirania e inevitabilă. 2) Istoria ne arată că statele care au suprimat critica au căzut în decadență. 3) Chiar și greșelile trebuie combătute prin argumente, nu prin forță.",
+                        refutatio: "Se va spune că ordinea publică cere limite. Răspund: ordinea adevărată vine din consimțământ, nu din teamă. Tăcerea forțată nu e pace — e așteptarea furtunii.",
+                        peroratio: "Vă implor, în numele strămoșilor care au construit această republică: nu lăsați teama să vă fure vocea! Căci odată pierdută, libertatea nu se mai recâștigă decât cu sânge."
+                    },
+                    coruptie: {
+                        exordium: "Până când, până când veți abuza de răbdarea noastră? Corupția care roade statul nu mai poate fi tolerată!",
+                        narratio: "Iată faptele: sume uriașe au dispărut din trezorerie. Contractele publice au fost acordate prietenilor. Martori au fost intimidați...",
+                        confirmatio: "1) Legile există și au fost încălcate flagrant. 2) Dovezile sunt clare — documente, mărturii, urma banilor. 3) Dacă nu acționăm, mesajul e că hoția plătește.",
+                        refutatio: "Se va spune că acuzatul a servit republica. Dar serviciul nu e permis de furt. Meritul trecut nu anulează crima prezentă.",
+                        peroratio: "În mâinile voastre stă dreptatea. Viitorul ne privește. Ce veți alege: să fiți judecătorii care au salvat republica, sau cei care au lăsat-o să putrezească?"
+                    },
+                    educatie: {
+                        exordium: "Ce e omul fără cultură? Un barbar. Ce e statul fără cetățeni educați? O turmă.",
+                        narratio: "Observăm declinul: tinerii nu mai citesc pe clasici, nu mai cunosc istoria, nu mai știu să argumenteze. Școlile predau utilul, nu frumosul.",
+                        confirmatio: "1) Educația clasică formează caracterul, nu doar dă informații. 2) Istoria ne învață să nu repetăm greșelile. 3) Retorica ne face capabili de dialog civic.",
+                        refutatio: "Se va spune că lumea modernă cere deprinderi practice. Răspund: nimic nu e mai practic decât să gândești clar, să vorbești convingător, să judeci drept.",
+                        peroratio: "Nu lăsați cultura strămoșilor să moară! Investiți în educație — e singura investiție care nu poate fi furată, singura avere care crește când e împărțită."
+                    }
+                };
+
+                window.genereazaStructura = function() {
+                    const tema = document.getElementById('tema-discurs').value;
+                    const container = document.getElementById('structura-discurs');
+
+                    let structura;
+                    if (tema === 'custom') {
+                        const temaText = document.getElementById('tema-custom').value || 'tema ta';
+                        structura = {
+                            exordium: `[Captează atenția! Începe cu o întrebare retorică, o afirmație surprinzătoare, sau un apel la valori comune despre "${temaText}"]`,
+                            narratio: `[Prezintă faptele obiectiv. Ce s-a întâmplat? Care e contextul? Fii clar și concis.]`,
+                            confirmatio: `[Argumentele tale. Dă cel puțin 3 motive. Folosește exemple, dovezi, logică.]`,
+                            refutatio: `[Anticipează contra-argumentele și răspunde-le. "Se va spune că... dar răspund că..."]`,
+                            peroratio: `[Final emoțional! Rezumă, apelează la sentimente, cheamă la acțiune. Lasă-i să simtă, nu doar să înțeleagă.]`
+                        };
+                    } else {
+                        structura = structuri[tema];
+                    }
+
+                    container.innerHTML = `
+                        <div class="structura-parte">
+                            <h5>I. Exordium (Introducere)</h5>
+                            <p>${structura.exordium}</p>
+                        </div>
+                        <div class="structura-parte">
+                            <h5>II. Narratio (Expunerea faptelor)</h5>
+                            <p>${structura.narratio}</p>
+                        </div>
+                        <div class="structura-parte">
+                            <h5>III. Confirmatio (Argumentele)</h5>
+                            <p>${structura.confirmatio}</p>
+                        </div>
+                        <div class="structura-parte">
+                            <h5>IV. Refutatio (Contra-argumente)</h5>
+                            <p>${structura.refutatio}</p>
+                        </div>
+                        <div class="structura-parte">
+                            <h5>V. Peroratio (Concluzie emoțională)</h5>
+                            <p>${structura.peroratio}</p>
+                        </div>
+                    `;
+                };
+
+                // Dileme etice
+                const dileme = [
+                    {
+                        text: "Ești negustor. Ai cumpărat grâu ieftin știind că vine foamete. Poți vinde la preț normal (pierzi profit) sau la preț mare (exploatezi disperarea).",
+                        optiuni: [
+                            { text: "Vând la preț mare — e cerere și ofertă", corect: false },
+                            { text: "Vând la preț normal — onestitatea primează", corect: true }
+                        ],
+                        explicatie: "Cicero condamnă explicit acest exemplu în De officiis. Profitul din suferința altora nu e util real — distruge încrederea și reputația."
+                    },
+                    {
+                        text: "Poți obține o funcție importantă prin linguşire și promisiuni false. Odată în funcție, ai putea face bine real.",
+                        optiuni: [
+                            { text: "Scopul justifică mijloacele — accept compromisul", corect: false },
+                            { text: "Refuz — integritatea nu e negociabilă", corect: true }
+                        ],
+                        explicatie: "Pentru Cicero, mijloacele corupte corup și scopurile. Nu poți face bine real pornind de la fals — vei fi mereu șantajabil."
+                    },
+                    {
+                        text: "Un prieten ți-a încredințat un secret. Aflii că secretul ascunde o nedreptate făcută altcuiva. Ce faci?",
+                        optiuni: [
+                            { text: "Păstrez secretul — loialitatea față de prieten e sacră", corect: false },
+                            { text: "Dezvălui — dreptatea e mai importantă decât prietenia", corect: true }
+                        ],
+                        explicatie: "Cicero în De amicitia: prietenia adevărată nu cere complicitate la nedreptate. Prietenul care ți-ar cere asta nu e prieten."
+                    }
+                ];
+
+                const dilemeContainer = document.getElementById('dileme-container');
+                let raspunsuri = {};
+
+                dileme.forEach((d, i) => {
+                    dilemeContainer.innerHTML += `
+                        <div class="dilema-item">
+                            <div class="dilema-text">${d.text}</div>
+                            <div class="dilema-optiuni" id="dilema-opt-${i}">
+                                ${d.optiuni.map((o, j) => `
+                                    <button onclick="selecteazaDilema(${i}, ${j}, ${o.corect})">${o.text}</button>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                dilemeContainer.innerHTML += `<button onclick="verificaDileme()">Vezi rezultatele</button>`;
+
+                window.selecteazaDilema = function(dilemaNr, optiuneNr, corect) {
+                    raspunsuri[dilemaNr] = corect;
+                    const btns = document.querySelectorAll(`#dilema-opt-${dilemaNr} button`);
+                    btns.forEach((btn, i) => {
+                        btn.classList.toggle('selected', i === optiuneNr);
+                    });
+                };
+
+                window.verificaDileme = function() {
+                    const rezultat = document.getElementById('dilema-rezultat');
+                    rezultat.style.display = 'block';
+
+                    let corecte = Object.values(raspunsuri).filter(v => v).length;
+                    let total = Object.keys(raspunsuri).length;
+
+                    if (total < dileme.length) {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        rezultat.innerHTML = 'Răspunde la toate dilemele.';
+                        return;
+                    }
+
+                    let html = `<strong>${corecte}/${total} răspunsuri ciceroniene</strong><br><br>`;
+
+                    dileme.forEach((d, i) => {
+                        html += `<p style="margin-bottom: 0.75rem;"><strong>${raspunsuri[i] ? '✓' : '✗'}</strong> ${d.explicatie}</p>`;
+                    });
+
+                    if (corecte === total) {
+                        rezultat.style.background = 'rgba(76, 175, 80, 0.1)';
+                        html += `<br><em>"Orice lucru care pare util și nu e onest, aduce cu sine mai multă pagubă decât folos." — Cicero</em>`;
+                    } else {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        html += `<br><em>Cicero ne avertizează: utilul aparent, când e nedrept, nu e util real — e otravă lentă.</em>`;
+                    }
+
+                    rezultat.innerHTML = html;
+                };
+
+                // Virtuți
+                document.querySelectorAll('.virtute-item input').forEach(input => {
+                    input.addEventListener('input', function() {
+                        this.nextElementSibling.textContent = this.value;
+                    });
+                });
+
+                window.analizeazaVirtuti = function() {
+                    const s = parseInt(document.getElementById('sapientia').value);
+                    const i = parseInt(document.getElementById('iustitia').value);
+                    const f = parseInt(document.getElementById('fortitudo').value);
+                    const t = parseInt(document.getElementById('temperantia').value);
+
+                    const rezultat = document.getElementById('virtuti-rezultat');
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'rgba(196, 30, 58, 0.1)';
+                    rezultat.style.borderRadius = '4px';
+
+                    const max = Math.max(s, i, f, t);
+                    const min = Math.min(s, i, f, t);
+
+                    let profil = '';
+                    if (s === max) profil = 'Filozoful — cauți adevărul și cunoașterea.';
+                    else if (i === max) profil = 'Judecătorul — îți pasă de dreptate și echitate.';
+                    else if (f === max) profil = 'Războinicul — ai curaj să înfrunți adversitatea.';
+                    else if (t === max) profil = 'Înțeleptul — știi să te controlezi și să aștepți.';
+
+                    let sfat = '';
+                    if (s === min) sfat = 'Cultivă <strong>înțelepciunea</strong> — citește, reflectează, caută adevărul.';
+                    else if (i === min) sfat = 'Cultivă <strong>dreptatea</strong> — gândește-te la ceilalți, fii corect.';
+                    else if (f === min) sfat = 'Cultivă <strong>curajul</strong> — înfruntă fricile, asumă riscuri.';
+                    else if (t === min) sfat = 'Cultivă <strong>cumpătarea</strong> — moderează dorințele, fii răbdător.';
+
+                    const echilibru = max - min;
+                    let diagnostic = '';
+                    if (echilibru <= 2) diagnostic = 'Profilul tău e echilibrat — virtuțile sunt în armonie.';
+                    else if (echilibru <= 5) diagnostic = 'Ai zone de dezvoltat — lucrează la virtuțile mai slabe.';
+                    else diagnostic = 'Dezechilibru semnificativ — o virtute dominantă poate deveni viciu.';
+
+                    rezultat.innerHTML = `
+                        <strong>Profilul tău:</strong> ${profil}<br><br>
+                        <strong>Sfatul lui Cicero:</strong> ${sfat}<br><br>
+                        <strong>Diagnostic:</strong> ${diagnostic}<br><br>
+                        <em>"Virtutea stă în echilibru. Curajul fără înțelepciune e nesăbuință. Dreptatea fără cumpătare e cruzime."</em>
+                    `;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Concluzie</span>
+                <span class="section-number">10 / Concluzie</span>
                 <h2>Vocea Din Forum</h2>
 
                 <p>Cicero a trăit într-o epocă de criză — și a murit în ea. A văzut Republica degenerând în dictatură, a văzut violența înlocuind dezbaterea, a văzut principiile călcate în picioare. Și totuși a continuat să vorbească.</p>

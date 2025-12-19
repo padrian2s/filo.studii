@@ -94,8 +94,271 @@
                     <p>Observă o plantă sau un fenomen natural fără să-l analizezi imediat. Lasă-l să „vorbească". Ce îți comunică forma, culoarea, mișcarea? Goethe numea aceasta „contemplație activă" (anschauende Urteilskraft).</p>
                 </div>
             </section>
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">06 / Simulator</span>
+                <h2>Experimentează Gândirea lui Goethe</h2>
+
+                <p>Testează pactul faustian, practică contemplarea goetheană și explorează Bildung.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Pactul Faustian</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">"Dacă vreodată voi spune clipei: Oprește-te! Ești atât de frumoasă!" — Ce ai sacrifica pentru a obține ce vrei cel mai mult?</p>
+
+                        <div class="faust-input" style="margin-bottom: 1rem;">
+                            <label style="font-size: 0.85rem;">Ce vrei cel mai mult?</label>
+                            <input type="text" id="faust-dorinta" placeholder="Ex: cunoaștere, dragoste, putere, succes, înțelegere..." style="width: 100%; padding: 0.75rem; margin-top: 0.5rem; border: 1px solid var(--border); border-radius: 4px;">
+                        </div>
+
+                        <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Ce ai fi dispus să sacrifici?</p>
+                        <div class="sacrificii">
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="sac1"> Timpul liber</label>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="sac2"> Relațiile personale</label>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="sac3"> Sănătatea</label>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="sac4"> Liniștea sufletească</label>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="sac5"> Principiile morale</label>
+                            <label style="display: block; margin-bottom: 0.5rem;"><input type="checkbox" id="sac6"> Sufletul (tot ce sunt)</label>
+                        </div>
+
+                        <button onclick="analizeazaPact()">Analizează pactul</button>
+                        <div id="pact-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Contemplarea Goetheană</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Goethe practica "contemplarea activă" — privind ceva cu atenție până începe să "vorbească". Încearcă acum.</p>
+
+                        <div class="contemplare-obiect" style="text-align: center; padding: 2rem; background: var(--primary); border-radius: 4px; margin-bottom: 1rem;">
+                            <div id="obiect-contemplare" style="font-size: 4rem;"></div>
+                            <button onclick="schimbaObiect()" style="margin-top: 1rem; background: transparent; border: 1px solid var(--border); color: var(--text);">Alt obiect</button>
+                        </div>
+
+                        <div class="contemplare-intrebari">
+                            <p style="font-size: 0.85rem; font-style: italic; margin-bottom: 0.5rem;">Privește obiectul 30 de secunde. Apoi răspunde:</p>
+                            <textarea id="contemplare-observatii" placeholder="Ce observi? Formă, culoare, dinamică? Ce îți comunică? Ce emoție trezește?" style="width: 100%; height: 80px; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit;"></textarea>
+                        </div>
+
+                        <button onclick="reflectaContemplare()">Reflectează</button>
+                        <div id="contemplare-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Bildung — Formarea de Sine</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Bildung e ideea că ne formăm prin experiențe, lectură, reflecție. Evaluează-ți traseul.</p>
+
+                        <div class="bildung-areas">
+                            <div class="bildung-item">
+                                <label><strong>Cunoaștere</strong> — cât de mult ai învățat în ultimul an?</label>
+                                <input type="range" id="bildung1" min="1" max="10" value="5">
+                                <span class="bildung-val">5</span>
+                            </div>
+                            <div class="bildung-item">
+                                <label><strong>Artă</strong> — cât te-ai expus la frumos?</label>
+                                <input type="range" id="bildung2" min="1" max="10" value="5">
+                                <span class="bildung-val">5</span>
+                            </div>
+                            <div class="bildung-item">
+                                <label><strong>Relații</strong> — cât ai crescut prin alții?</label>
+                                <input type="range" id="bildung3" min="1" max="10" value="5">
+                                <span class="bildung-val">5</span>
+                            </div>
+                            <div class="bildung-item">
+                                <label><strong>Activitate</strong> — cât ai creat, făcut, transformat?</label>
+                                <input type="range" id="bildung4" min="1" max="10" value="5">
+                                <span class="bildung-val">5</span>
+                            </div>
+                            <div class="bildung-item">
+                                <label><strong>Renunțare</strong> — cât ai acceptat limitele?</label>
+                                <input type="range" id="bildung5" min="1" max="10" value="5">
+                                <span class="bildung-val">5</span>
+                            </div>
+                        </div>
+
+                        <button onclick="evalueazaBildung()">Evaluează Bildung</button>
+                        <div id="bildung-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                .bildung-item {
+                    margin-bottom: 1rem;
+                }
+                .bildung-item label {
+                    display: block;
+                    font-size: 0.85rem;
+                    margin-bottom: 0.25rem;
+                }
+                .bildung-item input[type="range"] {
+                    width: calc(100% - 50px);
+                    vertical-align: middle;
+                }
+                .bildung-val {
+                    display: inline-block;
+                    width: 40px;
+                    text-align: center;
+                    font-weight: bold;
+                    color: var(--accent);
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Pactul faustian
+                window.analizeazaPact = function() {
+                    const dorinta = document.getElementById('faust-dorinta').value || 'obiectivul tău';
+                    const sacrificii = [
+                        document.getElementById('sac1').checked,
+                        document.getElementById('sac2').checked,
+                        document.getElementById('sac3').checked,
+                        document.getElementById('sac4').checked,
+                        document.getElementById('sac5').checked,
+                        document.getElementById('sac6').checked
+                    ];
+                    const numSacrificii = sacrificii.filter(s => s).length;
+
+                    const rezultat = document.getElementById('pact-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    let analiza = `<strong>Pentru "${dorinta}", ai sacrifica ${numSacrificii} lucruri.</strong><br><br>`;
+
+                    if (sacrificii[5]) {
+                        rezultat.style.background = 'rgba(244, 67, 54, 0.1)';
+                        analiza += `<strong style="color: #F44336;">Ai făcut pactul total.</strong> Ca Faust, ești dispus să dai totul. Dar Faust câștigă la final — nu pentru că răzbunarea e justificată, ci pentru că <em>strădania</em> continuă îl salvează. „Doar cel ce-și cucerește zilnic libertatea și viața merită să le aibă."<br><br>`;
+                        analiza += `<em>Întrebare goetheană: Ești sigur că "${dorinta}" merită sufletul? Sau e o proiecție de moment?</em>`;
+                    } else if (sacrificii[4]) {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        analiza += `<strong style="color: #FF9800;">Ai depășit linia morală.</strong> Faust face asta — compromite alții pentru scopurile lui. Goethe nu condamnă, dar arată consecințele.<br><br>`;
+                        analiza += `<em>Margareta moare din cauza pasiunii lui Faust. Ce „Margarete" ar suferi din cauza compromisurilor tale?</em>`;
+                    } else if (numSacrificii >= 3) {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        analiza += `<strong>Sacrificii semnificative.</strong> Orice realizare majoră cere sacrificiu. Goethe însuși a sacrificat mult pentru operă.<br><br>`;
+                        analiza += `<em>Dar a practicat și Entsagung — renunțarea înțeleaptă. Nu totul merită sacrificat.</em>`;
+                    } else {
+                        rezultat.style.background = 'rgba(76, 175, 80, 0.1)';
+                        analiza += `<strong style="color: #4CAF50;">Moderație.</strong> Nu ești Faust — nu ești dispus să riști totul. E înțelepciune sau frică?<br><br>`;
+                        analiza += `<em>Goethe: „La început a fost Fapta." Uneori trebuie să riști ceva pentru a obține ceva.</em>`;
+                    }
+
+                    rezultat.innerHTML = analiza;
+                };
+
+                // Contemplare
+                const obiecte = ['🌳', '🌹', '🌊', '🔥', '⭐', '🌙', '🦋', '🍃', '🌸', '☀️'];
+                let obiectIdx = 0;
+
+                function afisaObiect() {
+                    document.getElementById('obiect-contemplare').textContent = obiecte[obiectIdx];
+                }
+
+                window.schimbaObiect = function() {
+                    obiectIdx = (obiectIdx + 1) % obiecte.length;
+                    afisaObiect();
+                };
+
+                afisaObiect();
+
+                window.reflectaContemplare = function() {
+                    const observatii = document.getElementById('contemplare-observatii').value;
+                    const rezultat = document.getElementById('contemplare-rezultat');
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'rgba(85, 107, 47, 0.1)';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (!observatii.trim()) {
+                        rezultat.innerHTML = `<em>Scrie ce ai observat. Goethe spunea: „A vedea înseamnă a crea. Nu vedem ce e, ci ce suntem."</em>`;
+                        return;
+                    }
+
+                    const reflectii = [
+                        `Goethe ar întreba: <em>Ce e esențial în ce ai văzut? Care e „Urform" — forma primordială?</em>`,
+                        `Știința lui Goethe era despre <em>participare</em>, nu distanțare. Ai participat la obiect sau l-ai analizat din afară?`,
+                        `„Natura nu are miez și coajă; ea e totul deodată." Ai văzut întregul sau părțile?`,
+                        `Contemplarea goetheană nu caută „de ce", ci „cum". Nu cauza, ci procesul. Ce proces ai văzut?`,
+                        `Goethe: „Tot ce vedem este o figură a naturii care se revelează ei înseși." Ce s-a revelat în observația ta?`
+                    ];
+
+                    rezultat.innerHTML = `
+                        <strong>Reflecție goetheană:</strong><br><br>
+                        ${reflectii[Math.floor(Math.random() * reflectii.length)]}<br><br>
+                        <strong>Observațiile tale:</strong> "${observatii}"<br><br>
+                        <em>Contemplarea activă e un antrenament. Cu cât privești mai mult, cu atât vezi mai mult. Realitatea se dezvăluie răbdării.</em>
+                    `;
+                };
+
+                // Bildung
+                document.querySelectorAll('.bildung-item input').forEach(input => {
+                    input.addEventListener('input', function() {
+                        this.nextElementSibling.textContent = this.value;
+                    });
+                });
+
+                window.evalueazaBildung = function() {
+                    const scores = [
+                        parseInt(document.getElementById('bildung1').value),
+                        parseInt(document.getElementById('bildung2').value),
+                        parseInt(document.getElementById('bildung3').value),
+                        parseInt(document.getElementById('bildung4').value),
+                        parseInt(document.getElementById('bildung5').value)
+                    ];
+                    const total = scores.reduce((a, b) => a + b, 0);
+                    const avg = total / 5;
+
+                    const rezultat = document.getElementById('bildung-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'rgba(85, 107, 47, 0.1)';
+                    rezultat.style.borderRadius = '4px';
+
+                    const min = Math.min(...scores);
+                    const minIdx = scores.indexOf(min);
+                    const areas = ['Cunoaștere', 'Artă', 'Relații', 'Activitate', 'Renunțare'];
+
+                    let diagnostic = '';
+                    if (avg >= 7) {
+                        diagnostic = `<strong style="color: #4CAF50;">Bildung activ!</strong> Goethe ar aproba — te formezi conștient.`;
+                    } else if (avg >= 5) {
+                        diagnostic = `<strong>Bildung moderat.</strong> Există creștere, dar și zone neglijate.`;
+                    } else {
+                        diagnostic = `<strong style="color: #FF9800;">Bildung dormant.</strong> „Viața e o provocare; întâmpină-o." Cât de activ te formezi?`;
+                    }
+
+                    rezultat.innerHTML = `
+                        <strong>Scor Bildung: ${total}/50 (medie: ${avg.toFixed(1)})</strong><br><br>
+                        ${diagnostic}<br><br>
+                        <strong>Zona de dezvoltat:</strong> ${areas[minIdx]} (${min}/10)<br><br>
+                        <em>Bildung nu e acumulare de informații — e transformare. Fiecare experiență care te schimbă, fiecare frumusețe care te atinge, fiecare relație care te provoacă — toate contribuie la formarea de sine.</em>
+                    `;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">06 / Concluzie</span>
+                <span class="section-number">07 / Concluzie</span>
                 <h2>Mai Multă Lumină</h2>
                 <p>Ultimele cuvinte atribuite lui Goethe: „Mehr Licht!" — „Mai multă lumină!" Poate literal (fereastra), poate simbolic (cunoaștere). Oricum, e emblematic pentru un om care a căutat toată viața să vadă, să înțeleagă, să creeze.</p>
                 <p>Goethe nu oferă un sistem — oferă un model de viață: curiozitate universală, disciplină creativă, acceptarea paradoxurilor, bucuria de a fi viu. „Cel mai frumos destin e să povestești și să asculți povestiri despre oameni."</p>

@@ -193,8 +193,250 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">08 / Simulator</span>
+                <h2>Experimentează Meditațiile</h2>
+
+                <p>Marcus Aurelius își scria gândurile dimineața și seara. Practică și tu: folosește perspectiva de sus și recadrarea stoică.</p>
+
+                <div class="simulator-container">
+                    <div class="viziune-de-sus">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Viziunea de Sus</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Când ești copleșit, schimbă perspectiva. Click pentru a te îndepărta:</p>
+
+                        <div class="perspective-container">
+                            <div class="perspective-stage" id="perspective-stage">
+                                <div class="eu-punct">●</div>
+                                <div class="perspective-label" id="perspective-label">Tu, aici, acum</div>
+                            </div>
+                            <div class="perspective-controls">
+                                <button onclick="schimbaPerspectiva(1)">Camera ta</button>
+                                <button onclick="schimbaPerspectiva(2)">Orașul</button>
+                                <button onclick="schimbaPerspectiva(3)">Țara</button>
+                                <button onclick="schimbaPerspectiva(4)">Planeta</button>
+                                <button onclick="schimbaPerspectiva(5)">Cosmos</button>
+                            </div>
+                        </div>
+                        <div id="mesaj-perspectiva" class="mesaj-perspectiva"></div>
+                    </div>
+
+                    <div class="recadrare-stoica" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Recadrarea Stoică</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Scrie o situație care te irită:</p>
+                        <textarea id="situatie-iritanta" placeholder="Ex: Colegul meu e nepoliticos / Traficul e groaznic / Am pierdut o oportunitate..."></textarea>
+                        <button onclick="recadreazaStoic()">Recadrează ca Marcus Aurelius</button>
+                        <div id="recadrare-rezultat"></div>
+                    </div>
+                </div>
+
+                <div class="concept-box" style="margin-top: 2rem;">
+                    <h4>Meditația de Dimineață</h4>
+                    <p>Marcus Aurelius, înainte să se ridice din pat:</p>
+                    <blockquote style="border-left: 2px solid var(--accent); padding-left: 1rem; font-style: italic; color: var(--text-muted); margin: 1rem 0;">
+                        „Mă trezesc să fac treaba unui om. De ce să mă plâng că mă duc să fac ceea ce sunt creat să fac? Sau pentru asta am fost adus pe lume — să stau în așternuturi calde?"
+                    </blockquote>
+                    <p style="font-size: 0.9rem; margin-bottom: 0;">Azi, când te ridici, spune-ți: „Voi întâlni oameni dificili. E natura lor. Scopul meu nu e să fiu iubit, ci să fac ce e drept."</p>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .perspective-container {
+                    margin: 1rem 0;
+                }
+                .perspective-stage {
+                    height: 200px;
+                    background: linear-gradient(180deg, #0a0a20 0%, #1a1a40 100%);
+                    border-radius: 4px;
+                    position: relative;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .eu-punct {
+                    color: var(--accent);
+                    font-size: 1rem;
+                    transition: all 0.5s ease;
+                    position: absolute;
+                }
+                .perspective-label {
+                    position: absolute;
+                    bottom: 10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    color: rgba(255,255,255,0.6);
+                }
+                .perspective-controls {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                    margin-top: 1rem;
+                }
+                .perspective-controls button {
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    padding: 0.5rem 1rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    transition: all 0.2s;
+                }
+                .perspective-controls button:hover {
+                    border-color: var(--accent);
+                    color: var(--accent);
+                }
+                .mesaj-perspectiva {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    font-style: italic;
+                    display: none;
+                }
+                .mesaj-perspectiva.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                .recadrare-stoica textarea {
+                    width: 100%;
+                    min-height: 80px;
+                    padding: 1rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin: 0.75rem 0;
+                    resize: vertical;
+                }
+                .recadrare-stoica button,
+                .simulator-container > button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                #recadrare-rezultat {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                #recadrare-rezultat.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+            </style>
+
+            <script>
+            (function() {
+                const perspective = {
+                    1: {
+                        scale: 1,
+                        label: "Tu, în camera ta",
+                        mesaj: "Ești aici, cu grijile tale. Par mari și urgente.",
+                        stars: false
+                    },
+                    2: {
+                        scale: 0.5,
+                        label: "Tu, în orașul tău",
+                        mesaj: "Unul dintre mii de oameni, fiecare cu propriile griji. Problema ta e una dintre mii.",
+                        stars: false
+                    },
+                    3: {
+                        scale: 0.2,
+                        label: "Tu, în țara ta",
+                        mesaj: "Un punct între milioane. Câți dintre ei au probleme similare? Câți mai grave?",
+                        stars: false
+                    },
+                    4: {
+                        scale: 0.05,
+                        label: "Tu, pe Pământ",
+                        mesaj: "Unul dintre 8 miliarde. Pe o rocă plutind în spațiu. Toată istoria omenirii e un strop.",
+                        stars: true
+                    },
+                    5: {
+                        scale: 0.01,
+                        label: "Tu, în Cosmos",
+                        mesaj: "„Privește stelele și imaginează-te călătorind printre ele." — Marcus Aurelius. Problema ta încă mai pare mare?",
+                        stars: true
+                    }
+                };
+
+                window.schimbaPerspectiva = function(nivel) {
+                    const p = perspective[nivel];
+                    const punct = document.querySelector('.eu-punct');
+                    const label = document.getElementById('perspective-label');
+                    const stage = document.getElementById('perspective-stage');
+                    const mesaj = document.getElementById('mesaj-perspectiva');
+
+                    punct.style.fontSize = (p.scale * 30) + 'px';
+                    punct.style.opacity = Math.max(0.3, p.scale);
+                    label.textContent = p.label;
+
+                    if (p.stars) {
+                        stage.style.background = 'radial-gradient(circle at center, #0a0a20 0%, #000 100%)';
+                        // Adaugă stele
+                        stage.innerHTML = '<div class="eu-punct" style="font-size:' + (p.scale * 30) + 'px; opacity:' + Math.max(0.3, p.scale) + '">●</div><div class="perspective-label">' + p.label + '</div>';
+                        for (let i = 0; i < 50; i++) {
+                            const star = document.createElement('div');
+                            star.style.cssText = `position: absolute; width: 2px; height: 2px; background: white; border-radius: 50%; top: ${Math.random() * 100}%; left: ${Math.random() * 100}%; opacity: ${Math.random() * 0.8}`;
+                            stage.appendChild(star);
+                        }
+                    } else {
+                        stage.style.background = 'linear-gradient(180deg, #0a0a20 0%, #1a1a40 100%)';
+                    }
+
+                    mesaj.textContent = p.mesaj;
+                    mesaj.classList.add('visible');
+                };
+
+                window.recadreazaStoic = function() {
+                    const input = document.getElementById('situatie-iritanta').value.trim();
+                    if (!input) {
+                        alert('Te rog scrie o situație.');
+                        return;
+                    }
+
+                    const rezultat = document.getElementById('recadrare-rezultat');
+
+                    let html = `<strong>Situația:</strong> „${input}"<br><br>`;
+                    html += `<strong>Marcus Aurelius ar întreba:</strong><br><br>`;
+                    html += `<strong>1. Ce se întâmplă obiectiv?</strong><br>Fără interpretare, fără „bine" sau „rău" — doar faptele.<br><br>`;
+                    html += `<strong>2. Ce judecată adaug eu?</strong><br>„E groaznic", „Nu e corect", „Nu merit asta" — acestea sunt adăugirile tale, nu realitatea.<br><br>`;
+                    html += `<strong>3. Este în controlul meu?</strong><br>Dacă nu — acceptă. Dacă da — acționează.<br><br>`;
+                    html += `<strong>4. Va conta peste un an? 10 ani? 100?</strong><br>Peste 100 de ani, nimeni nu își va aminti această situație. Nici tu, nici eu, nici cei implicați.<br><br>`;
+                    html += `<em>„Nimic din ce experimentăm nu e inevitabil. Totul e interpretare." — Marcus Aurelius</em>`;
+
+                    rezultat.innerHTML = html;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">08 / Concluzie</span>
+                <span class="section-number">09 / Concluzie</span>
                 <h2>Împăratul în Noi</h2>
 
                 <p>Marcus Aurelius ne arată că puterea externă nu aduce pace interioară. Cel mai puternic om din lume se lupta zilnic cu aceleași demoni cu care ne luptăm noi: lenea, furia, teama, vanitatea.</p>

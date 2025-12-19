@@ -392,8 +392,349 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Experimentează Peștera</h2>
+
+                <p>Alegoria peșterii e mai actuală ca niciodată. Click pe umbre pentru a vedea ce reprezentă ele în viața modernă — și descoperă cum arată „ieșirea spre lumină".</p>
+
+                <div class="simulator-container">
+                    <div class="pestera-vizualizare">
+                        <div class="pestera-fundal">
+                            <div class="iesire-pestera" onclick="arataSoarele()">
+                                <span>↑ Ieșirea</span>
+                            </div>
+                            <div class="focul">🔥</div>
+                            <div class="perete-umbre">
+                                <div class="umbra" data-id="1" onclick="selecteazaUmbra(1)">👤</div>
+                                <div class="umbra" data-id="2" onclick="selecteazaUmbra(2)">📺</div>
+                                <div class="umbra" data-id="3" onclick="selecteazaUmbra(3)">💰</div>
+                                <div class="umbra" data-id="4" onclick="selecteazaUmbra(4)">📱</div>
+                                <div class="umbra" data-id="5" onclick="selecteazaUmbra(5)">🏆</div>
+                            </div>
+                            <div class="prizonier">⛓️</div>
+                        </div>
+                    </div>
+
+                    <div id="explicatie-umbra" class="explicatie-container">
+                        <p class="placeholder-text">Click pe o umbră pentru a vedea ce reprezintă în viața modernă</p>
+                    </div>
+
+                    <div class="nivel-cunoastere">
+                        <label>Nivelul tău de cunoaștere:</label>
+                        <div class="nivel-bar">
+                            <div class="nivel-progress" id="nivel-progress"></div>
+                        </div>
+                        <div class="nivel-labels">
+                            <span>Umbre</span>
+                            <span>Obiecte</span>
+                            <span>Idei</span>
+                            <span>Binele</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-box" style="margin-top: 2rem;">
+                    <h4>Testul Peșterii Tale</h4>
+                    <p>Ce „umbre" iei drept realitate în viața ta?</p>
+                    <select id="umbra-personala">
+                        <option value="">Alege o categorie...</option>
+                        <option value="social">Rețele sociale / Likes / Followeri</option>
+                        <option value="media">Știri / Media / Opinii</option>
+                        <option value="cariera">Statut profesional / Titluri</option>
+                        <option value="consum">Bunuri materiale / Brand-uri</option>
+                        <option value="aparente">Imaginea de sine / Ce cred alții</option>
+                    </select>
+                    <button onclick="analizeazaUmbraPersonala()">Analizează</button>
+                    <div id="analiza-umbra"></div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .pestera-vizualizare {
+                    background: linear-gradient(180deg, #2a1810 0%, #1a1a1a 100%);
+                    border-radius: 4px;
+                    overflow: hidden;
+                    position: relative;
+                    height: 280px;
+                }
+                .pestera-fundal {
+                    height: 100%;
+                    position: relative;
+                }
+                .iesire-pestera {
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 80px;
+                    height: 60px;
+                    background: linear-gradient(180deg, #87CEEB 0%, #FFD700 100%);
+                    border-radius: 0 0 50% 50%;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
+                    padding-bottom: 5px;
+                    transition: all 0.3s;
+                }
+                .iesire-pestera span {
+                    font-size: 0.7rem;
+                    color: #333;
+                }
+                .iesire-pestera:hover {
+                    height: 80px;
+                    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+                }
+                .focul {
+                    position: absolute;
+                    bottom: 80px;
+                    left: 30%;
+                    font-size: 2rem;
+                    animation: flicker 0.5s infinite alternate;
+                }
+                @keyframes flicker {
+                    from { opacity: 0.8; transform: scale(1); }
+                    to { opacity: 1; transform: scale(1.1); }
+                }
+                .perete-umbre {
+                    position: absolute;
+                    right: 10%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .umbra {
+                    font-size: 1.5rem;
+                    opacity: 0.4;
+                    filter: blur(1px);
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    padding: 0.5rem;
+                }
+                .umbra:hover {
+                    opacity: 0.8;
+                    filter: blur(0);
+                    transform: scale(1.2);
+                }
+                .umbra.selectata {
+                    opacity: 1;
+                    filter: blur(0);
+                    transform: scale(1.3);
+                }
+                .prizonier {
+                    position: absolute;
+                    bottom: 20px;
+                    left: 20%;
+                    font-size: 1.5rem;
+                }
+                .explicatie-container {
+                    margin-top: 1.5rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    min-height: 80px;
+                }
+                .placeholder-text {
+                    color: var(--text-muted);
+                    font-style: italic;
+                    margin: 0;
+                }
+                .nivel-cunoastere {
+                    margin-top: 1.5rem;
+                }
+                .nivel-cunoastere label {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--text-muted);
+                    display: block;
+                    margin-bottom: 0.5rem;
+                }
+                .nivel-bar {
+                    height: 8px;
+                    background: var(--border);
+                    border-radius: 4px;
+                    overflow: hidden;
+                }
+                .nivel-progress {
+                    height: 100%;
+                    width: 10%;
+                    background: linear-gradient(90deg, #333 0%, var(--accent) 50%, #FFD700 100%);
+                    transition: width 0.5s ease;
+                    border-radius: 4px;
+                }
+                .nivel-labels {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 0.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.65rem;
+                    color: var(--text-light);
+                }
+                .concept-box select {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin: 0.75rem 0;
+                    background: var(--primary);
+                }
+                .concept-box button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                #analiza-umbra {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--secondary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                #analiza-umbra.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+            </style>
+
+            <script>
+            (function() {
+                const umbre = {
+                    1: {
+                        titlu: "Imaginea de sine",
+                        umbra: "Selfie-ul perfect, profilul curat — umbra ta pe pereții rețelelor sociale.",
+                        realitate: "Tu ești mai mult decât imaginea ta. Sinele real e invizibil în poze.",
+                        idee: "Ideea de autenticitate — a fi, nu a părea."
+                    },
+                    2: {
+                        titlu: "Media și Știrile",
+                        umbra: "Breaking news, titluri șocante, opinii drapate în fapte.",
+                        realitate: "Realitatea e mai complexă, mai nuanțată, mai plictisitoare decât știrile.",
+                        idee: "Adevărul cere efort, verificare, gândire critică."
+                    },
+                    3: {
+                        titlu: "Banii și Succesul",
+                        umbra: "Cifre în conturi, mașini scumpe, case mari — simboluri ale „reușitei".",
+                        realitate: "Banii sunt instrument, nu scop. Succesul adevărat e interior.",
+                        idee: "Binele nu se măsoară în unități monetare."
+                    },
+                    4: {
+                        titlu: "Tehnologia",
+                        umbra: "Notificări, scroll infinit, dopamină digitală.",
+                        realitate: "Conexiunea reală e față în față, nu ecran la ecran.",
+                        idee: "Prezența autentică vs. prezența virtuală."
+                    },
+                    5: {
+                        titlu: "Statutul Social",
+                        umbra: "Titluri, premii, like-uri, followeri — validare externă.",
+                        realitate: "Valoarea ta nu depinde de recunoașterea altora.",
+                        idee: "Virtutea e propria ei răsplată."
+                    }
+                };
+
+                let nivelCunoastere = 10;
+
+                window.selecteazaUmbra = function(id) {
+                    document.querySelectorAll('.umbra').forEach(u => u.classList.remove('selectata'));
+                    document.querySelector(`.umbra[data-id="${id}"]`).classList.add('selectata');
+
+                    const u = umbre[id];
+                    const container = document.getElementById('explicatie-umbra');
+                    container.innerHTML = `
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.75rem;">${u.titlu}</h4>
+                        <p style="margin-bottom: 0.75rem;"><strong>Umbra:</strong> ${u.umbra}</p>
+                        <p style="margin-bottom: 0.75rem;"><strong>Realitatea:</strong> ${u.realitate}</p>
+                        <p style="margin-bottom: 0;"><strong>Ideea:</strong> ${u.idee}</p>
+                    `;
+
+                    nivelCunoastere = Math.min(nivelCunoastere + 15, 50);
+                    document.getElementById('nivel-progress').style.width = nivelCunoastere + '%';
+                };
+
+                window.arataSoarele = function() {
+                    nivelCunoastere = 100;
+                    document.getElementById('nivel-progress').style.width = '100%';
+
+                    const container = document.getElementById('explicatie-umbra');
+                    container.innerHTML = `
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #FFD700; margin-bottom: 0.75rem;">Ai ieșit din peșteră!</h4>
+                        <p style="margin-bottom: 0.75rem;"><strong>Soarele:</strong> Ideea Binelui — sursa tuturor celorlalte idei, principiul ultim al realității.</p>
+                        <p style="margin-bottom: 0.75rem;">Privind înapoi, umbrele par ridicole. Dar acum ai o responsabilitate: să te întorci și să-i ajuți pe cei rămași să vadă.</p>
+                        <p style="margin-bottom: 0;"><em>„Te vor crede? Sau te vor considera nebun?"</em></p>
+                    `;
+
+                    document.querySelector('.pestera-vizualizare').style.background = 'linear-gradient(180deg, #87CEEB 0%, #FFD700 50%, #2a1810 100%)';
+                };
+
+                window.analizeazaUmbraPersonala = function() {
+                    const select = document.getElementById('umbra-personala');
+                    const val = select.value;
+                    if (!val) {
+                        alert('Te rog alege o categorie.');
+                        return;
+                    }
+
+                    const analize = {
+                        social: {
+                            umbra: "Like-urile și followerii sunt proiecții pe perete — nu tu, ci imaginea ta. Algoritmii decid ce umbre vezi.",
+                            iesire: "Ieșirea: Întreabă-te ce valoare ai fără telefon. Cine ești când nu te vede nimeni? Aceasta e realitatea."
+                        },
+                        media: {
+                            umbra: "Știrile sunt selectate, filtrate, amplificate. Vezi ce vor alții să vezi — nu ce este.",
+                            iesire: "Ieșirea: Caută surse primare. Verifică. Acceptă complexitatea. Realitatea e mai nuanțată."
+                        },
+                        cariera: {
+                            umbra: "Titlul de pe cartea de vizită e umbră. Prestigiul e proiecție socială.",
+                            iesire: "Ieșirea: Ce ai face dacă nimeni n-ar ști? Ce muncă e în sine valoroasă, indiferent de recunoaștere?"
+                        },
+                        consum: {
+                            umbra: "Brand-urile sunt povești vândute. Obiectele sunt simboluri, nu substanță.",
+                            iesire: "Ieșirea: Separă nevoia de dorință, utilitatea de statut. Ce rămâne când dispare eticheta?"
+                        },
+                        aparente: {
+                            umbra: "Îți construiești personajul pentru alții. Dar personajul nu ești tu.",
+                            iesire: "Ieșirea: Cine ești când eșți singur, în întuneric? Acea versiune e mai aproape de adevăr."
+                        }
+                    };
+
+                    const a = analize[val];
+                    const rezultat = document.getElementById('analiza-umbra');
+                    rezultat.innerHTML = `
+                        <strong>Umbra ta:</strong> ${a.umbra}<br><br>
+                        <strong>${a.iesire}</strong>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Concluzie</span>
+                <span class="section-number">10 / Concluzie</span>
                 <h2>Lumina Din Afara Peșterii</h2>
 
                 <p>Platon ne invită la o aventură: să ieșim din peșteră, să suportăm durerea luminii, să vedem realitatea așa cum e — nu cum pare. E o invitație exigentă. Mulți preferă umbrele confortabile.</p>

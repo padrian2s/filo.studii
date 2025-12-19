@@ -208,8 +208,275 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Detectorul de Idoli</h2>
+
+                <p>Bacon a identificat patru tipuri de „idoli" — prejudecăți care ne împiedică să cunoaștem adevărul. Acest simulator te ajută să-ți identifici propriii idoli.</p>
+
+                <div class="simulator-container">
+                    <div class="idoli-test">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Identifică idolii din gândirea ta</h4>
+
+                        <div class="idol-card" id="idol-tribus">
+                            <h5>🏛️ Idola Tribus (ai tribului)</h5>
+                            <p>Prejudecăți comune tuturor oamenilor</p>
+                            <div class="idol-exemplu">
+                                <p style="font-size: 0.85rem;"><strong>Test:</strong> Ai tendința să vezi tipare și ordine chiar unde nu există?</p>
+                                <button onclick="testIdol('tribus', true)">Da, adesea</button>
+                                <button onclick="testIdol('tribus', false)">Nu, rareori</button>
+                            </div>
+                        </div>
+
+                        <div class="idol-card" id="idol-specus">
+                            <h5>🕳️ Idola Specus (ai peșterii)</h5>
+                            <p>Prejudecăți individuale din educație și experiență</p>
+                            <div class="idol-exemplu">
+                                <p style="font-size: 0.85rem;"><strong>Test:</strong> Crezi că experiența ta personală e reprezentativă pentru realitatea generală?</p>
+                                <button onclick="testIdol('specus', true)">Da, adesea</button>
+                                <button onclick="testIdol('specus', false)">Nu, sunt conștient de limite</button>
+                            </div>
+                        </div>
+
+                        <div class="idol-card" id="idol-fori">
+                            <h5>🗣️ Idola Fori (ai pieței)</h5>
+                            <p>Prejudecăți din limbaj și comunicare</p>
+                            <div class="idol-exemplu">
+                                <p style="font-size: 0.85rem;"><strong>Test:</strong> Folosești adesea cuvinte vagi ca „energie", „natural", „toxic" fără a le defini precis?</p>
+                                <button onclick="testIdol('fori', true)">Da, frecvent</button>
+                                <button onclick="testIdol('fori', false)">Nu, sunt atent la definiții</button>
+                            </div>
+                        </div>
+
+                        <div class="idol-card" id="idol-theatri">
+                            <h5>🎭 Idola Theatri (ai teatrului)</h5>
+                            <p>Prejudecăți din doctrine și sisteme acceptate</p>
+                            <div class="idol-exemplu">
+                                <p style="font-size: 0.85rem;"><strong>Test:</strong> Accepți idei pentru că vin de la autorități respectate, fără a le verifica?</p>
+                                <button onclick="testIdol('theatri', true)">Da, uneori</button>
+                                <button onclick="testIdol('theatri', false)">Nu, verific mereu</button>
+                            </div>
+                        </div>
+
+                        <div id="idoli-rezultat"></div>
+                    </div>
+
+                    <div class="metoda-inductiva" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Aplică Metoda Inductivă</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Alege un fenomen și aplică metoda lui Bacon:</p>
+                        <input type="text" id="fenomen-input" placeholder="Ex: De ce unii oameni sunt mai productivi dimineața?">
+                        <button onclick="aplicaMetoda()">Aplică metoda</button>
+                        <div id="metoda-rezultat"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .idol-card {
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    padding: 1.5rem;
+                    margin-bottom: 1rem;
+                    border-radius: 4px;
+                }
+                .idol-card h5 {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 1rem;
+                    margin-bottom: 0.5rem;
+                }
+                .idol-card > p {
+                    font-size: 0.85rem;
+                    color: var(--text-muted);
+                    margin-bottom: 1rem;
+                }
+                .idol-exemplu button {
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    color: var(--text-muted);
+                    padding: 0.5rem 1rem;
+                    margin-right: 0.5rem;
+                    margin-top: 0.5rem;
+                    cursor: pointer;
+                    font-size: 0.8rem;
+                    border-radius: 2px;
+                }
+                .idol-exemplu button:hover {
+                    border-color: var(--accent);
+                }
+                .idol-card.responded {
+                    opacity: 0.7;
+                }
+                .idol-card.responded button {
+                    display: none;
+                }
+                .simulator-container input[type="text"] {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                }
+                .simulator-container > button, .metoda-inductiva > button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                #idoli-rezultat, #metoda-rezultat {
+                    margin-top: 1.5rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    display: none;
+                }
+                #idoli-rezultat.visible, #metoda-rezultat.visible {
+                    display: block;
+                }
+                .metoda-pas {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    border-left: 3px solid var(--accent);
+                    background: rgba(74, 103, 65, 0.05);
+                }
+                .metoda-pas h6 {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    color: var(--accent);
+                    margin-bottom: 0.5rem;
+                }
+            </style>
+
+            <script>
+            (function() {
+                let raspunsuri = {};
+                const idolInfo = {
+                    tribus: {
+                        da: 'Ai tendința umană de a vedea ordine în haos. Creierul nostru e programat să găsească tipare — chiar când nu există.',
+                        nu: 'Ești mai rezistent la această eroare, dar rămâi vigilent — e tendință umană universală.',
+                        remediu: 'Caută contra-exemple. Întreabă-te: ce ar dovedi că greșesc?'
+                    },
+                    specus: {
+                        da: 'Peștera ta personală îți distorsionează vederea. Experiența ta e limitată și poate nereprezentativă.',
+                        nu: 'Conștiința limitelor e primul pas. Continui să cauți perspective diferite de a ta.',
+                        remediu: 'Vorbește cu oameni foarte diferiți de tine. Citește din surse care te contrazic.'
+                    },
+                    fori: {
+                        da: 'Limbajul vag te poate înșela. Cuvintele imprecise ascund gândirea imprecisă.',
+                        nu: 'Atenția la definiții e o virtute științifică. Continuă să ceri claritate.',
+                        remediu: 'Definește termenii înainte de a argumenta. Ce înseamnă exact cuvintele pe care le folosești?'
+                    },
+                    theatri: {
+                        da: 'Sistemele și autoritățile pot fi „piese de teatru" — ficțiuni convingătoare. Verifică independent.',
+                        nu: 'Scepticismul față de autoritate e sănătos. Dar nu deveni cinic — unele autorități merită respect.',
+                        remediu: 'Întreabă: de ce crede autoritatea X acest lucru? Care sunt dovezile, nu doar opinia?'
+                    }
+                };
+
+                window.testIdol = function(idol, raspuns) {
+                    raspunsuri[idol] = raspuns;
+                    const card = document.getElementById('idol-' + idol);
+                    card.classList.add('responded');
+                    const info = idolInfo[idol];
+                    const rezultatText = raspuns ? info.da : info.nu;
+                    card.querySelector('.idol-exemplu').innerHTML += `
+                        <p style="margin-top: 0.75rem; padding: 0.75rem; background: rgba(74, 103, 65, 0.1); border-radius: 4px; font-size: 0.85rem;">
+                            ${rezultatText}<br><strong>Remediu:</strong> ${info.remediu}
+                        </p>
+                    `;
+
+                    if (Object.keys(raspunsuri).length === 4) {
+                        afiseazaRezultatFinal();
+                    }
+                };
+
+                function afiseazaRezultatFinal() {
+                    const numIdoli = Object.values(raspunsuri).filter(x => x).length;
+                    let verdict;
+                    if (numIdoli === 0) {
+                        verdict = 'Ești remarcabil de conștient de prejudecăți — sau poate prea încrezător. Autoanaliza continuă e cheia.';
+                    } else if (numIdoli <= 2) {
+                        verdict = 'Ai o conștiință moderată a prejudecăților tale. Concentrează-te pe idolii identificați.';
+                    } else {
+                        verdict = 'Ai recunoscut mulți idoli — aceasta e de fapt un semn bun! Conștiența e primul pas spre eliberare.';
+                    }
+
+                    const rezultat = document.getElementById('idoli-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.75rem;">Profilul tău de idoli</h5>
+                        <p>${verdict}</p>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--accent);">
+                            Bacon: „Cunoașterea de sine a prejudecăților e începutul înțelepciunii."
+                        </p>
+                    `;
+                    rezultat.classList.add('visible');
+                }
+
+                window.aplicaMetoda = function() {
+                    const fenomen = document.getElementById('fenomen-input').value.trim();
+                    if (!fenomen) { alert('Scrie un fenomen de investigat.'); return; }
+
+                    const rezultat = document.getElementById('metoda-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem;">Metoda lui Bacon pentru: "${fenomen}"</h5>
+
+                        <div class="metoda-pas">
+                            <h6>1. Tabla Prezenței</h6>
+                            <p style="margin: 0;">Listează toate cazurile unde fenomenul apare. Ce au în comun? Ce caracteristici sunt prezente?</p>
+                        </div>
+
+                        <div class="metoda-pas">
+                            <h6>2. Tabla Absenței</h6>
+                            <p style="margin: 0;">Listează cazuri similare unde fenomenul NU apare. Ce e diferit? Ce lipsește?</p>
+                        </div>
+
+                        <div class="metoda-pas">
+                            <h6>3. Tabla Gradelor</h6>
+                            <p style="margin: 0;">Unde fenomenul variază în intensitate? Ce variază odată cu el?</p>
+                        </div>
+
+                        <div class="metoda-pas">
+                            <h6>4. Excluderea</h6>
+                            <p style="margin: 0;">Elimină cauzele care nu se corelează cu fenomenul. Ce rămâne?</p>
+                        </div>
+
+                        <div class="metoda-pas">
+                            <h6>5. Prima Recoltă</h6>
+                            <p style="margin: 0;">Formulează o ipoteză provizorie. Ce crezi acum că explică fenomenul?</p>
+                        </div>
+
+                        <div class="metoda-pas" style="background: rgba(74, 103, 65, 0.1);">
+                            <h6>6. Testarea</h6>
+                            <p style="margin: 0;">Caută „instanțe cruciale" care să decidă între explicații alternative. Ce experiment ar putea falsifica ipoteza ta?</p>
+                        </div>
+
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--text-muted);">
+                            „Nici mâna goală, nici intelectul lăsat singur nu pot face mare lucru. Lucrarea se face prin instrumente și ajutoare."
+                        </p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Arhitectul Viitorului</h2>
 
                 <p>Francis Bacon n-a construit el însuși edificiul științei moderne — dar a desenat planurile. A văzut că vechile metode nu funcționează, că prejudecățile ne orbesc, că avem nevoie de instrumente noi pentru a cunoaște. A proclamat că știința poate și trebuie să transforme lumea.</p>

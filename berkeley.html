@@ -212,8 +212,339 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Experimentează Imaterialismul</h2>
+
+                <p>"Esse est percipi" — A fi înseamnă a fi perceput. Testează teza lui Berkeley.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Experimentul Percepției</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ce percepi direct? Ce presupui?</p>
+
+                        <div class="perceptie-demo" style="text-align: center; padding: 2rem; background: var(--primary); border-radius: 4px;">
+                            <div id="obiect-demo" style="width: 100px; height: 100px; background: #5b8c5a; margin: 0 auto; border-radius: 4px; transition: all 0.3s;"></div>
+                            <p style="margin-top: 1rem; font-size: 0.9rem;">Un „obiect" verde</p>
+                        </div>
+
+                        <div style="margin-top: 1rem;">
+                            <button onclick="schimbaPerceptie('culoare')">Schimbă culoarea</button>
+                            <button onclick="schimbaPerceptie('forma')">Schimbă forma</button>
+                            <button onclick="schimbaPerceptie('dispare')" style="background: transparent; border: 1px solid var(--border); color: var(--text);">Închide ochii</button>
+                        </div>
+
+                        <div id="perceptie-explicatie" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Ce Percepi Direct?</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Distinge între percepție directă și presupunere.</p>
+
+                        <div id="perceptie-test"></div>
+
+                        <button onclick="verificaPerceptie()">Verifică răspunsurile</button>
+                        <div id="perceptie-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Argumentul lui Berkeley</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Construiește argumentul pas cu pas.</p>
+
+                        <div id="argument-berkeley"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Obiecții și Răspunsuri</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ce se întâmplă când nu privești? Samuel Johnson lovește piatra.</p>
+
+                        <div class="obiectii-berkeley">
+                            <select id="obiectie-select" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem;">
+                                <option value="">— Alege o obiecție —</option>
+                                <option value="dispare">„Dispare masa când ies din cameră?"</option>
+                                <option value="johnson">„Samuel Johnson: lovesc piatra, deci există!"</option>
+                                <option value="stiinta">„Știința are nevoie de materie!"</option>
+                                <option value="absurd">„E pur și simplu absurd!"</option>
+                            </select>
+                            <button onclick="afisamRaspunsBerkeley()">Vezi răspunsul lui Berkeley</button>
+                        </div>
+
+                        <div id="obiectie-raspuns" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Poemul Arborelui</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Celebrul limerick despre Berkeley:</p>
+
+                        <div style="padding: 1rem; background: var(--primary); border-radius: 4px; font-style: italic;">
+                            <p style="margin-bottom: 0.5rem;">There was a young man who said "God</p>
+                            <p style="margin-bottom: 0.5rem;">Must think it exceedingly odd</p>
+                            <p style="margin-bottom: 0.5rem; padding-left: 1rem;">If he finds that this tree</p>
+                            <p style="margin-bottom: 0.5rem; padding-left: 1rem;">Continues to be</p>
+                            <p>When there's no one about in the Quad."</p>
+                        </div>
+
+                        <button onclick="afisamReplica()" style="margin-top: 1rem;">Replica lui Dumnezeu</button>
+                        <div id="replica-dumnezeu" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                    margin-bottom: 0.5rem;
+                }
+                .perceptie-item {
+                    padding: 0.75rem;
+                    margin-bottom: 0.5rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .perceptie-item label {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    cursor: pointer;
+                }
+                .argument-pas {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    border-radius: 0 4px 4px 0;
+                    cursor: pointer;
+                }
+                .argument-pas:hover {
+                    background: rgba(91, 140, 90, 0.05);
+                }
+                .argument-pas.expandat .pas-detalii {
+                    display: block;
+                }
+                .pas-detalii {
+                    display: none;
+                    margin-top: 0.75rem;
+                    padding-top: 0.75rem;
+                    border-top: 1px solid var(--border);
+                    font-size: 0.9rem;
+                    color: var(--text-muted);
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Experimentul percepției
+                const obiect = document.getElementById('obiect-demo');
+                let culoriIdx = 0;
+                const culori = ['#5b8c5a', '#c41e3a', '#1a4f6e', '#5d4e37', '#9c27b0'];
+                let dispărut = false;
+
+                window.schimbaPerceptie = function(tip) {
+                    const explicatie = document.getElementById('perceptie-explicatie');
+                    explicatie.style.display = 'block';
+                    explicatie.style.padding = '1rem';
+                    explicatie.style.background = 'rgba(91, 140, 90, 0.1)';
+                    explicatie.style.borderRadius = '4px';
+
+                    if (tip === 'culoare') {
+                        culoriIdx = (culoriIdx + 1) % culori.length;
+                        obiect.style.background = culori[culoriIdx];
+                        obiect.style.opacity = '1';
+                        dispărut = false;
+                        explicatie.innerHTML = `
+                            <strong>Berkeley întreabă:</strong> Ce s-a schimbat?<br><br>
+                            Percepția ta de culoare s-a schimbat. Dar unde e culoarea — în „obiect" sau în percepția ta?<br><br>
+                            <em>Locke spunea: culoarea e „în noi" (calitate secundară), dar forma e „în obiect" (calitate primară). Berkeley răspunde: și forma e percepție. Nu există „obiect" fără percepție.</em>
+                        `;
+                    } else if (tip === 'forma') {
+                        obiect.style.borderRadius = obiect.style.borderRadius === '50%' ? '4px' : '50%';
+                        obiect.style.opacity = '1';
+                        dispărut = false;
+                        explicatie.innerHTML = `
+                            <strong>Berkeley întreabă:</strong> Ce percepi direct?<br><br>
+                            Percepi o <em>formă</em>. Dar forma fără culoare poate fi percepută? Poți imagina un pătrat perfect fără nicio culoare?<br><br>
+                            <em>Calitățile „primare" (formă, extensiune) nu pot fi separate de cele „secundare" (culoare). Toate sunt percepții.</em>
+                        `;
+                    } else if (tip === 'dispare') {
+                        if (!dispărut) {
+                            obiect.style.opacity = '0';
+                            dispărut = true;
+                            explicatie.innerHTML = `
+                                <strong>Ai „închis ochii".</strong><br><br>
+                                Obiectul a dispărut din percepția ta. Există încă?<br><br>
+                                <strong>Berkeley răspunde:</strong> Da — pentru că TU nu ești singura minte. Dumnezeu percepe totul mereu. Lumea persistă în mintea divină.<br><br>
+                                <em>„Esse est percipi — a fi înseamnă a fi perceput." De Dumnezeu, dacă nu de tine.</em>
+                            `;
+                        } else {
+                            obiect.style.opacity = '1';
+                            dispărut = false;
+                            explicatie.innerHTML = `<strong>Ai „deschis ochii".</strong> Obiectul e din nou în percepția ta.`;
+                        }
+                    }
+                };
+
+                // Test percepție
+                const intrebari = [
+                    { text: "Culoarea roșie a mărului", perceput: true },
+                    { text: "Atomii care compun mărul", perceput: false },
+                    { text: "Forma rotundă a mărului", perceput: true },
+                    { text: "„Substanța materială" a mărului", perceput: false },
+                    { text: "Gustul dulce când mușci", perceput: true },
+                    { text: "Cauza fizică a gustului", perceput: false },
+                    { text: "Greutatea în mână", perceput: true },
+                    { text: "Masa ca proprietate intrinsecă", perceput: false }
+                ];
+
+                const testContainer = document.getElementById('perceptie-test');
+                testContainer.innerHTML = '<p style="font-size: 0.85rem; margin-bottom: 1rem;">Ce percepi DIRECT când privești un măr?</p>';
+
+                intrebari.forEach((q, i) => {
+                    testContainer.innerHTML += `
+                        <div class="perceptie-item">
+                            <label>
+                                <input type="checkbox" id="perc${i}">
+                                ${q.text}
+                            </label>
+                        </div>
+                    `;
+                });
+
+                window.verificaPerceptie = function() {
+                    let corecte = 0;
+                    intrebari.forEach((q, i) => {
+                        const checked = document.getElementById(`perc${i}`).checked;
+                        if (checked === q.perceput) corecte++;
+                    });
+
+                    const rezultat = document.getElementById('perceptie-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (corecte >= 6) {
+                        rezultat.style.background = 'rgba(76, 175, 80, 0.1)';
+                        rezultat.innerHTML = `<strong>${corecte}/${intrebari.length} — Gândești ca Berkeley!</strong><br><br>
+                            Percepi direct: culori, forme, gusturi, texturi — idei senzoriale.<br>
+                            NU percepi direct: atomi, substanță materială, cauze fizice — acestea sunt presupuneri adăugate.<br><br>
+                            <em>Berkeley: dacă tot ce cunoaștem sunt idei, de ce să postulăm o „materie" pe care nu o percepem niciodată?</em>`;
+                    } else {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        rezultat.innerHTML = `<strong>${corecte}/${intrebari.length}</strong><br><br>
+                            Percepția directă include DOAR ce experimentezi nemijlocit: culori, forme, sunete, gusturi.<br>
+                            Atomii, substanța, cauzele fizice sunt INFERENȚE — le presupui, nu le percepi.<br><br>
+                            <em>Berkeley ne provoacă: poți justifica aceste presupuneri fără a presupune deja ce vrei să demonstrezi?</em>`;
+                    }
+                };
+
+                // Argumentul lui Berkeley
+                const pasi = [
+                    { titlu: "Tot ce percepem direct sunt idei", detalii: "Când „vezi" un măr, experimentezi culori, forme — nu „mărul în sine". Percepția directă = idei senzoriale." },
+                    { titlu: "Ideile pot exista doar în minți", detalii: "O culoare nepercepută de nimeni e o contradicție. Poți concepe roșu fără nicio minte care să-l perceapă?" },
+                    { titlu: "„Materia" ar fi ceva ne-mental care cauzează ideile", detalii: "Locke spunea: există substanță materială „dincolo" de percepții care le cauzează. Dar cum știm asta?" },
+                    { titlu: "Cum poate ceva ne-mental produce ceva mental?", detalii: "Dacă materia e complet diferită de minte, cum poate interacționa cu ea? Problema e insolubilă." },
+                    { titlu: "CONCLUZIE: Materia e o presupunere inutilă și incoerentă", detalii: "Tot ce există sunt minți și ideile lor. „Lumea externă" = sistem de idei în mintea divină, perceput de minți finite." }
+                ];
+
+                const argumentContainer = document.getElementById('argument-berkeley');
+                pasi.forEach((p, i) => {
+                    argumentContainer.innerHTML += `
+                        <div class="argument-pas" onclick="this.classList.toggle('expandat')">
+                            <strong>${i + 1}. ${p.titlu}</strong>
+                            <div class="pas-detalii">${p.detalii}</div>
+                        </div>
+                    `;
+                });
+
+                // Obiecții
+                const obiectii = {
+                    dispare: {
+                        obiectie: "Dispare masa când ies din cameră?",
+                        raspuns: `<strong>Berkeley:</strong> NU dispare — pentru că Dumnezeu o percepe mereu.<br><br>
+                            Ideile despre „lume" nu sunt produse de TINe — sunt produse de o altă minte și „transmise" ție. Această minte e infinită și percepe totul constant.<br><br>
+                            Lumea persistă în percepția divină. Tu o „primești" când privești; Dumnezeu o „susține" mereu.`
+                    },
+                    johnson: {
+                        obiectie: "Samuel Johnson a „refutat" pe Berkeley lovind o piatră cu piciorul: „Iată cum îl combat!"",
+                        raspuns: `<strong>Berkeley ar râde:</strong> Johnson n-a înțeles.<br><br>
+                            Berkeley NU neagă că experimentezi pietre. NU spune că piatra e halucinație. Spune că piatra = sistem de idei senzoriale (duritate, rezistență, culoare) — nu „substanță materială" misterioasă.<br><br>
+                            Lovitura demonstrează că experimentezi rezistență. Exact ce spunea Berkeley! Nu demonstrează „materia".`
+                    },
+                    stiinta: {
+                        obiectie: "Știința are nevoie de materie! Fizica descrie lumea materială!",
+                        raspuns: `<strong>Berkeley:</strong> Știința descrie REGULARITĂȚI în percepții.<br><br>
+                            „Legile naturii" sunt regularitățile în modul cum Dumnezeu produce ideile. Știința funcționează la fel: descoperă tipare, face predicții.<br><br>
+                            Nu ai nevoie de „materie" — ai nevoie de regularitate. Iar regularitatea e garantată de constanța divină, nu de substanță.`
+                    },
+                    absurd: {
+                        obiectie: "E pur și simplu absurd! Desigur că materia există!",
+                        raspuns: `<strong>Berkeley provoacă:</strong> Ce dovadă AI pentru materie?<br><br>
+                            Tot ce poți oferi sunt... percepții. Spui „văd masa, deci materia există". Dar ce vezi e o percepție (idee), nu „materia".<br><br>
+                            Presupunerea că există ceva „dincolo" de percepții e neverificabilă. Berkeley nu spune că e absurd să crezi în lume — spune că e absurd să crezi în „materie" ca ceva distinct de percepție.<br><br>
+                            <em>Încercați să-l refutați — e surprinzător de greu.</em>`
+                    }
+                };
+
+                window.afisamRaspunsBerkeley = function() {
+                    const tip = document.getElementById('obiectie-select').value;
+                    const rezultat = document.getElementById('obiectie-raspuns');
+
+                    if (!tip) {
+                        alert('Alege o obiecție.');
+                        return;
+                    }
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'var(--primary)';
+                    rezultat.style.border = '1px solid var(--border)';
+                    rezultat.style.borderRadius = '4px';
+
+                    rezultat.innerHTML = `<strong>Obiecția:</strong> ${obiectii[tip].obiectie}<br><br>${obiectii[tip].raspuns}`;
+                };
+
+                // Poemul arborelui - replica
+                window.afisamReplica = function() {
+                    const rezultat = document.getElementById('replica-dumnezeu');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'var(--primary)';
+                    rezultat.style.borderRadius = '4px';
+                    rezultat.style.fontStyle = 'italic';
+
+                    rezultat.innerHTML = `
+                        <p style="margin-bottom: 0.5rem;">Dear Sir, your astonishment's odd;</p>
+                        <p style="margin-bottom: 0.5rem;">I am always about in the Quad.</p>
+                        <p style="margin-bottom: 0.5rem; padding-left: 1rem;">And that's why the tree</p>
+                        <p style="margin-bottom: 0.5rem; padding-left: 1rem;">Will continue to be,</p>
+                        <p>Since observed by, Yours faithfully, God.</p>
+                        <br>
+                        <p style="font-style: normal; font-size: 0.85rem; color: var(--text-muted);">— Răspunsul (atribuit) lui Ronald Knox</p>
+                    `;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Lumea în Minte</h2>
 
                 <p>Berkeley rămâne un paradox: un episcop care a negat materia, un empirist care a ajuns la idealism, un vizionar care a visat America dar a trăit în Irlanda. Filozofia lui pare absurdă — și totuși e aproape imposibil de refutat definitiv.</p>

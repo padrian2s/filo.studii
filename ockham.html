@@ -198,8 +198,327 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Aplică Briciul lui Ockham</h2>
+
+                <p>Experimentează principiul parcimoniei: taie entitățile inutile, preferă simplicitatea.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Briciul în Acțiune</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Compară explicații pentru același fenomen. Care e mai simplă?</p>
+
+                        <div id="comparatii-container"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Aplică Briciul Tu</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Descrie o situație sau explicație complexă și simplifică.</p>
+
+                        <textarea id="situatie-complexa" placeholder="Ex: Cheile mele au dispărut. Poate un hoț invizibil le-a luat, sau un portal dimensional s-a deschis, sau..." style="width: 100%; height: 100px; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; font-family: inherit; font-size: 0.95rem;"></textarea>
+                        <button onclick="aplicaBriciul()">Aplică briciul</button>
+                        <div id="brici-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Numără Entitățile</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Compară două teorii prin numărul de entități pe care le presupun.</p>
+
+                        <div class="entitati-comparatie" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <label style="font-size: 0.85rem; font-weight: bold;">Teoria A:</label>
+                                <input type="text" id="teoria-a" placeholder="Ex: Soarele se învârte în jurul Pământului" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; margin: 0.5rem 0;">
+                                <input type="number" id="entitati-a" min="1" max="20" value="5" style="width: 80px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px;">
+                                <span style="font-size: 0.8rem;"> entități</span>
+                            </div>
+                            <div style="flex: 1; min-width: 200px;">
+                                <label style="font-size: 0.85rem; font-weight: bold;">Teoria B:</label>
+                                <input type="text" id="teoria-b" placeholder="Ex: Pământul se învârte în jurul Soarelui" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; margin: 0.5rem 0;">
+                                <input type="number" id="entitati-b" min="1" max="20" value="3" style="width: 80px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px;">
+                                <span style="font-size: 0.8rem;"> entități</span>
+                            </div>
+                        </div>
+                        <button onclick="comparaTeoriile()" style="margin-top: 1rem;">Compară teoriile</button>
+                        <div id="teorii-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Nominalismul în Practică</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Când cineva vorbește despre „societatea", „piața", „cultura" — ce indivizi concreți se ascund în spatele abstracțiunii?</p>
+
+                        <select id="abstractie-select" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem;">
+                            <option value="societate">„Societatea cere..."</option>
+                            <option value="piata">„Piața a decis..."</option>
+                            <option value="stiinta">„Știința spune..."</option>
+                            <option value="opinia">„Opinia publică este..."</option>
+                        </select>
+                        <button onclick="dezvaluieAbstractia()">Dezvăluie indivizii</button>
+                        <div id="abstractie-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                }
+                .comparatie-item {
+                    padding: 1rem;
+                    margin-bottom: 1rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .comparatie-fenomen {
+                    font-weight: bold;
+                    margin-bottom: 0.75rem;
+                    padding-bottom: 0.75rem;
+                    border-bottom: 1px solid var(--border);
+                }
+                .explicatie-optiune {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 0.75rem;
+                    padding: 0.5rem;
+                    margin: 0.5rem 0;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+                .explicatie-optiune:hover {
+                    background: rgba(45, 90, 39, 0.05);
+                }
+                .explicatie-optiune input {
+                    margin-top: 0.25rem;
+                }
+                .explicatie-optiune.simpla {
+                    border-left: 3px solid #4CAF50;
+                }
+                .explicatie-optiune.complexa {
+                    border-left: 3px solid #FF9800;
+                }
+                .feedback-comparatie {
+                    display: none;
+                    margin-top: 0.75rem;
+                    padding: 0.75rem;
+                    background: rgba(45, 90, 39, 0.1);
+                    border-radius: 4px;
+                    font-size: 0.9rem;
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Comparații
+                const comparatii = [
+                    {
+                        fenomen: "De ce am visat ceva ciudat noaptea trecută?",
+                        simpla: "Creierul procesează informații și amintiri în timpul somnului REM.",
+                        complexa: "Spirite din altă dimensiune îți trimit mesaje profetice codificate.",
+                        explicatie: "Briciul taie spiritele și dimensiunile — avem deja mecanisme neurologice care explică visele fără entități supranaturale."
+                    },
+                    {
+                        fenomen: "De ce planetele se mișcă pe orbite regulate?",
+                        simpla: "Gravitația — o singură forță care acționează între mase.",
+                        complexa: "Îngeri care împing planetele + sfere cristaline + mișcări epiciclice complexe.",
+                        explicatie: "Newton a aplicat briciul la astronomie: o singură lege (gravitația) explică toate mișcările cerești, fără îngeri sau sfere."
+                    },
+                    {
+                        fenomen: "De ce am avut succes la examen?",
+                        simpla: "Am studiat mult și am înțeles materia.",
+                        complexa: "Astrele erau favorabile, am purtat tricoul norocos, am mâncat mic dejun special, universul a conspirat pentru mine.",
+                        explicatie: "Studiul e cauză suficientă — nu multiplica explicații. Briciul taie noroc, astrologie, tricouri magice."
+                    },
+                    {
+                        fenomen: "De ce există regularități în natură (legile fizicii)?",
+                        simpla: "Așa funcționează universul — regularitățile sunt fundamentale.",
+                        complexa: "Un Designer inteligent a programat fiecare lege; plus o lume a ideilor platonice; plus...",
+                        explicatie: "Ockham nu neagă că ar putea exista Dumnezeu, dar pentru știință e suficient să descriem regularitățile fără a presupune entități suplimentare."
+                    }
+                ];
+
+                const comparatiiContainer = document.getElementById('comparatii-container');
+                comparatii.forEach((c, i) => {
+                    comparatiiContainer.innerHTML += `
+                        <div class="comparatie-item">
+                            <div class="comparatie-fenomen">${c.fenomen}</div>
+                            <div class="explicatie-optiune simpla" onclick="selecteazaExplicatie(${i}, 'simpla')">
+                                <input type="radio" name="comp${i}" value="simpla">
+                                <div>
+                                    <strong>A:</strong> ${c.simpla}
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">Entități: puține</div>
+                                </div>
+                            </div>
+                            <div class="explicatie-optiune complexa" onclick="selecteazaExplicatie(${i}, 'complexa')">
+                                <input type="radio" name="comp${i}" value="complexa">
+                                <div>
+                                    <strong>B:</strong> ${c.complexa}
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">Entități: multe</div>
+                                </div>
+                            </div>
+                            <div class="feedback-comparatie" id="feedback${i}">${c.explicatie}</div>
+                        </div>
+                    `;
+                });
+
+                window.selecteazaExplicatie = function(index, tip) {
+                    document.querySelector(`input[name="comp${index}"][value="${tip}"]`).checked = true;
+                    const feedback = document.getElementById(`feedback${index}`);
+                    feedback.style.display = 'block';
+
+                    if (tip === 'simpla') {
+                        feedback.style.background = 'rgba(76, 175, 80, 0.1)';
+                        feedback.innerHTML = `<strong>✓ Alegere ockhamiană!</strong> ${comparatii[index].explicatie}`;
+                    } else {
+                        feedback.style.background = 'rgba(255, 152, 0, 0.1)';
+                        feedback.innerHTML = `<strong>✗ Briciul taie!</strong> ${comparatii[index].explicatie}`;
+                    }
+                };
+
+                // Aplică briciul
+                window.aplicaBriciul = function() {
+                    const situatie = document.getElementById('situatie-complexa').value;
+                    const rezultat = document.getElementById('brici-rezultat');
+
+                    if (!situatie.trim()) {
+                        rezultat.style.display = 'block';
+                        rezultat.innerHTML = '<em>Descrie o situație.</em>';
+                        return;
+                    }
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'rgba(45, 90, 39, 0.1)';
+                    rezultat.style.borderRadius = '4px';
+
+                    rezultat.innerHTML = `
+                        <strong>Briciul lui Ockham întreabă:</strong><br><br>
+
+                        1. <strong>Ce entități presupui?</strong><br>
+                        Listează toate lucrurile pe care le presupui că există (hoți invizibili, portaluri, conspirații, etc.)<br><br>
+
+                        2. <strong>Care sunt necesare?</strong><br>
+                        Fenomenul poate fi explicat fără ele? Dacă da, taie-le.<br><br>
+
+                        3. <strong>Care e explicația minimală?</strong><br>
+                        Ce rămâne după ce ai tăiat tot ce nu e necesar?<br><br>
+
+                        <hr style="border: none; border-top: 1px solid var(--border); margin: 1rem 0;">
+
+                        <strong>Exemplu pentru situația ta:</strong><br>
+                        Dacă „cheile au dispărut" → explicația minimală: le-ai pus undeva și ai uitat.<br>
+                        Nu ai nevoie de: hoți invizibili, portaluri dimensionale, sau universuri paralele.<br><br>
+
+                        <em>„E zadarnic să faci cu mai mult ce poți face cu mai puțin."</em>
+                    `;
+                };
+
+                // Compară teoriile
+                window.comparaTeoriile = function() {
+                    const teoriaA = document.getElementById('teoria-a').value || 'Teoria A';
+                    const teoriaB = document.getElementById('teoria-b').value || 'Teoria B';
+                    const entA = parseInt(document.getElementById('entitati-a').value);
+                    const entB = parseInt(document.getElementById('entitati-b').value);
+
+                    const rezultat = document.getElementById('teorii-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    const diff = entA - entB;
+
+                    rezultat.innerHTML = `
+                        <div style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                            <div style="flex: 1; text-align: center;">
+                                <div style="font-size: 2rem; color: ${entA <= entB ? '#4CAF50' : '#FF9800'};">${entA}</div>
+                                <div style="font-size: 0.8rem;">entități</div>
+                                <div style="font-weight: bold;">${teoriaA}</div>
+                            </div>
+                            <div style="flex: 1; text-align: center;">
+                                <div style="font-size: 2rem; color: ${entB <= entA ? '#4CAF50' : '#FF9800'};">${entB}</div>
+                                <div style="font-size: 0.8rem;">entități</div>
+                                <div style="font-weight: bold;">${teoriaB}</div>
+                            </div>
+                        </div>
+
+                        ${diff > 0 ?
+                            `<strong style="color: #4CAF50;">Briciul preferă Teoria B</strong> — are ${diff} entități mai puțin.` :
+                          diff < 0 ?
+                            `<strong style="color: #4CAF50;">Briciul preferă Teoria A</strong> — are ${-diff} entități mai puțin.` :
+                            `<strong>Egalitate</strong> — ambele teorii au același număr de entități. Alege pe alte criterii.`
+                        }
+                        <br><br>
+                        <em>Notă: Briciul e un criteriu de preferință, nu de adevăr. Uneori teoria mai complexă e cea corectă — dar simplicitatea e un bun punct de plecare.</em>
+                    `;
+
+                    rezultat.style.background = 'rgba(45, 90, 39, 0.1)';
+                };
+
+                // Dezvăluie abstracția
+                const abstractii = {
+                    societate: {
+                        detalii: "„Societatea cere..." — DAR cine exact? Un politician care vrea voturi? Un editorialist care generalizează? Vecinii tăi? Toți 19 milioane de români?",
+                        intrebare: "Întreabă întotdeauna: CINE anume cere? Ce indivizi, ce grupuri concrete?",
+                        ockham: "Pentru Ockham, „societatea" nu există ca entitate — există doar indivizi care acționează."
+                    },
+                    piata: {
+                        detalii: "„Piața a decis..." — DAR piața nu decide nimic. Cumpărătorii și vânzătorii individuali iau decizii. „Piața" e suma lor, nu un agent.",
+                        intrebare: "Întreabă: ce cumpărători și vânzători specifici au făcut ce alegeri?",
+                        ockham: "„Piața" e abstracție utilă, dar nu e entitate reală. Există doar tranzacții individuale."
+                    },
+                    stiinta: {
+                        detalii: "„Știința spune..." — DAR știința nu vorbește. Oameni de știință specifici publică studii. Alte studii pot contrazice. Consensul e proces, nu persoană.",
+                        intrebare: "Întreabă: ce studiu, ce cercetători, ce metodologie, ce limitări?",
+                        ockham: "Nu există „Știința" ca autoritate unică — există cercetători, reviste, studii, dezbateri."
+                    },
+                    opinia: {
+                        detalii: "„Opinia publică este..." — DAR cine a fost întrebat? Ce eșantion? Ce întrebare? Un sondaj de 1000 de persoane devine „opinia publică"?",
+                        intrebare: "Întreabă: ce indivizi, ce metodologie, ce majoritate și ce minoritate?",
+                        ockham: "„Opinia publică" e construcție statistică — în realitate sunt milioane de opinii individuale diferite."
+                    }
+                };
+
+                window.dezvaluieAbstractia = function() {
+                    const tip = document.getElementById('abstractie-select').value;
+                    const data = abstractii[tip];
+                    const rezultat = document.getElementById('abstractie-rezultat');
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'var(--primary)';
+                    rezultat.style.border = '1px solid var(--border)';
+                    rezultat.style.borderRadius = '4px';
+
+                    rezultat.innerHTML = `
+                        <strong>Demascare nominalistă:</strong><br><br>
+                        ${data.detalii}<br><br>
+                        <strong>Întrebarea ockhamiană:</strong> ${data.intrebare}<br><br>
+                        <em>${data.ockham}</em>
+                    `;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Concluzie</span>
+                <span class="section-number">10 / Concluzie</span>
                 <h2>Simplitatea Radicală</h2>
 
                 <p>William de Ockham a fost un distrugător — a tăiat entități metafizice, a separat domenii, a contestat autorități. Dar distrugerea lui a fost constructivă: a eliberat gândirea de balast, a făcut loc pentru știința modernă, a deschis calea autonomiei intelectuale.</p>

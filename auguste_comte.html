@@ -3337,6 +3337,710 @@
 
                 <div class="section-divider">✦ ✦ ✦</div>
 
+                <!-- SIMULATOR INTERACTIV -->
+                <h2>VIII.1. Simulator: Experimentează Pozitivismul</h2>
+
+                <p>Auguste Comte a creat un sistem ambițios pentru înțelegerea cunoașterii umane. Explorează ideile sale centrale prin aceste exerciții interactive.</p>
+
+                <div class="simulator-container">
+                    <!-- Legea celor trei stadii -->
+                    <div class="sim-section">
+                        <h4><span class="material-icons" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem; color: var(--accent);">timeline</span>Legea Celor Trei Stadii</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Clasifică următoarele explicații în stadiul corespunzător.</p>
+
+                        <div id="stadii-quiz">
+                            <div class="quiz-item" data-correct="teologic">
+                                <p class="quiz-text">„Cutremurul a fost trimis de zei ca pedeapsă pentru păcatele noastre."</p>
+                                <div class="quiz-options">
+                                    <button onclick="verificaStadiu(this, 'teologic')">Teologic</button>
+                                    <button onclick="verificaStadiu(this, 'metafizic')">Metafizic</button>
+                                    <button onclick="verificaStadiu(this, 'pozitiv')">Pozitiv</button>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-item" data-correct="metafizic">
+                                <p class="quiz-text">„Boala este cauzată de dezechilibrul forțelor vitale din organism."</p>
+                                <div class="quiz-options">
+                                    <button onclick="verificaStadiu(this, 'teologic')">Teologic</button>
+                                    <button onclick="verificaStadiu(this, 'metafizic')">Metafizic</button>
+                                    <button onclick="verificaStadiu(this, 'pozitiv')">Pozitiv</button>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-item" data-correct="pozitiv">
+                                <p class="quiz-text">„Infecția este cauzată de bacterii care pot fi observate la microscop."</p>
+                                <div class="quiz-options">
+                                    <button onclick="verificaStadiu(this, 'teologic')">Teologic</button>
+                                    <button onclick="verificaStadiu(this, 'metafizic')">Metafizic</button>
+                                    <button onclick="verificaStadiu(this, 'pozitiv')">Pozitiv</button>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-item" data-correct="teologic">
+                                <p class="quiz-text">„Fulgerul este manifestarea furiei lui Zeus."</p>
+                                <div class="quiz-options">
+                                    <button onclick="verificaStadiu(this, 'teologic')">Teologic</button>
+                                    <button onclick="verificaStadiu(this, 'metafizic')">Metafizic</button>
+                                    <button onclick="verificaStadiu(this, 'pozitiv')">Pozitiv</button>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-item" data-correct="metafizic">
+                                <p class="quiz-text">„Plantele cresc datorită principiului vital inerent în materia vie."</p>
+                                <div class="quiz-options">
+                                    <button onclick="verificaStadiu(this, 'teologic')">Teologic</button>
+                                    <button onclick="verificaStadiu(this, 'metafizic')">Metafizic</button>
+                                    <button onclick="verificaStadiu(this, 'pozitiv')">Pozitiv</button>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-item" data-correct="pozitiv">
+                                <p class="quiz-text">„Planetele se mișcă conform legii gravitației universale."</p>
+                                <div class="quiz-options">
+                                    <button onclick="verificaStadiu(this, 'teologic')">Teologic</button>
+                                    <button onclick="verificaStadiu(this, 'metafizic')">Metafizic</button>
+                                    <button onclick="verificaStadiu(this, 'pozitiv')">Pozitiv</button>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                        </div>
+                        <div id="stadii-scor" style="margin-top: 1rem; padding: 1rem; background: var(--secondary); border-radius: 4px; display: none;"></div>
+                    </div>
+
+                    <!-- Clasificarea științelor -->
+                    <div class="sim-section" style="margin-top: 2rem;">
+                        <h4><span class="material-icons" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem; color: var(--accent);">account_tree</span>Piramida Științelor</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Comte a clasificat științele într-o ierarhie de la cele mai simple la cele mai complexe. Aranjează-le în ordinea corectă!</p>
+
+                        <div id="piramida-container">
+                            <div class="piramida-dropzone" data-level="6">
+                                <span class="level-label">6. Cea mai complexă</span>
+                                <div class="drop-area" ondrop="dropStiinta(event)" ondragover="allowDrop(event)"></div>
+                            </div>
+                            <div class="piramida-dropzone" data-level="5">
+                                <span class="level-label">5.</span>
+                                <div class="drop-area" ondrop="dropStiinta(event)" ondragover="allowDrop(event)"></div>
+                            </div>
+                            <div class="piramida-dropzone" data-level="4">
+                                <span class="level-label">4.</span>
+                                <div class="drop-area" ondrop="dropStiinta(event)" ondragover="allowDrop(event)"></div>
+                            </div>
+                            <div class="piramida-dropzone" data-level="3">
+                                <span class="level-label">3.</span>
+                                <div class="drop-area" ondrop="dropStiinta(event)" ondragover="allowDrop(event)"></div>
+                            </div>
+                            <div class="piramida-dropzone" data-level="2">
+                                <span class="level-label">2.</span>
+                                <div class="drop-area" ondrop="dropStiinta(event)" ondragover="allowDrop(event)"></div>
+                            </div>
+                            <div class="piramida-dropzone" data-level="1">
+                                <span class="level-label">1. Cea mai simplă</span>
+                                <div class="drop-area" ondrop="dropStiinta(event)" ondragover="allowDrop(event)"></div>
+                            </div>
+                        </div>
+
+                        <div id="stiinte-disponibile" style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
+                            <div class="stiinta-drag" draggable="true" ondragstart="dragStiinta(event)" data-stiinta="sociologie">Sociologie</div>
+                            <div class="stiinta-drag" draggable="true" ondragstart="dragStiinta(event)" data-stiinta="matematica">Matematică</div>
+                            <div class="stiinta-drag" draggable="true" ondragstart="dragStiinta(event)" data-stiinta="fizica">Fizică</div>
+                            <div class="stiinta-drag" draggable="true" ondragstart="dragStiinta(event)" data-stiinta="biologie">Biologie</div>
+                            <div class="stiinta-drag" draggable="true" ondragstart="dragStiinta(event)" data-stiinta="chimie">Chimie</div>
+                            <div class="stiinta-drag" draggable="true" ondragstart="dragStiinta(event)" data-stiinta="astronomie">Astronomie</div>
+                        </div>
+
+                        <button onclick="verificaPiramida()" style="margin-top: 1rem;">Verifică aranjamentul</button>
+                        <div id="piramida-feedback" style="margin-top: 1rem;"></div>
+                    </div>
+
+                    <!-- Analizează-ți propriile credințe -->
+                    <div class="sim-section" style="margin-top: 2rem;">
+                        <h4><span class="material-icons" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem; color: var(--accent);">psychology</span>Analizează-ți Gândirea</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Scrie o credință sau explicație pe care o ai, și vom analiza în ce stadiu se încadrează.</p>
+
+                        <textarea id="credinta-input" placeholder="Ex: Norocul există și influențează viața mea / Totul se întâmplă cu un motiv / Energia universului ne ghidează..."></textarea>
+                        <button onclick="analizeazaCredinta()">Analizează</button>
+
+                        <div id="credinta-analiza" style="margin-top: 1rem; display: none;"></div>
+                    </div>
+
+                    <!-- Transformă explicația -->
+                    <div class="sim-section" style="margin-top: 2rem;">
+                        <h4><span class="material-icons" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem; color: var(--accent);">transform</span>Transformă Explicația</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Alege un fenomen și vezi cum ar fi explicat în fiecare din cele trei stadii.</p>
+
+                        <select id="fenomen-select" onchange="transformaExplicatie()">
+                            <option value="">-- Alege un fenomen --</option>
+                            <option value="boala">O epidemie de boală</option>
+                            <option value="furtuna">O furtună violentă</option>
+                            <option value="eclipsa">O eclipsă de soare</option>
+                            <option value="succes">Succesul în viață</option>
+                            <option value="moarte">Moartea</option>
+                            <option value="dragoste">Dragostea</option>
+                        </select>
+
+                        <div id="transformare-rezultat" style="margin-top: 1rem;"></div>
+                    </div>
+
+                    <!-- Cât de pozitivist ești? -->
+                    <div class="sim-section" style="margin-top: 2rem;">
+                        <h4><span class="material-icons" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem; color: var(--accent);">poll</span>Cât de Pozitivist Ești?</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Răspunde la aceste întrebări pentru a afla cât de mult gândești „pozitivist" în viața de zi cu zi.</p>
+
+                        <div id="test-pozitivism">
+                            <div class="test-intrebare">
+                                <p>1. Când iei o decizie importantă, te bazezi pe:</p>
+                                <label><input type="radio" name="q1" value="3"> Date concrete și statistici</label>
+                                <label><input type="radio" name="q1" value="2"> Principii și valori abstracte</label>
+                                <label><input type="radio" name="q1" value="1"> Intuiție sau semne</label>
+                            </div>
+                            <div class="test-intrebare">
+                                <p>2. Crezi că științа poate explica toate fenomenele?</p>
+                                <label><input type="radio" name="q2" value="3"> Da, în timp toate vor fi explicate</label>
+                                <label><input type="radio" name="q2" value="2"> Majoritatea, dar nu toate</label>
+                                <label><input type="radio" name="q2" value="1"> Nu, există mistere dincolo de știință</label>
+                            </div>
+                            <div class="test-intrebare">
+                                <p>3. Cum privești horoscopul și astrologia?</p>
+                                <label><input type="radio" name="q3" value="3"> Superstiții fără bază științifică</label>
+                                <label><input type="radio" name="q3" value="2"> Poate conțin niște adevăr simbolic</label>
+                                <label><input type="radio" name="q3" value="1"> Pot oferi îndrumări utile</label>
+                            </div>
+                            <div class="test-intrebare">
+                                <p>4. Ce este mai important pentru progresul societății?</p>
+                                <label><input type="radio" name="q4" value="3"> Educația și cercetarea științifică</label>
+                                <label><input type="radio" name="q4" value="2"> Valorile morale și spirituale</label>
+                                <label><input type="radio" name="q4" value="1"> Respectarea tradițiilor strămoșești</label>
+                            </div>
+                            <div class="test-intrebare">
+                                <p>5. Când cineva se vindecă de o boală gravă:</p>
+                                <label><input type="radio" name="q5" value="3"> E meritul medicinei moderne</label>
+                                <label><input type="radio" name="q5" value="2"> E o combinație de factori</label>
+                                <label><input type="radio" name="q5" value="1"> E un miracol sau voința divină</label>
+                            </div>
+                        </div>
+                        <button onclick="calculeazaPozitivism()">Vezi rezultatul</button>
+                        <div id="test-rezultat" style="margin-top: 1rem;"></div>
+                    </div>
+                </div>
+
+                <style>
+                    .simulator-container {
+                        background: var(--secondary);
+                        border: 1px solid var(--border);
+                        padding: 2rem;
+                        margin: 2rem 0;
+                        border-radius: 4px;
+                    }
+                    .sim-section {
+                        padding-bottom: 1.5rem;
+                        border-bottom: 1px solid var(--border);
+                    }
+                    .sim-section:last-child {
+                        border-bottom: none;
+                        padding-bottom: 0;
+                    }
+                    .sim-section h4 {
+                        font-family: 'Inter', sans-serif;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: var(--text);
+                        margin-bottom: 0.5rem;
+                    }
+                    .simulator-container button {
+                        background: var(--accent);
+                        color: white;
+                        border: none;
+                        padding: 0.6rem 1.2rem;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 0.8rem;
+                        cursor: pointer;
+                        border-radius: 4px;
+                        transition: background 0.2s;
+                    }
+                    .simulator-container button:hover {
+                        background: var(--accent-dark);
+                    }
+                    .simulator-container textarea,
+                    .simulator-container select {
+                        width: 100%;
+                        padding: 0.75rem;
+                        font-family: 'Merriweather', serif;
+                        font-size: 0.95rem;
+                        border: 1px solid var(--border);
+                        border-radius: 4px;
+                        margin-bottom: 1rem;
+                        background: white;
+                    }
+                    .simulator-container textarea {
+                        min-height: 80px;
+                        resize: vertical;
+                    }
+                    /* Quiz styles */
+                    .quiz-item {
+                        background: white;
+                        padding: 1rem;
+                        border-radius: 4px;
+                        margin-bottom: 1rem;
+                        border: 1px solid var(--border);
+                    }
+                    .quiz-text {
+                        font-style: italic;
+                        margin-bottom: 0.75rem !important;
+                        color: var(--text);
+                    }
+                    .quiz-options {
+                        display: flex;
+                        gap: 0.5rem;
+                        flex-wrap: wrap;
+                    }
+                    .quiz-options button {
+                        padding: 0.4rem 0.8rem;
+                        font-size: 0.75rem;
+                        background: white;
+                        color: var(--text);
+                        border: 1px solid var(--border);
+                    }
+                    .quiz-options button:hover {
+                        background: var(--secondary);
+                    }
+                    .quiz-options button.correct {
+                        background: var(--success);
+                        color: white;
+                        border-color: var(--success);
+                    }
+                    .quiz-options button.incorrect {
+                        background: var(--error);
+                        color: white;
+                        border-color: var(--error);
+                    }
+                    .quiz-feedback {
+                        margin-top: 0.5rem;
+                        font-size: 0.85rem;
+                        color: var(--text-muted);
+                    }
+                    /* Piramida styles */
+                    #piramida-container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+                    .piramida-dropzone {
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                    }
+                    .level-label {
+                        font-size: 0.75rem;
+                        color: var(--text-muted);
+                        width: 120px;
+                        text-align: right;
+                    }
+                    .drop-area {
+                        flex: 1;
+                        min-height: 40px;
+                        border: 2px dashed var(--border);
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: white;
+                        transition: all 0.2s;
+                    }
+                    .drop-area.drag-over {
+                        border-color: var(--accent);
+                        background: rgba(196, 30, 58, 0.05);
+                    }
+                    .stiinta-drag {
+                        padding: 0.5rem 1rem;
+                        background: var(--accent);
+                        color: white;
+                        border-radius: 4px;
+                        cursor: grab;
+                        font-size: 0.85rem;
+                        transition: transform 0.2s;
+                    }
+                    .stiinta-drag:hover {
+                        transform: scale(1.05);
+                    }
+                    .stiinta-drag.placed {
+                        background: var(--accent-dark);
+                    }
+                    /* Test pozitivism */
+                    .test-intrebare {
+                        background: white;
+                        padding: 1rem;
+                        border-radius: 4px;
+                        margin-bottom: 1rem;
+                        border: 1px solid var(--border);
+                    }
+                    .test-intrebare p {
+                        font-weight: 500;
+                        margin-bottom: 0.75rem !important;
+                    }
+                    .test-intrebare label {
+                        display: block;
+                        padding: 0.4rem 0;
+                        cursor: pointer;
+                        font-size: 0.9rem;
+                    }
+                    .test-intrebare input[type="radio"] {
+                        margin-right: 0.5rem;
+                    }
+                    /* Transformare rezultat */
+                    .stadiu-explicatie {
+                        padding: 1rem;
+                        border-radius: 4px;
+                        margin-bottom: 0.75rem;
+                    }
+                    .stadiu-explicatie.teologic {
+                        background: rgba(156, 39, 176, 0.1);
+                        border-left: 3px solid #9C27B0;
+                    }
+                    .stadiu-explicatie.metafizic {
+                        background: rgba(33, 150, 243, 0.1);
+                        border-left: 3px solid #2196F3;
+                    }
+                    .stadiu-explicatie.pozitiv {
+                        background: rgba(76, 175, 80, 0.1);
+                        border-left: 3px solid #4CAF50;
+                    }
+                    .stadiu-label {
+                        font-family: 'Inter', sans-serif;
+                        font-size: 0.7rem;
+                        text-transform: uppercase;
+                        letter-spacing: 0.1em;
+                        margin-bottom: 0.25rem;
+                    }
+                    /* Analiza credință */
+                    .analiza-box {
+                        padding: 1.5rem;
+                        background: white;
+                        border-radius: 4px;
+                        border: 1px solid var(--border);
+                    }
+                    .analiza-stadiu {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                        color: var(--accent);
+                        margin-bottom: 0.5rem;
+                    }
+                    @media (max-width: 768px) {
+                        .simulator-container {
+                            padding: 1.5rem;
+                            margin: 1.5rem -1rem;
+                            border-radius: 0;
+                        }
+                        .level-label {
+                            width: 80px;
+                            font-size: 0.65rem;
+                        }
+                        .quiz-options {
+                            flex-direction: column;
+                        }
+                    }
+                </style>
+
+                <script>
+                (function() {
+                    // Variabile globale pentru quiz
+                    let stadiiCorecte = 0;
+                    let stadiiTotal = 6;
+                    let stadiiRaspunsuri = new Set();
+
+                    const explicatiiStadii = {
+                        teologic: "Explicație teologică: atribuie fenomenul unor agenți supranaturali (zei, spirite, demoni).",
+                        metafizic: "Explicație metafizică: invocă forțe abstracte sau principii (esențe, forțe vitale, entelehi).",
+                        pozitiv: "Explicație pozitivă: descrie regularități observabile și legi verificabile empiric."
+                    };
+
+                    // Quiz stadii
+                    window.verificaStadiu = function(btn, raspuns) {
+                        const item = btn.closest('.quiz-item');
+                        const corect = item.dataset.correct;
+                        const feedback = item.querySelector('.quiz-feedback');
+                        const buttons = item.querySelectorAll('.quiz-options button');
+
+                        if (stadiiRaspunsuri.has(item)) return;
+                        stadiiRaspunsuri.add(item);
+
+                        buttons.forEach(b => b.disabled = true);
+
+                        if (raspuns === corect) {
+                            btn.classList.add('correct');
+                            feedback.innerHTML = '✓ Corect! ' + explicatiiStadii[corect];
+                            feedback.style.color = 'var(--success)';
+                            stadiiCorecte++;
+                        } else {
+                            btn.classList.add('incorrect');
+                            buttons.forEach(b => {
+                                if (b.textContent.toLowerCase() === corect) b.classList.add('correct');
+                            });
+                            feedback.innerHTML = '✗ ' + explicatiiStadii[corect];
+                            feedback.style.color = 'var(--error)';
+                        }
+
+                        if (stadiiRaspunsuri.size === stadiiTotal) {
+                            const scor = document.getElementById('stadii-scor');
+                            scor.style.display = 'block';
+                            const procent = Math.round((stadiiCorecte / stadiiTotal) * 100);
+                            scor.innerHTML = `<strong>Scor final: ${stadiiCorecte}/${stadiiTotal} (${procent}%)</strong><br>` +
+                                (procent >= 80 ? 'Excelent! Ai înțeles bine legea celor trei stadii.' :
+                                 procent >= 50 ? 'Bine! Recitește secțiunea despre cele trei stadii pentru clarificare.' :
+                                 'Mai ai de studiat! Distincția dintre stadii este subtilă dar importantă.');
+                        }
+                    };
+
+                    // Drag and drop pentru piramida științelor
+                    const ordineStiinte = ['matematica', 'astronomie', 'fizica', 'chimie', 'biologie', 'sociologie'];
+
+                    window.dragStiinta = function(ev) {
+                        ev.dataTransfer.setData('text', ev.target.dataset.stiinta);
+                    };
+
+                    window.allowDrop = function(ev) {
+                        ev.preventDefault();
+                        ev.target.classList.add('drag-over');
+                    };
+
+                    window.dropStiinta = function(ev) {
+                        ev.preventDefault();
+                        ev.target.classList.remove('drag-over');
+                        const stiinta = ev.dataTransfer.getData('text');
+                        const dragElem = document.querySelector(`[data-stiinta="${stiinta}"]`);
+
+                        // Dacă există deja o știință aici, o punem înapoi
+                        if (ev.target.children.length > 0) {
+                            const existing = ev.target.children[0];
+                            document.getElementById('stiinte-disponibile').appendChild(existing);
+                            existing.classList.remove('placed');
+                        }
+
+                        ev.target.appendChild(dragElem);
+                        dragElem.classList.add('placed');
+                    };
+
+                    // Adaugăm eveniment de dragover leave
+                    document.querySelectorAll('.drop-area').forEach(area => {
+                        area.addEventListener('dragleave', function() {
+                            this.classList.remove('drag-over');
+                        });
+                    });
+
+                    window.verificaPiramida = function() {
+                        const dropzones = document.querySelectorAll('.piramida-dropzone');
+                        let corecte = 0;
+                        let rezultatHTML = '';
+
+                        dropzones.forEach((zone, index) => {
+                            const level = parseInt(zone.dataset.level);
+                            const dropArea = zone.querySelector('.drop-area');
+                            const stiintaElem = dropArea.querySelector('.stiinta-drag');
+
+                            if (stiintaElem) {
+                                const stiinta = stiintaElem.dataset.stiinta;
+                                const pozitieCorecta = ordineStiinte.indexOf(stiinta) + 1;
+
+                                if (pozitieCorecta === level) {
+                                    corecte++;
+                                    stiintaElem.style.background = 'var(--success)';
+                                } else {
+                                    stiintaElem.style.background = 'var(--error)';
+                                }
+                            }
+                        });
+
+                        const feedback = document.getElementById('piramida-feedback');
+                        if (corecte === 6) {
+                            feedback.innerHTML = `<div style="padding: 1rem; background: rgba(45, 134, 89, 0.1); border-radius: 4px; border-left: 3px solid var(--success);">
+                                <strong>Perfect!</strong> Ai aranjat corect piramida lui Comte:<br>
+                                1. <strong>Matematica</strong> - baza tuturor științelor<br>
+                                2. <strong>Astronomia</strong> - prima știință naturală<br>
+                                3. <strong>Fizica</strong> - studiul materiei și energiei<br>
+                                4. <strong>Chimia</strong> - compoziția substanțelor<br>
+                                5. <strong>Biologia</strong> - studiul vieții<br>
+                                6. <strong>Sociologia</strong> - „regina științelor", creată de Comte
+                            </div>`;
+                        } else {
+                            feedback.innerHTML = `<div style="padding: 1rem; background: rgba(196, 30, 58, 0.1); border-radius: 4px; border-left: 3px solid var(--error);">
+                                <strong>${corecte}/6 corecte.</strong> Ordinea corectă (de la simplu la complex):<br>
+                                Matematică → Astronomie → Fizică → Chimie → Biologie → Sociologie<br>
+                                <em>Fiecare știință depinde de precedentele și adaugă complexitate.</em>
+                            </div>`;
+                        }
+                    };
+
+                    // Analizează credința
+                    const indicatoriStadii = {
+                        teologic: ['zeu', 'divin', 'spirit', 'demon', 'înger', 'miracol', 'sacru', 'blestem', 'binecuvânt', 'păcat', 'rai', 'iad', 'suflet', 'rugăciune', 'providență', 'destin divin'],
+                        metafizic: ['forță', 'energie', 'univers', 'principiu', 'esență', 'armonie', 'echilibru', 'karma', 'vibra', 'aură', 'cosmic', 'absolut', 'natură', 'vital', 'spiritual'],
+                        pozitiv: ['cauză', 'efect', 'observ', 'măsur', 'experiment', 'dovad', 'știință', 'statistic', 'probabil', 'corela', 'analiză', 'date', 'cercet', 'ipotez', 'test']
+                    };
+
+                    window.analizeazaCredinta = function() {
+                        const input = document.getElementById('credinta-input').value.toLowerCase();
+                        if (!input.trim()) {
+                            alert('Te rog scrie o credință sau explicație.');
+                            return;
+                        }
+
+                        let scoruri = { teologic: 0, metafizic: 0, pozitiv: 0 };
+
+                        for (let stadiu in indicatoriStadii) {
+                            indicatoriStadii[stadiu].forEach(indicator => {
+                                if (input.includes(indicator)) scoruri[stadiu] += 2;
+                            });
+                        }
+
+                        // Analiză suplimentară
+                        if (input.match(/de ce|cum se face|motiv|cauză/)) scoruri.metafizic++;
+                        if (input.match(/cred că|simt că|parcă|poate/)) scoruri.teologic++;
+                        if (input.match(/arată că|demonstrează|conform/)) scoruri.pozitiv++;
+
+                        const maxStadiu = Object.keys(scoruri).reduce((a, b) => scoruri[a] > scoruri[b] ? a : b);
+                        const total = scoruri.teologic + scoruri.metafizic + scoruri.pozitiv;
+
+                        const rezultat = document.getElementById('credinta-analiza');
+                        rezultat.style.display = 'block';
+
+                        let stadiuNume = maxStadiu === 'teologic' ? 'Teologic' : maxStadiu === 'metafizic' ? 'Metafizic' : 'Pozitiv';
+                        let culoare = maxStadiu === 'teologic' ? '#9C27B0' : maxStadiu === 'metafizic' ? '#2196F3' : '#4CAF50';
+
+                        let interpretare = '';
+                        if (maxStadiu === 'teologic') {
+                            interpretare = 'Această credință atribuie fenomenele unor agenți personali sau supranaturali. Pentru Comte, e stadiul cel mai primitiv al gândirii, dar și cel mai natural uman.';
+                        } else if (maxStadiu === 'metafizic') {
+                            interpretare = 'Această credință invocă forțe sau principii abstracte, fără a face apel direct la experiment sau observație sistematică. E un stadiu intermediar.';
+                        } else {
+                            interpretare = 'Această credință se bazează pe observație, măsurătoare sau relații cauzale verificabile. E stadiul „matur" în viziunea lui Comte.';
+                        }
+
+                        if (total === 0) {
+                            rezultat.innerHTML = `<div class="analiza-box">
+                                <p><strong>Analiză ambiguă.</strong></p>
+                                <p>Credința ta nu conține indicatori clari pentru niciunul din cele trei stadii. Încearcă să reformulezi mai explicit ce anume crezi despre fenomen și de ce.</p>
+                            </div>`;
+                        } else {
+                            rezultat.innerHTML = `<div class="analiza-box">
+                                <div class="analiza-stadiu" style="color: ${culoare};">Stadiu predominant: ${stadiuNume}</div>
+                                <p>${interpretare}</p>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+                                    <strong>Scoruri:</strong> Teologic: ${scoruri.teologic} | Metafizic: ${scoruri.metafizic} | Pozitiv: ${scoruri.pozitiv}
+                                </p>
+                                <p style="font-size: 0.85rem; font-style: italic; margin-top: 0.5rem;">
+                                    Notă: Această analiză e orientativă. Comte ar spune că nu e neapărat „rău" să fii într-un stadiu sau altul — dar progresul intelectual merge către pozitivism.
+                                </p>
+                            </div>`;
+                        }
+                    };
+
+                    // Transformă explicația
+                    const transformari = {
+                        boala: {
+                            teologic: "Epidemia e o pedeapsă divină pentru păcatele noastre. Zeii sunt furioși și trebuie îmbunați cu sacrificii și rugăciuni.",
+                            metafizic: "Boala e cauzată de un dezechilibru al forțelor vitale sau de miasme — emanații nocive din aer. Trebuie restabilită armonia naturală.",
+                            pozitiv: "Epidemia e cauzată de un agent patogen specific (bacterie/virus) care se transmite în moduri observabile. Prevenția și tratamentul se bazează pe înțelegerea acestui mecanism."
+                        },
+                        furtuna: {
+                            teologic: "Zeul tunetului și-a dezlănțuit furia. Furtuna e mesaj divin sau pedeapsă. Trebuie să ne rugăm pentru îndurare.",
+                            metafizic: "Furtuna e expresia conflictului dintre principiile cosmice ale ordinii și haosului. Natura își manifestă forțele în căutarea echilibrului.",
+                            pozitiv: "Furtuna rezultă din diferențe de presiune atmosferică, umiditate și temperatură. Putem prevedea furtunile analizând date meteorologice."
+                        },
+                        eclipsa: {
+                            teologic: "Un demon încearcă să înghită Soarele! Trebuie să facem zgomot și să ne rugăm ca să-l alungăm și să salvăm lumina.",
+                            metafizic: "Eclipsa reprezintă momentul când forțele întunericului încearcă temporar să domine lumina — o manifestare a dualității cosmice.",
+                            pozitiv: "Eclipsa apare când Luna trece între Pământ și Soare. Putem calcula exact când și unde vor avea loc eclipsele folosind mecanica cerească."
+                        },
+                        succes: {
+                            teologic: "Succesul e o binecuvântare divină. Dumnezeu răsplătește pe cei credincioși și virtuoși. Norocul e providență.",
+                            metafizic: "Succesul vine din alinierea cu energia universului, din karma pozitivă acumulată, din realizarea destinului personal.",
+                            pozitiv: "Succesul e corelat cu factori măsurabili: educație, rețele sociale, acces la resurse, abilități specifice, noroc statistic. Studiile arată că..."
+                        },
+                        moarte: {
+                            teologic: "Moartea e momentul când sufletul părăsește trupul pentru a se întoarce la Creator. E trecerea într-o altă existență.",
+                            metafizic: "Moartea e transformarea fundamentală — energia vitală se întoarce în cosmos, conștiința se dizolvă în absolut.",
+                            pozitiv: "Moartea e încetarea ireversibilă a funcțiilor biologice. Medicina studiază procesele fiziologice ale morții și caută să prelungească viața."
+                        },
+                        dragoste: {
+                            teologic: "Dragostea e dar divin, o scânteie din iubirea lui Dumnezeu plantată în sufletele noastre. Sufletele-pereche sunt predestinate.",
+                            metafizic: "Dragostea e forța care unește universul, atracția cosmică dintre ființe, manifestarea principiului unității în diversitate.",
+                            pozitiv: "Dragostea implică procese neurochimice (dopamină, oxitocină), comportamente evolutive pentru pereche și reproducere, și condiționări sociale studiate de psihologie."
+                        }
+                    };
+
+                    window.transformaExplicatie = function() {
+                        const fenomen = document.getElementById('fenomen-select').value;
+                        const rezultat = document.getElementById('transformare-rezultat');
+
+                        if (!fenomen) {
+                            rezultat.innerHTML = '';
+                            return;
+                        }
+
+                        const t = transformari[fenomen];
+                        rezultat.innerHTML = `
+                            <div class="stadiu-explicatie teologic">
+                                <div class="stadiu-label" style="color: #9C27B0;">Stadiul Teologic</div>
+                                <p style="margin: 0;">${t.teologic}</p>
+                            </div>
+                            <div class="stadiu-explicatie metafizic">
+                                <div class="stadiu-label" style="color: #2196F3;">Stadiul Metafizic</div>
+                                <p style="margin: 0;">${t.metafizic}</p>
+                            </div>
+                            <div class="stadiu-explicatie pozitiv">
+                                <div class="stadiu-label" style="color: #4CAF50;">Stadiul Pozitiv</div>
+                                <p style="margin: 0;">${t.pozitiv}</p>
+                            </div>
+                            <p style="font-size: 0.85rem; font-style: italic; color: var(--text-muted); margin-top: 1rem;">
+                                Observă: nu e vorba doar de a înlocui cuvinte, ci de a schimba tipul de explicație căutat.
+                            </p>
+                        `;
+                    };
+
+                    // Test pozitivism
+                    window.calculeazaPozitivism = function() {
+                        let scor = 0;
+                        for (let i = 1; i <= 5; i++) {
+                            const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                            if (selected) scor += parseInt(selected.value);
+                        }
+
+                        const rezultat = document.getElementById('test-rezultat');
+
+                        if (scor === 0) {
+                            rezultat.innerHTML = '<p style="color: var(--error);">Răspunde la toate întrebările.</p>';
+                            return;
+                        }
+
+                        let interpretare, titlu, culoare;
+
+                        if (scor >= 13) {
+                            titlu = "Pozitivist Convins";
+                            culoare = "#4CAF50";
+                            interpretare = "Gândești foarte „pozitivist": prioritizezi datele empirice, ai încredere în metodele științifice, respingi explicațiile supranaturale. Comte te-ar aprecia! Dar ai grijă să nu cazi în scientism dogmatic.";
+                        } else if (scor >= 9) {
+                            titlu = "Pozitivist Moderat";
+                            culoare = "#2196F3";
+                            interpretare = "Ești în „stadiul metafizic" — apreciezi știința dar păstrezi și alte surse de sens. Ești pragmatic dar nu dogmatic. Poate că acesta e un echilibru sănătos?";
+                        } else {
+                            titlu = "Spirit Tradițional";
+                            culoare = "#9C27B0";
+                            interpretare = "Ești mai aproape de „stadiul teologic" — pui preț pe intuiție, tradiție, și experiențe care scapă măsurătorii. Comte ar spune că ai rămas în urmă; dar poate valorile tale sunt tocmai ce lipsește pozitivismului.";
+                        }
+
+                        rezultat.innerHTML = `<div class="analiza-box">
+                            <div class="analiza-stadiu" style="color: ${culoare};">${titlu}</div>
+                            <p><strong>Scor: ${scor}/15</strong></p>
+                            <p>${interpretare}</p>
+                            <p style="font-size: 0.85rem; font-style: italic; margin-top: 1rem; color: var(--text-muted);">
+                                Ironia: chiar și acest test care pretinde să măsoare „pozitivismul" are limitări — reduce experiența umană la numere!
+                            </p>
+                        </div>`;
+                    };
+                })();
+                </script>
+
+                <div class="section-divider">✦ ✦ ✦</div>
+
                 <h2>IX. Concluzie: Ce Putem Învața de la Comte?</h2>
 
                 <p>La aproape două secole de la publicarea Cursului de filozofie pozitivă, Auguste Comte rămâne o figură complexă și contradictorie. Fondator al sociologiei și profet al unei „religii" ciudate. Campion al rațiunii și autor al unor pagini dogmatice. Critic al teologiei și creator al unui sistem cvasi-teologic propriu.</p>

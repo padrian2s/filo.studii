@@ -204,8 +204,235 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Experimentează Memento Mori</h2>
+
+                <p>Seneca ne învață să medităm la moarte nu din morbiditate, ci pentru a trăi mai intens. „Să amânăm moartea — nu să ne temem de ea."</p>
+
+                <div class="simulator-container">
+                    <div class="memento-mori-calc">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Cât timp mai ai?</h4>
+                        <div class="input-row">
+                            <label>Vârsta ta:</label>
+                            <input type="number" id="varsta" min="1" max="120" value="30">
+                        </div>
+                        <button onclick="calculeazaTimp()">Calculează</button>
+
+                        <div id="rezultat-timp" class="rezultat-timp"></div>
+                    </div>
+
+                    <div class="audit-timp" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Auditul Timpului</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Seneca: „Nu e că avem puțin timp, ci că pierdem mult." Estimează cum ai petrecut săptămâna trecută:</p>
+
+                        <div class="audit-grid">
+                            <div class="audit-item">
+                                <label>Muncă productivă (ore):</label>
+                                <input type="number" id="ore-munca" min="0" max="168" value="40">
+                            </div>
+                            <div class="audit-item">
+                                <label>Somn (ore):</label>
+                                <input type="number" id="ore-somn" min="0" max="168" value="49">
+                            </div>
+                            <div class="audit-item">
+                                <label>Rețele sociale / TV (ore):</label>
+                                <input type="number" id="ore-distrageri" min="0" max="168" value="14">
+                            </div>
+                            <div class="audit-item">
+                                <label>Timp cu cei dragi (ore):</label>
+                                <input type="number" id="ore-relații" min="0" max="168" value="10">
+                            </div>
+                            <div class="audit-item">
+                                <label>Învățare / Dezvoltare (ore):</label>
+                                <input type="number" id="ore-invatare" min="0" max="168" value="3">
+                            </div>
+                            <div class="audit-item">
+                                <label>Exercițiu fizic (ore):</label>
+                                <input type="number" id="ore-sport" min="0" max="168" value="3">
+                            </div>
+                        </div>
+                        <button onclick="auditeazaTimp()">Analizează</button>
+                        <div id="rezultat-audit"></div>
+                    </div>
+                </div>
+
+                <div class="concept-box" style="margin-top: 2rem;">
+                    <h4>Examinarea de Seară</h4>
+                    <p>Seneca făcea asta în fiecare noapte. Încearcă și tu:</p>
+                    <textarea id="examinare-seara" placeholder="Ce boală mi-am vindecat azi? Cărui viciu i-am rezistat? În ce privință sunt mai bun?"></textarea>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; margin-bottom: 0;"><em>„Când lumina a fost scoasă și soția a tăcut, îmi examinez întreaga zi și îmi cântăresc faptele și cuvintele."</em> — Seneca</p>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .input-row {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin-bottom: 1rem;
+                }
+                .input-row label {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.85rem;
+                    color: var(--text);
+                }
+                .input-row input, .audit-item input {
+                    width: 80px;
+                    padding: 0.5rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 1rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    text-align: center;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                .rezultat-timp {
+                    margin-top: 1.5rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                .rezultat-timp.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                .audit-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 1rem;
+                    margin: 1rem 0;
+                }
+                .audit-item {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .audit-item label {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    color: var(--text-muted);
+                }
+                #rezultat-audit {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                #rezultat-audit.visible {
+                    display: block;
+                }
+                .concept-box textarea {
+                    width: 100%;
+                    min-height: 100px;
+                    padding: 1rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-top: 0.75rem;
+                    resize: vertical;
+                }
+            </style>
+
+            <script>
+            (function() {
+                window.calculeazaTimp = function() {
+                    const varsta = parseInt(document.getElementById('varsta').value);
+                    const speranta = 80; // speranța medie de viață
+                    const aniRamasi = Math.max(0, speranta - varsta);
+                    const saptamaniRamase = aniRamasi * 52;
+                    const zileRamase = aniRamasi * 365;
+
+                    const rezultat = document.getElementById('rezultat-timp');
+
+                    let html = `<strong>Dacă trăiești până la ${speranta} de ani:</strong><br><br>`;
+                    html += `<span style="font-size: 2rem; color: var(--accent); font-family: 'Playfair Display', serif;">${aniRamasi}</span> ani<br>`;
+                    html += `<span style="font-size: 1.5rem; color: var(--text-muted);">${saptamaniRamase.toLocaleString()}</span> săptămâni<br>`;
+                    html += `<span style="font-size: 1.2rem; color: var(--text-light);">${zileRamase.toLocaleString()}</span> zile<br><br>`;
+
+                    if (aniRamasi < 20) {
+                        html += `<em>„Fiecare zi e un întreg din viață." — Seneca</em>`;
+                    } else if (aniRamasi < 40) {
+                        html += `<em>„Nu e că avem puțin timp, ci că pierdem mult." — Seneca</em>`;
+                    } else {
+                        html += `<em>„Pregătește-te pentru moarte și vei învăța să trăiești." — Seneca</em>`;
+                    }
+
+                    html += `<br><br><strong>Întrebarea lui Seneca:</strong> Dacă ai ști că mâine e ultima zi, ce ai face diferit azi?`;
+
+                    rezultat.innerHTML = html;
+                    rezultat.classList.add('visible');
+                };
+
+                window.auditeazaTimp = function() {
+                    const munca = parseInt(document.getElementById('ore-munca').value) || 0;
+                    const somn = parseInt(document.getElementById('ore-somn').value) || 0;
+                    const distrageri = parseInt(document.getElementById('ore-distrageri').value) || 0;
+                    const relatii = parseInt(document.getElementById('ore-relații').value) || 0;
+                    const invatare = parseInt(document.getElementById('ore-invatare').value) || 0;
+                    const sport = parseInt(document.getElementById('ore-sport').value) || 0;
+
+                    const total = munca + somn + distrageri + relatii + invatare + sport;
+                    const nealocate = 168 - total;
+                    const procentDistrageri = ((distrageri / 168) * 100).toFixed(1);
+
+                    const rezultat = document.getElementById('rezultat-audit');
+                    let html = `<strong>Auditul săptămânii:</strong><br><br>`;
+                    html += `Ore alocate: ${total}/168<br>`;
+                    html += `Ore nealocate/necontabilizate: ${nealocate}<br><br>`;
+
+                    html += `<strong>Distrageri:</strong> ${distrageri} ore (${procentDistrageri}% din viață)<br>`;
+
+                    if (distrageri > 20) {
+                        html += `<span style="color: #F44336;">⚠ Seneca ar spune: „Pierdem viața în fleacuri. Nimeni nu și-o vinde, dar toți o risipesc."</span><br><br>`;
+                    } else if (distrageri > 10) {
+                        html += `<span style="color: #FF9800;">Atenție: timpul pierdut nu se mai întoarce.</span><br><br>`;
+                    } else {
+                        html += `<span style="color: #4CAF50;">Disciplină bună!</span><br><br>`;
+                    }
+
+                    if (relatii < 5) {
+                        html += `<em>„Nu avem puțin timp, dar pierdem mult. Viața e lungă dacă o folosim bine."</em>`;
+                    } else if (invatare < 3) {
+                        html += `<em>„Cât de târziu e să înveți! Dar niciodată nu e prea târziu."</em>`;
+                    } else {
+                        html += `<em>„Nu conta anii, ci faptele."</em>`;
+                    }
+
+                    rezultat.innerHTML = html;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Concluzie</span>
+                <span class="section-number">10 / Concluzie</span>
                 <h2>Moartea Filozofului</h2>
 
                 <p>În 65 d.Hr., când Nero i-a ordonat să moară, Seneca era pregătit. Și-a luat rămas bun de la prieteni, și-a consolat soția, și-a tăiat venele. Sângele curgea prea încet din corpul său bătrân și slăbit. A luat cucută — nu a funcționat. A intrat într-o baie fierbinte pentru a accelera sângerarea. A dictat filozofie până în ultima clipă.</p>

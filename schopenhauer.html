@@ -73,8 +73,271 @@
                 <h2>Căile de Evadare</h2>
                 <p>Contemplarea estetică oferă o pauză de la Voință. Muzica e „filozofia fără concepte". Compasiunea ne arată că suntem aceeași Voință — „Tu ești aceasta."</p>
             </section>
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">04 / Simulator</span>
+                <h2>Pendulul Suferinței</h2>
+
+                <p>Schopenhauer spunea că viața oscilează între durere și plictiseală. Dorința nesatisfăcută = suferință. Dorința satisfăcută = plictiseală sau nouă dorință. Experimentează acest pendul.</p>
+
+                <div class="simulator-container">
+                    <div class="pendul-vizual">
+                        <div class="pendul-bar">
+                            <span class="pendul-label durere">Durere<br><small>(dorință)</small></span>
+                            <div class="pendul-track">
+                                <div id="pendul-indicator" class="pendul-indicator"></div>
+                            </div>
+                            <span class="pendul-label plictiseala">Plictiseală<br><small>(vid)</small></span>
+                        </div>
+                        <div id="pendul-stare" class="pendul-stare">Unde te afli acum?</div>
+                    </div>
+
+                    <div class="dorinta-input">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Ce dorești în acest moment?</h4>
+                        <input type="text" id="dorinta-input" placeholder="Un lucru pe care îl dorești acum...">
+                        <button onclick="analizeazaDorinta()">Analizează dorința</button>
+                    </div>
+
+                    <div id="dorinta-rezultat" class="dorinta-rezultat"></div>
+
+                    <div class="evadare-optiuni" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Căile de evadare (temporară)</h4>
+                        <div class="evadare-butoane">
+                            <button onclick="arataEvadare('arta')">Arta</button>
+                            <button onclick="arataEvadare('compasiune')">Compasiunea</button>
+                            <button onclick="arataEvadare('asceza')">Asceza</button>
+                        </div>
+                        <div id="evadare-rezultat"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .pendul-vizual {
+                    margin-bottom: 2rem;
+                }
+                .pendul-bar {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin-bottom: 1rem;
+                }
+                .pendul-label {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    text-align: center;
+                    min-width: 80px;
+                }
+                .pendul-label.durere { color: #8b0000; }
+                .pendul-label.plictiseala { color: #4a4a4a; }
+                .pendul-track {
+                    flex: 1;
+                    height: 8px;
+                    background: linear-gradient(to right, #8b0000, #666, #4a4a4a);
+                    border-radius: 4px;
+                    position: relative;
+                }
+                .pendul-indicator {
+                    width: 20px;
+                    height: 20px;
+                    background: var(--accent);
+                    border-radius: 50%;
+                    position: absolute;
+                    top: -6px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    transition: left 1s ease-in-out;
+                    cursor: pointer;
+                }
+                .pendul-stare {
+                    text-align: center;
+                    font-style: italic;
+                    color: var(--text-muted);
+                    min-height: 1.5rem;
+                }
+                .dorinta-input input {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                    margin-bottom: 0.5rem;
+                }
+                .evadare-butoane button {
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    color: var(--text-muted);
+                }
+                .dorinta-rezultat, #evadare-rezultat {
+                    margin-top: 1.5rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    display: none;
+                }
+                .dorinta-rezultat.visible, #evadare-rezultat.visible { display: block; }
+                .ciclu-vizual {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    margin: 1.5rem 0;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                }
+                .ciclu-etapa {
+                    text-align: center;
+                    padding: 1rem;
+                    border-radius: 4px;
+                    min-width: 120px;
+                }
+                .ciclu-etapa.dorinta { background: rgba(139, 0, 0, 0.1); }
+                .ciclu-etapa.satisfactie { background: rgba(76, 175, 80, 0.1); }
+                .ciclu-etapa.plictiseala { background: rgba(74, 74, 74, 0.1); }
+                .ciclu-sageata { font-size: 1.5rem; color: var(--text-muted); }
+            </style>
+
+            <script>
+            (function() {
+                let pendulPos = 50;
+                const indicator = document.getElementById('pendul-indicator');
+                const stare = document.getElementById('pendul-stare');
+
+                const stari = {
+                    0: 'Suferință intensă — dorință arzătoare nesatisfăcută',
+                    25: 'Neliniște — căutare activă, speranță și frustrare',
+                    50: 'Echilibru fragil — moment de respiro',
+                    75: 'Satisfacție fugace — dar deja se naște noua dorință',
+                    100: 'Plictiseală profundă — vidul când nu mai vrei nimic'
+                };
+
+                function updatePendul(pos) {
+                    indicator.style.left = pos + '%';
+                    const closest = Object.keys(stari).reduce((a, b) =>
+                        Math.abs(b - pos) < Math.abs(a - pos) ? b : a
+                    );
+                    stare.textContent = stari[closest];
+                }
+
+                indicator.addEventListener('mousedown', function(e) {
+                    const track = document.querySelector('.pendul-track');
+                    const moveHandler = function(e) {
+                        const rect = track.getBoundingClientRect();
+                        let pos = ((e.clientX - rect.left) / rect.width) * 100;
+                        pos = Math.max(0, Math.min(100, pos));
+                        updatePendul(pos);
+                    };
+                    document.addEventListener('mousemove', moveHandler);
+                    document.addEventListener('mouseup', function() {
+                        document.removeEventListener('mousemove', moveHandler);
+                    }, { once: true });
+                });
+
+                // Auto-oscillate pendul
+                setInterval(() => {
+                    if (!document.hidden) {
+                        pendulPos += (Math.random() - 0.5) * 20;
+                        pendulPos = Math.max(10, Math.min(90, pendulPos));
+                        updatePendul(pendulPos);
+                    }
+                }, 3000);
+
+                window.analizeazaDorinta = function() {
+                    const dorinta = document.getElementById('dorinta-input').value.trim();
+                    if (!dorinta) { alert('Scrie ce dorești.'); return; }
+
+                    const rezultat = document.getElementById('dorinta-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem;">Analiza schopenhaueriană:</h5>
+                        <p><strong>Dorința ta:</strong> "${dorinta}"</p>
+
+                        <div class="ciclu-vizual">
+                            <div class="ciclu-etapa dorinta">
+                                <div style="font-size: 1.5rem;">😤</div>
+                                <div style="font-size: 0.8rem; font-weight: bold;">ACUM</div>
+                                <div style="font-size: 0.75rem;">Lipsa = suferință</div>
+                            </div>
+                            <div class="ciclu-sageata">→</div>
+                            <div class="ciclu-etapa satisfactie">
+                                <div style="font-size: 1.5rem;">😌</div>
+                                <div style="font-size: 0.8rem; font-weight: bold;">DACĂ OBȚII</div>
+                                <div style="font-size: 0.75rem;">Scurtă ușurare</div>
+                            </div>
+                            <div class="ciclu-sageata">→</div>
+                            <div class="ciclu-etapa plictiseala">
+                                <div style="font-size: 1.5rem;">😐</div>
+                                <div style="font-size: 0.8rem; font-weight: bold;">APOI</div>
+                                <div style="font-size: 0.75rem;">Plictiseală sau nouă dorință</div>
+                            </div>
+                        </div>
+
+                        <p style="font-style: italic; color: var(--text-muted); margin-top: 1rem;">„Fericirea e doar absența temporară a suferinței." — Schopenhauer</p>
+
+                        <p style="margin-top: 1rem;"><strong>Întrebarea pesimistului:</strong> Dacă ai obține acest lucru, ce ai dori după? Ciclul se oprește vreodată?</p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+
+                const evadari = {
+                    arta: {
+                        titlu: 'Contemplarea Estetică',
+                        descriere: 'În fața artei, Voința tace temporar. Devii „subiect pur al cunoașterii" — fără dorință, fără suferință.',
+                        exemplu: 'Ascultă muzică (Schopenhauer o considera cea mai înaltă artă). Nu pentru plăcere, ci pentru a te pierde în ea.',
+                        limita: 'Efectul e temporar. Când concertul se termină, Voința revine.'
+                    },
+                    compasiune: {
+                        titlu: 'Compasiunea',
+                        descriere: '„Tu ești aceasta" — realizarea că ceilalți sunt aceeași Voință suferindă. Compasiunea sparge iluzia separării.',
+                        exemplu: 'Când vezi suferința altuia și o simți ca pe a ta, granițele eului se dizolvă.',
+                        limita: 'Compasiunea adaugă suferință (a altuia) la a ta. E nobilă, dar nu e eliberare.'
+                    },
+                    asceza: {
+                        titlu: 'Negarea Voinței',
+                        descriere: 'Singura eliberare reală: negarea Voinței de a trăi. Nu sinuciderea (care e tot Voință), ci renunțarea la dorință.',
+                        exemplu: 'Asceții, misticii, sfinții care au transcens dorința.',
+                        limita: 'Puțini ating această stare. Pentru majoritatea, rămâne doar o direcție, nu o destinație.'
+                    }
+                };
+
+                window.arataEvadare = function(tip) {
+                    const info = evadari[tip];
+                    const rezultat = document.getElementById('evadare-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.75rem;">${info.titlu}</h5>
+                        <p>${info.descriere}</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);"><strong>Exercițiu:</strong> ${info.exemplu}</p>
+                        <p style="font-size: 0.9rem; color: var(--accent); margin-top: 0.75rem;"><strong>Limita:</strong> ${info.limita}</p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">04 / Concluzie</span>
+                <span class="section-number">05 / Concluzie</span>
                 <h2>Adevărul Trist</h2>
                 <p>Schopenhauer nu e un ghid pentru fericire — e un diagnostician al nefericirii. Sinceritatea lui sumbră e reconfortantă într-o epocă de pozitivitate toxică.</p>
             </section>

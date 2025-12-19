@@ -207,8 +207,314 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Experimentează Dicotomia</h2>
+
+                <p>Epictet spunea că suferința vine din confundarea a ce putem controla cu ce nu putem. Testează-ți înțelegerea: clasifică următoarele situații.</p>
+
+                <div class="simulator-container">
+                    <div id="dicotomie-joc">
+                        <div class="situatie-curenta">
+                            <p id="situatie-text">Încarcă o situație...</p>
+                        </div>
+                        <div class="butoane-clasificare">
+                            <button onclick="clasificaSituatie('control')" class="btn-control">
+                                <span class="btn-icon">✓</span>
+                                În controlul meu
+                            </button>
+                            <button onclick="clasificaSituatie('necontrol')" class="btn-necontrol">
+                                <span class="btn-icon">✗</span>
+                                În afara controlului
+                            </button>
+                        </div>
+                        <div id="feedback-dicotomie" class="feedback-container"></div>
+                        <div class="scor-container">
+                            <span>Scor: <strong id="scor-dicotomie">0</strong>/10</span>
+                            <button onclick="reseteazaJoc()" class="btn-reset">Joacă din nou</button>
+                        </div>
+                    </div>
+
+                    <div id="dicotomie-final" style="display: none;">
+                        <h4>Reflecție finală</h4>
+                        <p id="mesaj-final"></p>
+                        <button onclick="reseteazaJoc()">Încearcă din nou</button>
+                    </div>
+                </div>
+
+                <div class="concept-box" style="margin-top: 2rem;">
+                    <h4>Testul tău personal</h4>
+                    <p>Scrie o situație care te stresează:</p>
+                    <textarea id="situatie-personala" placeholder="Ex: Șeful meu nu mă apreciază / Partenerul meu e distant / Economia merge prost..."></textarea>
+                    <button onclick="analizeazaSituatie()">Analizează cu Epictet</button>
+                    <div id="analiza-rezultat"></div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .situatie-curenta {
+                    background: var(--primary);
+                    padding: 1.5rem;
+                    border-radius: 4px;
+                    margin-bottom: 1.5rem;
+                    min-height: 80px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                }
+                .situatie-curenta p {
+                    font-size: 1.1rem;
+                    margin: 0;
+                    line-height: 1.6;
+                }
+                .butoane-clasificare {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1rem;
+                    margin-bottom: 1rem;
+                }
+                .butoane-clasificare button {
+                    padding: 1.25rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.85rem;
+                    border: 2px solid var(--border);
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+                .btn-icon {
+                    font-size: 1.5rem;
+                }
+                .btn-control {
+                    background: rgba(26, 79, 110, 0.1);
+                    color: var(--accent);
+                }
+                .btn-control:hover {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border-color: var(--accent);
+                }
+                .btn-necontrol {
+                    background: rgba(150, 150, 150, 0.1);
+                    color: var(--text-muted);
+                }
+                .btn-necontrol:hover {
+                    background: var(--text-muted);
+                    color: var(--primary);
+                    border-color: var(--text-muted);
+                }
+                .feedback-container {
+                    padding: 1rem;
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                    min-height: 60px;
+                    display: none;
+                }
+                .feedback-container.corect {
+                    display: block;
+                    background: rgba(76, 175, 80, 0.1);
+                    border-left: 3px solid #4CAF50;
+                }
+                .feedback-container.gresit {
+                    display: block;
+                    background: rgba(244, 67, 54, 0.1);
+                    border-left: 3px solid #F44336;
+                }
+                .scor-container {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-top: 1rem;
+                    border-top: 1px solid var(--border);
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.9rem;
+                }
+                .btn-reset {
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    padding: 0.5rem 1rem;
+                    font-size: 0.75rem;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                .concept-box textarea {
+                    width: 100%;
+                    min-height: 60px;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin: 0.75rem 0;
+                    resize: vertical;
+                }
+                .concept-box button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                #analiza-rezultat {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--secondary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                #analiza-rezultat.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+            </style>
+
+            <script>
+            (function() {
+                const situatii = [
+                    { text: "Ce părere are colegul despre mine", raspuns: "necontrol", explicatie: "Nu poți controla gândurile altora. Poți controla doar comportamentul tău." },
+                    { text: "Cum reacționez când cineva mă critică", raspuns: "control", explicatie: "Reacția ta e în controlul tău — poți alege să te superi sau să analizezi calm critica." },
+                    { text: "Vremea de mâine", raspuns: "necontrol", explicatie: "Vremea nu ascultă de dorințele tale. Acceptă și pregătește-te." },
+                    { text: "Efortul pe care îl depun în muncă", raspuns: "control", explicatie: "Efortul e în controlul tău direct. Rezultatele... nu întotdeauna." },
+                    { text: "Dacă partenerul meu mă iubește", raspuns: "necontrol", explicatie: "Sentimentele altora nu sunt în controlul tău. Dar cum te porți cu el/ea — asta e." },
+                    { text: "Integritatea cu care acționez", raspuns: "control", explicatie: "Caracterul tău e cetatea ta interioară — nimeni nu o poate cuceri fără voia ta." },
+                    { text: "Ce se va întâmpla cu economia", raspuns: "necontrol", explicatie: "Forțele economice globale nu ascultă de individ. Concentrează-te pe ce poți face tu." },
+                    { text: "Cum interpretez o situație dificilă", raspuns: "control", explicatie: "Judecata ta e în controlul tău. Evenimentul nu — dar sensul pe care i-l dai, da." },
+                    { text: "Dacă voi îmbătrâni și muri", raspuns: "necontrol", explicatie: "Moartea e singura certitudine. Nu o poți evita — dar poți alege cum trăiești până atunci." },
+                    { text: "Valorile după care îmi ghidez viața", raspuns: "control", explicatie: "Valorile sunt alegerea ta supremă — esența libertății interioare." },
+                    { text: "Traficul de dimineață", raspuns: "necontrol", explicatie: "Nu poți controla mașinile celorlalți. Poți controla dacă pleci mai devreme sau cum reacționezi la așteptare." },
+                    { text: "Cum răspund la o insultă", raspuns: "control", explicatie: "Insulta e doar sunet. Tu alegi dacă o transformi în ofensă sau o lași să treacă." },
+                    { text: "Succesul unui proiect de muncă", raspuns: "necontrol", explicatie: "Succesul depinde de mulți factori externi. Efortul și calitatea muncii tale — astea le controlezi." },
+                    { text: "Atitudinea mea față de eșec", raspuns: "control", explicatie: "Eșecul vine — cum îl interpretezi și ce înveți din el e alegerea ta." }
+                ];
+
+                let situatiiJoc = [];
+                let indexCurent = 0;
+                let scor = 0;
+
+                function amesteca(array) {
+                    return [...array].sort(() => Math.random() - 0.5);
+                }
+
+                function incarcaSituatie() {
+                    if (indexCurent >= 10) {
+                        finalizeazaJoc();
+                        return;
+                    }
+                    const situatie = situatiiJoc[indexCurent];
+                    document.getElementById('situatie-text').textContent = situatie.text;
+                    document.getElementById('feedback-dicotomie').className = 'feedback-container';
+                    document.getElementById('feedback-dicotomie').innerHTML = '';
+                }
+
+                window.clasificaSituatie = function(alegere) {
+                    const situatie = situatiiJoc[indexCurent];
+                    const feedback = document.getElementById('feedback-dicotomie');
+
+                    if (alegere === situatie.raspuns) {
+                        scor++;
+                        feedback.className = 'feedback-container corect';
+                        feedback.innerHTML = `<strong>Corect!</strong> ${situatie.explicatie}`;
+                    } else {
+                        feedback.className = 'feedback-container gresit';
+                        feedback.innerHTML = `<strong>Nu chiar.</strong> ${situatie.explicatie}`;
+                    }
+
+                    document.getElementById('scor-dicotomie').textContent = scor;
+                    indexCurent++;
+
+                    setTimeout(() => {
+                        incarcaSituatie();
+                    }, 2500);
+                };
+
+                function finalizeazaJoc() {
+                    document.getElementById('dicotomie-joc').style.display = 'none';
+                    document.getElementById('dicotomie-final').style.display = 'block';
+
+                    let mesaj;
+                    if (scor >= 9) {
+                        mesaj = "Excelent! Ai înțelegerea unui stoic adevărat. Epictet ar fi mândru.";
+                    } else if (scor >= 7) {
+                        mesaj = "Foarte bine! Mai ai câteva nuanțe de clarificat, dar ești pe drumul cel bun.";
+                    } else if (scor >= 5) {
+                        mesaj = "Decent. Distincția pare simplă, dar practica e complexă. Continuă să exersezi!";
+                    } else {
+                        mesaj = "E un început. Secretul e să te întrebi mereu: pot schimba asta direct prin voința mea?";
+                    }
+                    document.getElementById('mesaj-final').textContent = `Scor final: ${scor}/10. ${mesaj}`;
+                }
+
+                window.reseteazaJoc = function() {
+                    situatiiJoc = amesteca(situatii).slice(0, 10);
+                    indexCurent = 0;
+                    scor = 0;
+                    document.getElementById('scor-dicotomie').textContent = '0';
+                    document.getElementById('dicotomie-joc').style.display = 'block';
+                    document.getElementById('dicotomie-final').style.display = 'none';
+                    incarcaSituatie();
+                };
+
+                window.analizeazaSituatie = function() {
+                    const input = document.getElementById('situatie-personala').value.trim();
+                    if (!input) {
+                        alert('Te rog scrie o situație mai întâi.');
+                        return;
+                    }
+
+                    const rezultat = document.getElementById('analiza-rezultat');
+
+                    // Analiza simplă bazată pe cuvinte cheie
+                    const externKeywords = ['el ', 'ea ', 'ei ', 'alții', 'colegul', 'șeful', 'partener', 'prieteni', 'oameni', 'vremea', 'economia', 'guvern', 'boala', 'moarte', 'bani', 'piață'];
+                    const internKeywords = ['eu ', 'mă ', 'îmi ', 'reacția', 'atitudinea', 'efortul', 'alegerea', 'decizia', 'comportament'];
+
+                    let external = externKeywords.some(kw => input.toLowerCase().includes(kw));
+                    let internal = internKeywords.some(kw => input.toLowerCase().includes(kw));
+
+                    let analiza = `<strong>Situația ta:</strong> „${input}"<br><br>`;
+                    analiza += `<strong>Întrebarea lui Epictet:</strong> Ce pot controla aici?<br><br>`;
+
+                    if (external && !internal) {
+                        analiza += `<strong>Analiză:</strong> Această situație pare să implice factori externi (alți oameni, circumstanțe). Întreabă-te: care e partea pe care O POT controla?<br><br>`;
+                        analiza += `<strong>În controlul tău:</strong> Cum interpretezi situația, cum reacționezi, ce acțiuni întreprinzi tu.<br>`;
+                        analiza += `<strong>În afara controlului:</strong> Ce fac și gândesc ceilalți, circumstanțele externe.`;
+                    } else {
+                        analiza += `<strong>Analiză:</strong> Concentrează-te pe ceea ce depinde exclusiv de voința ta: judecățile, dorințele, impulsurile tale. Restul — acceptă-l ca parte din viață.<br><br>`;
+                        analiza += `<strong>Exercițiu:</strong> Separă clar ce POȚI schimba (prin acțiunea ta directă) de ce NU POȚI. Apoi investește energia doar în prima categorie.`;
+                    }
+
+                    rezultat.innerHTML = analiza;
+                    rezultat.classList.add('visible');
+                };
+
+                // Inițializare
+                reseteazaJoc();
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Cetatea Interioară</h2>
 
                 <p>Epictet ne învață că suntem mai liberi decât credem — și mai puțin liberi decât pretindem. Mai liberi, pentru că mintea noastră e cetate inexpugnabilă. Mai puțin liberi, pentru că ne predăm această cetate la fiecare plângere, la fiecare furie, la fiecare „de ce mi se întâmplă mie?".</p>

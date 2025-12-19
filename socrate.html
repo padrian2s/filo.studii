@@ -386,8 +386,213 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Experimentează Maieutica</h2>
+
+                <p>Socrate nu-ți dădea răspunsuri — te ajuta să le naști singur prin întrebări. Încearcă tu însuți: scrie o convingere și lasă „Socrate" să te interogheze.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-input-area">
+                        <label for="convingere">Scrie o convingere pe care o ai:</label>
+                        <textarea id="convingere" placeholder="Ex: Banii aduc fericirea / Oamenii sunt în esență buni / Succesul înseamnă să ai putere..."></textarea>
+                        <button id="btn-intreaba" onclick="genereazaIntrebare()">Să începem dialogul</button>
+                    </div>
+
+                    <div id="dialog-socratic" class="dialog-container" style="display: none;">
+                        <div class="socrate-avatar">Σ</div>
+                        <div id="intrebari-socrate"></div>
+                        <div class="dialog-actions">
+                            <button onclick="urmatoareaIntrebare()" id="btn-continua">Continuă dialogul</button>
+                            <button onclick="reseteazaDialog()" class="btn-secondary">Începe din nou</button>
+                        </div>
+                        <p class="simulator-nota">După câteva întrebări, observă: definiția ta inițială mai e la fel de sigură?</p>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-input-area label {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    display: block;
+                    margin-bottom: 0.75rem;
+                    color: var(--text);
+                }
+                .simulator-container textarea {
+                    width: 100%;
+                    min-height: 80px;
+                    padding: 1rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 1rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    resize: vertical;
+                    margin-bottom: 1rem;
+                }
+                .simulator-container textarea:focus {
+                    outline: none;
+                    border-color: var(--accent);
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    transition: opacity 0.2s;
+                    border-radius: 2px;
+                }
+                .simulator-container button:hover {
+                    opacity: 0.85;
+                }
+                .simulator-container button.btn-secondary {
+                    background: transparent;
+                    color: var(--text-muted);
+                    border: 1px solid var(--border);
+                    margin-left: 0.5rem;
+                }
+                .dialog-container {
+                    margin-top: 2rem;
+                    padding-top: 2rem;
+                    border-top: 1px solid var(--border);
+                }
+                .socrate-avatar {
+                    width: 50px;
+                    height: 50px;
+                    background: var(--accent);
+                    color: var(--primary);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: 'Playfair Display', serif;
+                    font-size: 1.5rem;
+                    margin-bottom: 1rem;
+                }
+                .intrebare-item {
+                    background: var(--primary);
+                    padding: 1.25rem;
+                    margin-bottom: 1rem;
+                    border-left: 3px solid var(--accent);
+                    font-style: italic;
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .dialog-actions {
+                    margin-top: 1.5rem;
+                }
+                .simulator-nota {
+                    font-size: 0.85rem;
+                    color: var(--text-muted);
+                    font-style: italic;
+                    margin-top: 1.5rem;
+                    margin-bottom: 0;
+                }
+            </style>
+
+            <script>
+            (function() {
+                const intrebariGenerice = [
+                    "Ce înțelegi tu prin „{concept}"?",
+                    "Poți să-mi dai un exemplu concret?",
+                    "Există excepții de la această regulă?",
+                    "Cum ai ajuns la această convingere?",
+                    "Ce dovezi ai pentru asta?",
+                    "Cineva care crede opusul — ce argumente ar avea?",
+                    "Dacă un copil te-ar întreba „de ce?", ce i-ai răspunde?",
+                    "Această convingere te face mai fericit sau mai înțelept?",
+                    "Ai crezut întotdeauna asta, sau ți-ai schimbat părerea?",
+                    "Ce ar trebui să se întâmple pentru a-ți schimba părerea?",
+                    "Cunoști pe cineva care crede opusul? E o persoană rea sau proastă?",
+                    "Aplici această convingere în mod consecvent în viața ta?",
+                    "Dacă toată lumea ar crede asta, lumea ar fi mai bună?",
+                    "Ce presupuneri stau la baza acestei convingeri?",
+                    "E asta un fapt sau o interpretare?",
+                    "Cum ai defini termenul principal din această afirmație?",
+                    "Poți reformula asta în alte cuvinte?",
+                    "Ce ai pierde dacă te-ai înșela?",
+                    "De unde știi că știi asta?",
+                    "Hmm... interesant. Dar oare e întotdeauna adevărat?"
+                ];
+
+                let intrebariRamase = [];
+                let convingereaCurenta = '';
+                let numarIntrebari = 0;
+
+                window.genereazaIntrebare = function() {
+                    const textarea = document.getElementById('convingere');
+                    convingereaCurenta = textarea.value.trim();
+
+                    if (!convingereaCurenta) {
+                        alert('Te rog scrie o convingere mai întâi.');
+                        return;
+                    }
+
+                    intrebariRamase = [...intrebariGenerice].sort(() => Math.random() - 0.5);
+                    numarIntrebari = 0;
+
+                    document.getElementById('dialog-socratic').style.display = 'block';
+                    document.getElementById('intrebari-socrate').innerHTML = '';
+                    document.getElementById('btn-intreaba').style.display = 'none';
+
+                    adaugaIntrebare();
+                };
+
+                function adaugaIntrebare() {
+                    if (intrebariRamase.length === 0 || numarIntrebari >= 7) {
+                        const container = document.getElementById('intrebari-socrate');
+                        container.innerHTML += `<div class="intrebare-item" style="border-left-color: var(--text-muted);">
+                            Poate acum știi mai puțin decât credeai că știi... și asta e începutul înțelepciunii. 🦉
+                        </div>`;
+                        document.getElementById('btn-continua').style.display = 'none';
+                        return;
+                    }
+
+                    let intrebare = intrebariRamase.pop();
+                    const cuvinte = convingereaCurenta.split(' ');
+                    const conceptCheie = cuvinte.length > 2 ? cuvinte.slice(0, 3).join(' ') : convingereaCurenta;
+                    intrebare = intrebare.replace('{concept}', conceptCheie);
+
+                    const container = document.getElementById('intrebari-socrate');
+                    container.innerHTML += `<div class="intrebare-item">${intrebare}</div>`;
+                    numarIntrebari++;
+
+                    container.scrollTop = container.scrollHeight;
+                }
+
+                window.urmatoareaIntrebare = function() {
+                    adaugaIntrebare();
+                };
+
+                window.reseteazaDialog = function() {
+                    document.getElementById('dialog-socratic').style.display = 'none';
+                    document.getElementById('btn-intreaba').style.display = 'inline-block';
+                    document.getElementById('btn-continua').style.display = 'inline-block';
+                    document.getElementById('convingere').value = '';
+                    document.getElementById('intrebari-socrate').innerHTML = '';
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Concluzie</span>
+                <span class="section-number">10 / Concluzie</span>
                 <h2>Martir al Gândirii</h2>
 
                 <p>Socrate a murit pentru dreptul de a pune întrebări. A refuzat să-și trădeze vocația chiar cu prețul vieții. În acest sens, moartea lui e la fel de importantă ca viața lui — demonstrează că ideile merită sacrifice.</p>

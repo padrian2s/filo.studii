@@ -207,8 +207,314 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">10 / Simulator</span>
+                <h2>Experimentează Îndoiala</h2>
+
+                <p>Descartes a îndoit de tot pentru a găsi ce e cu adevărat cert. Urmează-i pașii: apasă pe fiecare strat de certitudine și vezi cum se destramă — până ajungi la singura certitudine absolută.</p>
+
+                <div class="simulator-container">
+                    <div id="straturi-certitudine">
+                        <div class="strat" data-nivel="5" onclick="indoieste(5)">
+                            <div class="strat-header">
+                                <span class="strat-numar">5</span>
+                                <span class="strat-titlu">Tradiția și Autoritatea</span>
+                            </div>
+                            <p class="strat-continut">Ce am învățat de la alții, de la școală, de la părinți...</p>
+                            <span class="strat-status">Click pentru a îndoi</span>
+                        </div>
+
+                        <div class="strat" data-nivel="4" onclick="indoieste(4)">
+                            <div class="strat-header">
+                                <span class="strat-numar">4</span>
+                                <span class="strat-titlu">Simțurile</span>
+                            </div>
+                            <p class="strat-continut">Ce văd, aud, ating — pare real, dar iluziile optice există...</p>
+                            <span class="strat-status">Click pentru a îndoi</span>
+                        </div>
+
+                        <div class="strat" data-nivel="3" onclick="indoieste(3)">
+                            <div class="strat-header">
+                                <span class="strat-numar">3</span>
+                                <span class="strat-titlu">Realitatea Fizică</span>
+                            </div>
+                            <p class="strat-continut">Corpul meu, lumea din jur — dar dacă totul e vis?</p>
+                            <span class="strat-status">Click pentru a îndoi</span>
+                        </div>
+
+                        <div class="strat" data-nivel="2" onclick="indoieste(2)">
+                            <div class="strat-header">
+                                <span class="strat-numar">2</span>
+                                <span class="strat-titlu">Matematica și Logica</span>
+                            </div>
+                            <p class="strat-continut">2+2=4, pare sigur — dar dacă un geniu malign mă înșală?</p>
+                            <span class="strat-status">Click pentru a îndoi</span>
+                        </div>
+
+                        <div class="strat strat-cogito" data-nivel="1">
+                            <div class="strat-header">
+                                <span class="strat-numar">1</span>
+                                <span class="strat-titlu">COGITO</span>
+                            </div>
+                            <p class="strat-continut">Mă îndoiesc, deci gândesc. Gândesc, deci exist.</p>
+                            <span class="strat-status">Certitudine absolută</span>
+                        </div>
+                    </div>
+
+                    <div id="mesaj-indoiala" class="simulator-mesaj"></div>
+
+                    <button onclick="reseteazaIndoiala()" class="btn-reset" style="margin-top: 1rem;">Reconstruiește certitudinile</button>
+                </div>
+
+                <div class="concept-box" style="margin-top: 2rem;">
+                    <h4>Testează-ți propria certitudine</h4>
+                    <p>Scrie ceva de care ești absolut sigur:</p>
+                    <input type="text" id="certitudine-input" placeholder="Ex: Soarele răsare dimineața / Sunt o persoană bună / Există adevăr obiectiv...">
+                    <button onclick="testeazaCertitudine()">Aplică îndoiala carteziană</button>
+                    <div id="test-rezultat"></div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                #straturi-certitudine {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .strat {
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-left: 4px solid var(--accent);
+                    padding: 1.25rem;
+                    cursor: pointer;
+                    transition: all 0.4s ease;
+                    position: relative;
+                    overflow: hidden;
+                }
+                .strat:hover:not(.indoit):not(.strat-cogito) {
+                    background: rgba(30, 58, 95, 0.05);
+                }
+                .strat-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin-bottom: 0.5rem;
+                }
+                .strat-numar {
+                    width: 28px;
+                    height: 28px;
+                    background: var(--accent);
+                    color: var(--primary);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                }
+                .strat-titlu {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 1.1rem;
+                }
+                .strat-continut {
+                    font-size: 0.9rem;
+                    color: var(--text-muted);
+                    margin: 0;
+                    margin-bottom: 0.5rem;
+                }
+                .strat-status {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--accent);
+                }
+                .strat.indoit {
+                    opacity: 0.3;
+                    border-left-color: var(--text-light);
+                    transform: translateX(20px);
+                    cursor: default;
+                }
+                .strat.indoit .strat-numar {
+                    background: var(--text-light);
+                }
+                .strat.indoit .strat-status {
+                    color: var(--text-light);
+                }
+                .strat.indoit::after {
+                    content: "ÎNDOIT";
+                    position: absolute;
+                    right: 1rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    letter-spacing: 0.2em;
+                    color: var(--text-light);
+                }
+                .strat-cogito {
+                    border-left-color: #4CAF50;
+                    cursor: default;
+                }
+                .strat-cogito .strat-numar {
+                    background: #4CAF50;
+                }
+                .strat-cogito .strat-status {
+                    color: #4CAF50;
+                    font-weight: 500;
+                }
+                .strat-cogito.revealed {
+                    animation: pulse 0.5s ease;
+                    box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+                }
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.02); }
+                }
+                .simulator-mesaj {
+                    margin-top: 1.5rem;
+                    padding: 1rem;
+                    background: var(--primary);
+                    border-left: 3px solid var(--accent);
+                    font-style: italic;
+                    display: none;
+                }
+                .simulator-mesaj.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                .btn-reset {
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                .concept-box input {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin: 0.75rem 0;
+                }
+                .concept-box button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                #test-rezultat {
+                    margin-top: 1rem;
+                    padding: 1rem;
+                    background: var(--secondary);
+                    border-left: 3px solid var(--accent);
+                    display: none;
+                }
+                #test-rezultat.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+            </style>
+
+            <script>
+            (function() {
+                const mesajeIndoiala = {
+                    5: "Tradiția? Câte lucruri „știam" care s-au dovedit false? Pământul plat, miasme care provoacă boli... Ce garanție avem că autoritatea nu se înșală?",
+                    4: "Simțurile înșală constant. Bățul în apă pare frânt. Culorile depind de lumină. Iluziile optice ne fac să vedem ce nu e. Pot avea încredere în ele?",
+                    3: "Dar dacă totul e vis? În vis, lumea pare la fel de reală. Cum știu că nu visez chiar acum? Ce dovadă definitivă am că există ceva în afara minții mele?",
+                    2: "Chiar și matematica! Dacă un geniu malign, o ființă atotputernică și rea, m-ar înșela în tot ce gândesc? Poate 2+2=5 și eu sunt păcălit să cred că =4.",
+                };
+
+                let nivelCurent = 5;
+
+                window.indoieste = function(nivel) {
+                    if (nivel !== nivelCurent || nivel === 1) return;
+
+                    const strat = document.querySelector(`.strat[data-nivel="${nivel}"]`);
+                    strat.classList.add('indoit');
+
+                    const mesaj = document.getElementById('mesaj-indoiala');
+                    mesaj.innerHTML = `<strong>Nivelul ${nivel} îndoit:</strong> ${mesajeIndoiala[nivel]}`;
+                    mesaj.classList.add('visible');
+
+                    nivelCurent--;
+
+                    if (nivelCurent === 1) {
+                        setTimeout(() => {
+                            const cogito = document.querySelector('.strat-cogito');
+                            cogito.classList.add('revealed');
+                            mesaj.innerHTML = `<strong>COGITO, ERGO SUM!</strong><br><br>Pot îndoi de tot — dar nu pot îndoi că mă îndoiesc. Dacă mă îndoiesc, gândesc. Dacă gândesc, exist. Chiar dacă un demon m-ar înșela în tot, nu mă poate înșela că exist — pentru că trebuie să exist pentru a fi înșelat. Aceasta e certitudinea de neclintit.`;
+                        }, 500);
+                    }
+                };
+
+                window.reseteazaIndoiala = function() {
+                    document.querySelectorAll('.strat.indoit').forEach(s => s.classList.remove('indoit'));
+                    document.querySelector('.strat-cogito').classList.remove('revealed');
+                    document.getElementById('mesaj-indoiala').classList.remove('visible');
+                    nivelCurent = 5;
+                };
+
+                window.testeazaCertitudine = function() {
+                    const input = document.getElementById('certitudine-input').value.trim();
+                    if (!input) {
+                        alert('Te rog scrie ceva de care ești sigur.');
+                        return;
+                    }
+
+                    const rezultat = document.getElementById('test-rezultat');
+                    let analiza = `<strong>Certitudinea ta:</strong> „${input}"<br><br>`;
+                    analiza += `<strong>Îndoiala carteziană:</strong><br><br>`;
+
+                    // Verificări succesive
+                    analiza += `<strong>1. Tradiție?</strong> Ai învățat asta de la alții? Dacă da, pot fi ei înșelați?<br><br>`;
+                    analiza += `<strong>2. Simțuri?</strong> Se bazează pe ce vezi/auzi? Simțurile pot înșela.<br><br>`;
+                    analiza += `<strong>3. Vis?</strong> Ai putea crede asta și într-un vis?<br><br>`;
+                    analiza += `<strong>4. Geniu malign?</strong> Dacă o ființă atotputernică te-ar înșela, ar putea face asta să pară adevărat?<br><br>`;
+
+                    // Verifică dacă e legat de cogito
+                    const cogitoKeywords = ['gândesc', 'exist', 'sunt', 'mă îndoiesc', 'conștiință', 'eu'];
+                    const esteCogito = cogitoKeywords.some(kw => input.toLowerCase().includes(kw));
+
+                    if (esteCogito) {
+                        analiza += `<strong>Verdict:</strong> Hmm, pare legat de existența ta ca ființă gânditoare. Dacă e cu adevărat „gândesc, deci exist" — felicitări, ai găsit singura certitudine absolută!`;
+                    } else {
+                        analiza += `<strong>Verdict:</strong> Probabil poate fi îndoit. Dar nu dispera — Descartes a reconstruit cunoașterea pornind de la Cogito. Întrebarea e: cum ajungi de la „exist" la „asta e adevărat"?`;
+                    }
+
+                    rezultat.innerHTML = analiza;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">10 / Concluzie</span>
+                <span class="section-number">11 / Concluzie</span>
                 <h2>Curajul de a Gândi</h2>
 
                 <p>Descartes a avut curajul să pună totul sub semnul întrebării — tradiția, autoritatea, simțurile, chiar realitatea însăși. A găsit în gândire singura certitudine absolută și a încercat să reconstruiască lumea de acolo.</p>

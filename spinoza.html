@@ -223,8 +223,247 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">11 / Simulator</span>
+                <h2>Analizatorul Afectelor</h2>
+
+                <p>Spinoza credea că înțelegerea cauzelor unei emoții o transformă. Pasiunile oarbe devin afecte active când le înțelegem. Folosește acest simulator pentru a-ți analiza o emoție.</p>
+
+                <div class="simulator-container">
+                    <div class="afect-input">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Ce emoție simți acum?</h4>
+                        <div class="afecte-grid">
+                            <button class="afect-btn" onclick="selecteazaAfect('furie')">😠 Furie</button>
+                            <button class="afect-btn" onclick="selecteazaAfect('tristete')">😢 Tristețe</button>
+                            <button class="afect-btn" onclick="selecteazaAfect('frica')">😨 Frică</button>
+                            <button class="afect-btn" onclick="selecteazaAfect('invidie')">😒 Invidie</button>
+                            <button class="afect-btn" onclick="selecteazaAfect('anxietate')">😰 Anxietate</button>
+                            <button class="afect-btn" onclick="selecteazaAfect('regret')">😔 Regret</button>
+                        </div>
+                    </div>
+
+                    <div id="afect-analiza" class="afect-analiza"></div>
+
+                    <div class="conatus-test" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Testul Conatus</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">„Conatus" = efortul fiecărei ființe de a persevera în existență. Ce îți crește sau scade puterea de acțiune?</p>
+                        <textarea id="conatus-input" placeholder="Descrie o situație recentă care ți-a afectat starea..."></textarea>
+                        <button onclick="analizeazaConatus()">Analizează</button>
+                        <div id="conatus-rezultat"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .afecte-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                    gap: 0.75rem;
+                    margin-bottom: 1rem;
+                }
+                .afect-btn {
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    padding: 1rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.85rem;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    transition: all 0.3s;
+                }
+                .afect-btn:hover {
+                    border-color: var(--accent);
+                    background: rgba(74, 85, 104, 0.05);
+                }
+                .afect-analiza {
+                    display: none;
+                    margin-top: 1.5rem;
+                }
+                .afect-analiza.visible { display: block; }
+                .cauza-box {
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-left: 3px solid var(--accent);
+                    padding: 1.5rem;
+                    margin-bottom: 1rem;
+                    border-radius: 0 4px 4px 0;
+                }
+                .cauza-box h5 {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--accent);
+                    margin-bottom: 0.5rem;
+                }
+                .simulator-container textarea {
+                    width: 100%;
+                    min-height: 80px;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                    resize: vertical;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                }
+                #conatus-rezultat {
+                    margin-top: 1rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    display: none;
+                }
+                #conatus-rezultat.visible { display: block; }
+                .putere-indicator {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin: 1rem 0;
+                }
+                .putere-bar {
+                    flex: 1;
+                    height: 12px;
+                    background: linear-gradient(to right, #e74c3c, #f1c40f, #27ae60);
+                    border-radius: 6px;
+                    position: relative;
+                }
+            </style>
+
+            <script>
+            (function() {
+                const afecte = {
+                    furie: {
+                        definitie: 'Tristețe + ideea că cineva ne-a cauzat rău',
+                        cauze: ['Percepția unei nedreptăți', 'Amenințare la adresa ego-ului', 'Frustrarea unei dorințe', 'Sentiment de neputință transformat'],
+                        intrebari: ['Cine crezi că ți-a cauzat acest rău?', 'E cu adevărat intenționat, sau doar circumstanțial?', 'Ce dorință frustrată stă în spatele furiei?'],
+                        transformare: 'Când înțelegi că acel „cineva" acționează și el din necesitatea naturii sale, furia se diminuează. Nu dispare, dar devine mai clară.',
+                        citat: '„Nu am vrut să rid, să plâng sau să blestem acțiunile umane, ci să le înțeleg."'
+                    },
+                    tristete: {
+                        definitie: 'Trecerea de la o perfecțiune mai mare la una mai mică',
+                        cauze: ['Pierderea a ceva valoros', 'Eșec în atingerea unui scop', 'Separare de ceva iubit', 'Conștientizarea limitelor'],
+                        intrebari: ['Ce ai pierdut sau ce lipsește?', 'Era această pierdere în controlul tău?', 'Poți înțelege cauzele care au dus aici?'],
+                        transformare: 'Tristețea care înțelege necesitatea devine pace. Nu negăm pierderea, dar o vedem ca parte din ordinea naturală.',
+                        citat: '„Omul liber se gândește la orice altceva decât la moarte, iar înțelepciunea lui e o meditație asupra vieții."'
+                    },
+                    frica: {
+                        definitie: 'Tristețe + ideea unui rău viitor incert',
+                        cauze: ['Incertitudine despre viitor', 'Anticiparea durerii', 'Sentiment de vulnerabilitate', 'Experiențe negative anterioare'],
+                        intrebari: ['Ce rău anticipezi exact?', 'Cât de probabilă e această amenințare?', 'Ce ai putea face acum pentru a te pregăti?'],
+                        transformare: 'Frica se naște din incertitudine. Când înțelegem ce putem și ce nu putem controla, frica se transformă în prudență rațională.',
+                        citat: '„Totul urmează cu necesitate din natura lui Dumnezeu."'
+                    },
+                    invidie: {
+                        definitie: 'Tristețe + ideea că altcineva posedă un bine pe care îl dorim',
+                        cauze: ['Comparație cu alții', 'Sentiment de lipsă', 'Nedreptate percepută', 'Dorință nesatisfăcută'],
+                        intrebari: ['Ce are acea persoană ce ți se pare că-ți lipsește?', 'E cu adevărat lucrul acela sursa fericirii sale?', 'Dacă ai avea acel lucru, ce s-ar schimba?'],
+                        transformare: 'Când înțelegem că fiecare acționează din natura sa și că binele altuia nu ne diminuează, invidia se dizolvă în înțelegere.',
+                        citat: '„Tot ce este, este în Dumnezeu."'
+                    },
+                    anxietate: {
+                        definitie: 'Oscilație între speranță și frică, fără repaus',
+                        cauze: ['Incertitudine cronică', 'Dorința de control', 'Gânduri despre viitor', 'Lipsa de ancorare în prezent'],
+                        intrebari: ['Ce nu poți controla și totuși încerci să controlezi?', 'Care e scenariul cel mai rău și cel mai probabil?', 'Ce e în puterea ta acum?'],
+                        transformare: 'Anxietatea vine din a dori certitudine în locul necesității. Acceptând că nu controlăm totul, putem acționa asupra a ce e în puterea noastră.',
+                        citat: '„Libertatea e înțelegerea necesității."'
+                    },
+                    regret: {
+                        definitie: 'Tristețe + ideea că am cauzat noi înșine un rău prin acțiunile noastre',
+                        cauze: ['Acțiuni trecute percepute ca greșite', 'Sentiment de vinovăție', 'Dorința de a schimba ce nu se poate schimba'],
+                        intrebari: ['Ai acționat cu informațiile pe care le aveai atunci?', 'Ai putea face acum altfel în aceeași situație?', 'Ce ai învățat din acea experiență?'],
+                        transformare: 'Trecutul e necesar — nu putea fi altfel dat fiind toate cauzele. Regretul se transformă în înțelegere și în acțiune mai bună în prezent.',
+                        citat: '„A nu râde, a nu plânge, ci a înțelege."'
+                    }
+                };
+
+                window.selecteazaAfect = function(tip) {
+                    const info = afecte[tip];
+                    const rezultat = document.getElementById('afect-analiza');
+                    rezultat.innerHTML = `
+                        <div class="cauza-box">
+                            <h5>Definiția spinoziană</h5>
+                            <p style="margin: 0; font-style: italic;">${info.definitie}</p>
+                        </div>
+
+                        <div class="cauza-box">
+                            <h5>Cauze posibile</h5>
+                            <ul style="margin: 0; padding-left: 1.2rem;">
+                                ${info.cauze.map(c => '<li>' + c + '</li>').join('')}
+                            </ul>
+                        </div>
+
+                        <div class="cauza-box">
+                            <h5>Întrebări pentru înțelegere</h5>
+                            <ol style="margin: 0; padding-left: 1.2rem;">
+                                ${info.intrebari.map(i => '<li style="margin-bottom: 0.5rem;">' + i + '</li>').join('')}
+                            </ol>
+                        </div>
+
+                        <div class="cauza-box" style="background: rgba(74, 85, 104, 0.05);">
+                            <h5>Transformarea prin înțelegere</h5>
+                            <p style="margin: 0;">${info.transformare}</p>
+                            <p style="margin: 1rem 0 0; font-style: italic; font-size: 0.9rem; color: var(--text-muted);">"${info.citat}"</p>
+                        </div>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+
+                window.analizeazaConatus = function() {
+                    const text = document.getElementById('conatus-input').value.trim();
+                    if (!text) { alert('Descrie o situație.'); return; }
+
+                    const rezultat = document.getElementById('conatus-rezultat');
+                    rezultat.innerHTML = `
+                        <h5 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem;">Analiza Conatus</h5>
+
+                        <p><strong>Situația ta:</strong> "${text}"</p>
+
+                        <div class="putere-indicator">
+                            <span style="font-size: 0.8rem; color: #e74c3c;">↓ Scade</span>
+                            <div class="putere-bar"></div>
+                            <span style="font-size: 0.8rem; color: #27ae60;">↑ Crește</span>
+                        </div>
+
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Întreabă-te:</p>
+                        <ul style="font-size: 0.9rem;">
+                            <li><strong>Această situație îți crește sau îți scade puterea de acțiune?</strong></li>
+                            <li>Ce cauze au dus la această situație?</li>
+                            <li>Care sunt afectele pe care le simți? (bucurie = creștere, tristețe = scădere)</li>
+                            <li>Ce poți înțelege despre necesitatea acestei situații?</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); font-style: italic;">
+                            <strong>Principiul spinozian:</strong> Tot ce îți crește puterea de înțelegere și acțiune e „bun" pentru tine. Tot ce o scade e „rău". Nu există bine și rău absolut — doar relativ la conatus-ul tău.
+                        </p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">11 / Concluzie</span>
+                <span class="section-number">12 / Concluzie</span>
                 <h2>Eretricul Fericit</h2>
 
                 <p>Spinoza a fost excomunicat, izolat, sărac. Și-a trăit viața în liniște, șlefuind lentile și gânduri, refuzând onoruri și confort pentru libertatea de a gândi. A murit tânăr, fără să vadă recunoașterea operei sale.</p>

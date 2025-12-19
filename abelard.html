@@ -182,8 +182,391 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Experimentează Gândirea lui Abelard</h2>
+
+                <p>Aplică metoda Sic et Non și testează etica intenției în dileme morale.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Metoda Sic et Non</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Alege o întrebare controversată și adună argumentele Pro și Contra.</p>
+
+                        <select id="intrebare-select" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem;">
+                            <option value="">— Alege o întrebare —</option>
+                            <option value="minciuna">Este vreodată permis să minți?</option>
+                            <option value="razboi">Poate fi un război drept?</option>
+                            <option value="bogatie">Este bogăția un obstacol pentru virtute?</option>
+                            <option value="custom">Întrebare proprie...</option>
+                        </select>
+                        <input type="text" id="intrebare-custom" placeholder="Scrie întrebarea ta..." style="display: none; width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem;">
+
+                        <div id="sic-et-non-rezultat" style="display: none;"></div>
+
+                        <button onclick="genereazaSicEtNon()">Generează Da și Nu</button>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Etica Intenției</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Abelard: ce contează e intenția, nu actul extern. Evaluează aceste cazuri.</p>
+
+                        <div id="cazuri-intentie"></div>
+
+                        <button onclick="verificaIntentie()">Vezi analiza abelardiană</button>
+                        <div id="intentie-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Problema Universaliilor</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ce sunt generalitățile? Vizualizează cele trei poziții.</p>
+
+                        <div class="universalii-viz">
+                            <div class="pozitie-btn-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                                <button class="pozitie-btn" onclick="arataPozitie('realism')">Realism (Platon)</button>
+                                <button class="pozitie-btn" onclick="arataPozitie('nominalism')">Nominalism (Roscelin)</button>
+                                <button class="pozitie-btn" onclick="arataPozitie('conceptualism')">Conceptualism (Abelard)</button>
+                            </div>
+                            <div id="pozitie-explicatie"></div>
+                        </div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Scrisoare către Héloïse</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Generează o reflecție în stilul corespondenței lor celebre.</p>
+
+                        <select id="tema-scrisoare" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem;">
+                            <option value="iubire">Despre iubire și sacrificiu</option>
+                            <option value="cunoastere">Despre cunoaștere și îndoială</option>
+                            <option value="suferinta">Despre suferință și sens</option>
+                        </select>
+                        <button onclick="genereazaScrisoare()">Generează reflecție</button>
+                        <div id="scrisoare-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                }
+                .pozitie-btn {
+                    background: var(--primary) !important;
+                    border: 1px solid var(--border) !important;
+                    color: var(--text) !important;
+                }
+                .pozitie-btn:hover {
+                    border-color: var(--accent) !important;
+                }
+                .sic-sectiune {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    border-radius: 4px;
+                }
+                .sic-sectiune.sic {
+                    background: rgba(76, 175, 80, 0.1);
+                    border-left: 3px solid #4CAF50;
+                }
+                .sic-sectiune.non {
+                    background: rgba(244, 67, 54, 0.1);
+                    border-left: 3px solid #F44336;
+                }
+                .caz-item {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .caz-optiuni {
+                    display: flex;
+                    gap: 1rem;
+                    margin-top: 0.75rem;
+                }
+                .caz-optiuni label {
+                    flex: 1;
+                    padding: 0.5rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 0.85rem;
+                    text-align: center;
+                }
+                .caz-optiuni input {
+                    display: none;
+                }
+                .caz-optiuni input:checked + span {
+                    color: var(--accent);
+                    font-weight: bold;
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Sic et Non
+                document.getElementById('intrebare-select').addEventListener('change', function() {
+                    document.getElementById('intrebare-custom').style.display = this.value === 'custom' ? 'block' : 'none';
+                });
+
+                const intrebari = {
+                    minciuna: {
+                        sic: [
+                            "Augustin: „Orice minciună e păcat"",
+                            "Scriptura: „Nu mărturisi strâmb"",
+                            "Minciuna corupe sufletul vorbitorului"
+                        ],
+                        non: [
+                            "Moașele din Exod au mințit pentru a salva copiii evrei — și au fost binecuvântate",
+                            "Rahab a mințit pentru a-i proteja pe iscoade — și e lăudată",
+                            "Părinții mint copiilor despre Moș Crăciun — e asta rău?"
+                        ],
+                        concluzie: "Abelard ar face distincții: contează INTENȚIA. Minciuna cu intenție bună (a salva o viață) nu e păcat moral, deși poate fi imprudentă."
+                    },
+                    razboi: {
+                        sic: [
+                            "Augustin a formulat teoria războiului drept",
+                            "Apărarea inocenților e o datorie",
+                            "Fără forță, răul ar triumfa"
+                        ],
+                        non: [
+                            "Hristos: „Întoarce și celălalt obraz"",
+                            "Primii creștini erau pacifiști",
+                            "Războiul ucide inocenți — niciodată cu adevărat „drept""
+                        ],
+                        concluzie: "Abelard ar analiza INTENȚIA războinicului, nu doar actul războiului. Un soldat care ucide cu intenție dreaptă nu păcătuiește; unul care ucide din ură, da."
+                    },
+                    bogatie: {
+                        sic: [
+                            "Hristos: „Mai ușor trece cămila..."",
+                            "Bogăția atrage griji și tentații",
+                            "Franciscanii: sărăcia e virtute"
+                        ],
+                        non: [
+                            "Avraam, Iov erau bogați și drepți",
+                            "Bogăția folosită pentru alții e bună",
+                            "Sărăcia poate naște invidie și hoție"
+                        ],
+                        concluzie: "Abelard: nu bogăția în sine e rea, ci ATITUDINEA față de ea. Poți fi bogat cu suflet detașat, sau sărac cu suflet lacom."
+                    }
+                };
+
+                window.genereazaSicEtNon = function() {
+                    const select = document.getElementById('intrebare-select').value;
+                    const rezultat = document.getElementById('sic-et-non-rezultat');
+
+                    if (!select) {
+                        alert('Alege o întrebare.');
+                        return;
+                    }
+
+                    rezultat.style.display = 'block';
+
+                    if (select === 'custom') {
+                        const custom = document.getElementById('intrebare-custom').value;
+                        rezultat.innerHTML = `
+                            <div style="margin-bottom: 1rem;"><strong>Întrebarea:</strong> ${custom || 'Întrebarea ta'}</div>
+
+                            <div class="sic-sectiune sic">
+                                <strong style="color: #4CAF50;">SIC (Da):</strong>
+                                <p>1. [Primul argument PRO — găsește o autoritate care susține]</p>
+                                <p>2. [Al doilea argument PRO]</p>
+                                <p>3. [Al treilea argument PRO]</p>
+                            </div>
+
+                            <div class="sic-sectiune non">
+                                <strong style="color: #F44336;">NON (Nu):</strong>
+                                <p>1. [Primul argument CONTRA — găsește o autoritate care contrazice]</p>
+                                <p>2. [Al doilea argument CONTRA]</p>
+                                <p>3. [Al treilea argument CONTRA]</p>
+                            </div>
+
+                            <div style="margin-top: 1rem; padding: 1rem; background: rgba(196, 30, 58, 0.1); border-radius: 4px;">
+                                <strong>Metoda lui Abelard:</strong> Nu oferă soluția — te obligă să GÂNDEȘTI. Contradicțiile sunt aparente; analiza atentă le poate rezolva. Care argument e mai puternic? De ce?
+                            </div>
+                        `;
+                    } else {
+                        const data = intrebari[select];
+                        rezultat.innerHTML = `
+                            <div class="sic-sectiune sic">
+                                <strong style="color: #4CAF50;">SIC (Da):</strong>
+                                ${data.sic.map((s, i) => `<p>${i + 1}. ${s}</p>`).join('')}
+                            </div>
+
+                            <div class="sic-sectiune non">
+                                <strong style="color: #F44336;">NON (Nu):</strong>
+                                ${data.non.map((n, i) => `<p>${i + 1}. ${n}</p>`).join('')}
+                            </div>
+
+                            <div style="margin-top: 1rem; padding: 1rem; background: rgba(196, 30, 58, 0.1); border-radius: 4px;">
+                                <strong>Soluția abelardiană:</strong> ${data.concluzie}
+                            </div>
+                        `;
+                    }
+                };
+
+                // Etica intenției
+                const cazuri = [
+                    {
+                        text: "Un soldat ucide un inamic în război crezând că apără inocenți.",
+                        optiuni: ["Păcat (a ucis)", "Nu e păcat (intenție bună)"],
+                        corect: 1,
+                        explicatie: "Pentru Abelard, soldatul care ucide cu intenție dreaptă (apărarea inocenților) nu păcătuiește. Actul extern e același, dar starea sufletului e diferită."
+                    },
+                    {
+                        text: "Cineva dă de pomană, dar doar ca să fie văzut și lăudat.",
+                        optiuni: ["Virtute (a ajutat pe cineva)", "Nu e virtute (intenție egoistă)"],
+                        corect: 1,
+                        explicatie: "Actul e bun în exterior, dar intenția e rea. Pentru Abelard, aceasta NU e virtute — e vanitate deghizată în caritate."
+                    },
+                    {
+                        text: "Un judecător condamnă un om pe care îl crede vinovat, dar omul era de fapt nevinovat.",
+                        optiuni: ["Păcat (a condamnat un nevinovat)", "Nu e păcat (a crezut sincer)"],
+                        corect: 1,
+                        explicatie: "Judecătorul a greșit (error), dar nu a păcătuit (sin). A acționat conform conștiinței sale, chiar dacă conștiința era greșit informată."
+                    },
+                    {
+                        text: "Cineva se abține de la adulter doar de teamă că va fi prins, nu din convingere.",
+                        optiuni: ["Virtute (nu a comis adulter)", "Nu e virtute (doar teamă)"],
+                        corect: 1,
+                        explicatie: "Abținerea din teamă nu e castitate — e lașitate. Pentru Abelard, virtutea reală cere intenție bună, nu doar comportament corect."
+                    }
+                ];
+
+                const cazuriContainer = document.getElementById('cazuri-intentie');
+                cazuri.forEach((c, i) => {
+                    cazuriContainer.innerHTML += `
+                        <div class="caz-item">
+                            <div class="caz-text">${c.text}</div>
+                            <div class="caz-optiuni">
+                                ${c.optiuni.map((o, j) => `
+                                    <label>
+                                        <input type="radio" name="caz${i}" value="${j}">
+                                        <span>${o}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                window.verificaIntentie = function() {
+                    const rezultat = document.getElementById('intentie-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.background = 'rgba(196, 30, 58, 0.1)';
+                    rezultat.style.borderRadius = '4px';
+
+                    let corecte = 0;
+                    let html = '';
+
+                    cazuri.forEach((c, i) => {
+                        const sel = document.querySelector(`input[name="caz${i}"]:checked`);
+                        const eCorect = sel && parseInt(sel.value) === c.corect;
+                        if (eCorect) corecte++;
+
+                        html += `<p><strong>${eCorect ? '✓' : '✗'} Cazul ${i + 1}:</strong> ${c.explicatie}</p>`;
+                    });
+
+                    rezultat.innerHTML = `<strong>Rezultat: ${corecte}/${cazuri.length} răspunsuri abelardiene</strong><br><br>${html}
+                        <hr style="border: none; border-top: 1px solid var(--border); margin: 1rem 0;">
+                        <em>„Dumnezeu ia în considerare nu ce se face, ci cu ce spirit se face."</em>`;
+                };
+
+                // Universalii
+                const pozitii = {
+                    realism: {
+                        titlu: "Realism (Platon, William de Champeaux)",
+                        explicatie: "Universaliile EXISTĂ REAL, independent de lucrurile individuale.",
+                        exemplu: "„Umanitatea" e un lucru real, existent în sine. Socrate și Platon „participă" la această Umanitate.",
+                        problema: "Problema: Unde există aceste universalii? Într-o altă lume (Platon)? În lucrurile individuale (Aristotel)?",
+                        vizual: `<div style="text-align: center; padding: 1rem;"><div style="font-size: 3rem; color: var(--accent);">UMANITATEA</div><div style="font-size: 1.5rem;">↓ ↓ ↓</div><div style="display: flex; justify-content: center; gap: 2rem;"><span>Socrate</span><span>Platon</span><span>Aristotel</span></div></div>`
+                    },
+                    nominalism: {
+                        titlu: "Nominalism (Roscelin)",
+                        explicatie: "Universaliile sunt DOAR CUVINTE (flatus vocis — „suflare de voce").",
+                        exemplu: "„Umanitatea" e doar un sunet, o convenție lingvistică. Există doar indivizi: Socrate, Platon, etc.",
+                        problema: "Problema: De ce funcționează cuvintele? De ce „om" se aplică lui Socrate și Platon dacă n-au nimic în comun?",
+                        vizual: `<div style="text-align: center; padding: 1rem;"><div style="font-size: 1.5rem; color: var(--text-muted); text-decoration: line-through;">„umanitatea"</div><div style="margin: 1rem 0;">↓ doar cuvânt ↓</div><div style="display: flex; justify-content: center; gap: 2rem; font-weight: bold;"><span>Socrate</span><span>Platon</span><span>Aristotel</span></div><div style="font-size: 0.8rem; color: var(--text-muted);">(doar aceștia există real)</div></div>`
+                    },
+                    conceptualism: {
+                        titlu: "Conceptualism (Abelard)",
+                        explicatie: "Universaliile sunt CONCEPTE MENTALE care se referă justificat la mai mulți indivizi.",
+                        exemplu: "„Umanitatea" nu e lucru și nici sunet gol — e concept care surprinde ce au în comun toți oamenii. Mintea abstractizează corect.",
+                        problema: "Soluția: Universaliile nu există ca lucruri, dar nici nu sunt arbitrare. Sunt modul în care mintea conceptualizează corect similaritățile reale.",
+                        vizual: `<div style="text-align: center; padding: 1rem;"><div style="display: flex; justify-content: center; gap: 2rem;"><span>Socrate</span><span>Platon</span><span>Aristotel</span></div><div style="margin: 1rem 0;">↓ mintea observă similarități ↓</div><div style="font-size: 2rem; color: var(--accent); border: 2px solid var(--accent); display: inline-block; padding: 0.5rem 1rem; border-radius: 4px;">Concept: „UMANITATE"</div><div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">(în minte, dar fundamentat în realitate)</div></div>`
+                    }
+                };
+
+                window.arataPozitie = function(tip) {
+                    const data = pozitii[tip];
+                    document.getElementById('pozitie-explicatie').innerHTML = `
+                        <div style="padding: 1rem; background: var(--primary); border: 1px solid var(--border); border-radius: 4px;">
+                            <strong>${data.titlu}</strong><br><br>
+                            <p>${data.explicatie}</p>
+                            <p><em>Exemplu:</em> ${data.exemplu}</p>
+                            <p><em>${data.problema}</em></p>
+                            ${data.vizual}
+                        </div>
+                    `;
+                };
+
+                // Scrisoare
+                const scrisori = {
+                    iubire: [
+                        "Héloïse scria: „Te-am iubit pentru tine însuți, nu pentru ce era al tău." Ce înseamnă a iubi o persoană și nu doar calitățile ei? Persoana poate pierde toate calitățile — frumusețe, inteligență, sănătate — și totuși, dacă iubirea e autentică, ea rămâne.",
+                        "Abelard răspundea că iubirea trebuie sublimată, ridicată spre Dumnezeu. Dar Héloïse rezista: „Prefer să fiu numită concubina ta decât împărăteasa lumii." E aceasta păcat sau cea mai pură formă de iubire?",
+                        "Poate iubirea lor ne învață că pasiunea și gândirea nu se exclud. Poți iubi intens și gândi riguros. Tragedia e când lumea nu lasă să coexiste."
+                    ],
+                    cunoastere: [
+                        "„Prin îndoială ajungem la cercetare, prin cercetare la adevăr." Abelard ne învață că îndoiala nu e dușmanul credinței, ci prietenul înțelegerii. A pune întrebări nu înseamnă a nega — înseamnă a căuta.",
+                        "Héloïse era cea mai educată femeie a vremii — și iubirea lor a fost și intelectuală, nu doar pasională. Dialogul minților poate fi la fel de intim ca atingerea corpurilor.",
+                        "Cunoașterea cere curaj — curajul de a recunoaște că nu știm, curajul de a întreba ceea ce alții consideră închis. Abelard a plătit scump acest curaj."
+                    ],
+                    suferinta: [
+                        "Abelard a fost castrat, condamnat, exilat. Héloïse a fost forțată să renunțe la iubire. Și totuși, din această suferință au ieșit cele mai profunde scrisori de dragoste din Evul Mediu.",
+                        "Poate suferința nu e doar ceva de evitat — poate e și ceva de transformat. Abelard a scris „Historia calamitatum" (Istoria nenorocirilor mele) — transformând trauma în text, durerea în sens.",
+                        "„Ce n-am pierdut a rămas" — paradox augustinian pe care Abelard l-a trăit literal. Pierderea fizică l-a forțat spre profunzimi spirituale pe care altfel nu le-ar fi atins."
+                    ]
+                };
+
+                window.genereazaScrisoare = function() {
+                    const tema = document.getElementById('tema-scrisoare').value;
+                    const rezultat = document.getElementById('scrisoare-rezultat');
+                    const reflectii = scrisori[tema];
+                    const reflectie = reflectii[Math.floor(Math.random() * reflectii.length)];
+
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1.5rem';
+                    rezultat.style.background = 'var(--primary)';
+                    rezultat.style.border = '1px solid var(--border)';
+                    rezultat.style.borderRadius = '4px';
+                    rezultat.style.fontStyle = 'italic';
+
+                    rezultat.innerHTML = `${reflectie}<br><br><span style="font-style: normal; font-size: 0.85rem; color: var(--text-muted);">— În spiritul corespondenței Abelard-Héloïse</span>`;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Concluzie</span>
+                <span class="section-number">10 / Concluzie</span>
                 <h2>Îndrăgostitul și Ereticul</h2>
 
                 <p>Abelard a fost un om al extremelor: geniu și arrogant, îndrăgostit și castrat, aclamat și condamnat. Viața lui pare un roman — și a fost transformată în roman, poezie, film.</p>

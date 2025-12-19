@@ -74,8 +74,167 @@
                 <h2>Vicleniile Rațiunii</h2>
                 <p>Istoria nu e accident — e desfășurarea necesară a Spiritului. „Indivizii istorici" urmăresc scopuri personale dar realizează scopuri mai înalte ale Spiritului. „Ideea plătește tributul existenței din pasiunile indivizilor."</p>
             </section>
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">04 / Simulator</span>
+                <h2>Experimentează Dialectica</h2>
+
+                <p>Hegel ne învață că adevărul apare din conflict. Teză + Antieteză = Sinteză. Aplică dialectica la orice idee.</p>
+
+                <div class="simulator-container">
+                    <div class="dialectica-input">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Introdu o teză</h4>
+                        <input type="text" id="teza-input" placeholder="Ex: Libertatea absolută e cel mai mare bine / Statul trebuie să controleze economia...">
+                        <button onclick="genereazaDialectica()">Aplică dialectica</button>
+                    </div>
+
+                    <div id="dialectica-rezultat" class="dialectica-vizualizare"></div>
+
+                    <div class="exemple-dialectica" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Exemple clasice:</p>
+                        <div class="exemple-butoane">
+                            <button onclick="exemplaDialectica('libertate')">Libertate vs. Securitate</button>
+                            <button onclick="exemplaDialectica('individual')">Individual vs. Colectiv</button>
+                            <button onclick="exemplaDialectica('traditie')">Tradiție vs. Progres</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .dialectica-input input {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                    margin-bottom: 0.5rem;
+                }
+                .exemple-butoane button {
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    color: var(--text-muted);
+                }
+                .dialectica-vizualizare {
+                    display: none;
+                    margin-top: 1.5rem;
+                }
+                .dialectica-vizualizare.visible {
+                    display: block;
+                }
+                .dialectica-etape {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+                .etapa {
+                    padding: 1rem;
+                    border-radius: 4px;
+                    animation: slideIn 0.5s ease;
+                }
+                @keyframes slideIn {
+                    from { opacity: 0; transform: translateX(-20px); }
+                    to { opacity: 1; transform: translateX(0); }
+                }
+                .etapa.teza { background: rgba(76, 175, 80, 0.1); border-left: 3px solid #4CAF50; }
+                .etapa.antiteza { background: rgba(244, 67, 54, 0.1); border-left: 3px solid #F44336; animation-delay: 0.3s; }
+                .etapa.sinteza { background: rgba(156, 39, 176, 0.1); border-left: 3px solid #9C27B0; animation-delay: 0.6s; }
+                .etapa-titlu { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+            </style>
+
+            <script>
+            (function() {
+                const exemple = {
+                    libertate: {
+                        teza: "Libertatea absolută e cel mai mare bine",
+                        antiteza: "Libertatea absolută duce la haos; securitatea e necesară",
+                        sinteza: "Libertatea autentică există doar în cadrul legilor raționale pe care ni le dăm singuri (autonomia)"
+                    },
+                    individual: {
+                        teza: "Individul e totul; societatea e doar sumă de indivizi",
+                        antiteza: "Comunitatea e totul; individul n-are sens în afara ei",
+                        sinteza: "Individul se realizează prin participarea la comunitățile etice (familie, societate civilă, stat)"
+                    },
+                    traditie: {
+                        teza: "Tradiția e sacră și trebuie păstrată",
+                        antiteza: "Tradiția e obstacol; progresul cere ruptura",
+                        sinteza: "Progresul autentic integrează și depășește tradiția (Aufhebung — negare și conservare)"
+                    }
+                };
+
+                window.genereazaDialectica = function() {
+                    const teza = document.getElementById('teza-input').value.trim();
+                    if (!teza) { alert('Scrie o teză.'); return; }
+
+                    const rezultat = document.getElementById('dialectica-rezultat');
+                    rezultat.innerHTML = `
+                        <div class="dialectica-etape">
+                            <div class="etapa teza">
+                                <div class="etapa-titlu" style="color: #4CAF50;">Teză</div>
+                                <p style="margin: 0;">${teza}</p>
+                            </div>
+                            <div class="etapa antiteza">
+                                <div class="etapa-titlu" style="color: #F44336;">Antiteză</div>
+                                <p style="margin: 0;">Gândește-te: care e poziția opusă? Ce ar spune cineva care neagă complet teza ta?</p>
+                            </div>
+                            <div class="etapa sinteza">
+                                <div class="etapa-titlu" style="color: #9C27B0;">Sinteză</div>
+                                <p style="margin: 0;">Cum pot fi reconciliate? Ce adevăr superior le conține pe amândouă? Sinteza nu e compromis — e depășire.</p>
+                            </div>
+                        </div>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--text-muted);">„Adevărul e întregul." — Hegel. Nici teza singură, nici antiteza — ci mișcarea prin amândouă.</p>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+
+                window.exemplaDialectica = function(key) {
+                    const ex = exemple[key];
+                    const rezultat = document.getElementById('dialectica-rezultat');
+                    rezultat.innerHTML = `
+                        <div class="dialectica-etape">
+                            <div class="etapa teza">
+                                <div class="etapa-titlu" style="color: #4CAF50;">Teză</div>
+                                <p style="margin: 0;">${ex.teza}</p>
+                            </div>
+                            <div class="etapa antiteza">
+                                <div class="etapa-titlu" style="color: #F44336;">Antiteză</div>
+                                <p style="margin: 0;">${ex.antiteza}</p>
+                            </div>
+                            <div class="etapa sinteza">
+                                <div class="etapa-titlu" style="color: #9C27B0;">Sinteză (Aufhebung)</div>
+                                <p style="margin: 0;">${ex.sinteza}</p>
+                            </div>
+                        </div>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">04 / Concluzie</span>
+                <span class="section-number">05 / Concluzie</span>
                 <h2>Sistemul Viu</h2>
                 <p>Hegel e greu — poate cel mai greu filozof. Dar ceva rămâne: intuiția că realitatea e proces, că contradicția e productivă, că istoria are sens.</p>
             </section>

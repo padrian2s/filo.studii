@@ -235,8 +235,370 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Experimentează Armonia Numerelor</h2>
+
+                <p>Pitagora a descoperit că frumusețea muzicală e matematică. Experimentează proporțiile și descoperă personalitatea numerelor.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Armonia Muzicală</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ascultă proporțiile care stau la baza muzicii. Click pe intervale pentru a auzi diferența.</p>
+
+                        <div class="intervale-muzicale">
+                            <button class="interval-btn" onclick="playInterval(1, 1)">
+                                <span class="ratio">1:1</span>
+                                <span class="name">Unison</span>
+                            </button>
+                            <button class="interval-btn" onclick="playInterval(1, 2)">
+                                <span class="ratio">1:2</span>
+                                <span class="name">Octavă</span>
+                            </button>
+                            <button class="interval-btn" onclick="playInterval(2, 3)">
+                                <span class="ratio">2:3</span>
+                                <span class="name">Cvintă</span>
+                            </button>
+                            <button class="interval-btn" onclick="playInterval(3, 4)">
+                                <span class="ratio">3:4</span>
+                                <span class="name">Cvartă</span>
+                            </button>
+                            <button class="interval-btn" onclick="playInterval(4, 5)">
+                                <span class="ratio">4:5</span>
+                                <span class="name">Terță mare</span>
+                            </button>
+                        </div>
+
+                        <p id="armonie-explicatie" style="margin-top: 1rem; font-size: 0.85rem; font-style: italic; color: var(--text-muted);"></p>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Tetraktys — Triunghiul Sacru</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">1 + 2 + 3 + 4 = 10, numărul perfect. Vizualizează și construiește tetraktys-ul.</p>
+
+                        <div id="tetraktys-visual" style="text-align: center; padding: 2rem;">
+                            <canvas id="tetraktys-canvas" width="200" height="180"></canvas>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <button onclick="animateTetraktys()">Construiește Tetraktys</button>
+                        </div>
+
+                        <div id="tetraktys-info" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 4px; font-size: 0.9rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Personalitatea Numerelor</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Pentru pitagoreici, fiecare număr avea o "personalitate". Ce număr ești tu?</p>
+
+                        <div class="numar-selector">
+                            <input type="number" id="numar-input" min="1" max="100" value="7" style="width: 80px; padding: 0.5rem; font-size: 1.2rem; text-align: center;">
+                            <button onclick="analizeazaNumar()">Analizează numărul</button>
+                        </div>
+
+                        <div id="numar-rezultat" style="margin-top: 1rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Teorema lui Pitagora</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Vizualizează teorema: a² + b² = c². Ajustează catetele.</p>
+
+                        <div class="teorema-controls">
+                            <label>Cateta a: <span id="cateta-a-val">3</span></label>
+                            <input type="range" id="cateta-a" min="1" max="10" value="3" style="width: 100%;">
+                            <label>Cateta b: <span id="cateta-b-val">4</span></label>
+                            <input type="range" id="cateta-b" min="1" max="10" value="4" style="width: 100%;">
+                        </div>
+
+                        <canvas id="pitagora-canvas" width="400" height="300" style="width: 100%; margin-top: 1rem; border: 1px solid var(--border); border-radius: 4px;"></canvas>
+
+                        <div id="pitagora-calcul" style="margin-top: 1rem; text-align: center; font-family: 'Inter', sans-serif;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                }
+                .intervale-muzicale {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.75rem;
+                }
+                .interval-btn {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 1rem 1.5rem !important;
+                    background: var(--primary) !important;
+                    border: 1px solid var(--border) !important;
+                    color: var(--text) !important;
+                }
+                .interval-btn:hover {
+                    border-color: var(--accent) !important;
+                }
+                .interval-btn .ratio {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    color: var(--accent);
+                }
+                .interval-btn .name {
+                    font-size: 0.7rem;
+                    margin-top: 0.25rem;
+                }
+                .numar-selector {
+                    display: flex;
+                    gap: 1rem;
+                    align-items: center;
+                }
+                .numar-selector input {
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+            </style>
+
+            <script>
+            (function() {
+                // Audio Context pentru intervale muzicale
+                let audioCtx = null;
+
+                window.playInterval = function(ratio1, ratio2) {
+                    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+                    const baseFreq = 261.63; // Do central
+                    const freq1 = baseFreq;
+                    const freq2 = baseFreq * ratio2 / ratio1;
+
+                    // Prima notă
+                    const osc1 = audioCtx.createOscillator();
+                    const gain1 = audioCtx.createGain();
+                    osc1.connect(gain1);
+                    gain1.connect(audioCtx.destination);
+                    osc1.frequency.value = freq1;
+                    osc1.type = 'sine';
+                    gain1.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain1.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1);
+                    osc1.start();
+                    osc1.stop(audioCtx.currentTime + 1);
+
+                    // A doua notă (simultan)
+                    const osc2 = audioCtx.createOscillator();
+                    const gain2 = audioCtx.createGain();
+                    osc2.connect(gain2);
+                    gain2.connect(audioCtx.destination);
+                    osc2.frequency.value = freq2;
+                    osc2.type = 'sine';
+                    gain2.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1);
+                    osc2.start();
+                    osc2.stop(audioCtx.currentTime + 1);
+
+                    const explicatii = {
+                        '1:1': 'Unison — același sunet. Unitatea perfectă.',
+                        '1:2': 'Octavă — raport 1:2. Cele mai consonante sunete diferite.',
+                        '2:3': 'Cvintă perfectă — raport 2:3. Fundamentul armoniei occidentale.',
+                        '3:4': 'Cvartă perfectă — raport 3:4. Complementul cvintei.',
+                        '4:5': 'Terță mare — raport 4:5. Bazei acordului major.'
+                    };
+
+                    document.getElementById('armonie-explicatie').textContent = explicatii[`${ratio1}:${ratio2}`] || '';
+                };
+
+                // Tetraktys
+                const tetraktysCanvas = document.getElementById('tetraktys-canvas');
+                const tetraktysCtx = tetraktysCanvas.getContext('2d');
+
+                function drawDot(x, y, delay, number) {
+                    setTimeout(() => {
+                        tetraktysCtx.fillStyle = '#8b4513';
+                        tetraktysCtx.beginPath();
+                        tetraktysCtx.arc(x, y, 12, 0, Math.PI * 2);
+                        tetraktysCtx.fill();
+
+                        tetraktysCtx.fillStyle = '#fff';
+                        tetraktysCtx.font = 'bold 10px Inter';
+                        tetraktysCtx.textAlign = 'center';
+                        tetraktysCtx.fillText(number, x, y + 4);
+                    }, delay);
+                }
+
+                window.animateTetraktys = function() {
+                    tetraktysCtx.clearRect(0, 0, 200, 180);
+
+                    const dots = [
+                        // Rând 1 (1 punct)
+                        { x: 100, y: 20, n: 1 },
+                        // Rând 2 (2 puncte)
+                        { x: 80, y: 60, n: 2 },
+                        { x: 120, y: 60, n: 3 },
+                        // Rând 3 (3 puncte)
+                        { x: 60, y: 100, n: 4 },
+                        { x: 100, y: 100, n: 5 },
+                        { x: 140, y: 100, n: 6 },
+                        // Rând 4 (4 puncte)
+                        { x: 40, y: 140, n: 7 },
+                        { x: 80, y: 140, n: 8 },
+                        { x: 120, y: 140, n: 9 },
+                        { x: 160, y: 140, n: 10 }
+                    ];
+
+                    dots.forEach((d, i) => {
+                        drawDot(d.x, d.y, i * 200, d.n);
+                    });
+
+                    setTimeout(() => {
+                        const info = document.getElementById('tetraktys-info');
+                        info.style.display = 'block';
+                        info.innerHTML = `
+                            <strong>Tetraktys-ul conține totul:</strong><br>
+                            • <strong>1</strong> — punctul, sursa<br>
+                            • <strong>2</strong> — linia, prima dimensiune<br>
+                            • <strong>3</strong> — suprafața (triunghi)<br>
+                            • <strong>4</strong> — solidul (tetraedru)<br>
+                            • <strong>1+2+3+4 = 10</strong> — numărul perfect<br><br>
+                            Plus toate proporțiile muzicale: 1:2 (octavă), 2:3 (cvintă), 3:4 (cvartă).
+                        `;
+                    }, 2200);
+                };
+
+                // Personalitatea numerelor
+                window.analizeazaNumar = function() {
+                    const n = parseInt(document.getElementById('numar-input').value);
+                    const rezultat = document.getElementById('numar-rezultat');
+
+                    let analiza = `<div style="padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 4px;">`;
+                    analiza += `<strong style="font-size: 1.3rem; color: var(--accent);">${n}</strong><br><br>`;
+
+                    // Par sau impar
+                    analiza += n % 2 === 0 ? '• <strong>Par</strong> — principiul feminin, receptivitate<br>' : '• <strong>Impar</strong> — principiul masculin, activitate<br>';
+
+                    // Prim sau compus
+                    let isPrime = n > 1;
+                    for (let i = 2; i <= Math.sqrt(n); i++) {
+                        if (n % i === 0) { isPrime = false; break; }
+                    }
+                    analiza += isPrime ? '• <strong>Număr prim</strong> — indivizibil, pur<br>' : '• <strong>Număr compus</strong> — poate fi împărțit<br>';
+
+                    // Perfect?
+                    let sumDiv = 0;
+                    for (let i = 1; i < n; i++) {
+                        if (n % i === 0) sumDiv += i;
+                    }
+                    if (sumDiv === n && n > 1) {
+                        analiza += '• <strong>Număr PERFECT!</strong> — egal cu suma divizorilor (rar și special)<br>';
+                    }
+
+                    // Figurativ
+                    const isTriangular = (8 * n + 1) % 1 === 0 && Math.sqrt(8 * n + 1) % 1 === 0;
+                    const isSquare = Math.sqrt(n) % 1 === 0;
+                    if (isSquare) analiza += '• <strong>Număr pătrat</strong> — stabilitate, soliditate<br>';
+
+                    // Semnificații speciale
+                    const semnificatii = {
+                        1: 'Monas — unitatea supremă, sursa tuturor numerelor, nici par nici impar.',
+                        2: 'Dualitatea — prima diviziune, principiul feminin, opinia.',
+                        3: 'Primul număr "complet" — început, mijloc, sfârșit. Trinitate.',
+                        4: 'Dreptatea — soliditatea (tetraedru), cele 4 elemente.',
+                        5: 'Nunta (2+3) — căsătoria principiilor. Viața, sănătatea.',
+                        6: 'Primul număr perfect (1+2+3=6). Armonia, creația.',
+                        7: 'Numărul virgin — nu produce și nu e produs de alte numere în decadă.',
+                        8: 'Primul cub (2³). Armonia cosmică.',
+                        9: 'Limita numerelor (3²). Orizontul, perfecțiunea în cadru.',
+                        10: 'Tetraktys — numărul universului, toate numerele reîncep de aici.'
+                    };
+
+                    if (semnificatii[n]) {
+                        analiza += `<br><em style="color: var(--text-muted);">"${semnificatii[n]}"</em>`;
+                    }
+
+                    // Reducție pitagoreică
+                    let redus = n;
+                    while (redus > 9) {
+                        redus = String(redus).split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+                    }
+                    if (n > 9) {
+                        analiza += `<br><br>Reducție pitagoreică: ${n} → <strong>${redus}</strong>`;
+                    }
+
+                    analiza += '</div>';
+                    rezultat.innerHTML = analiza;
+                };
+
+                // Teorema lui Pitagora
+                const pitagoraCanvas = document.getElementById('pitagora-canvas');
+                const pitagoraCtx = pitagoraCanvas.getContext('2d');
+
+                function drawTeorema() {
+                    const a = parseFloat(document.getElementById('cateta-a').value);
+                    const b = parseFloat(document.getElementById('cateta-b').value);
+                    const c = Math.sqrt(a * a + b * b);
+
+                    document.getElementById('cateta-a-val').textContent = a;
+                    document.getElementById('cateta-b-val').textContent = b;
+
+                    pitagoraCtx.clearRect(0, 0, 400, 300);
+
+                    const scale = 20;
+                    const offsetX = 50;
+                    const offsetY = 250;
+
+                    // Triunghi
+                    pitagoraCtx.strokeStyle = '#8b4513';
+                    pitagoraCtx.lineWidth = 2;
+                    pitagoraCtx.beginPath();
+                    pitagoraCtx.moveTo(offsetX, offsetY);
+                    pitagoraCtx.lineTo(offsetX + a * scale, offsetY);
+                    pitagoraCtx.lineTo(offsetX, offsetY - b * scale);
+                    pitagoraCtx.closePath();
+                    pitagoraCtx.stroke();
+
+                    // Pătrat pe a
+                    pitagoraCtx.fillStyle = 'rgba(139, 69, 19, 0.2)';
+                    pitagoraCtx.fillRect(offsetX, offsetY, a * scale, a * scale * 0.3);
+
+                    // Etichete
+                    pitagoraCtx.fillStyle = '#8b4513';
+                    pitagoraCtx.font = '14px Inter';
+                    pitagoraCtx.fillText(`a = ${a}`, offsetX + a * scale / 2 - 15, offsetY + 20);
+                    pitagoraCtx.fillText(`b = ${b}`, offsetX - 35, offsetY - b * scale / 2);
+                    pitagoraCtx.fillText(`c = ${c.toFixed(2)}`, offsetX + a * scale / 2 + 10, offsetY - b * scale / 2 - 10);
+
+                    // Calcul
+                    document.getElementById('pitagora-calcul').innerHTML = `
+                        <strong>${a}² + ${b}² = ${c.toFixed(2)}²</strong><br>
+                        ${a * a} + ${b * b} = ${(c * c).toFixed(2)}<br>
+                        <span style="color: var(--accent);">${a * a + b * b} = ${(c * c).toFixed(2)}</span>
+                    `;
+                }
+
+                document.getElementById('cateta-a').addEventListener('input', drawTeorema);
+                document.getElementById('cateta-b').addEventListener('input', drawTeorema);
+
+                drawTeorema();
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Concluzie</span>
+                <span class="section-number">10 / Concluzie</span>
                 <h2>Filozoful-Șaman</h2>
 
                 <p>Pitagora e o figură liminală — între magie și știință, între religie și filozofie, între Orient și Occident. A combinat rigoarea demonstrației matematice cu mistica numerelor, disciplina ascetică cu speculația cosmică.</p>

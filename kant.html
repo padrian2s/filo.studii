@@ -80,8 +80,217 @@
                 </div>
                 <blockquote class="inline">„Nimic în lume nu poate fi considerat bun fără restricție, în afară de o voință bună."</blockquote>
             </section>
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">04 / Simulator</span>
+                <h2>Experimentează Imperativul</h2>
+
+                <p>Kant ne-a dat un test simplu pentru moralitatea acțiunilor: ai vrea ca toți să facă la fel? Testează-ți deciziile cu imperativul categoric.</p>
+
+                <div class="simulator-container">
+                    <div class="imperative-test">
+                        <label>Scrie o acțiune sau regulă pe care o aplici:</label>
+                        <input type="text" id="actiune-input" placeholder="Ex: Să mint când mă avantajează / Să ajut doar pe cine îmi place / Să nu îmi țin promisiunile...">
+                        <button onclick="testeazaImperativ()">Aplică imperativul categoric</button>
+                    </div>
+
+                    <div id="rezultat-imperativ" class="rezultat-container"></div>
+
+                    <div class="exemple-rapide">
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Sau testează exemple clasice:</p>
+                        <div class="exemple-butoane">
+                            <button onclick="testeazaExemplu('mint')" class="btn-exemplu">Să mint când e convenabil</button>
+                            <button onclick="testeazaExemplu('promis')" class="btn-exemplu">Să nu țin promisiunile</button>
+                            <button onclick="testeazaExemplu('furt')" class="btn-exemplu">Să fur dacă am nevoie</button>
+                            <button onclick="testeazaExemplu('ajutor')" class="btn-exemplu">Să nu ajut pe nimeni</button>
+                            <button onclick="testeazaExemplu('talent')" class="btn-exemplu">Să nu îmi dezvolt talentele</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-box" style="margin-top: 2rem;">
+                    <h4>Testul Umanității</h4>
+                    <p>A doua formulare a lui Kant: „Tratează umanitatea întotdeauna ca scop, niciodată doar ca mijloc."</p>
+                    <p>Gândește-te la o relație sau interacțiune recentă. L-ai tratat pe celălalt ca scop în sine (respectându-i demnitatea, libertatea, rațiunea) sau doar ca mijloc pentru scopurile tale?</p>
+                    <div id="reflexie-umanitate" style="margin-top: 1rem; padding: 1rem; background: var(--secondary); font-style: italic;">
+                        <em>„Oamenii nu sunt instrumente. Fiecare persoană are o valoare în sine, care nu poate fi negociată sau utilizată."</em>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .imperative-test label {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    display: block;
+                    margin-bottom: 0.75rem;
+                    color: var(--text);
+                }
+                .imperative-test input {
+                    width: 100%;
+                    padding: 1rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 1rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                }
+                .imperative-test input:focus {
+                    outline: none;
+                    border-color: var(--accent);
+                }
+                .imperative-test button,
+                .concept-box button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    transition: opacity 0.2s;
+                    border-radius: 2px;
+                }
+                .imperative-test button:hover {
+                    opacity: 0.85;
+                }
+                .rezultat-container {
+                    margin-top: 1.5rem;
+                    padding: 1.5rem;
+                    background: var(--primary);
+                    border-radius: 4px;
+                    display: none;
+                }
+                .rezultat-container.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+                .rezultat-container.valid {
+                    border-left: 4px solid #4CAF50;
+                }
+                .rezultat-container.invalid {
+                    border-left: 4px solid #F44336;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .exemple-rapide {
+                    margin-top: 2rem;
+                    padding-top: 1.5rem;
+                    border-top: 1px solid var(--border);
+                }
+                .exemple-butoane {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                }
+                .btn-exemplu {
+                    background: transparent !important;
+                    color: var(--text-muted) !important;
+                    border: 1px solid var(--border) !important;
+                    padding: 0.5rem 1rem !important;
+                    font-size: 0.75rem !important;
+                }
+                .btn-exemplu:hover {
+                    border-color: var(--accent) !important;
+                    color: var(--accent) !important;
+                }
+            </style>
+
+            <script>
+            (function() {
+                const exemple = {
+                    mint: {
+                        maxima: "Să mint când e în avantajul meu",
+                        universalizare: "Dacă toți ar minți când e în avantajul lor, nimeni n-ar mai crede pe nimeni. Minciuna însăși ar deveni imposibilă — ar dispărea sensul cuvântului „adevăr".",
+                        verdict: "INVALID",
+                        explicatie: "Contradicție în concepție: o lume în care toți mint e o lume în care minciuna e imposibilă (nimeni nu ar mai fi crezut)."
+                    },
+                    promis: {
+                        maxima: "Să fac promisiuni fără intenția de a le ține",
+                        universalizare: "Dacă toți ar promite fără să țină, instituția promisiunii ar dispărea. Nimeni n-ar mai crede în promisiuni.",
+                        verdict: "INVALID",
+                        explicatie: "Contradicție în concepție: se autodistruge ca principiu universal."
+                    },
+                    furt: {
+                        maxima: "Să fur când am nevoie",
+                        universalizare: "Dacă toți ar fura când au nevoie, proprietatea ar dispărea ca concept. Furtul presupune că altcineva are — dar într-o lume unde toți fură, nimeni nu mai are nimic stabil.",
+                        verdict: "INVALID",
+                        explicatie: "Contradicție în concepție: furtul presupune proprietate, dar furtul universal elimină proprietatea."
+                    },
+                    ajutor: {
+                        maxima: "Să nu ajut niciodată pe nimeni",
+                        universalizare: "Poți concepe o lume în care nimeni nu ajută pe nimeni. Dar ai vrea să trăiești în ea? La un moment dat, și tu vei avea nevoie de ajutor.",
+                        verdict: "INVALID",
+                        explicatie: "Contradicție în voință: nu poți vrea în mod rațional o lume în care tu însuți nu ai primi ajutor când ai nevoie."
+                    },
+                    talent: {
+                        maxima: "Să las talentele să ruginească, să trăiesc în lene",
+                        universalizare: "O lume în care nimeni nu își dezvoltă potențialul e concepibilă. Dar e o lume diminuată, care nu folosește rațiunea pe care o avem.",
+                        verdict: "INVALID",
+                        explicatie: "Contradicție în voință: ca ființă rațională, nu poți vrea în mod consistent să-ți negi propria raționalitate."
+                    }
+                };
+
+                window.testeazaImperativ = function() {
+                    const input = document.getElementById('actiune-input').value.trim();
+                    if (!input) {
+                        alert('Te rog scrie o acțiune sau regulă.');
+                        return;
+                    }
+
+                    const rezultat = document.getElementById('rezultat-imperativ');
+
+                    // Analiza simplificată
+                    const negativeKeywords = ['mint', 'fur', 'înșel', 'nu ajut', 'nu țin', 'folosesc', 'manipulez', 'nu respect'];
+                    const esteNegativ = negativeKeywords.some(kw => input.toLowerCase().includes(kw));
+
+                    let html = `<strong>Maxima ta:</strong> „${input}"<br><br>`;
+                    html += `<strong>Testul universalizării:</strong> Imaginează-te că TOȚI oamenii ar acționa așa. Ce s-ar întâmpla?<br><br>`;
+
+                    if (esteNegativ) {
+                        rezultat.className = 'rezultat-container visible invalid';
+                        html += `<strong style="color: #F44336;">⚠ Probabil INVALID</strong><br><br>`;
+                        html += `Întreabă-te: <em>Dacă toți ar face asta, ar mai funcționa? Ai vrea să trăiești în acea lume?</em><br><br>`;
+                        html += `Kant ar spune că această maximă fie se autocontrazice (devine imposibilă dacă toți o urmează), fie nu ai vrea rațional să trăiești într-o lume unde toți o urmează.`;
+                    } else {
+                        rezultat.className = 'rezultat-container visible valid';
+                        html += `<strong style="color: #4CAF50;">✓ Posibil VALID</strong><br><br>`;
+                        html += `Dacă toți ar acționa așa și lumea ar funcționa mai bine sau la fel de bine, maxima trece testul.<br><br>`;
+                        html += `Dar verifică și: <em>Tratezi umanitatea ca scop în sine, nu doar ca mijloc?</em>`;
+                    }
+
+                    rezultat.innerHTML = html;
+                };
+
+                window.testeazaExemplu = function(key) {
+                    const ex = exemple[key];
+                    const rezultat = document.getElementById('rezultat-imperativ');
+
+                    rezultat.className = 'rezultat-container visible invalid';
+                    rezultat.innerHTML = `
+                        <strong>Maxima:</strong> „${ex.maxima}"<br><br>
+                        <strong>Universalizare:</strong> ${ex.universalizare}<br><br>
+                        <strong style="color: #F44336;">Verdict: ${ex.verdict}</strong><br><br>
+                        <strong>Explicație kantiană:</strong> ${ex.explicatie}
+                    `;
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">04 / Concluzie</span>
+                <span class="section-number">05 / Concluzie</span>
                 <h2>Arhitectul Rațiunii</h2>
                 <p>Kant a trasat granițele cunoașterii și în aceste limite a construit un edificiu impresionant. „Cerul înstelat deasupra mea și legea morală în mine" — acestea sunt cele două lucruri care umpleau sufletul lui Kant cu admirație.</p>
             </section>

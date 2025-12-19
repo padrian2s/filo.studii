@@ -220,8 +220,289 @@
                 </div>
             </section>
 
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">09 / Simulator</span>
+                <h2>Experimentează Gândirea Parmenidiană</h2>
+
+                <p>Testează dacă gândești pe Calea Adevărului sau pe Calea Aparențelor. Plus: vizualizează paradoxul lui Zenon.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-sectiune">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Calea Adevărului vs Calea Aparențelor</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Clasifică aceste afirmații: aparțin gândirii pure sau experienței înșelătoare?</p>
+
+                        <div id="afirmatii-container"></div>
+
+                        <div id="rezultat-cai" style="display: none; margin-top: 1.5rem; padding: 1rem; border-radius: 4px;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Paradoxul lui Zenon: Ahile și Broasca</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ahile aleargă de 10x mai repede, dar broasca are avans. Vizualizează paradoxul.</p>
+
+                        <div class="zenon-controls" style="margin-bottom: 1rem;">
+                            <label style="font-size: 0.85rem;">Avans broască: <span id="avans-val">100</span>m</label>
+                            <input type="range" id="avans-slider" min="10" max="200" value="100" style="width: 100%;">
+                        </div>
+
+                        <canvas id="zenon-canvas" width="600" height="120" style="width: 100%; border: 1px solid var(--border); border-radius: 4px;"></canvas>
+
+                        <div style="margin-top: 1rem;">
+                            <button onclick="startZenon()">Pornește cursa</button>
+                            <button onclick="resetZenon()" style="background: transparent; border: 1px solid var(--border); color: var(--text-muted);">Reset</button>
+                        </div>
+
+                        <div id="zenon-explicatie" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(26, 79, 110, 0.1); border-radius: 4px; font-size: 0.9rem;"></div>
+                    </div>
+
+                    <div class="simulator-sectiune" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Atributele Ființei</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Ce atribute trebuie să aibă Ființa conform logicii lui Parmenide?</p>
+
+                        <div id="atribute-test"></div>
+                        <button onclick="verificaAtribute()" style="margin-top: 1rem;">Verifică răspunsurile</button>
+                        <div id="atribute-rezultat" style="display: none; margin-top: 1rem;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                }
+                .afirmatie-item {
+                    padding: 1rem;
+                    margin-bottom: 0.75rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .afirmatie-text {
+                    font-style: italic;
+                    margin-bottom: 0.75rem;
+                }
+                .afirmatie-optiuni label {
+                    margin-right: 1.5rem;
+                    font-size: 0.85rem;
+                    cursor: pointer;
+                }
+                .atribut-item {
+                    display: flex;
+                    align-items: center;
+                    padding: 0.5rem 0;
+                }
+                .atribut-item input {
+                    margin-right: 0.75rem;
+                }
+            </style>
+
+            <script>
+            (function() {
+                const afirmatii = [
+                    { text: "Floarea înflorește și apoi se ofilește.", corect: "aparente", explicatie: "Schimbarea e iluzie — Ființa nu se schimbă." },
+                    { text: "Ce există nu poate să nu existe.", corect: "adevar", explicatie: "Aceasta e teza centrală a Căii Adevărului." },
+                    { text: "Lucrurile se nasc și mor.", corect: "aparente", explicatie: "Nașterea și moartea presupun trecerea din/în non-ființă — imposibil logic." },
+                    { text: "Gândirea și ființa sunt același lucru.", corect: "adevar", explicatie: "Fragment celebru: ce poate fi gândit există, ce nu poate fi gândit nu există." },
+                    { text: "Există multe lucruri diferite în lume.", corect: "aparente", explicatie: "Multiplicitatea ar presupune separare prin non-ființă — dar non-ființa nu există." },
+                    { text: "Non-ființa nu poate fi gândită sau numită.", corect: "adevar", explicatie: "Orice încercare de a gândi 'nimic' îl transformă în 'ceva'." }
+                ];
+
+                const container = document.getElementById('afirmatii-container');
+                afirmatii.forEach((a, i) => {
+                    container.innerHTML += `
+                        <div class="afirmatie-item">
+                            <div class="afirmatie-text">"${a.text}"</div>
+                            <div class="afirmatie-optiuni">
+                                <label><input type="radio" name="afirmatie${i}" value="adevar"> Calea Adevărului</label>
+                                <label><input type="radio" name="afirmatie${i}" value="aparente"> Calea Aparențelor</label>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                container.innerHTML += `<button onclick="verificaCai()">Verifică clasificările</button>`;
+
+                window.verificaCai = function() {
+                    let corecte = 0;
+                    let explicatii = [];
+                    afirmatii.forEach((a, i) => {
+                        const selectat = document.querySelector(`input[name="afirmatie${i}"]:checked`);
+                        if (selectat && selectat.value === a.corect) {
+                            corecte++;
+                        } else {
+                            explicatii.push(`"${a.text}" — ${a.explicatie}`);
+                        }
+                    });
+
+                    const rezultat = document.getElementById('rezultat-cai');
+                    rezultat.style.display = 'block';
+
+                    if (corecte === afirmatii.length) {
+                        rezultat.style.background = 'rgba(76, 175, 80, 0.1)';
+                        rezultat.innerHTML = `<strong>Perfect!</strong> Ai înțeles distincția lui Parmenide. Gândirea pură dezvăluie că schimbarea, nașterea, moartea, multiplicitatea sunt doar aparențe.`;
+                    } else {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        rezultat.innerHTML = `<strong>${corecte}/${afirmatii.length} corecte.</strong><br><br>Greșeli de corectat:<br>` + explicatii.map(e => `• ${e}`).join('<br>');
+                    }
+                };
+
+                // Zenon
+                let zenonAnim = null;
+                const canvas = document.getElementById('zenon-canvas');
+                const ctx = canvas.getContext('2d');
+
+                function drawScene(ahilePos, broascaPos, iteration) {
+                    ctx.clearRect(0, 0, 600, 120);
+                    ctx.fillStyle = '#f8f8f8';
+                    ctx.fillRect(0, 0, 600, 120);
+
+                    // Linie de cursă
+                    ctx.strokeStyle = '#e5e5e5';
+                    ctx.beginPath();
+                    ctx.moveTo(50, 80);
+                    ctx.lineTo(550, 80);
+                    ctx.stroke();
+
+                    // Ahile (cerculeț albastru)
+                    ctx.fillStyle = '#1a4f6e';
+                    ctx.beginPath();
+                    ctx.arc(50 + ahilePos * 5, 80, 12, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = '#fff';
+                    ctx.font = '10px Inter';
+                    ctx.fillText('A', 46 + ahilePos * 5, 84);
+
+                    // Broasca (cerculeț verde)
+                    ctx.fillStyle = '#4CAF50';
+                    ctx.beginPath();
+                    ctx.arc(50 + broascaPos * 5, 80, 8, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = '#fff';
+                    ctx.font = '8px Inter';
+                    ctx.fillText('B', 46 + broascaPos * 5, 83);
+
+                    // Text iterație
+                    ctx.fillStyle = '#666';
+                    ctx.font = '12px Inter';
+                    ctx.fillText(`Iterație: ${iteration}`, 10, 20);
+                    ctx.fillText(`Ahile: ${ahilePos.toFixed(2)}m`, 10, 35);
+                    ctx.fillText(`Broasca: ${broascaPos.toFixed(2)}m`, 10, 50);
+                }
+
+                window.startZenon = function() {
+                    if (zenonAnim) cancelAnimationFrame(zenonAnim);
+
+                    const avans = parseFloat(document.getElementById('avans-slider').value);
+                    let ahilePos = 0;
+                    let broascaPos = avans;
+                    let iteration = 0;
+
+                    const explicatie = document.getElementById('zenon-explicatie');
+                    explicatie.style.display = 'block';
+
+                    function step() {
+                        if (iteration < 15 && broascaPos - ahilePos > 0.01) {
+                            // Ahile ajunge unde era broasca
+                            const distanta = broascaPos - ahilePos;
+                            ahilePos = broascaPos;
+                            // Broasca avansează 1/10 din distanță
+                            broascaPos += distanta / 10;
+                            iteration++;
+
+                            drawScene(ahilePos, broascaPos, iteration);
+
+                            explicatie.innerHTML = `<strong>Paradoxul:</strong> Când Ahile ajunge unde era broasca (${ahilePos.toFixed(2)}m), broasca a avansat la ${broascaPos.toFixed(2)}m. Distanța rămâne ${(broascaPos - ahilePos).toFixed(4)}m. La infinit? Logic, Ahile nu ajunge niciodată broasca!<br><br><em>Dar în realitate o ajunge — deci fie mișcarea e iluzie (Parmenide), fie logica infinitului e problematică.</em>`;
+
+                            zenonAnim = setTimeout(step, 800);
+                        } else {
+                            explicatie.innerHTML += `<br><br><strong>Concluzia lui Zenon:</strong> Dacă spațiul și timpul sunt infinit divizibile, mișcarea e imposibilă. Deci... aparențele ne înșeală. Parmenide avea dreptate?`;
+                        }
+                    }
+
+                    drawScene(0, avans, 0);
+                    setTimeout(step, 500);
+                };
+
+                window.resetZenon = function() {
+                    if (zenonAnim) clearTimeout(zenonAnim);
+                    const avans = parseFloat(document.getElementById('avans-slider').value);
+                    drawScene(0, avans, 0);
+                    document.getElementById('zenon-explicatie').style.display = 'none';
+                };
+
+                document.getElementById('avans-slider').addEventListener('input', function() {
+                    document.getElementById('avans-val').textContent = this.value;
+                    resetZenon();
+                });
+
+                // Inițializare
+                drawScene(0, 100, 0);
+
+                // Atributele Ființei
+                const atribute = [
+                    { text: "Nenăscută (nu a apărut)", corect: true },
+                    { text: "În continuă schimbare", corect: false },
+                    { text: "Nepieritoare (nu va dispărea)", corect: true },
+                    { text: "Multiplă (multe lucruri)", corect: false },
+                    { text: "Una (nu există multiplicitate)", corect: true },
+                    { text: "Continuă (fără goluri)", corect: true },
+                    { text: "Sferică (perfect egală)", corect: true },
+                    { text: "Temporală (există în timp)", corect: false }
+                ];
+
+                const atributeContainer = document.getElementById('atribute-test');
+                atribute.forEach((a, i) => {
+                    atributeContainer.innerHTML += `
+                        <div class="atribut-item">
+                            <input type="checkbox" id="atr${i}">
+                            <label for="atr${i}">${a.text}</label>
+                        </div>
+                    `;
+                });
+
+                window.verificaAtribute = function() {
+                    let corecte = 0;
+                    atribute.forEach((a, i) => {
+                        const checked = document.getElementById(`atr${i}`).checked;
+                        if (checked === a.corect) corecte++;
+                    });
+
+                    const rezultat = document.getElementById('atribute-rezultat');
+                    rezultat.style.display = 'block';
+                    rezultat.style.padding = '1rem';
+                    rezultat.style.borderRadius = '4px';
+
+                    if (corecte === atribute.length) {
+                        rezultat.style.background = 'rgba(76, 175, 80, 0.1)';
+                        rezultat.innerHTML = `<strong>Perfect!</strong> Ființa lui Parmenide e: nenăscută, nepieritoare, neschimbătoare, una, continuă, sferică. Schimbarea, multiplicitatea, temporalitatea aparțin doar aparențelor.`;
+                    } else {
+                        rezultat.style.background = 'rgba(255, 152, 0, 0.1)';
+                        rezultat.innerHTML = `<strong>${corecte}/${atribute.length} corecte.</strong> Amintește-ți: tot ce implică schimbare sau non-ființă nu poate aparține Ființei reale.`;
+                    }
+                };
+            })();
+            </script>
+
             <section>
-                <span class="section-number">09 / Concluzie</span>
+                <span class="section-number">10 / Concluzie</span>
                 <h2>Sfera Perfectă</h2>
 
                 <p>Parmenide rămâne un scandal pentru bunul simț și o provocare pentru gândire. Nu putem trăi ca și cum ar avea dreptate — și totuși, nimeni nu l-a respins definitiv.</p>
