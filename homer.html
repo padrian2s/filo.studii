@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homer - Poetul Epic al Greciei Antice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #f8f8f8;
+            --text: #1a1a1a;
+            --text-muted: #666666;
+            --text-light: #999999;
+            --accent: #8b4513;
+            --border: #e5e5e5;
+        }
+        [data-theme="dark"] {
+            --primary: #1a1a1a;
+            --secondary: #2a2a2a;
+            --text: #e8e8e8;
+            --text-muted: #b0b0b0;
+            --text-light: #808080;
+            --accent: #ff4757;
+            --border: #404040;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text);
+            background: var(--primary);
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--primary); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 3rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+        nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero .category {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+        .hero .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+        .hero .years {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-top: 3rem;
+        }
+        main {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        section { margin-bottom: 5rem; }
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            float: left;
+            line-height: 0.85;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            color: var(--accent);
+        }
+        .pull-quote {
+            padding: 4rem 2rem;
+            background: var(--secondary);
+            text-align: center;
+            margin: 4rem -2rem;
+            position: relative;
+        }
+        .pull-quote::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            position: absolute;
+            top: -1rem;
+            left: 2rem;
+            color: var(--accent);
+            opacity: 0.1;
+        }
+        .pull-quote blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .pull-quote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-style: normal;
+            color: var(--text-muted);
+        }
+        blockquote.inline {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+        .concept-box {
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+        .concept-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer {
+            background: var(--text);
+            color: var(--primary);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+        footer a {
+            color: var(--primary);
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .theme-toggle .icon {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        @media (max-width: 600px) {
+            nav { padding: 1rem; }
+            main { padding: 4rem 1.5rem; }
+            .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; }
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="icon" id="theme-icon">☀️</span>
+        <span id="theme-text">Mod Luminos</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Filo</a>
+        <a href="index.html">Înapoi la Colecție</a>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <span class="category">Poezie Epică</span>
+        <h1>Homer</h1>
+        <p class="subtitle">Părintele Literaturii Occidentale</p>
+        <p class="years">c. 800 — 750 î.Hr.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section>
+            <span class="section-number">01 — Introducere</span>
+            <h2>Poetul Misterios</h2>
+            <p class="lead">Nimeni nu știe cu adevărat cine a fost Homer. Poate că nu a existat niciodată — poate că "Homer" era numele dat unei întregi tradiții de poeți orali. Sau poate că a fost un bard orb care a cântat povești pe străzile Greciei antice.</p>
+            <p>Cert este că cele două poeme atribuite lui — Iliada și Odiseea — au devenit fundamentul culturii occidentale. Fără Homer, nu ar exista literatura așa cum o cunoaștem.</p>
+            <p>Timp de peste 2.800 de ani, aceste epopei au fost citite, recitate, traduse și reinterpretate. Au influențat totul — de la Platon și Aristotel până la Shakespeare și Joyce. Homer este poetul care a inventat povestirea așa cum o știm.</p>
+        </section>
+
+        <div class="pull-quote">
+            <blockquote>
+                Cântă-mi, Muză, mânia lui Ahile, fiul lui Peleu, mânia blestemată care a adus nesfârșite dureri grecilor.
+            </blockquote>
+            <cite>Homer, Iliada, primele versuri</cite>
+        </div>
+
+        <section>
+            <span class="section-number">02 — Viața lui Homer</span>
+            <h2>Misterul Identității</h2>
+
+            <h3>Legenda orbului bard</h3>
+            <p>Tradiția îl descrie pe Homer ca pe un bard orb care călătorea prin orașe, cântând povești despre eroii din trecut. Șapte orașe grecești s-au luptat pentru onoarea de a fi locul său de naștere — Smyrna, Rhodos, Colophon, Salamis, Chios, Argos și Atena.</p>
+            <p>Istoricii cred că Homer a trăit undeva în secolul al VIII-lea î.Hr., în perioada arhaică greacă, când cultura scrisă începea să înlocuiască tradițiile orale. Dar nu există nicio dovadă concretă despre existența lui personală.</p>
+
+            <h3>Problema homerică</h3>
+            <p>Începând cu secolul al XVIII-lea, specialiștii au dezbătut "problema homerică" — au fost Iliada și Odiseea scrise de același autor? Au fost compuse de un singur poet sau sunt compilații ale mai multor poveștiri orale?</p>
+            <p>Unii susțin că cele două poeme diferă stilistic și tematic. Iliada e despre război, onoare și moarte; Odiseea e despre întoarcerea acasă, astuție și supraviețuire. Alții argumentează că tocmai această varietate demonstrează geniul unui singur poet.</p>
+        </section>
+
+        <div class="concept-box">
+            <h4>Tradiția Orală</h4>
+            <p>Poemele homerice au fost compuse într-o epocă în care puțini oameni știau să scrie. Poeții învățau mii de versuri pe de rost, folosind formule repetitive pentru a le memora mai ușor — epitetele precum "Ahile cel iute de picior" sau "marea întunecată ca vinul".</p>
+            <p>Aceste formule nu erau doar artificii literare — erau instrumente mnemotehnice care permiteau recitarea povestirilor complexe fără text scris.</p>
+        </div>
+
+        <section>
+            <span class="section-number">03 — Operele</span>
+            <h2>Iliada și Odiseea</h2>
+
+            <h3>Iliada — Războiul Troian</h3>
+            <p>Iliada povestește despre cele câteva săptămâni finale ale Războiului Troian. Nu e o poveste completă a războiului — începe in medias res, în mijlocul acțiunii, și se concentrează pe mânia lui Ahile, cel mai mare războinic grec.</p>
+            <p>Când comandantul Agamemnon îi ia concubina, Ahile se retrage din luptă. Fără el, troienii încep să câștige. Doar când prietenul său, Patrocle, este ucis de Hector, Ahile revine — nu pentru onoarea grecilor, ci pentru răzbunare personală.</p>
+            <p>Poemul culminează cu duelul între Ahile și Hector și cu scena impresionantă în care bătrânul rege Priam vine să-și recupereze trupul fiului. Este o meditație profundă asupra furiei, orgoliului, prieteniei și mortalității.</p>
+
+            <h3>Odiseea — Călătoria acasă</h3>
+            <p>Odiseea urmărește întoarcerea eroului Odysseus acasă după Războiul Troian. Zece ani durează aventura — monstre, zei, vrăjitoare, o coborâre în infern.</p>
+            <p>Dar adevărata luptă nu e doar cu pericolele externe. E cu propria sa identitate. Odysseus trebuie să reziste tentației de a uita cine este — să rămână cu nimfa Calypso pentru veșnicie, să se piardă în plăcerile vieții.</p>
+            <p>Când ajunge acasă, îi așteaptă o ultimă provocare: să-și recucerească casa și soția. Nu prin forță brutală, ci prin astuție — marca sa caracteristică.</p>
+        </section>
+
+        <blockquote class="inline">
+            „Spune-mi, Muză, despre omul cel dibaci, cel ce mult a rătăcit, după ce cetatea sfântă a Troiei o pusese în ruină."
+        </blockquote>
+
+        <section>
+            <span class="section-number">04 — Idei Fundamentale</span>
+            <h2>Viziunea Homerică</h2>
+
+            <h3>Areté — Excelența eroică</h3>
+            <p>În lumea homerică, valoarea supremă e areté — excelența, virtutea eroică. Un erou își demonstrează valoarea prin curaj, abilitate în luptă și noblete de caracter. Dar excelența nu garantează fericirea sau supraviețuirea. Eroii mor. De aceea, gloria eternă — kleos — devine mai importantă decât viața însăși.</p>
+            <p>Ahile știe că va muri tânăr dacă rămâne la Troia, dar își alege gloria veșnică în locul unei vieți lungi și obscure. Aceasta e esența tragică a eroismului homeric.</p>
+
+            <h3>Intervenția zeilor</h3>
+            <p>Zeii Homer nu sunt perfecți sau complet transcendenți. Sunt capricioși, gelosi, pătimași. Se ceartă între ei, favorizează anumite personaje și sabotează pe altele. Războiul Troian se luptă pe pământ, dar se decide și pe Olimp.</p>
+            <p>Totuși, oamenii nu sunt simple marionete. Eroii fac alegeri reale — dar acele alegeri se desfășoară în limitele destinului și ale voinței zeilor. E o tensiune fascinantă între libertate și fatalitate.</p>
+
+            <h3>Nostos — Întoarcerea acasă</h3>
+            <p>Odiseea e despre nostos — dorința profundă de a te întoarce acasă. Nu doar fizic, ci spiritual. Odysseus nu e doar un călător pierdut; e un om căutând să-și recupereze identitatea, familia, locul său în lume.</p>
+            <p>Tema aceasta a rezonat de-a lungul secolelor. Fiecare dintre noi căutăm, într-un fel, să ne întoarcem acasă — la cine suntem cu adevărat.</p>
+        </section>
+
+        <div class="concept-box">
+            <h4>Ciclul Epic</h4>
+            <p>Iliada și Odiseea făceau parte dintr-un "ciclu epic" mai larg care acoperea întreaga poveste a Războiului Troian — de la judecata lui Paris până la uciderea pretendentilor Penelopei. Din păcate, celelalte poeme au dispărut; doar fragmente au supraviețuit.</p>
+        </div>
+
+        <section>
+            <span class="section-number">05 — Impactul și Moștenirea</span>
+            <h2>Influența lui Homer</h2>
+
+            <h3>Educația clasică</h3>
+            <p>Pentru grecii antici, Homer era Biblia, Shakespeare și universitatea — totul la un loc. Copiii memorau versuri homerice la școală. Filozofii dezbăteau moralitatea personajelor sale. Soldații recitau discursurile lui Ahile înainte de bătălie.</p>
+            <p>Platon a criticat influența Homer asupra tinerilor, considerând că poemele glorifică violența și arată zei imorali. Dar până și Platon a citat continuu din Homer — imposibil să gândești despre Grecia fără el.</p>
+
+            <h3>Renașterea europeană</h3>
+            <p>În Evul Mediu, Homer a fost aproape uitat în Occident — dar Renașterea l-a redescoperit. Traducerile italiene și apoi engleze (celebra versiune a lui Chapman) au readus poemele în circulație. Dante, deși nu știa greacă, l-a așezat pe Homer în Infern alături de cei mai mari poeți.</p>
+
+            <h3>Literatura modernă</h3>
+            <p>James Joyce a rescris Odiseea ca pe o zi obișnuită în Dublin (Ulise). Derek Walcott a mutat-o în Caraibe. Fiecare epocă își recreează Homer.</p>
+            <p>De ce? Pentru că Homer povestește despre dileme umane universale: cum să trăiești cu demnitate? Cum să faci față suferinței? Ce înseamnă să fii loial? Cum te întorci acasă după ce te-ai schimbat ireversibil?</p>
+        </section>
+
+        <div class="pull-quote">
+            <blockquote>
+                Așa cum se nasc și pier frunzele, la fel și oamenii.
+            </blockquote>
+            <cite>Homer, Iliada</cite>
+        </div>
+
+        <section>
+            <span class="section-number">06 — Relevanța Astăzi</span>
+            <h2>De ce Homer contează acum</h2>
+
+            <h3>Fragilitatea vieții</h3>
+            <p>Homer înțelege că viața e fragilă și scurtă. Eroii mor. Cetățile cad. Doar poveștile rămân. În lumea noastră obsedată de nelimitare și optimizare, Homer ne reamintește mortalitatea — și, paradoxal, ne face mai liberi.</p>
+
+            <h3>Complexitatea morală</h3>
+            <p>Nu există eroi perfect buni sau răi perfect răi. Ahile e strălucit dar mânios. Hector e nobil dar și el ucide. Odysseus e deștept dar și necinstit uneori. Homer ne arată că oamenii sunt complicați — și că trebuie să acceptăm această complexitate.</p>
+
+            <h3>Puterea poveștilor</h3>
+            <p>Homer demonstrează că poveștile ne definesc. Ele ne spun cine suntem, de unde venim, ce prețuim. Într-o lume fragmentată, poveștile conectează — și Homer rămâne povestea supremă, cea care conține toate celelalte povești.</p>
+        </section>
+
+        <section>
+            <span class="section-number">07 — Aplicații Practice</span>
+            <h2>Ce poți învăța de la Homer</h2>
+
+            <ul>
+                <li><strong>Alegerea între cantitate și calitate:</strong> Ahile alege o viață scurtă dar glorioasă. Nu e vorba de a muri tânăr, ci de a trăi intens — de a prefera profunzimea în locul superficialității.</li>
+                <li><strong>Importanța întoarcerii acasă:</strong> Odysseus refuză nemurirea pentru a se întoarce acasă. Amintește-ți ce contează cu adevărat — nu aventurile fără sfârșit, ci locul și oamenii care te definesc.</li>
+                <li><strong>Prietenia adevărată:</strong> Ahile se întoarce în luptă doar când Patrocle moare. Prietenia — nu datoria, nu onoarea — îl motivează. Cine sunt oamenii pentru care ai face orice?</li>
+                <li><strong>Astuția vs. forța:</strong> Odysseus supraviețuiește nu prin forță brută, ci prin inteligență. În provocările vieții, creativitatea și adaptabilitatea bat puterea.</li>
+                <li><strong>Acceptarea mortalității:</strong> Eroii homerici acceptă că vor muri. Această acceptare îi eliberează să trăiască cu curaj. Conștientizarea mortalității tale te poate face mai viu.</li>
+            </ul>
+        </section>
+
+        <div class="pull-quote">
+            <blockquote>
+                Fii curajos, inima mea. Ai îndurat lucruri și mai grele.
+            </blockquote>
+            <cite>Homer, Odiseea</cite>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p><a href="index.html">Înapoi la Colecție</a> · Filo — Studii Filozofice și Literare</p>
+    </footer>
+
+    <script>
+    // Theme Toggle
+    (function() {
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+        const text = document.getElementById('theme-text');
+        const body = document.body;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        // Apply saved theme on load
+        if (currentTheme === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            icon.textContent = '🌙';
+            text.textContent = 'Mod Întunecat';
+        }
+
+        // Toggle theme on button click
+        toggle.addEventListener('click', () => {
+            const theme = body.getAttribute('data-theme');
+
+            if (theme === 'dark') {
+                body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                icon.textContent = '☀️';
+                text.textContent = 'Mod Luminos';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.textContent = '🌙';
+                text.textContent = 'Mod Întunecat';
+            }
+        });
+    })();
+    </script>
+
+</body>
+</html>
