@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carl Schmitt - Teoreticianul Suveranității</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #8b0000; --border: #e5e5e5; }
+        [data-theme="dark"] {
+            --primary: #1a1a1a;
+            --secondary: #2a2a2a;
+            --text: #e8e8e8;
+            --text-muted: #b0b0b0;
+            --text-light: #808080;
+            --accent: #ff4757;
+            --border: #404040;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: var(--primary); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1001;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .theme-toggle .icon {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        @media (max-width: 600px) {
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="icon" id="theme-icon">☀️</span>
+        <span id="theme-text">Mod Luminos</span>
+    </button>
+
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+    <header class="hero">
+        <span class="category">Teoria Politică / Decizionism</span>
+        <h1>Carl Schmitt</h1>
+        <p class="subtitle">Juristul care a definit politicul prin distincția prieten-dușman și a teoretizat starea de excepție</p>
+        <span class="years">1888 — 1985</span>
+    </header>
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Cel Mai Controversat Gânditor Politic</h2>
+                <p class="lead">„Suveran e cel care decide asupra stării de excepție." Cu această formulă lapidară, Carl Schmitt a zguduit întreaga teorie politică modernă. Cine deține puterea reală? Nu constituția, nu legile, ci cel care poate să le suspende.</p>
+                <p>Carl Schmitt rămâne cel mai influent și mai controversat teoretician politic al secolului XX. Ideile lui au inspirat atât stânga radicală cât și dreapta, au fost studiate de revoluționari și de conservatori. Dar Schmitt e și „juristul-rege" al celui de-al Treilea Reich — o umbră care planează asupra întregii sale opere.</p>
+                <p>Să-l citim pe Schmitt înseamnă să ne confruntăm cu întrebări incomode despre natura puterii, despre limitele democrației, despre ce se întâmplă când ordinea juridică se prăbușește.</p>
+            </section>
+            <aside class="pull-quote">
+                <blockquote>„Suveran e cel care decide asupra stării de excepție."</blockquote>
+                <cite>— Carl Schmitt, Teologia Politică (1922)</cite>
+            </aside>
+            <section>
+                <span class="section-number">02 / Conceptul Politicului</span>
+                <h2>Prieten și Dușman</h2>
+                <p>Ce definește politicul? Pentru Schmitt, nu e statul, nu e puterea, nu sunt instituțiile. Esența politicului e <strong>distincția prieten-dușman</strong> (Freund-Feind).</p>
+                <div class="concept-box">
+                    <h4>Distincția Fundamentală</h4>
+                    <p>Așa cum esteticul distinge între frumos și urât, moralul între bine și rău, economicul între profitabil și neprofitabil — <strong>politicul distinge între prieten și dușman</strong>.</p>
+                    <p>Dușmanul nu e neapărat rău moral sau urât estetic. E pur și simplu „celălalt", „străinul" care, în caz extrem, reprezintă o amenințare existențială pentru comunitate.</p>
+                </div>
+                <p>Schmitt susține că toate conflictele — religioase, economice, etnice — devin politice în momentul în care ating intensitatea distincției prieten-dușman. Când un grup începe să perceapă alt grup ca amenințare existențială, politicul apare.</p>
+                <blockquote class="inline">„Conceptele de prieten și dușman trebuie luate în sensul lor concret, existențial, nu ca metafore sau simboluri."</blockquote>
+                <h3>Critica Liberalismului</h3>
+                <p>Schmitt atacă liberalismul tocmai pentru că încearcă să elimine politicul. Liberalismul vrea să reducă totul la economie (competiție pașnică) și la etică (discuție rațională). Dar asta e iluzie — conflictele reale nu dispar, sunt doar mascate.</p>
+                <p>„Umanitatea" ca concept politic e periculoasă, avertizează Schmitt. Cine invocă umanitatea vrea să înșele — pentru că exclude adversarul din categoria umanului, transformându-l în „dușman al umanității".</p>
+            </section>
+            <section>
+                <span class="section-number">03 / Starea de Excepție</span>
+                <h2>Când Legea Tace</h2>
+                <p>Pentru Schmitt, suveranitatea nu se manifestă în timpuri normale, când legile funcționează. Suveranitatea se revelează în <strong>starea de excepție</strong> (Ausnahmezustand) — momentul de criză când ordinea juridică e suspendată.</p>
+                <div class="concept-box">
+                    <h4>Teologia Politică</h4>
+                    <p>„Toate conceptele semnificative ale teoriei moderne a statului sunt concepte teologice secularizate."</p>
+                    <p><strong>Suveranul</strong> în politică e analogul lui <strong>Dumnezeu</strong> în teologie — cel care poate face miracole, adică poate suspenda legile naturale/juridice.</p>
+                </div>
+                <p>Starea de excepție revelează adevărul ascuns al oricărei ordini juridice: în spatele legii stă <strong>decizia</strong>. Nu norma creează ordinea, ci decizia despre ce e normal.</p>
+                <blockquote class="inline">„Excepția e mai interesantă decât cazul normal. Normalul nu dovedește nimic, excepția dovedește totul."</blockquote>
+            </section>
+            <aside class="pull-quote">
+                <blockquote>„Toate conceptele semnificative ale teoriei moderne a statului sunt concepte teologice secularizate."</blockquote>
+                <cite>— Carl Schmitt, Teologia Politică</cite>
+            </aside>
+            <section>
+                <span class="section-number">04 / Critica Parlamentarismului</span>
+                <h2>Discuția Fără Sfârșit</h2>
+                <p>În „Criza democrației parlamentare" (1923), Schmitt atacă parlamentarismul liberal. Parlamentul pretinde că legitimitatea lui vine din discuție publică și deliberare rațională. Dar asta e mit.</p>
+                <p>Deciziile reale se iau în culise, în comisii, în negocieri de partid. Parlamentul a devenit o fațadă. Mai grav — deliberarea infinită paralizează decizia. Când trebuie să acționezi, discuția devine evaziune.</p>
+                <div class="concept-box">
+                    <h4>Democrație vs. Liberalism</h4>
+                    <p>Schmitt distinge între <strong>democrație</strong> (identitatea dintre guvernanți și guvernați) și <strong>liberalism</strong> (protecția drepturilor individuale).</p>
+                    <p>Democrația autentică cere <strong>omogenitate</strong> — un popor unit. Liberalismul cere <strong>pluralism</strong> — diversitate protejată. Cele două sunt în tensiune fundamentală.</p>
+                </div>
+            </section>
+
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">05 / Simulator</span>
+                <h2>Experimentează Decizionismul</h2>
+
+                <p>Schmitt ne provoacă: în momentele de criză, cine decide? Normele sau oamenii? Aplică logica schmittiană la scenarii contemporane.</p>
+
+                <div class="simulator-container">
+                    <div class="scenarii-selector">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Alege un scenariu</h4>
+                        <div class="scenarii-butoane">
+                            <button onclick="analizeazaScenariu('pandemie')">Pandemie</button>
+                            <button onclick="analizeazaScenariu('terorism')">Amenințare Teroristă</button>
+                            <button onclick="analizeazaScenariu('economic')">Criză Economică</button>
+                            <button onclick="analizeazaScenariu('razboi')">Conflict Armat</button>
+                        </div>
+                    </div>
+
+                    <div id="analiza-rezultat" class="analiza-vizualizare"></div>
+
+                    <div class="intrebare-personalizata" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                        <h4 style="font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 1rem;">Sau descrie propria situație de criză</h4>
+                        <input type="text" id="criza-input" placeholder="Ex: O criză climatică extremă lovește regiunea...">
+                        <button onclick="analizeazaCrizaPersonalizata()">Analizează prin prisma lui Schmitt</button>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .scenarii-butoane {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                }
+                .simulator-container button {
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    margin-right: 0.5rem;
+                    margin-bottom: 0.5rem;
+                    transition: all 0.2s ease;
+                }
+                .simulator-container button:hover {
+                    opacity: 0.9;
+                    transform: translateY(-1px);
+                }
+                .intrebare-personalizata input {
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-family: 'Merriweather', serif;
+                    font-size: 0.95rem;
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                    background: var(--primary);
+                    color: var(--text);
+                }
+                .analiza-vizualizare {
+                    display: none;
+                    margin-top: 1.5rem;
+                }
+                .analiza-vizualizare.visible {
+                    display: block;
+                }
+                .analiza-sectiune {
+                    padding: 1.25rem;
+                    margin-bottom: 1rem;
+                    border-radius: 4px;
+                    animation: slideIn 0.4s ease;
+                }
+                @keyframes slideIn {
+                    from { opacity: 0; transform: translateX(-15px); }
+                    to { opacity: 1; transform: translateX(0); }
+                }
+                .analiza-sectiune.intrebare { background: rgba(139, 0, 0, 0.08); border-left: 3px solid #8b0000; }
+                .analiza-sectiune.decizie { background: rgba(0, 100, 0, 0.08); border-left: 3px solid #006400; }
+                .analiza-sectiune.exceptie { background: rgba(139, 69, 19, 0.08); border-left: 3px solid #8b4513; }
+                .analiza-titlu { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; font-weight: 500; }
+            </style>
+
+            <script>
+            (function() {
+                const scenarii = {
+                    pandemie: {
+                        titlu: "Pandemie Globală",
+                        intrebareSchmitt: "Cine decide când sănătatea publică justifică suspendarea libertăților individuale? Parlamentul? Expertii? Executivul?",
+                        decizie: "Schmitt ar spune: cel care efectiv POATE impune carantina și o face. Deciziile în pandemie au revelat cine deține puterea reală — și nu a fost parlamentul.",
+                        exceptie: "Starea de urgență sanitară a fost o stare de excepție clasică: suspendarea normelor (libertate de mișcare, de întrunire) în numele unei amenințări existențiale. Constituțiile au fost 'interpretate creativ'."
+                    },
+                    terorism: {
+                        titlu: "Amenințare Teroristă",
+                        intrebareSchmitt: "Cine este 'dușmanul' în războiul contra terorismului? Un stat? O ideologie? Indivizi? Și cine decide asta?",
+                        decizie: "Schmitt ar observa: teroriștii sunt declarați 'dușmani ai umanității' — exact ce avertiza el. Sunt scoși din protecția legii (Guantanamo, drone strikes) pentru că nu sunt 'combatanți legitimi'.",
+                        exceptie: "Patriot Act, supravegherea de masă — excepții care au devenit permanente. Schmitt ne-ar întreba: când s-a terminat 'starea de excepție'? A devenit ea noua normalitate?"
+                    },
+                    economic: {
+                        titlu: "Criză Economică",
+                        intrebareSchmitt: "Când piețele se prăbușesc, cine salvează sistemul? Parlamentele? Băncile centrale? Tehnocrații? Și pe baza cărei legitimități?",
+                        decizie: "În 2008, băncile centrale au luat decizii care au afectat milioane de vieți — fără vot democratic. Mario Draghi: 'Vom face orice e necesar.' Aceasta e decizia suverană.",
+                        exceptie: "Bailout-urile, quantitative easing — toate au fost 'excepții' de la regulile normale ale pieței. Schmitt ar nota: statul a intervenit pentru că piața a eșuat, dar cine va garanta că statul nu va eșua?"
+                    },
+                    razboi: {
+                        titlu: "Conflict Armat",
+                        intrebareSchmitt: "Cine e prietenul, cine e dușmanul? Și ce se întâmplă cu cei care refuză să aleagă — neutralii?",
+                        decizie: "Schmitt: 'Cel care declară că nu are dușmani va descoperi că alții îl consideră dușman.' Neutralitatea e iluzie în conflicte existențiale.",
+                        exceptie: "Războiul revelează esența politicului: distinția clară prieten-dușman. Toate celelalte distincții (economic, cultural) se subordonează acesteia. Legea internațională cedează în fața necesității."
+                    }
+                };
+
+                window.analizeazaScenariu = function(key) {
+                    const sc = scenarii[key];
+                    const rezultat = document.getElementById('analiza-rezultat');
+                    rezultat.innerHTML = `
+                        <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">${sc.titlu}</h3>
+                        <div class="analiza-sectiune intrebare">
+                            <div class="analiza-titlu" style="color: #8b0000;">Întrebarea lui Schmitt</div>
+                            <p style="margin: 0;">${sc.intrebareSchmitt}</p>
+                        </div>
+                        <div class="analiza-sectiune decizie">
+                            <div class="analiza-titlu" style="color: #006400;">Decizia Suverană</div>
+                            <p style="margin: 0;">${sc.decizie}</p>
+                        </div>
+                        <div class="analiza-sectiune exceptie">
+                            <div class="analiza-titlu" style="color: #8b4513;">Starea de Excepție</div>
+                            <p style="margin: 0;">${sc.exceptie}</p>
+                        </div>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+
+                window.analizeazaCrizaPersonalizata = function() {
+                    const criza = document.getElementById('criza-input').value.trim();
+                    if (!criza) { alert('Descrie o situație de criză.'); return; }
+
+                    const rezultat = document.getElementById('analiza-rezultat');
+                    rezultat.innerHTML = `
+                        <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Analiza Scenariului</h3>
+                        <div class="analiza-sectiune intrebare">
+                            <div class="analiza-titlu" style="color: #8b0000;">Întrebări Schmittiene</div>
+                            <p style="margin: 0;">Cine decide că aceasta e o criză? Ce norme vor fi suspendate? Cine va fi desemnat 'dușman' sau 'vinovat'? Și cum se va întoarce la 'normal'?</p>
+                        </div>
+                        <div class="analiza-sectiune decizie">
+                            <div class="analiza-titlu" style="color: #006400;">Testul Suveranității</div>
+                            <p style="margin: 0;">Schmitt te-ar întreba: cine va lua efectiv decizia? Nu cine TREBUIE să decidă conform constituției, ci cine POATE și FACE. Acela e adevăratul suveran.</p>
+                        </div>
+                        <div class="analiza-sectiune exceptie">
+                            <div class="analiza-titlu" style="color: #8b4513;">Avertismentul</div>
+                            <p style="margin: 0;">Orice criză creează un precedent. Excepțiile de azi devin normalitatea de mâine. Întreabă-te: ce puteri acordate 'temporar' vor rămâne permanente?</p>
+                        </div>
+                    `;
+                    rezultat.classList.add('visible');
+                };
+            })();
+            </script>
+
+            <section>
+                <span class="section-number">06 / Umbrele</span>
+                <h2>Schmitt și Național-Socialismul</h2>
+                <p>Nu putem vorbi despre Schmitt fără să adresăm partea întunecată. În 1933, Schmitt a aderat la Partidul Nazist. A justificat „Noaptea Cuțitelor Lungi" și legile rasiale de la Nürnberg. A scris texte antisemite virulente.</p>
+                <p>A fost el un oportunist? Un „fellow traveler"? Sau ideile lui conduceau inevitabil spre totalitarism? Istoricii dezbat încă. Schmitt însuși nu s-a căit niciodată — după război a continuat să scrie, fără să-și recunoască vina.</p>
+                <blockquote class="inline">„Întrebarea nu e dacă să-l citim pe Schmitt, ci cum să-l citim — cu ce precauții și ce conștiință critică."</blockquote>
+                <p>Paradoxal, critica lui Schmitt la adresa liberalismului a fost adoptată de stânga radicală (Chantal Mouffe, Slavoj Žižek). Ideea că politicul nu poate fi eliminat, că antagonismul e constitutiv — aceste teze sunt luate în serios de gânditori care detestă tot ce a reprezentat Schmitt.</p>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Moștenire</span>
+                <h2>De Ce Contează Azi</h2>
+                <p>Schmitt e mai actual ca niciodată. Stările de urgență s-au multiplicat — terorism, pandemii, crize economice, schimbări climatice. Cine decide asupra excepției?</p>
+                <ul>
+                    <li><strong>Supravegherea de masă</strong> — excepția devenită regulă</li>
+                    <li><strong>Deciziile băncilor centrale</strong> — suveranitate economică non-democratică</li>
+                    <li><strong>Războiul contra terorismului</strong> — dușmanul fără chip, fără teritoriu</li>
+                    <li><strong>Ascensiunea autoritarismului</strong> — revenirea politicului în formă brutală</li>
+                </ul>
+                <div class="concept-box">
+                    <h4>Lecția lui Schmitt</h4>
+                    <p>Nu ne place ce spune, dar trebuie să-l ascultăm. Schmitt ne forțează să vedem ceea ce liberalismul preferă să ignore: că puterea are o logică proprie, că conflictul nu dispare prin proceduri, că excepția revelează adevărul regulii.</p>
+                </div>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Concluzie</span>
+                <h2>Gânditorul Incomod</h2>
+                <p>Schmitt rămâne gânditorul pe care ne-ar plăcea să-l ignorăm — dar nu putem. Ideile lui sunt periculoase, dar periculoase în sensul că dezvăluie adevăruri pe care preferăm să le ascundem.</p>
+                <p>Să-l citești pe Schmitt nu înseamnă să fii de acord cu el. Înseamnă să-ți testezi propriile convingții despre democrație, despre drept, despre limitele politicului. Cine decide? Aceasta e întrebarea care nu dispare.</p>
+            </section>
+        </article>
+    </main>
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+
+    <script>
+    // Theme Toggle
+    (function() {
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+        const text = document.getElementById('theme-text');
+        const body = document.body;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        // Apply saved theme on load
+        if (currentTheme === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            icon.textContent = '🌙';
+            text.textContent = 'Mod Întunecat';
+        }
+
+        // Toggle theme on button click
+        toggle.addEventListener('click', () => {
+            const theme = body.getAttribute('data-theme');
+
+            if (theme === 'dark') {
+                body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                icon.textContent = '☀️';
+                text.textContent = 'Mod Luminos';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.textContent = '🌙';
+                text.textContent = 'Mod Întunecat';
+            }
+        });
+    })();
+    </script>
+</body>
+</html>
