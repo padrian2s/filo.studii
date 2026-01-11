@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edward Luttwak - Strategul Loviturilor de Stat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Merriweather:ital,wght@0,300;0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ffffff; --secondary: #f8f8f8; --text: #1a1a1a; --text-muted: #666666; --text-light: #999999; --accent: #1a472a; --border: #e5e5e5; }
+        [data-theme="dark"] {
+            --primary: #1a1a1a;
+            --secondary: #2a2a2a;
+            --text: #e8e8e8;
+            --text-muted: #b0b0b0;
+            --text-light: #808080;
+            --accent: #4ade80;
+            --border: #404040;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; line-height: 1.85; color: var(--text); background: var(--primary); }
+        nav { position: fixed; top: 0; width: 100%; background: var(--primary); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 1rem 3rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        nav a { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); text-decoration: none; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem; border-bottom: 1px solid var(--border); }
+        .hero .category { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4.5rem); font-weight: 400; color: var(--text); margin-bottom: 1.5rem; }
+        .hero .subtitle { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: var(--text-muted); max-width: 600px; }
+        .hero .years { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 3rem; }
+        main { max-width: 750px; margin: 0 auto; padding: 6rem 2rem; }
+        section { margin-bottom: 5rem; }
+        .section-number { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1.5rem; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .lead::first-letter { font-family: 'Playfair Display', serif; font-size: 5rem; float: left; line-height: 0.85; padding-right: 1rem; padding-top: 0.5rem; color: var(--accent); }
+        .pull-quote { padding: 4rem 2rem; background: var(--secondary); text-align: center; margin: 4rem -2rem; position: relative; }
+        .pull-quote::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 12rem; position: absolute; top: -1rem; left: 2rem; color: var(--accent); opacity: 0.1; }
+        .pull-quote blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 600px; margin: 0 auto; }
+        .pull-quote cite { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--text-muted); }
+        blockquote.inline { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--text-muted); }
+        .concept-box { border: 1px solid var(--border); padding: 2rem; margin: 2.5rem 0; }
+        .concept-box h4 { font-family: 'Inter', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; }
+        ul { margin: 1.5rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        footer { background: var(--text); color: var(--primary); padding: 4rem 2rem; text-align: center; }
+        footer p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .hero { padding: 4rem 1.5rem; } .hero h1 { font-size: 2rem; } main { padding: 4rem 1.5rem; } .pull-quote { margin: 3rem -1.5rem; padding: 3rem 1.5rem; } .lead::first-letter { font-size: 3.5rem; } }
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1001;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .theme-toggle .icon {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        @media (max-width: 600px) {
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="icon" id="theme-icon">☀️</span>
+        <span id="theme-text">Mod Luminos</span>
+    </button>
+
+    <nav><a href="index.html" class="logo">Studii Filozofice</a><a href="index.html">Acasă</a></nav>
+    <header class="hero">
+        <span class="category">Strategie / Geopolitică</span>
+        <h1>Edward Luttwak</h1>
+        <p class="subtitle">Strategul care a scris manualul loviturilor de stat și a disecat logica paradoxală a războiului</p>
+        <span class="years">1942 — prezent</span>
+    </header>
+    <main>
+        <article>
+            <section>
+                <span class="section-number">01 / Introducere</span>
+                <h2>Inginerul Puterii</h2>
+                <p class="lead">Edward Luttwak nu e filozof în sensul clasic. E ceva mai periculos: un tehnician al puterii. Cartea lui „Coup d'État: A Practical Handbook" (1968) explică, pas cu pas, cum să răstorni un guvern. A fost citită de revoluționari, de dictatori și de serviciile secrete din toată lumea.</p>
+                <p>Născut în România, crescut în Italia și Anglia, stabilit în SUA, Luttwak e un poliglot și polimat care a consiliat Pentagon-ul, CIA și armate din întreaga lume. Scrie despre strategie cu precizia unui chirurg și cinismul unui Machiavelli modern.</p>
+                <p>Opera lui acoperă totul — de la tactica loviturilor de stat la marea strategie a Imperiului Roman și Bizantin, de la logica paradoxală a războiului la geopolitica contemporană a Chinei.</p>
+            </section>
+            <aside class="pull-quote">
+                <blockquote>„Lovitura de stat e infiltrarea unui segment mic dar critic al aparatului de stat, pe care îl folosești pentru a deplasa guvernul de la controlul restului."</blockquote>
+                <cite>— Edward Luttwak, Coup d'État (1968)</cite>
+            </aside>
+            <section>
+                <span class="section-number">02 / Lovitura de Stat</span>
+                <h2>Manualul Practic</h2>
+                <p>„Coup d'État" nu e o carte de teorie politică. E un manual tehnic. Luttwak explică exact ce trebuie făcut: cum identifici vulnerabilitățile statului, cum câștigi elitele, cum controlezi punctele nodale, cum neutralizezi opoziția.</p>
+                <div class="concept-box">
+                    <h4>Ce E și Ce Nu E o Lovitură de Stat</h4>
+                    <p><strong>Este:</strong> Infiltrarea și utilizarea aparatului de stat existent pentru a prelua puterea din interior.<br><br>
+                    <strong>Nu este:</strong> Revoluție (mișcare de masă), război civil (conflict armat extins), sau puci militar (armata ca instituție preia puterea).</p>
+                    <p>Lovitura de stat e <em>chirurgicală</em> — rapidă, limitată, discretă.</p>
+                </div>
+                <p>Luttwak identifică <strong>condițiile necesare</strong>:</p>
+                <ul>
+                    <li>Statul trebuie să fie suficient de dezvoltat pentru a avea un aparat centralizat</li>
+                    <li>Participarea politică trebuie să fie limitată la o elită mică</li>
+                    <li>Centrul politic trebuie să fie distinct și accesibil</li>
+                </ul>
+                <blockquote class="inline">„Dacă lovitura de stat necesită participarea activă a maselor, atunci nu mai e lovitură de stat — e revoluție, cu totul alt fenomen."</blockquote>
+            </section>
+
+            <section>
+                <span class="section-number">03 / Factorii Revoluției</span>
+                <h2>Când Cade un Regim</h2>
+                <p>Luttwak distinge între lovitură de stat (tehnică, elitistă) și revoluție (schimbare profundă a sistemului). Dar ambele depind de <strong>aceiași factori de vulnerabilitate</strong> ai statului.</p>
+
+                <h3>1. Slăbirea Legitimității</h3>
+                <p>Nu sărăcia produce revoluția, ci <strong>pierderea de legitimitate</strong>. Un stat poate fi sărac și stabil sau relativ prosper și să cadă.</p>
+                <ul>
+                    <li>Elitele nu mai cred în regim</li>
+                    <li>Instituțiile nu mai sunt respectate</li>
+                    <li>Discursul oficial nu mai convinge pe nimeni</li>
+                </ul>
+
+                <h3>2. Alienarea Elitelor-Cheie</h3>
+                <p>Revoluțiile reușesc când <strong>elitele tehnice și coercitive</strong> se rup de centru:</p>
+                <ul>
+                    <li>Armata</li>
+                    <li>Serviciile de securitate</li>
+                    <li>Birocrația</li>
+                    <li>Infrastructura critică (transport, energie, comunicații)</li>
+                </ul>
+                <blockquote class="inline">„Masa nu contează decisiv fără defectarea elitelor."</blockquote>
+
+                <h3>3. Controlul Slab al Punctelor Nodale</h3>
+                <p>Luttwak insistă pe <strong>noduri</strong>, nu pe mase:</p>
+                <ul>
+                    <li>Sedii guvernamentale</li>
+                    <li>Telecomunicații</li>
+                    <li>Televiziune / media</li>
+                    <li>Ministere-cheie</li>
+                    <li>Rețele de transport</li>
+                </ul>
+                <p>Dacă statul pierde controlul nodurilor, colapsul este rapid.</p>
+
+                <h3>4. Criză Simultană</h3>
+                <p>Nu orice criză declanșează revoluție. Dar combinația e letală:</p>
+                <div class="concept-box">
+                    <h4>Formula Crizei Decisive</h4>
+                    <p><strong>Criză economică</strong> + <strong>Umilire simbolică</strong> (eșec militar, pierdere de prestigiu, scandal major) = Percepția: „regimul nu mai e capabil"</p>
+                </div>
+
+                <h3>5. Fragmentarea Aparatului Coercitiv</h3>
+                <p>Momentul critic apare când:</p>
+                <ul>
+                    <li>Armata ezită</li>
+                    <li>Ordinele nu mai sunt executate</li>
+                    <li>Forțele se neutralizează reciproc</li>
+                </ul>
+                <blockquote class="inline">„Indecizia e mai periculoasă decât represiunea dură."</blockquote>
+
+                <h3>6. Ferestre de Oportunitate Scurte</h3>
+                <p>Revoluțiile nu sunt procese lente:</p>
+                <ul>
+                    <li>Apar brusc</li>
+                    <li>Se decid în zile sau ore</li>
+                    <li>Depind de sincronizare, nu de popularitate</li>
+                </ul>
+                <p><strong>Timpul este arma decisivă.</strong></p>
+
+                <h3>7. Confuzie Informațională</h3>
+                <p>Când nimeni nu știe cine controlează ce, când zvonurile circulă mai repede decât ordinele, când mass-media e haotică — actorii presupun că regimul a căzut <em>înainte</em> să cadă efectiv.</p>
+            </section>
+
+            <aside class="pull-quote">
+                <blockquote>„În strategie, cea mai directă cale de la A la B nu e linia dreaptă."</blockquote>
+                <cite>— Edward Luttwak, Strategy: The Logic of War and Peace</cite>
+            </aside>
+
+            <!-- SIMULATOR INTERACTIV -->
+            <section id="simulator">
+                <span class="section-number">04 / Simulator</span>
+                <h2>Indicele de Vulnerabilitate la Revoluție</h2>
+
+                <p>Aplică metodologia lui Luttwak: evaluează fiecare factor pentru a calcula vulnerabilitatea unui stat la revoluție sau lovitură de stat.</p>
+
+                <div class="simulator-container">
+                    <div class="simulator-intro">
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Ajustează cursoarele pentru fiecare factor. Scala merge de la 0 (factor absent/stabil) la 10 (factor maxim/critic).</p>
+                    </div>
+
+                    <div class="factori-grid">
+                        <!-- Factor 1 -->
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <span class="factor-numar">01</span>
+                                <span class="factor-nume">Pierderea Legitimității</span>
+                                <span class="factor-valoare" id="val-legitimitate">5</span>
+                            </div>
+                            <input type="range" min="0" max="10" value="5" id="slider-legitimitate" oninput="actualizeazaFactor('legitimitate')">
+                            <p class="factor-desc">Elitele și poporul nu mai cred în regim. Discursul oficial sună gol.</p>
+                        </div>
+
+                        <!-- Factor 2 -->
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <span class="factor-numar">02</span>
+                                <span class="factor-nume">Alienarea Elitelor</span>
+                                <span class="factor-valoare" id="val-elite">5</span>
+                            </div>
+                            <input type="range" min="0" max="10" value="5" id="slider-elite" oninput="actualizeazaFactor('elite')">
+                            <p class="factor-desc">Armata, securitatea, birocrația se distanțează de centrul puterii.</p>
+                        </div>
+
+                        <!-- Factor 3 -->
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <span class="factor-numar">03</span>
+                                <span class="factor-nume">Control Slab al Nodurilor</span>
+                                <span class="factor-valoare" id="val-noduri">5</span>
+                            </div>
+                            <input type="range" min="0" max="10" value="5" id="slider-noduri" oninput="actualizeazaFactor('noduri')">
+                            <p class="factor-desc">Statul nu controlează ferm media, telecomunicații, ministere-cheie.</p>
+                        </div>
+
+                        <!-- Factor 4 -->
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <span class="factor-numar">04</span>
+                                <span class="factor-nume">Criză Economică</span>
+                                <span class="factor-valoare" id="val-economic">5</span>
+                            </div>
+                            <input type="range" min="0" max="10" value="5" id="slider-economic" oninput="actualizeazaFactor('economic')">
+                            <p class="factor-desc">Inflație, șomaj, lipsuri — presiune materială asupra populației.</p>
+                        </div>
+
+                        <!-- Factor 5 -->
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <span class="factor-numar">05</span>
+                                <span class="factor-nume">Umilire Simbolică</span>
+                                <span class="factor-valoare" id="val-simbolic">5</span>
+                            </div>
+                            <input type="range" min="0" max="10" value="5" id="slider-simbolic" oninput="actualizeazaFactor('simbolic')">
+                            <p class="factor-desc">Eșec militar, scandal major, pierdere de prestigiu internațional.</p>
+                        </div>
+
+                        <!-- Factor 6 -->
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <span class="factor-numar">06</span>
+                                <span class="factor-nume">Fragmentare Coercitivă</span>
+                                <span class="factor-valoare" id="val-coercitiv">5</span>
+                            </div>
+                            <input type="range" min="0" max="10" value="5" id="slider-coercitiv" oninput="actualizeazaFactor('coercitiv')">
+                            <p class="factor-desc">Armata ezită, ordinele nu se execută, forțele se neutralizează.</p>
+                        </div>
+
+                        <!-- Factor 7 -->
+                        <div class="factor-item">
+                            <div class="factor-header">
+                                <span class="factor-numar">07</span>
+                                <span class="factor-nume">Confuzie Informațională</span>
+                                <span class="factor-valoare" id="val-informational">5</span>
+                            </div>
+                            <input type="range" min="0" max="10" value="5" id="slider-informational" oninput="actualizeazaFactor('informational')">
+                            <p class="factor-desc">Zvonuri, dezinformare, nimeni nu știe cine controlează ce.</p>
+                        </div>
+                    </div>
+
+                    <button class="calculeaza-btn" onclick="calculeazaVulnerabilitate()">Calculează Indicele de Vulnerabilitate</button>
+
+                    <div id="rezultat-vulnerabilitate" class="rezultat-container"></div>
+
+                    <!-- Scenarii Presetate -->
+                    <div class="scenarii-presetate">
+                        <h4>Scenarii Istorice</h4>
+                        <div class="scenarii-butoane">
+                            <button onclick="aplicaScenariu('romania89')">România 1989</button>
+                            <button onclick="aplicaScenariu('urss91')">URSS 1991</button>
+                            <button onclick="aplicaScenariu('egipt2011')">Egipt 2011</button>
+                            <button onclick="aplicaScenariu('chile73')">Chile 1973</button>
+                            <button onclick="aplicaScenariu('stabil')">Stat Stabil</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                .simulator-container {
+                    background: var(--secondary);
+                    border: 1px solid var(--border);
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                }
+                .factori-grid {
+                    display: grid;
+                    gap: 1.5rem;
+                }
+                .factor-item {
+                    padding: 1.25rem;
+                    background: var(--primary);
+                    border: 1px solid var(--border);
+                    border-radius: 4px;
+                }
+                .factor-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    margin-bottom: 0.75rem;
+                }
+                .factor-numar {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.65rem;
+                    color: var(--accent);
+                    font-weight: 500;
+                }
+                .factor-nume {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    flex: 1;
+                }
+                .factor-valoare {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    color: var(--accent);
+                    min-width: 2rem;
+                    text-align: right;
+                }
+                .factor-item input[type="range"] {
+                    width: 100%;
+                    height: 6px;
+                    -webkit-appearance: none;
+                    background: var(--border);
+                    border-radius: 3px;
+                    outline: none;
+                    margin-bottom: 0.5rem;
+                }
+                .factor-item input[type="range"]::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    width: 18px;
+                    height: 18px;
+                    background: var(--accent);
+                    border-radius: 50%;
+                    cursor: pointer;
+                    transition: transform 0.2s;
+                }
+                .factor-item input[type="range"]::-webkit-slider-thumb:hover {
+                    transform: scale(1.2);
+                }
+                .factor-desc {
+                    font-size: 0.8rem;
+                    color: var(--text-muted);
+                    margin: 0;
+                    line-height: 1.5;
+                }
+                .calculeaza-btn {
+                    width: 100%;
+                    background: var(--accent);
+                    color: var(--primary);
+                    border: none;
+                    padding: 1rem 2rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.85rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    margin-top: 1.5rem;
+                    transition: all 0.2s ease;
+                }
+                .calculeaza-btn:hover {
+                    opacity: 0.9;
+                    transform: translateY(-2px);
+                }
+                .rezultat-container {
+                    display: none;
+                    margin-top: 2rem;
+                    padding: 2rem;
+                    background: var(--primary);
+                    border: 2px solid var(--border);
+                    border-radius: 4px;
+                    text-align: center;
+                }
+                .rezultat-container.visible {
+                    display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .indice-mare {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 4rem;
+                    font-weight: 400;
+                    line-height: 1;
+                    margin-bottom: 0.5rem;
+                }
+                .indice-label {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.15em;
+                    color: var(--text-muted);
+                    margin-bottom: 1rem;
+                }
+                .nivel-risc {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    display: inline-block;
+                    margin-bottom: 1.5rem;
+                }
+                .nivel-scazut { background: rgba(76, 175, 80, 0.15); color: #2e7d32; }
+                .nivel-moderat { background: rgba(255, 193, 7, 0.15); color: #f57f17; }
+                .nivel-ridicat { background: rgba(255, 152, 0, 0.15); color: #e65100; }
+                .nivel-critic { background: rgba(244, 67, 54, 0.15); color: #c62828; }
+                .interpretare {
+                    font-size: 0.95rem;
+                    color: var(--text-muted);
+                    line-height: 1.7;
+                    text-align: left;
+                    margin-top: 1rem;
+                    padding-top: 1rem;
+                    border-top: 1px solid var(--border);
+                }
+                .scenarii-presetate {
+                    margin-top: 2rem;
+                    padding-top: 1.5rem;
+                    border-top: 1px solid var(--border);
+                }
+                .scenarii-presetate h4 {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: var(--text-muted);
+                    margin-bottom: 1rem;
+                }
+                .scenarii-butoane {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                }
+                .scenarii-butoane button {
+                    background: transparent;
+                    border: 1px solid var(--border);
+                    color: var(--text-muted);
+                    padding: 0.6rem 1rem;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.75rem;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    transition: all 0.2s;
+                }
+                .scenarii-butoane button:hover {
+                    border-color: var(--accent);
+                    color: var(--accent);
+                }
+                @media (max-width: 600px) {
+                    .simulator-container { padding: 1.5rem; }
+                    .factor-item { padding: 1rem; }
+                    .indice-mare { font-size: 3rem; }
+                }
+            </style>
+
+            <script>
+            (function() {
+                const ponderi = {
+                    legitimitate: 1.5,
+                    elite: 1.8,
+                    noduri: 1.3,
+                    economic: 1.0,
+                    simbolic: 1.2,
+                    coercitiv: 2.0,
+                    informational: 1.2
+                };
+
+                const scenarii = {
+                    romania89: { legitimitate: 9, elite: 8, noduri: 7, economic: 8, simbolic: 9, coercitiv: 9, informational: 8 },
+                    urss91: { legitimitate: 10, elite: 9, noduri: 8, economic: 7, simbolic: 8, coercitiv: 7, informational: 9 },
+                    egipt2011: { legitimitate: 8, elite: 6, noduri: 5, economic: 6, simbolic: 7, coercitiv: 6, informational: 8 },
+                    chile73: { legitimitate: 4, elite: 8, noduri: 7, economic: 6, simbolic: 5, coercitiv: 8, informational: 6 },
+                    stabil: { legitimitate: 2, elite: 1, noduri: 1, economic: 3, simbolic: 2, coercitiv: 1, informational: 2 }
+                };
+
+                window.actualizeazaFactor = function(factor) {
+                    const slider = document.getElementById('slider-' + factor);
+                    const valoare = document.getElementById('val-' + factor);
+                    valoare.textContent = slider.value;
+                };
+
+                window.calculeazaVulnerabilitate = function() {
+                    const factori = ['legitimitate', 'elite', 'noduri', 'economic', 'simbolic', 'coercitiv', 'informational'];
+                    let suma = 0;
+                    let sumaMaxima = 0;
+
+                    factori.forEach(f => {
+                        const val = parseInt(document.getElementById('slider-' + f).value);
+                        suma += val * ponderi[f];
+                        sumaMaxima += 10 * ponderi[f];
+                    });
+
+                    const indice = Math.round((suma / sumaMaxima) * 100);
+                    afiseazaRezultat(indice);
+                };
+
+                function afiseazaRezultat(indice) {
+                    const container = document.getElementById('rezultat-vulnerabilitate');
+                    let nivel, clasa, interpretare;
+
+                    if (indice < 25) {
+                        nivel = 'Stabil';
+                        clasa = 'nivel-scazut';
+                        interpretare = `<strong>Regim consolidat.</strong> Legitimitatea e intactă, elitele sunt loiale, aparatul coercitiv funcționează. Luttwak ar spune: nu există fereastră de oportunitate. Orice tentativă de lovitură sau revoluție ar fi rapid neutralizată.`;
+                    } else if (indice < 50) {
+                        nivel = 'Vulnerabilitate Moderată';
+                        clasa = 'nivel-moderat';
+                        interpretare = `<strong>Tensiuni prezente, dar controlabile.</strong> Există slăbiciuni, dar nu sunt sincronizate. Regimul poate gestiona crize individuale. Luttwak: trebuie monitorizate elitele — dacă încep să defecteze, situația se poate deteriora rapid.`;
+                    } else if (indice < 75) {
+                        nivel = 'Vulnerabilitate Ridicată';
+                        clasa = 'nivel-ridicat';
+                        interpretare = `<strong>Fereastră de oportunitate deschisă.</strong> Mai mulți factori critici converg. Dacă apare un eveniment declanșator (umilire publică, represiune eșuată, defectare vizibilă), cascada poate începe. Luttwak: acum se decide cine acționează primul.`;
+                    } else {
+                        nivel = 'Criză Sistemică';
+                        clasa = 'nivel-critic';
+                        interpretare = `<strong>Colaps iminent sau în desfășurare.</strong> Legitimitatea e pulverizată, elitele au defectat, aparatul coercitiv e fragmentat, confuzia domnește. Luttwak: nu mai e întrebarea DACĂ regimul cade, ci CINE îl înlocuiește și CÂT de violent va fi procesul.`;
+                    }
+
+                    container.innerHTML = `
+                        <div class="indice-mare" style="color: var(--accent);">${indice}%</div>
+                        <div class="indice-label">Indice de Vulnerabilitate</div>
+                        <div class="nivel-risc ${clasa}">${nivel}</div>
+                        <div class="interpretare">${interpretare}</div>
+                    `;
+                    container.classList.add('visible');
+                }
+
+                window.aplicaScenariu = function(key) {
+                    const sc = scenarii[key];
+                    Object.keys(sc).forEach(factor => {
+                        document.getElementById('slider-' + factor).value = sc[factor];
+                        document.getElementById('val-' + factor).textContent = sc[factor];
+                    });
+                    calculeazaVulnerabilitate();
+                };
+            })();
+            </script>
+
+            <section>
+                <span class="section-number">05 / Ce NU Contează</span>
+                <h2>Mituri despre Revoluții</h2>
+                <p>Luttwak e brutal în a demitiza revoluțiile. Ce NU consideră el decisiv:</p>
+                <div class="concept-box">
+                    <h4>Factori Supraevaluați</h4>
+                    <ul style="margin: 0; padding-left: 1.5rem;">
+                        <li><strong>Ideologia</strong> — vine după, nu înainte; justifică post-factum</li>
+                        <li><strong>Voința maselor</strong> — masele urmează, nu conduc</li>
+                        <li><strong>Justiția socială</strong> — revoluții reușesc și pentru cauze injuste</li>
+                        <li><strong>Sărăcia ca factor unic</strong> — state sărace pot fi foarte stabile</li>
+                    </ul>
+                </div>
+                <p>Acestea sunt <em>narațiuni post-factum</em>, nu cauze operative. Revoluțiile sunt câștigate de cei care controlează punctele nodale în momentul critic — nu de cei care au dreptate morală.</p>
+            </section>
+
+            <section>
+                <span class="section-number">06 / Logica Paradoxală</span>
+                <h2>Strategia ca Paradox</h2>
+                <p>În „Strategy: The Logic of War and Peace", Luttwak dezvoltă ideea că strategia funcționează <em>paradoxal</em>:</p>
+                <blockquote class="inline">„În strategie, cea mai directă cale de la A la B nu e linia dreaptă. Drumul bun e adesea cel rău, iar cel rău devine bun tocmai pentru că adversarul îl ignoră."</blockquote>
+                <p>De aici, principii contra-intuitive:</p>
+                <ul>
+                    <li>O victorie prea completă creează coaliții împotriva învingătorului</li>
+                    <li>Armele „superioare" devin inferioare când toți le au</li>
+                    <li>Pacea se obține pregătindu-te de război</li>
+                    <li>Alianțele slabe pot fi mai utile decât cele puternice</li>
+                </ul>
+            </section>
+
+            <section>
+                <span class="section-number">07 / Imperiile</span>
+                <h2>Roma și Bizanț</h2>
+                <p>Luttwak a scris studii monumentale despre strategiile Imperiului Roman și Bizantin. Lecțiile sunt actuale:</p>
+                <div class="concept-box">
+                    <h4>Marea Strategie Bizantină</h4>
+                    <p>Bizanțul a supraviețuit 1000 de ani nu prin forță militară superioară, ci prin:</p>
+                    <ul style="margin: 0.5rem 0 0 1.5rem;">
+                        <li>Diplomație — îi punea pe dușmani să se lupte între ei</li>
+                        <li>Subversiune — cumpăra elitele adverse</li>
+                        <li>Răbdare — evita bătăliile decisive</li>
+                        <li>Flexibilitate — adapta strategia la fiecare amenințare</li>
+                    </ul>
+                </div>
+                <p>Luttwak sugerează că SUA ar avea mult de învățat de la bizantini — mai puțin cowboy, mai mult Machiavelli.</p>
+            </section>
+
+            <section>
+                <span class="section-number">08 / Concluzie</span>
+                <h2>Strategul Cinic</h2>
+                <p>Luttwak nu e confortabil. Nu oferă iluzii morale. Tratează puterea ca pe un mecanism — poate fi înțeles, poate fi manipulat, dar nu poate fi moralizat.</p>
+                <p>Să-l citești înseamnă să renunți la inocență. După Luttwak, nu mai poți privi știrile despre lovituri de stat sau revoluții fără să te întrebi: cine a controlat nodurile? Cine a câștigat elitele? Cine a acționat în fereastra de oportunitate?</p>
+                <p>E un gânditor pentru vremuri tulburi — și vremurile sunt mereu tulburi.</p>
+            </section>
+        </article>
+    </main>
+    <footer><p>Studii Filozofice — Un proiect dedicat gândirii care contează</p></footer>
+
+    <script>
+    // Theme Toggle
+    (function() {
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+        const text = document.getElementById('theme-text');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        if (currentTheme === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            icon.textContent = '🌙';
+            text.textContent = 'Mod Întunecat';
+        }
+
+        toggle.addEventListener('click', () => {
+            const theme = body.getAttribute('data-theme');
+
+            if (theme === 'dark') {
+                body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                icon.textContent = '☀️';
+                text.textContent = 'Mod Luminos';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.textContent = '🌙';
+                text.textContent = 'Mod Întunecat';
+            }
+        });
+    })();
+    </script>
+</body>
+</html>
